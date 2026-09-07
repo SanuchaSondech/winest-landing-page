@@ -225,13 +225,13 @@
 }
 
 .zone-main-heading {
-  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--text-primary, #ffffff);
   margin: 0 0 0.6rem 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 [data-theme="light"] .zone-main-heading {
