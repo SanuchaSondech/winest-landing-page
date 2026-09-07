@@ -1,0 +1,49 @@
+---
+// HeroVideoFooter.astro - แถบควบคุมข้อมูลคลิปและการเล่นวิดีโอด้านล่างเวที 16:9
+import Icon from '../common/Icon.astro';
+
+export interface Props {
+  playHint: string;
+  trackTitle: string;
+  trackSub: string;
+  duration: string;
+}
+
+const { playHint, trackTitle, trackSub, duration } = Astro.props;
+---
+
+<div class="video-overlay-ui">
+  <!-- Center Controls (Play Button & Hint Pill) -->
+  <div class="video-center-controls">
+    <button class="play-btn-circle" id="play-trailer-btn" aria-label="เล่นคลิปตัวอย่างค่าย WINEST">
+      <Icon name="play" class="play-triangle" />
+    </button>
+    <div class="frosted-hint-pill">
+      <span class="play-hint-dot"></span>
+      <span class="play-hint">{playHint}</span>
+    </div>
+  </div>
+
+  <!-- Footer Information Bar with Clean Frosted Glass -->
+  <div class="video-footer-info">
+    <div class="track-info">
+      <span class="track-title">{trackTitle}</span>
+      <span class="track-sub">{trackSub}</span>
+    </div>
+    <div class="video-footer-meta">
+      <div class="duration-badge">
+        <span class="rec-dot"></span>
+        <span>{duration}</span>
+      </div>
+      <!-- Audio Waveform SVG Animation -->
+      <div class="waveform" aria-hidden="true">
+        <span class="bar b1"></span>
+        <span class="bar b2"></span>
+        <span class="bar b3"></span>
+        <span class="bar b4"></span>
+        <span class="bar b5"></span>
+        <span class="bar b6"></span>
+      </div>
+    </div>
+  </div>
+</div>

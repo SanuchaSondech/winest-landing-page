@@ -1,0 +1,76 @@
+---
+// Icon.astro - คอมโพเนนต์โหลดและเรนเดอร์ไฟล์ .svg จากโฟลเดอร์ public/svg/
+export interface Props {
+  name: string; // e.g. "play", "icons/play", "theme-sun"
+  class?: string;
+  width?: string | number;
+  height?: string | number;
+  ariaHidden?: boolean | 'true' | 'false';
+}
+
+const { name, class: className, width, height, ariaHidden = true } = Astro.props;
+
+// โหลด SVG ทั้งหมดผ่าน Vite import.meta.glob โดยตรง
+const svgFiles = import.meta.glob('/public/svg/**/*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+let cleanName = name.endsWith('.svg') ? name : `${name}.svg`;
+if (!cleanName.includes('/')) {
+  cleanName = `icons/${cleanName}`;
+}
+
+const lookupKey = `/public/svg/${cleanName}`;
+const rawSvg = svgFiles[lookupKey] || '';
+
+if (!rawSvg) {
+  console.warn(`[Icon.astro] SVG not found for key: ${lookupKey}`);
+}
+
+let processedSvg = rawSvg;
+
+if (processedSvg) {
+  // ปรับแต่ง attribute เฉพาะบนแท็ก <svg ...> เปิดเท่านั้น (ไม่กระทบ inner element หรือ stroke-width)
+  processedSvg = processedSvg.replace(/<svg\b([^>]*)>/i, (match, attrs) => {
+    let updatedAttrs = attrs;
+
+    // แทรกหรือต่อเติม class
+    if (className) {
+      if (/class="[^"]*"/i.test(updatedAttrs)) {
+        updatedAttrs = updatedAttrs.replace(/class="([^"]*)"/i, `class="$1 ${className}"`);
+      } else {
+        updatedAttrs += ` class="${className}"`;
+      }
+    }
+
+    // ปรับ width (ต้องไม่ชนกับ stroke-width โดยใช้ negative lookbehind (?<![\w-]))
+    if (width !== undefined && width !== null) {
+      if (/(?<![\w-])width="[^"]*"/i.test(updatedAttrs)) {
+        updatedAttrs = updatedAttrs.replace(/(?<![\w-])width="[^"]*"/i, `width="${width}"`);
+      } else {
+        updatedAttrs += ` width="${width}"`;
+      }
+    }
+
+    // ปรับ height
+    if (height !== undefined && height !== null) {
+      if (/(?<![\w-])height="[^"]*"/i.test(updatedAttrs)) {
+        updatedAttrs = updatedAttrs.replace(/(?<![\w-])height="[^"]*"/i, `height="${height}"`);
+      } else {
+        updatedAttrs += ` height="${height}"`;
+      }
+    }
+
+    // กำหนด aria-hidden สำหรับไอคอนตกแต่ง
+    if (ariaHidden && !/aria-hidden/i.test(updatedAttrs)) {
+      updatedAttrs += ' aria-hidden="true"';
+    }
+
+    return `<svg${updatedAttrs}>`;
+  });
+}
+---
+
+{processedSvg ? <Fragment set:html={processedSvg} /> : null}

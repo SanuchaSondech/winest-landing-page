@@ -1,0 +1,25 @@
+---
+// MemberVectorArt.astro - SVG Artwork Banner สำหรับสมาชิกแต่ละคน
+import Icon from '../common/Icon.astro';
+
+export interface Props {
+  memberId: string;
+}
+
+const { memberId } = Astro.props;
+
+const artFiles: Record<string, string> = {
+  'member-01': 'members/art-01',
+  'member-02': 'members/art-02',
+  'member-03': 'members/art-03',
+  'member-04': 'members/art-04',
+  'member-05': 'members/art-05',
+  'member-06': 'members/art-06',
+};
+
+const artName = artFiles[memberId];
+---
+
+<div class="member-bg-canvas">
+  {artName && <Icon name={artName} class="member-vector-art" />}
+</div>

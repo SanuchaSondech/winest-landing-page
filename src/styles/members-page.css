@@ -1,0 +1,2071 @@
+/* ==========================================================================
+   WINEST MEMBERS DIRECTORY & DOSSIER (members-page.css)
+   Clean Minimalist Design System — Exact Match to Algorhythm Project (ARP)
+   Features:
+   - Full-width Generation Bands distinguished by deep background colors
+   - Square Member Cards with Character Bust + Solid Colored Nameplate
+   - Zero AI Slop (No glowing blobs, no cards nested in cards, no fluff)
+   ========================================================================== */
+
+.arp-members-main {
+  padding-top: 0;
+  background-color: var(--bg-dominant, #090c16);
+  color: var(--text-primary, #ffffff);
+}
+
+/* ==========================================================================
+   1. GENERATION BANDS (ROSTER VIEW) - แบ่งเจนด้วยสี
+   ========================================================================== */
+.arp-roster-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.arp-generation-band {
+  width: 100%;
+  padding: 5rem 0;
+  background-color: var(--gen-bg-dark, #090c16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.arp-generation-band:last-child {
+  border-bottom: none;
+}
+
+/* Container: max-width 1280px to align neatly with site grid guidelines */
+.arp-gen-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.arp-gen-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .arp-gen-row {
+    grid-template-columns: minmax(320px, 460px) 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  /* ฝั่งซ้าย: จัดชิดซ้ายแท้จริง (Align Left) */
+  .arp-gen-info-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+  }
+
+  .arp-gen-header-block {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* ฝั่งขวา: จัดชิดขวาแท้จริง (Align Right) */
+  .arp-gen-members-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+
+  .arp-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+.arp-gen-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.arp-gen-concept-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f472b6;
+  background: rgba(244, 114, 182, 0.12);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  border-radius: 4px;
+  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.25rem;
+  width: fit-content;
+}
+
+[data-theme="light"] .arp-gen-concept-badge {
+  color: #db2777;
+  background: rgba(219, 39, 119, 0.08);
+  border-color: rgba(219, 39, 119, 0.2);
+}
+
+.arp-gen-title {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0.1rem 0;
+  line-height: 1;
+}
+
+.arp-gen-operation-tag {
+  font-size: 0.4em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1;
+  margin-top: 0.1em;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.arp-gen-tagline {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.arp-gen-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0.25rem 0 0 0;
+}
+
+/* Right Column: Member Cards Row */
+.arp-gen-members-col {
+  display: flex;
+  align-items: center;
+}
+
+.arp-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+/* ==========================================================================
+   MINIMALIST PREMIUM VTUBER TALENT CARD (CLEAN & COMPACT)
+   - Size: 145px mobile / 150px desktop
+   - Clean solid background, no excessive gradients
+   - No neon glow on hover (subtle dark shadow & border)
+   - Headroom above character head
+   - Clean typography without AI gimmicks
+   ========================================================================== */
+.arp-member-card {
+  display: block;
+  text-decoration: none;
+  width: 140px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .arp-member-card {
+    width: 150px;
+  }
+}
+
+.arp-card-inner {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #0d121e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease;
+}
+
+.arp-member-card.is-active:hover .arp-card-inner {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Character Artwork Frame (Upper-Half with Headroom) */
+.arp-card-visual-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  box-sizing: border-box;
+}
+
+.arp-card-character-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Subtle scrim hidden so character art is visible through the frosted glass plate */
+.arp-card-gradient-scrim {
+  display: none;
+}
+
+/* Glassmorphism Bottom Nameplate (Overlaps character artwork as text background) */
+.arp-card-info-plate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.65rem 0.75rem;
+  z-index: 3;
+  background: rgba(10, 15, 26, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.arp-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CTA message at top-right corner of the card on hover */
+.arp-card-cta {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 4;
+  font-size: 0.58rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(10, 15, 26, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.arp-member-card.is-active:hover .arp-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Teaser Card (Gen 2: Animalia) */
+.arp-member-card.is-teaser {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.arp-member-card.is-teaser .arp-card-inner {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.12);
+  background-color: #090c15;
+}
+
+.teaser-visual {
+  background-color: #090c15;
+}
+
+.arp-teaser-silhouette-svg {
+  width: 48%;
+  height: 48%;
+  color: rgba(255, 255, 255, 0.08);
+}
+
+.arp-teaser-glow-mark {
+  position: absolute;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.16);
+  font-family: var(--font-heading, sans-serif);
+}
+
+.arp-teaser-locked-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   2. TALENT DETAIL VIEW (DOSSIER - 5-PART ARCHITECTURE)
+   ========================================================================== */
+.arp-talent-detail-view {
+  min-height: calc(100vh - var(--header-height, 72px));
+  padding-bottom: 6rem;
+  background-color: var(--bg-dominant, #090c16);
+  position: relative;
+}
+
+/* Subnav Back Bar */
+.arp-detail-subnav {
+  background-color: rgba(9, 12, 22, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.85rem 0;
+  position: sticky;
+  top: var(--header-height, 72px);
+  z-index: 20;
+}
+
+.arp-subnav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.arp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.45rem 0.95rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.arp-back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.arp-breadcrumb {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.arp-breadcrumb strong {
+  color: #ffffff;
+}
+
+.arp-breadcrumb .sep {
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วนที่ 1: ปกบน (Header Cover Stage - เพิ่มความสูงขึ้น 10%)
+   -------------------------------------------------------------------------- */
+.dossier-cover-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(106px, 12.5vw, 160px);
+  background: linear-gradient(135deg, var(--cover-theme-darker, #131742) 0%, var(--cover-theme-color, #1e266d) 65%, #0d121e 100%);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dossier-cover-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
+    linear-gradient(to bottom, transparent 0%, rgba(9, 12, 22, 0.6) 100%);
+}
+
+.dossier-cover-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 60%, rgba(9, 12, 22, 0.8) 100%);
+}
+
+/* Glassmorphism Back Button on Top-Left of Cover Banner */
+.dossier-banner-controls {
+  position: absolute;
+  top: clamp(0.75rem, 1.5vw, 1.25rem);
+  left: max(1.25rem, calc((100vw - 1420px) / 2 + 2rem));
+  z-index: 25;
+}
+
+.dossier-banner-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(13, 18, 30, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dossier-banner-back-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateX(-2px);
+  box-shadow: 0 10px 24px -2px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   Container & Overlap Architecture (ขยายพื้นที่ขอบกระดาษ 10% ให้โปร่งสบาย)
+   -------------------------------------------------------------------------- */
+.dossier-main-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วนที่ 3: ชื่อของ VTuber (จุดเริ่มต้นตรงกับ dossier-info-col ล้ำขึ้นไปในส่วนปกบน)
+   -------------------------------------------------------------------------- */
+.dossier-glass-nameplate {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 10;
+  background: rgba(13, 18, 30, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 1.15rem 1.75rem;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dossier-nameplate-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.dossier-gen-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #818cf8;
+  padding: 0.2rem 0.65rem;
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.25);
+  border-radius: 4px;
+}
+
+.dossier-talent-name {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.dossier-title-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #f472b6;
+  padding: 0.2rem 0.65rem;
+  background: rgba(244, 114, 182, 0.12);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  border-radius: 4px;
+}
+
+.dossier-thai-name {
+  font-size: 0.55em;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   Grid Architecture: ส่วนที่ 2 (โมเดล 2 ส่วน) + ส่วนที่ 4 (เนื้อหา 5 ส่วน) [สัดส่วน 2:5 และความสูงเท่ากัน]
+   -------------------------------------------------------------------------- */
+.dossier-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  align-items: stretch;
+  margin-top: -55px;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วนที่ 2: โมเดลเดี่ยวเต็มตัวโปร่งใส (สูงเท่ากับคอลัมน์ข้อมูล dossier-info-col)
+   -------------------------------------------------------------------------- */
+.dossier-model-col {
+  position: relative;
+  z-index: 8;
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dossier-model-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.dossier-full-model-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Speech Balloon (บอลลูนคำพูดคำทักทาย) */
+.dossier-speech-balloon {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  max-width: 260px;
+  background: rgba(18, 14, 28, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  padding: 0.65rem 1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  z-index: 12;
+  cursor: pointer;
+  user-select: none;
+  font-family: inherit;
+  text-align: left;
+  animation: balloonFloat 4s ease-in-out infinite alternate;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dossier-speech-balloon:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 16px rgba(244, 114, 182, 0.25);
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.dossier-speech-balloon.is-dismissed {
+  opacity: 0 !important;
+  transform: scale(0.8) translateY(12px) !important;
+  pointer-events: none !important;
+}
+
+.dossier-speech-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 28px;
+  width: 12px;
+  height: 12px;
+  background: rgba(18, 14, 28, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  transform: rotate(45deg);
+}
+
+.speech-balloon-text {
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fce7f3;
+  font-style: italic;
+  display: inline-block;
+}
+
+.speech-balloon-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.45rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.15s ease;
+  vertical-align: middle;
+}
+
+.dossier-speech-balloon:hover .speech-balloon-close {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes balloonFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ส่วนที่ 4: พื้นที่ข้อมูล (Lore + Specs + ข้อความถึงคนดู - สัดส่วน 5 ส่วน และสูงเท่ากับโมเดล)
+   -------------------------------------------------------------------------- */
+.dossier-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.dossier-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier-block-header {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.65rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.02em;
+}
+
+.dossier-lore-text {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* Specs List (แถว 1 และ แถว 2 จัดวาง 3 คอลัมน์สมมาตร) */
+.dossier-specs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .dossier-specs-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.spec-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* แถว 3: สิ่งที่ชอบ และ สิ่งที่ไม่ชอบ อยู่แถวเดียวกันแบ่ง 50/50 */
+.spec-row-split {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-top: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .spec-row-split {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.spec-kicker {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.spec-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วน เครดิตผู้สร้าง (Credits Block)
+   -------------------------------------------------------------------------- */
+.dossier-credits-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier-credits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .dossier-credits-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+.credit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.credit-role {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.credit-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วน แฮชแท็ก (Hashtags Block พร้อมพื้นหลัง Badge จาก JSON)
+   -------------------------------------------------------------------------- */
+.dossier-hashtags-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier-hashtags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.dossier-hashtag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  cursor: default;
+  pointer-events: none;
+  user-select: text;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* ข้อความที่ฝากถึงคนดู (Speech Quote Block) */
+.dossier-quote-block {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--accent-primary, #3b49df);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.quote-top-badge {
+  margin-bottom: 0.6rem;
+}
+
+.quote-tag-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #818cf8);
+}
+
+.quote-statement {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-style: italic;
+  color: #ffffff;
+  margin: 0 0 0.75rem 0;
+}
+
+.quote-signature {
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   ส่วนที่ 5: ช่องทางติดตามผลงาน (Official Channels)
+   -------------------------------------------------------------------------- */
+.dossier-channels-section {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.channels-header-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.channels-header-row .dossier-block-header {
+  border-bottom: none;
+  margin: 0;
+  padding: 0;
+}
+
+.channels-subtitle {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.dossier-socials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.arp-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.arp-social-btn:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.soc-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.arp-social-btn:hover .soc-icon {
+  color: #ffffff;
+}
+
+.soc-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.soc-platform {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.soc-handle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.soc-arrow {
+  color: #64748b;
+  opacity: 0.5;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.arp-social-btn:hover .soc-arrow {
+  transform: translate(2px, -2px);
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   YUNARIA ZAYU SPECIAL THEMES (รองรับทั้ง โหมดสว่าง และ โหมดมืด สมบูรณ์แบบ)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. โหมดสว่าง (Light Theme - 60% Studio White, 30% Rose Pink, 10% Deep Pink)
+   -------------------------------------------------------------------------- */
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"],
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  --yunaria-pink: #e098a1;
+  --yunaria-pink-soft: #fcf1f3;
+  --yunaria-pink-tint: rgba(224, 152, 161, 0.16);
+  --yunaria-pink-border: rgba(224, 152, 161, 0.35);
+  --yunaria-deep-pink: #9b334d;
+  --yunaria-deep-pink-hover: #b33959;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+  color: var(--yunaria-deep-pink) !important;
+  box-shadow: 0 4px 16px rgba(224, 152, 161, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn:hover,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn:hover {
+  background: #ffffff !important;
+  border-color: var(--yunaria-pink) !important;
+  color: var(--yunaria-deep-pink) !important;
+  transform: translateX(-2px);
+  box-shadow: 0 8px 20px rgba(224, 152, 161, 0.35) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-banner,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #e8a5ad 0%, #e098a1 50%, #f5c7ce 100%) !important;
+  border-bottom: 1px solid var(--yunaria-pink-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-backdrop,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-backdrop {
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.45) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-gradient,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 40%, rgba(255, 255, 255, 0.85) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-glass-nameplate,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-glass-nameplate {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+  box-shadow: 0 16px 36px -6px rgba(224, 152, 161, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-gen-badge,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-gen-badge {
+  color: var(--yunaria-deep-pink) !important;
+  background: var(--yunaria-pink-tint) !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-talent-name,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-talent-name {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-full-model-img,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-full-model-img {
+  filter: drop-shadow(0 14px 28px rgba(155, 51, 77, 0.22)) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-block-header,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-block-header {
+  color: #0f172a !important;
+  border-bottom: 1px solid var(--yunaria-pink-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-lore-text,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-lore-text {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-kicker,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .spec-kicker {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-value,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .spec-value {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-hashtag-pill,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-hashtag-pill {
+  background: var(--yunaria-pink-soft) !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+  color: var(--yunaria-deep-pink) !important;
+  box-shadow: 0 2px 8px rgba(224, 152, 161, 0.15) !important;
+}
+
+
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-quote-block,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-quote-block {
+  background: var(--yunaria-pink-soft) !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+  border-left: 4px solid var(--yunaria-deep-pink) !important;
+  box-shadow: 0 4px 16px rgba(224, 152, 161, 0.1) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-tag-pill,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .quote-tag-pill {
+  color: var(--yunaria-deep-pink) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-statement,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .quote-statement {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-signature,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .quote-signature {
+  color: var(--yunaria-deep-pink) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-channels-section,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-channels-section {
+  border-top: 1px solid var(--yunaria-pink-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .channels-subtitle,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .channels-subtitle {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn {
+  background-color: #ffffff !important;
+  border: 1px solid var(--yunaria-pink-border) !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(224, 152, 161, 0.1) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover {
+  background-color: var(--yunaria-pink-soft) !important;
+  border-color: var(--yunaria-pink) !important;
+  color: var(--yunaria-deep-pink) !important;
+  box-shadow: 0 6px 16px rgba(224, 152, 161, 0.2) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-icon,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .soc-icon {
+  color: var(--yunaria-deep-pink) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover .soc-icon,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover .soc-icon {
+  color: var(--yunaria-deep-pink-hover) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-platform,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .soc-platform {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-handle,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .soc-handle {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-arrow,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .soc-arrow {
+  color: var(--yunaria-pink) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover .soc-arrow,
+[data-theme="light"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover .soc-arrow {
+  color: var(--yunaria-deep-pink) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. โหมดมืด (Dark Theme - Velvet Obsidian Cosmos, Glowing Starlight Rose)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"],
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"],
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"],
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] {
+  background-color: #090c16 !important;
+  color: #f8fafc !important;
+  background-image: 
+    radial-gradient(circle at 12% 25%, rgba(224, 152, 161, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 88% 65%, rgba(155, 51, 77, 0.08) 0%, transparent 50%) !important;
+  --yunaria-dark-rose: #fca5b3;
+  --yunaria-dark-border: rgba(224, 152, 161, 0.28);
+  --yunaria-dark-glass: rgba(18, 14, 25, 0.84);
+}
+
+/* Back button in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn {
+  background: rgba(18, 14, 24, 0.88) !important;
+  border: 1px solid rgba(224, 152, 161, 0.3) !important;
+  color: #fca5b3 !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn:hover,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-banner-back-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-banner-back-btn:hover {
+  background: rgba(36, 20, 32, 0.95) !important;
+  border-color: #e098a1 !important;
+  color: #ffffff !important;
+  transform: translateX(-2px);
+  box-shadow: 0 8px 24px rgba(224, 152, 161, 0.25) !important;
+}
+
+/* Dark Velvet Nebula Cover Banner */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-banner,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-banner,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-banner,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #321524 0%, #1e111a 50%, #110d18 100%) !important;
+  border-bottom: 1px solid rgba(224, 152, 161, 0.25) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-backdrop,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-backdrop,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-backdrop,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-backdrop {
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(224, 152, 161, 0.24) 0%, transparent 55%),
+    linear-gradient(to bottom, transparent 0%, rgba(9, 12, 22, 0.75) 100%) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-gradient,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-gradient,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-cover-gradient,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 40%, rgba(9, 12, 22, 0.95) 100%) !important;
+}
+
+/* Dark Obsidian Glass Nameplate */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-glass-nameplate,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-glass-nameplate,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-glass-nameplate,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-glass-nameplate {
+  background: rgba(16, 13, 22, 0.82) !important;
+  border: 1px solid rgba(224, 152, 161, 0.28) !important;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-gen-badge,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-gen-badge,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-gen-badge,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-gen-badge {
+  color: #fca5b3 !important;
+  background: rgba(224, 152, 161, 0.15) !important;
+  border: 1px solid rgba(224, 152, 161, 0.35) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-talent-name,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-talent-name,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-talent-name,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-talent-name {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Model drop shadow in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-full-model-img,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-full-model-img,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-full-model-img,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-full-model-img {
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(224, 152, 161, 0.2)) !important;
+}
+
+/* Headers & Lore Text in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-block-header,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-block-header,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-block-header,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-block-header {
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(224, 152, 161, 0.22) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-lore-text,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-lore-text,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-lore-text,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-lore-text {
+  color: #cbd5e1 !important;
+}
+
+/* Specs in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-kicker,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .spec-kicker,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-kicker,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .spec-kicker {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-value,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .spec-value,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .spec-value,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .spec-value {
+  color: #f8fafc !important;
+}
+
+/* Hashtag Pills in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-hashtag-pill,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-hashtag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-hashtag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-hashtag-pill {
+  background: rgba(224, 152, 161, 0.1) !important;
+  border: 1px solid rgba(224, 152, 161, 0.3) !important;
+  color: #fca5b3 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+
+/* Quote Block in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-quote-block,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-quote-block,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-quote-block,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-quote-block {
+  background: rgba(224, 152, 161, 0.08) !important;
+  border: 1px solid rgba(224, 152, 161, 0.22) !important;
+  border-left: 4px solid #e098a1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-tag-pill,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .quote-tag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-tag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .quote-tag-pill {
+  color: #fca5b3 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-statement,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .quote-statement,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-statement,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .quote-statement {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-signature,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .quote-signature,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .quote-signature,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .quote-signature {
+  color: #e098a1 !important;
+}
+
+/* Channels Section in Dark Mode */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-channels-section,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .dossier-channels-section,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .dossier-channels-section,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .dossier-channels-section {
+  border-top: 1px solid rgba(224, 152, 161, 0.2) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .channels-subtitle,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .channels-subtitle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .channels-subtitle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .channels-subtitle {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn {
+  background-color: rgba(20, 16, 26, 0.7) !important;
+  border: 1px solid rgba(224, 152, 161, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover {
+  background-color: rgba(36, 22, 34, 0.95) !important;
+  border-color: rgba(224, 152, 161, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(224, 152, 161, 0.2) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-icon,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .soc-icon,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-icon,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .soc-icon {
+  color: #fca5b3 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-platform,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .soc-platform,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-platform,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .soc-platform {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-handle,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .soc-handle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-handle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .soc-handle {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-arrow,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .soc-arrow {
+  color: rgba(224, 152, 161, 0.6) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover .soc-arrow,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria-zayu"] .arp-social-btn:hover .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="yunaria"] .arp-social-btn:hover .soc-arrow {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   KARAKE SPECIAL THEMES (สีประจำตัวดูดจากสีผม: #58395c ม่วงดาร์กพลัม / มัลเบอร์รี)
+   ========================================================================== */
+
+/* 1. Karake โหมดสว่าง (Light Theme) */
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  --karake-plum: #58395c;
+  --karake-plum-soft: #f8f1f9;
+  --karake-plum-tint: rgba(88, 57, 92, 0.14);
+  --karake-plum-border: rgba(88, 57, 92, 0.28);
+  --karake-deep-plum: #381f3b;
+  --karake-streak-accent: #9b4549;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid var(--karake-plum-border) !important;
+  color: var(--karake-deep-plum) !important;
+  box-shadow: 0 4px 16px rgba(88, 57, 92, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn:hover {
+  background: #ffffff !important;
+  border-color: var(--karake-plum) !important;
+  color: var(--karake-deep-plum) !important;
+  transform: translateX(-2px);
+  box-shadow: 0 8px 20px rgba(88, 57, 92, 0.3) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #d8bfdd 0%, #c4a1cb 50%, #eddcee 100%) !important;
+  border-bottom: 1px solid var(--karake-plum-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-cover-backdrop {
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.45) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 40%, rgba(255, 255, 255, 0.85) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-glass-nameplate {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid var(--karake-plum-border) !important;
+  box-shadow: 0 16px 36px -6px rgba(88, 57, 92, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-gen-badge {
+  color: var(--karake-deep-plum) !important;
+  background: var(--karake-plum-tint) !important;
+  border: 1px solid var(--karake-plum-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-talent-name {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-full-model-img {
+  filter: drop-shadow(0 14px 28px rgba(88, 57, 92, 0.22)) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-block-header {
+  color: #0f172a !important;
+  border-bottom: 1px solid var(--karake-plum-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-lore-text {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .spec-kicker {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .spec-value {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-hashtag-pill {
+  background: var(--karake-plum-soft) !important;
+  border: 1px solid var(--karake-plum-border) !important;
+  color: var(--karake-deep-plum) !important;
+  box-shadow: 0 2px 8px rgba(88, 57, 92, 0.12) !important;
+}
+
+
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-quote-block {
+  background: var(--karake-plum-soft) !important;
+  border: 1px solid var(--karake-plum-border) !important;
+  border-left: 4px solid var(--karake-plum) !important;
+  box-shadow: 0 4px 16px rgba(88, 57, 92, 0.1) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .quote-tag-pill {
+  color: var(--karake-deep-plum) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .quote-statement {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .quote-signature {
+  color: var(--karake-deep-plum) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .dossier-channels-section {
+  border-top: 1px solid var(--karake-plum-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn {
+  background-color: #ffffff !important;
+  border: 1px solid var(--karake-plum-border) !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(88, 57, 92, 0.1) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover {
+  background-color: var(--karake-plum-soft) !important;
+  border-color: var(--karake-plum) !important;
+  color: var(--karake-deep-plum) !important;
+}
+
+/* 2. Karake โหมดมืด (Dark Theme - ดูดจากสีผม Deep Mulberry Plum + Crimson Streak) */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"],
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] {
+  background-color: #090a13 !important;
+  color: #f8fafc !important;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(88, 57, 92, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(155, 69, 73, 0.08) 0%, transparent 50%) !important;
+  --karake-lilac: #e2b6e8;
+  --karake-border-dark: rgba(138, 88, 146, 0.32);
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn {
+  background: rgba(18, 14, 25, 0.88) !important;
+  border: 1px solid rgba(138, 88, 146, 0.35) !important;
+  color: #e2b6e8 !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-banner-back-btn:hover {
+  background: rgba(38, 22, 40, 0.95) !important;
+  border-color: #a86fb0 !important;
+  color: #ffffff !important;
+  transform: translateX(-2px);
+  box-shadow: 0 8px 24px rgba(88, 57, 92, 0.3) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-cover-banner,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #2e1631 0%, #1c0e20 50%, #0d0914 100%) !important;
+  border-bottom: 1px solid rgba(138, 88, 146, 0.28) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-cover-backdrop,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-cover-backdrop {
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(138, 88, 146, 0.28) 0%, transparent 55%),
+    linear-gradient(to bottom, transparent 0%, rgba(9, 10, 19, 0.8) 100%) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-glass-nameplate,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-glass-nameplate {
+  background: rgba(18, 14, 25, 0.84) !important;
+  border: 1px solid rgba(138, 88, 146, 0.32) !important;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-gen-badge,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-gen-badge {
+  color: #e2b6e8 !important;
+  background: rgba(88, 57, 92, 0.22) !important;
+  border: 1px solid rgba(138, 88, 146, 0.35) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-talent-name,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-talent-name {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-full-model-img,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-full-model-img {
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(138, 88, 146, 0.24)) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-block-header,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-block-header {
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(138, 88, 146, 0.25) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-lore-text,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-lore-text {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .spec-kicker,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .spec-kicker {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .spec-value,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .spec-value {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-hashtag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-hashtag-pill {
+  background: rgba(88, 57, 92, 0.18) !important;
+  border: 1px solid rgba(138, 88, 146, 0.32) !important;
+  color: #e2b6e8 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-quote-block,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-quote-block {
+  background: rgba(88, 57, 92, 0.1) !important;
+  border: 1px solid rgba(138, 88, 146, 0.24) !important;
+  border-left: 4px solid #8a5892 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .quote-tag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .quote-tag-pill {
+  color: #e2b6e8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .quote-statement,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .quote-statement {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .quote-signature,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .quote-signature {
+  color: #e2b6e8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .dossier-channels-section,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .dossier-channels-section {
+  border-top: 1px solid rgba(138, 88, 146, 0.24) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .channels-subtitle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .channels-subtitle {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .arp-social-btn {
+  background-color: rgba(20, 16, 27, 0.72) !important;
+  border: 1px solid rgba(138, 88, 146, 0.24) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover {
+  background-color: rgba(38, 22, 40, 0.95) !important;
+  border-color: rgba(138, 88, 146, 0.5) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(88, 57, 92, 0.25) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .soc-icon,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .soc-icon {
+  color: #e2b6e8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .soc-platform,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .soc-platform {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .soc-handle,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .soc-handle {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .soc-arrow {
+  color: rgba(138, 88, 146, 0.6) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover .soc-arrow,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover .soc-arrow {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   3. MOBILE RESPONSIVE
+   ========================================================================== */
+@media (max-width: 959px) {
+  .arp-generation-band {
+    padding: 3.5rem 0;
+  }
+
+  .arp-gen-container {
+    padding: 0 1.25rem;
+  }
+
+  .arp-gen-row {
+    gap: 2rem;
+  }
+
+  .arp-gen-info-col {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .arp-gen-members-col {
+    justify-content: flex-start;
+  }
+
+  .arp-cards-row {
+    justify-content: flex-start;
+    gap: 0.85rem;
+  }
+
+  /* Dossier Detail Mobile View */
+  .dossier-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    align-items: start;
+    margin-top: 0;
+  }
+
+  .dossier-model-col {
+    margin-top: -70px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dossier-model-frame {
+    height: auto;
+  }
+
+  .dossier-full-model-img {
+    max-width: 360px;
+    max-height: 540px;
+    height: auto;
+  }
+
+  .dossier-glass-nameplate {
+    margin-top: 0;
+  }
+
+  .dossier-speech-balloon {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto 1rem auto;
+    max-width: 92%;
+    text-align: center;
+  }
+
+  .dossier-speech-balloon::after {
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .arp-generation-band {
+    padding: 2.75rem 0;
+  }
+
+  .arp-gen-title {
+    font-size: 1.85rem;
+  }
+
+  .arp-member-card {
+    width: calc(50% - 0.45rem);
+    max-width: 165px;
+  }
+
+  .arp-hero-talent-name {
+    font-size: 1.85rem;
+  }
+}
+
+/* ==========================================================================
+   4. LIGHT MODE THEME OVERRIDES ([data-theme="light"])
+   Aesthetic: Ultra-Crisp Japanese Studio & Agency Editorial Light Mode
+   - Solid architectural backgrounds (Pure White & Slate-50)
+   - Zero pastel candy jelly orbs
+   - Clean photographic character backdrop inside cards
+   - Deep slate typography (#0f172a)
+   - High-contrast black badge CTA (#0f172a)
+   ========================================================================== */
+
+[data-theme="light"] .arp-members-main {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="light"] .arp-generation-band {
+  background-color: var(--gen-bg-light, #dde5f0);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .arp-generation-band:last-child {
+  border-bottom: none;
+}
+
+[data-theme="light"] .arp-gen-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .arp-gen-operation-tag {
+  color: #475569;
+  font-weight: 700;
+}
+
+[data-theme="light"] .arp-gen-tagline {
+  color: #1e293b;
+}
+
+[data-theme="light"] .arp-gen-desc {
+  color: #475569;
+}
+
+/* Active Cards in Light Mode (Crisp Studio Framing) */
+[data-theme="light"] .arp-card-inner {
+  background-color: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.1), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .arp-member-card.is-active:hover .arp-card-inner {
+  border-color: rgba(15, 23, 42, 0.3);
+  box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.16);
+}
+
+/* Photography Studio Light Neutral Backdrop for Character Bust */
+[data-theme="light"] .arp-card-visual-frame {
+  background-color: #ffffff;
+}
+
+[data-theme="light"] .arp-card-info-plate {
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: none;
+}
+
+[data-theme="light"] .arp-card-name {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* High-Contrast Authority Badge on Hover */
+[data-theme="light"] .arp-card-cta {
+  background: #0f172a;
+  border: none;
+  color: #ffffff;
+  font-size: 0.58rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+}
+
+/* Teaser Silhouette Cards in Light Mode */
+[data-theme="light"] .arp-member-card.is-teaser .arp-card-inner {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1.5px dashed rgba(15, 23, 42, 0.2);
+  box-shadow: none;
+}
+
+[data-theme="light"] .teaser-visual {
+  background-color: transparent;
+}
+
+[data-theme="light"] .arp-teaser-silhouette-svg {
+  color: rgba(15, 23, 42, 0.22);
+}
+
+[data-theme="light"] .arp-teaser-glow-mark {
+  color: rgba(15, 23, 42, 0.32);
+}
+
+[data-theme="light"] .arp-member-card.is-teaser .arp-card-name {
+  color: #64748b;
+}
+
+/* Detail Dossier View in Light Mode */
+[data-theme="light"] .arp-talent-detail-view {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+[data-theme="light"] .dossier-banner-back-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .dossier-banner-back-btn:hover {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.3);
+  color: #0f172a;
+}
+
+/* Part 1: Cover banner light mode gradient */
+[data-theme="light"] .dossier-cover-banner {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .dossier-cover-backdrop {
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.22) 0%, transparent 45%),
+    linear-gradient(to bottom, transparent 0%, rgba(248, 250, 252, 0.65) 100%);
+}
+
+[data-theme="light"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 60%, rgba(248, 250, 252, 0.9) 100%);
+}
+
+/* Part 3: Glassmorphic Nameplate */
+[data-theme="light"] .dossier-glass-nameplate {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .dossier-gen-badge {
+  color: #4338ca;
+  background: rgba(79, 70, 229, 0.08);
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+[data-theme="light"] .dossier-talent-name {
+  color: #0f172a;
+}
+
+/* Part 2: Model Shadow in Light Mode */
+[data-theme="light"] .dossier-full-model-img {
+  filter: drop-shadow(0 14px 28px rgba(15, 23, 42, 0.22));
+}
+
+/* Part 4: Info Column in Light Mode */
+[data-theme="light"] .dossier-block-header {
+  color: #0f172a;
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .dossier-lore-text {
+  color: #334155;
+}
+
+[data-theme="light"] .spec-kicker {
+  color: #64748b;
+}
+
+[data-theme="light"] .spec-value {
+  color: #0f172a;
+}
+
+[data-theme="light"] .spec-value.highlight-accent {
+  color: #4338ca;
+}
+
+[data-theme="light"] .spec-swatch-dot {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Quote Block */
+[data-theme="light"] .dossier-quote-block {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .quote-tag-pill {
+  color: #4338ca;
+}
+
+[data-theme="light"] .quote-statement {
+  color: #0f172a;
+}
+
+[data-theme="light"] .quote-signature {
+  color: #64748b;
+}
+
+/* Part 5: Channels in Light Mode */
+[data-theme="light"] .dossier-channels-section {
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .channels-subtitle {
+  color: #64748b;
+}
+
+[data-theme="light"] .arp-social-btn {
+  background-color: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .arp-social-btn:hover {
+  background-color: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.25);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .soc-icon {
+  color: #64748b;
+}
+
+[data-theme="light"] .arp-social-btn:hover .soc-icon {
+  color: #0f172a;
+}
+
+[data-theme="light"] .soc-platform {
+  color: #0f172a;
+}
+
+[data-theme="light"] .soc-handle {
+  color: #64748b;
+}
+
+/* Light Mode: Speech Balloon, Title Badge, Thai Name, Credits */
+[data-theme="light"] .dossier-speech-balloon {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .dossier-speech-balloon::after {
+  background: rgba(255, 255, 255, 0.95);
+  border-right-color: rgba(15, 23, 42, 0.14);
+  border-bottom-color: rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .speech-balloon-text {
+  color: #0f172a;
+}
+
+[data-theme="light"] .speech-balloon-close {
+  color: rgba(15, 23, 42, 0.4);
+}
+
+[data-theme="light"] .dossier-speech-balloon:hover .speech-balloon-close {
+  color: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="light"] .dossier-speech-balloon:hover {
+  border-color: rgba(219, 39, 119, 0.4);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12), 0 0 16px rgba(219, 39, 119, 0.12);
+}
+
+[data-theme="light"] .dossier-title-badge {
+  color: #db2777;
+  background: rgba(219, 39, 119, 0.08);
+  border-color: rgba(219, 39, 119, 0.2);
+}
+
+[data-theme="light"] .dossier-thai-name {
+  color: #64748b;
+}
+
+[data-theme="light"] .credit-role {
+  color: #64748b;
+}
+
+[data-theme="light"] .credit-name {
+  color: #0f172a;
+}

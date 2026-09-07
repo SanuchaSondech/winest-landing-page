@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="amusement-bg-vector" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs>
+    <!-- Theme Adaptive Sky Gradient -->
+    <linearGradient id="amusementSkyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" class="sky-stop-1" />
+      <stop offset="50%" class="sky-stop-2" />
+      <stop offset="100%" class="sky-stop-3" />
+    </linearGradient>
+
+    <!-- Roller Coaster High-Speed Track Gradient -->
+    <linearGradient id="amusementTrackGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" class="track-stop-1" />
+      <stop offset="50%" class="track-stop-2" />
+      <stop offset="100%" class="track-stop-3" />
+    </linearGradient>
+
+    <!-- Spotlights Gradient -->
+    <linearGradient id="spotlightGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" class="spotlight-stop-start" />
+      <stop offset="100%" class="spotlight-stop-end" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Canvas Backdrop -->
+  <rect width="1600" height="900" fill="url(#amusementSkyGrad)" />
+
+  <!-- Searchlight Beams Sweeping the Sky -->
+  <polygon class="searchlight-beam beam-left" points="620,780 440,0 560,0" fill="url(#spotlightGrad)" />
+  <polygon class="searchlight-beam beam-right" points="1060,780 1200,0 1340,0" fill="url(#spotlightGrad)" />
+
+  <!-- Celestial Orb (Sun/Moon Crest with Orbital Ring) -->
+  <g class="svg-celestial" transform="translate(240, 160)">
+    <circle cx="0" cy="0" r="54" class="celestial-halo" />
+    <circle cx="0" cy="0" r="32" class="celestial-core" />
+    <ellipse cx="0" cy="0" rx="64" ry="18" class="celestial-ring" transform="rotate(-25)" />
+  </g>
+
+  <!-- Constellation Vectors & Diamond Starbursts -->
+  <g class="svg-constellations">
+    <polyline points="200,100 240,160 380,110 490,140 620,80" class="constellation-line" />
+    <polyline points="1100,110 1240,90 1380,150 1480,110" class="constellation-line" />
+
+    <!-- Diamond Starbursts (Twinkling Animation) -->
+    <polygon points="200,92 203,99 210,100 203,101 200,108 197,101 190,100 197,99" class="star-diamond s1" />
+    <polygon points="380,102 383,109 390,110 383,111 380,118 377,111 370,110 377,109" class="star-diamond s2" />
+    <polygon points="1240,82 1243,89 1250,90 1243,91 1240,98 1237,91 1230,90 1237,89" class="star-diamond s3" />
+    <polygon points="1380,142 1383,149 1390,150 1383,151 1380,158 1377,151 1370,150 1377,149" class="star-diamond s4" />
+    <polygon points="1480,102 1483,109 1490,110 1483,111 1480,118 1477,111 1470,110 1477,109" class="star-diamond s5" />
+
+    <!-- Tiny Glowing Micro-Stars -->
+    <circle cx="150" cy="70" r="1.5" class="star-micro" />
+    <circle cx="450" cy="90" r="2" class="star-micro" />
+    <circle cx="580" cy="160" r="1.5" class="star-micro" />
+    <circle cx="950" cy="80" r="2" class="star-micro" />
+    <circle cx="1040" cy="140" r="1.5" class="star-micro" />
+    <circle cx="1320" cy="60" r="2" class="star-micro" />
+    <circle cx="1520" cy="180" r="1.5" class="star-micro" />
+  </g>
+
+  <!-- Aurora Waves Glowing Behind Hills -->
+  <path d="M0,350 Q400,280 800,340 T1600,320 L1600,500 L0,500 Z" class="aurora-wave" />
+
+  <!-- Layer 1 (Backdrop): Distant Silhouette Mountain Ridges -->
+  <path d="M0,580 Q250,440 500,530 T1100,510 T1600,480 L1600,900 L0,900 Z" class="svg-mountain-far" />
+  <path d="M0,640 Q380,520 800,610 T1600,570 L1600,900 L0,900 Z" class="svg-mountain-mid" />
+
+  <!-- Layer 2: Rotating Giant Ferris Wheel (Wonder Wheel) -->
+  <g class="svg-ferris-wheel" transform="translate(1320, 480)">
+    <!-- Structural Pylon Legs -->
+    <line x1="0" y1="0" x2="-90" y2="280" class="ferris-leg" />
+    <line x1="0" y1="0" x2="90" y2="280" class="ferris-leg" />
+    <line x1="-50" y1="150" x2="50" y2="150" class="ferris-brace" />
+
+    <!-- Rotating Wheel System (Driven by CSS Keyframe Animation) -->
+    <g class="ferris-rotator">
+      <!-- Outer & Inner Tension Rings -->
+      <circle cx="0" cy="0" r="180" class="ferris-rim outer" />
+      <circle cx="0" cy="0" r="155" class="ferris-rim inner" />
+      <circle cx="0" cy="0" r="45" class="ferris-hub-ring" />
+      <circle cx="0" cy="0" r="16" class="ferris-center" />
+
+      <!-- 12 Structural Spokes -->
+      <line x1="0" y1="-180" x2="0" y2="180" class="ferris-spoke" />
+      <line x1="-180" y1="0" x2="180" y2="0" class="ferris-spoke" />
+      <line x1="-127" y1="-127" x2="127" y2="127" class="ferris-spoke" />
+      <line x1="-127" y1="127" x2="127" y2="-127" class="ferris-spoke" />
+      <line x1="-69" y1="-166" x2="69" y2="166" class="ferris-spoke" />
+      <line x1="69" y1="-166" x2="-69" y2="166" class="ferris-spoke" />
+      <line x1="-166" y1="-69" x2="166" y2="69" class="ferris-spoke" />
+      <line x1="166" y1="-69" x2="-166" y2="69" class="ferris-spoke" />
+
+      <!-- 12 Illuminated Passenger Cabins -->
+      <circle cx="0" cy="-180" r="9" class="ferris-cabin" />
+      <circle cx="69" cy="-166" r="9" class="ferris-cabin" />
+      <circle cx="127" cy="-127" r="9" class="ferris-cabin" />
+      <circle cx="166" cy="-69" r="9" class="ferris-cabin" />
+      <circle cx="180" cy="0" r="9" class="ferris-cabin" />
+      <circle cx="166" cy="69" r="9" class="ferris-cabin" />
+      <circle cx="127" cy="127" r="9" class="ferris-cabin" />
+      <circle cx="69" cy="166" r="9" class="ferris-cabin" />
+      <circle cx="0" cy="180" r="9" class="ferris-cabin" />
+      <circle cx="-69" cy="166" r="9" class="ferris-cabin" />
+      <circle cx="-127" cy="127" r="9" class="ferris-cabin" />
+      <circle cx="-166" cy="69" r="9" class="ferris-cabin" />
+      <circle cx="-180" cy="0" r="9" class="ferris-cabin" />
+      <circle cx="-166" cy="-69" r="9" class="ferris-cabin" />
+      <circle cx="-127" cy="-127" r="9" class="ferris-cabin" />
+      <circle cx="-69" cy="-166" r="9" class="ferris-cabin" />
+    </g>
+  </g>
+
+  <!-- Layer 3 (Midground): Grand Wonderland Castle & Theater Facade -->
+  <g class="svg-castle-mid">
+    <!-- Castle Wall Skyline Silhouette -->
+    <path d="M0,900 L0,740 L140,740 L160,660 L180,600 L200,660 L220,740 L340,740 L360,620 L380,550 L400,620 L420,740 L540,740 L580,680 L620,680 L660,740 L820,740 L850,640 L880,580 L910,640 L940,740 L1100,740 L1140,660 L1180,740 L1300,740 L1340,680 L1380,740 L1600,740 L1600,900 Z" />
+
+    <!-- Grand Archways and Illuminated Windows -->
+    <rect x="175" y="680" width="30" height="45" rx="15" class="castle-window" />
+    <rect x="375" y="650" width="30" height="50" rx="15" class="castle-window" />
+    <rect x="585" y="700" width="30" height="35" rx="15" class="castle-window" />
+    <rect x="870" y="670" width="40" height="60" rx="20" class="castle-window grand-portal" />
+    <rect x="1135" y="685" width="30" height="45" rx="15" class="castle-window" />
+
+    <!-- Glowing Turret Finials -->
+    <circle cx="180" cy="595" r="4" class="turret-finial" />
+    <circle cx="380" cy="545" r="5" class="turret-finial" />
+    <circle cx="880" cy="575" r="6" class="turret-finial" />
+  </g>
+
+  <!-- Dynamic Roller Coaster Main Track (The Hyper Coaster) -->
+  <g class="svg-coaster-main">
+    <!-- Structural Truss Towers -->
+    <line x1="80" y1="460" x2="80" y2="850" class="coaster-tower" />
+    <line x1="280" y1="360" x2="280" y2="850" class="coaster-tower main-apex" />
+    <line x1="480" y1="520" x2="480" y2="850" class="coaster-tower" />
+    <line x1="720" y1="410" x2="720" y2="850" class="coaster-tower" />
+    <line x1="960" y1="580" x2="960" y2="850" class="coaster-tower" />
+    <line x1="1200" y1="380" x2="1200" y2="850" class="coaster-tower" />
+    <line x1="1440" y1="490" x2="1440" y2="850" class="coaster-tower" />
+
+    <!-- Tower Cross-Bracing Struts -->
+    <line x1="240" y1="800" x2="320" y2="700" class="coaster-brace" />
+    <line x1="320" y1="800" x2="240" y2="700" class="coaster-brace" />
+    <line x1="240" y1="700" x2="320" y2="600" class="coaster-brace" />
+    <line x1="320" y1="700" x2="240" y2="600" class="coaster-brace" />
+    <line x1="250" y1="600" x2="310" y2="500" class="coaster-brace" />
+    <line x1="310" y1="600" x2="250" y2="500" class="coaster-brace" />
+    <line x1="260" y1="500" x2="300" y2="420" class="coaster-brace" />
+    <line x1="300" y1="500" x2="260" y2="420" class="coaster-brace" />
+
+    <!-- Twin Parallel Coaster Tubular Rails -->
+    <path d="M-50,560 C120,530 180,340 280,340 C380,340 420,540 540,540 C660,540 680,390 760,390 C860,390 900,600 1020,600 C1140,600 1150,360 1240,360 C1350,360 1400,520 1650,470" class="coaster-rail rail-upper" />
+    <path d="M-50,572 C120,542 180,352 280,352 C380,352 420,552 540,552 C660,552 680,402 760,402 C860,402 900,612 1020,612 C1140,612 1150,372 1240,372 C1350,372 1400,532 1650,482" class="coaster-rail rail-lower" />
+
+    <!-- Animated High-Speed Coaster Train Car (SVG Dasharray Motion Pulse) -->
+    <path d="M-50,560 C120,530 180,340 280,340 C380,340 420,540 540,540 C660,540 680,390 760,390 C860,390 900,600 1020,600 C1140,600 1150,360 1240,360 C1350,360 1400,520 1650,470" class="coaster-train-laser" />
+  </g>
+
+  <!-- Foreground Silhouettes: Festoon Party Lights & Streetlamps -->
+  <g class="svg-foreground-ambience">
+    <!-- Sagging Festoon Light Cables -->
+    <path d="M0,770 Q160,820 320,780 Q480,830 640,790 Q800,840 960,780 Q1120,830 1280,780 Q1440,830 1600,770" class="festoon-wire" />
+
+    <!-- Illuminated Warm Light Bulbs along wire -->
+    <circle cx="80" cy="792" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="160" cy="807" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="240" cy="798" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="400" cy="812" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="480" cy="817" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="560" cy="808" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="720" cy="820" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="800" cy="827" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="880" cy="815" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="1040" cy="812" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="1120" cy="817" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="1200" cy="806" r="3.5" class="festoon-bulb b-warm" />
+    <circle cx="1360" cy="812" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="1440" cy="817" r="3.5" class="festoon-bulb b-glow" />
+    <circle cx="1520" cy="800" r="3.5" class="festoon-bulb b-glow" />
+  </g>
+</svg>

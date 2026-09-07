@@ -1,0 +1,57 @@
+---
+// AboutPillars.astro - เสาหลักการนำทาง 4 ด้านของค่าย
+import Icon from '../common/Icon.astro';
+
+export interface Pillar {
+  num: string;
+  title: string;
+  desc: string;
+  href?: string;
+  disabled?: boolean;
+  badge?: string;
+}
+
+export interface Props {
+  kicker: string;
+  meta: string;
+  pillars: Pillar[];
+}
+
+const { kicker, meta, pillars } = Astro.props;
+---
+
+<div class="editorial-col pillars-col">
+  <div class="kicker-header-row">
+    <span class="editorial-kicker">
+      <span class="kicker-pip"></span>{kicker}
+    </span>
+  </div>
+  
+  <div class="pillars-list">
+    {pillars.map((pillar) => (
+      pillar.disabled ? (
+        <div class="pillar-row disabled-pillar" aria-disabled="true">
+          <span class="pillar-num">{pillar.num}</span>
+          <div class="pillar-content">
+            <h4>{pillar.title}</h4>
+            <p>{pillar.desc}</p>
+          </div>
+          <span class="pillar-badge-soon">
+            <span class="badge-dot dot-soon"></span>{pillar.badge}
+          </span>
+        </div>
+      ) : (
+        <a href={pillar.href} class="pillar-row clickable-pillar">
+          <span class="pillar-num">{pillar.num}</span>
+          <div class="pillar-content">
+            <h4>{pillar.title}</h4>
+            <p>{pillar.desc}</p>
+          </div>
+          <span class="pillar-arrow-circle" aria-hidden="true">
+            <Icon name="arrow-right" class="pillar-arrow-svg" width="14" height="14" />
+          </span>
+        </a>
+      )
+    ))}
+  </div>
+</div>

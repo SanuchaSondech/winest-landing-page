@@ -1,0 +1,149 @@
+---
+// Navbar.astro - Amusement Park Map Navigation Bar
+import navData from '../../data/navigation.json';
+import NavMobileDrawer from './NavMobileDrawer.astro';
+import Icon from '../common/Icon.astro';
+import '../../styles/navbar.css';
+
+const { brand, navLinks, drawerCta } = navData;
+const currentPath = Astro.url ? Astro.url.pathname : '/';
+---
+
+<header class="site-header">
+  <div class="container header-container">
+    <!-- Left: Brand Logo & Name -->
+    <a href="/" class="brand-link" aria-label={brand.ariaHome}>
+      <div class="logo-wrapper">
+        <img 
+          src="/logo/winest_logo_128.webp" 
+          alt={`${brand.name} Mascot Logo`} 
+          class="brand-logo" 
+          width="44" 
+          height="44" 
+          loading="eager"
+          decoding="async"
+        />
+        <div class="logo-glow" aria-hidden="true"></div>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">{brand.name}</span>
+        <span class="brand-sub">{brand.sub}</span>
+      </div>
+    </a>
+
+    <!-- Right: Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li>
+          <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
+            <Icon name="nav-home" class="nav-icon" />
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/members" class={`nav-link ${currentPath.startsWith('/members') ? 'active' : ''}`}>
+            <Icon name="nav-members" class="nav-icon" />
+            <span>Members</span>
+          </a>
+        </li>
+        <li>
+          <a href="/arts" class={`nav-link ${currentPath.startsWith('/arts') ? 'active' : ''}`}>
+            <Icon name="nav-arts" class="nav-icon" />
+            <span>Arts</span>
+          </a>
+        </li>
+        <li>
+          <a href="/about" class={`nav-link ${currentPath.startsWith('/about') ? 'active' : ''}`}>
+            <Icon name="nav-about" class="nav-icon" />
+            <span>About</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Luminous Segmented Glass Theme Switcher [ ☀️ | 🌙 ] -->
+      <button 
+        id="theme-toggle-btn" 
+        class="theme-toggle-switch" 
+        type="button" 
+        aria-label="Toggle light and dark mode"
+        title="สลับโหมดสว่าง / โหมดมืด"
+      >
+        <span class="switch-slider" aria-hidden="true"></span>
+        <span class="switch-icon switch-sun" aria-hidden="true">
+          <Icon name="theme-sun" width="14" height="14" />
+        </span>
+        <span class="switch-icon switch-moon" aria-hidden="true">
+          <Icon name="theme-moon" width="13" height="13" />
+        </span>
+      </button>
+    </nav>
+
+    <!-- Right Mobile: Hamburger & Theme Toggle -->
+    <div class="mobile-actions">
+      <button 
+        id="mobile-theme-toggle-btn" 
+        class="theme-toggle-switch mobile-theme-btn" 
+        type="button" 
+        aria-label="Toggle light and dark mode"
+      >
+        <span class="switch-slider" aria-hidden="true"></span>
+        <span class="switch-icon switch-sun" aria-hidden="true">
+          <Icon name="theme-sun" width="14" height="14" />
+        </span>
+        <span class="switch-icon switch-moon" aria-hidden="true">
+          <Icon name="theme-moon" width="13" height="13" />
+        </span>
+      </button>
+
+      <button 
+        id="hamburger-btn" 
+        class="hamburger-btn" 
+        type="button" 
+        aria-label="เปิดเมนูนำทาง" 
+        aria-expanded="false"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu Component -->
+  <NavMobileDrawer 
+    brand={brand} 
+    navLinks={navLinks} 
+    drawerCta={drawerCta} 
+  />
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const closeBtn = document.getElementById('close-drawer-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+
+    function openMenu() {
+      if (drawer) {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeMenu() {
+      if (drawer) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+  });
+</script>

@@ -1,0 +1,554 @@
+/* ==========================================================================
+   WINEST - Hero Video / Park Grand Theater Styles
+   Theme: Amusement Park Theater & Screen Frame 16:9
+   Supports Dynamic Light Mode & Dark Mode Theming
+   ========================================================================== */
+
+:root {
+  /* SVG & Video Canvas Palette (Dark Mode Default) */
+  --hero-canvas-bg: #090c16;
+  --hero-sky-1: #0a0d1a;
+  --hero-sky-2: #141b34;
+  --hero-sky-3: #222a4c;
+  --hero-spotlight-start: rgba(138, 156, 245, 0.22);
+  --hero-spotlight-end: rgba(138, 156, 245, 0);
+  
+  --hero-celestial-core: #ffffff;
+  --hero-celestial-halo: rgba(184, 197, 255, 0.25);
+  --hero-celestial-ring: rgba(138, 156, 245, 0.45);
+  
+  --hero-sparkle: #ffffff;
+  --hero-constellation: rgba(138, 156, 245, 0.4);
+  --hero-cloud: rgba(138, 156, 245, 0.1);
+  
+  --hero-airship-hull: #222b48;
+  --hero-airship-cabin: #344169;
+  --hero-airship-glow: #ffe28a;
+  
+  --hero-spires-back: #10162a;
+  --hero-ferris-legs: #182038;
+  --hero-ferris-rim: #5567e2;
+  --hero-ferris-spoke: rgba(138, 156, 245, 0.35);
+  --hero-ferris-cabin: #8a9cf5;
+  
+  --hero-castle-mid: #0b0f1e;
+  --hero-window-glow: #ffdf7a;
+  --hero-portal-glow: rgba(255, 223, 122, 0.4);
+  
+  --hero-track-1: #8a9cf5;
+  --hero-track-2: #6375f0;
+  --hero-track-3: #a4b4ff;
+  --hero-track-ties: #1a223c;
+  --hero-track-pillar: rgba(99, 117, 240, 0.35);
+  --hero-train-glow: #ffffff;
+  
+  --hero-terrace-floor: #070912;
+  --hero-terrace-rail: #1c243f;
+  --hero-festoon-wire: #2f3b60;
+  --hero-festoon-bulb: #ffd566;
+  
+  /* Video Overlay UI (Dark Mode) */
+  --hero-overlay-radial: radial-gradient(circle at center, transparent 35%, rgba(9, 12, 22, 0.72) 100%);
+  --hero-overlay-pill-bg: rgba(13, 18, 32, 0.75);
+  --hero-overlay-pill-border: rgba(138, 156, 245, 0.22);
+  --hero-overlay-text-primary: #f2f5fc;
+  --hero-overlay-text-sub: #8a9cf5;
+  --hero-overlay-play-btn: #8a9cf5;
+  --hero-overlay-play-glow: rgba(138, 156, 245, 0.45);
+}
+
+[data-theme="light"] {
+  /* SVG & Video Canvas Palette (Light Mode - Sunny Amusement Wonderland) */
+  --hero-canvas-bg: #ebf1fc;
+  --hero-sky-1: #c6d9fb;
+  --hero-sky-2: #dce7fc;
+  --hero-sky-3: #eff4fe;
+  --hero-spotlight-start: rgba(255, 255, 255, 0.55);
+  --hero-spotlight-end: rgba(255, 255, 255, 0);
+  
+  --hero-celestial-core: #ffb833;
+  --hero-celestial-halo: rgba(255, 184, 51, 0.3);
+  --hero-celestial-ring: rgba(255, 153, 0, 0.45);
+  
+  --hero-sparkle: #5567e2;
+  --hero-constellation: rgba(85, 103, 226, 0.35);
+  --hero-cloud: rgba(255, 255, 255, 0.75);
+  
+  --hero-airship-hull: #4355ce;
+  --hero-airship-cabin: #2d3bb0;
+  --hero-airship-glow: #ffffff;
+  
+  --hero-spires-back: #9cb2df;
+  --hero-ferris-legs: #4b5f8f;
+  --hero-ferris-rim: #3d4fad;
+  --hero-ferris-spoke: rgba(61, 79, 173, 0.4);
+  --hero-ferris-cabin: #5567e2;
+  
+  --hero-castle-mid: #2b395b;
+  --hero-window-glow: #ffe680;
+  --hero-portal-glow: rgba(255, 230, 128, 0.75);
+  
+  --hero-track-1: #384ab8;
+  --hero-track-2: #5567e2;
+  --hero-track-3: #7586ff;
+  --hero-track-ties: #bccbec;
+  --hero-track-pillar: rgba(61, 79, 173, 0.4);
+  --hero-train-glow: #ffdf40;
+  
+  --hero-terrace-floor: #1e2842;
+  --hero-terrace-rail: #3a4b73;
+  --hero-festoon-wire: #566a9a;
+  --hero-festoon-bulb: #ffca36;
+  
+  /* Video Overlay UI (Light Mode - Bright, Clean & High-Contrast) */
+  --hero-overlay-radial: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 30%, rgba(210, 224, 250, 0.55) 100%);
+  --hero-overlay-pill-bg: rgba(255, 255, 255, 0.88);
+  --hero-overlay-pill-border: rgba(67, 85, 206, 0.22);
+  --hero-overlay-text-primary: #0f172a;
+  --hero-overlay-text-sub: #4355ce;
+  --hero-overlay-play-btn: #4355ce;
+  --hero-overlay-play-glow: rgba(67, 85, 206, 0.35);
+}
+
+.hero-section {
+  min-height: calc(100svh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(14px, 2.5vh, 24px);
+  padding-bottom: clamp(14px, 2.5vh, 24px);
+  position: relative;
+}
+
+/* 16:9 Screen Display Container (Guaranteed 100% Above-the-Fold Viewport Fit) */
+.theater-stage-container {
+  position: relative;
+  width: min(100%, calc((100svh - var(--header-height) - 64px) * 16 / 9), 1140px);
+  margin: 0 auto;
+}
+
+/* Footer Meta & Duration Badge inside Frosted Video Bar */
+.video-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.duration-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--hero-overlay-text-primary);
+  background: rgba(138, 156, 245, 0.12);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hero-overlay-pill-border);
+  letter-spacing: 0.04em;
+}
+
+.rec-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+}
+
+/* 16:9 Responsive Aspect Ratio Container (GPU Hardware Layer Isolated) */
+.video-canvas-ratio {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-outer);
+  overflow: hidden;
+  background: var(--hero-canvas-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md), 0 0 32px var(--accent-tint);
+  contain: layout paint;
+  transform: translateZ(0);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.amusement-bg-vector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+/* ==========================================================================
+   Detailed Amusement Park SVG Theming & Animations
+   ========================================================================== */
+
+.sky-stop-1 { stop-color: var(--hero-sky-1); }
+.sky-stop-2 { stop-color: var(--hero-sky-2); }
+.sky-stop-3 { stop-color: var(--hero-sky-3); }
+
+.track-stop-1 { stop-color: var(--hero-track-1); }
+.track-stop-2 { stop-color: var(--hero-track-2); }
+.track-stop-3 { stop-color: var(--hero-track-3); }
+
+.spotlight-stop-start { stop-color: var(--hero-spotlight-start); }
+.spotlight-stop-end { stop-color: var(--hero-spotlight-end); }
+
+/* Searchlights */
+.searchlight-beam {
+  transform-origin: bottom center;
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.beam-left {
+  animation: sweepBeamLeft 10s ease-in-out infinite alternate;
+}
+
+.beam-right {
+  animation: sweepBeamRight 12s ease-in-out infinite alternate;
+}
+
+@keyframes sweepBeamLeft {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(14deg); }
+}
+
+@keyframes sweepBeamRight {
+  0% { transform: rotate(12deg); }
+  100% { transform: rotate(-12deg); }
+}
+
+/* Celestial */
+.celestial-core { fill: var(--hero-celestial-core); }
+.celestial-halo { fill: var(--hero-celestial-halo); }
+.celestial-ring { stroke: var(--hero-celestial-ring); stroke-width: 2.5; fill: none; }
+
+/* Constellations & Stars */
+.constellation-line {
+  stroke: var(--hero-constellation);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.star-diamond {
+  fill: var(--hero-sparkle);
+  transform-origin: center;
+  will-change: opacity;
+}
+
+/* Only animate opacity — GPU compositor thread, zero layout cost */
+.star-diamond.s1 { animation: twinkleStar 2.8s ease-in-out infinite; }
+.star-diamond.s2 { animation: twinkleStar 3.8s ease-in-out infinite 1s; }
+.star-diamond.s3 { animation: twinkleStar 3.2s ease-in-out infinite 2s; }
+
+@keyframes twinkleStar {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Cloud Layer */
+.svg-cloud-layer { fill: var(--hero-cloud); }
+
+/* Fantasy Airship (GPU Compositor — translate3d locks to compositor thread) */
+.svg-airship {
+  animation: floatAirship 14s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes floatAirship {
+  0% { transform: translate3d(400px, 225px, 0); }
+  100% { transform: translate3d(450px, 205px, 0); }
+}
+
+.airship-body { fill: var(--hero-airship-hull); }
+.airship-fin { fill: var(--hero-airship-cabin); }
+.airship-cabin { fill: var(--hero-airship-cabin); }
+.airship-light { fill: var(--hero-airship-glow); }
+
+/* Spire Horizons */
+.svg-spires-back { fill: var(--hero-spires-back); }
+.svg-track-distant { stroke: var(--hero-track-2); opacity: 0.45; }
+
+/* Wonder Ferris Wheel */
+.ferris-legs { fill: var(--hero-ferris-legs); }
+.ferris-rim-outer { stroke: var(--hero-ferris-rim); stroke-width: 3.5; fill: none; }
+.ferris-rim-inner { stroke: var(--hero-ferris-rim); stroke-width: 2; fill: none; }
+.ferris-center-hub { fill: var(--hero-ferris-rim); }
+.ferris-spoke { stroke: var(--hero-ferris-spoke); stroke-width: 1.5; }
+.ferris-cabin { fill: var(--hero-ferris-cabin); stroke: #ffffff; stroke-width: 1; }
+
+.svg-ferris-wheel-spin {
+  transform-origin: 0 0;
+  animation: spinFerris 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes spinFerris {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Mid Castle */
+.svg-castle-mid path { fill: var(--hero-castle-mid); }
+.castle-window { fill: var(--hero-window-glow); }
+.castle-window.grand-portal {
+  fill: var(--hero-window-glow);
+  box-shadow: 0 0 16px var(--hero-portal-glow);
+}
+.turret-finial { fill: var(--hero-window-glow); }
+
+/* Coaster Main Track */
+.coaster-pillar {
+  stroke: var(--hero-track-pillar);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+.coaster-rail-top {
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.coaster-rail-ties {
+  stroke: var(--hero-track-ties);
+  stroke-width: 4;
+  stroke-dasharray: 10 16;
+}
+
+/* Renamed from .coaster-train-speed to avoid conflict — match SVG markup class .coaster-train-laser */
+.coaster-train-laser {
+  stroke: var(--hero-train-glow);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-dasharray: 50 1250;
+  animation: dashTrain 7s ease-in-out infinite;
+  will-change: stroke-dashoffset;
+}
+
+@keyframes dashTrain {
+  0% { stroke-dashoffset: 1300; }
+  100% { stroke-dashoffset: -100; }
+}
+
+/* Terrace Foreground */
+.terrace-floor { fill: var(--hero-terrace-floor); }
+.terrace-rail { stroke: var(--hero-terrace-rail); stroke-width: 3; }
+.festoon-wire { stroke: var(--hero-festoon-wire); stroke-width: 1.5; fill: none; }
+.festoon-bulb {
+  fill: var(--hero-festoon-bulb);
+  filter: drop-shadow(0 0 4px var(--hero-festoon-bulb));
+  animation: bulbPulse 2.5s ease-in-out infinite alternate;
+  will-change: opacity;
+}
+
+@keyframes bulbPulse {
+  0% { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+/* ==========================================================================
+   Video Overlay UI (Light & Dark Adaptive with Frosted Glass)
+   ========================================================================== */
+
+.video-overlay-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(14px, 2.5vw, 24px);
+  background: var(--hero-overlay-radial);
+  transition: background 0.3s ease;
+}
+
+/* Center Controls */
+.video-center-controls {
+  margin: auto 0;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-btn-circle {
+  width: clamp(54px, 6.5vw, 72px);
+  height: clamp(54px, 6.5vw, 72px);
+  border-radius: 50%;
+  background: var(--hero-overlay-play-btn);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 26px var(--hero-overlay-play-glow), 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  will-change: transform;
+  position: relative;
+}
+
+/* GPU-compositor pulse ring — uses a pseudo-element so only opacity+transform animate, zero repaint */
+.play-btn-circle::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--hero-overlay-play-glow);
+  animation: playRingPulse 2.5s ease-out infinite;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+@keyframes playRingPulse {
+  0%   { transform: scale3d(1, 1, 1);       opacity: 0.8; }
+  70%  { transform: scale3d(1.5, 1.5, 1);  opacity: 0; }
+  100% { transform: scale3d(1.5, 1.5, 1);  opacity: 0; }
+}
+
+.play-btn-circle:hover {
+  transform: scale(1.12);
+}
+
+.play-triangle {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+}
+
+.frosted-hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--hero-overlay-pill-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.play-hint-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+}
+
+.play-hint {
+  font-size: clamp(0.8rem, 1.1vw, 0.875rem);
+  font-weight: 600;
+  color: var(--hero-overlay-text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Video Footer Info Bar */
+.video-footer-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: var(--hero-overlay-pill-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 18px;
+  border-radius: var(--radius-inner);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.track-title {
+  display: block;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: var(--hero-overlay-text-primary);
+  line-height: 1.3;
+}
+
+.track-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--hero-overlay-text-sub);
+  text-transform: uppercase;
+}
+
+/* Audio Waveform */
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 24px;
+}
+
+.waveform .bar {
+  width: 3px;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  animation: bounceBar 1.2s ease-in-out infinite alternate;
+}
+
+.waveform .b1 { height: 8px; animation-delay: 0.1s; }
+.waveform .b2 { height: 16px; animation-delay: 0.3s; }
+.waveform .b3 { height: 22px; animation-delay: 0.2s; }
+.waveform .b4 { height: 12px; animation-delay: 0.4s; }
+.waveform .b5 { height: 20px; animation-delay: 0.15s; }
+.waveform .b6 { height: 10px; animation-delay: 0.25s; }
+
+@keyframes bounceBar {
+  from { transform: scaleY(0.4); }
+  to { transform: scaleY(1.2); }
+}
+
+/* Playing State (Simulated interactive video) */
+.video-playing-state {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #000;
+  display: none;
+}
+
+.video-playing-state.active {
+  display: block;
+}
+
+.video-frame-embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-video-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.close-video-btn:hover {
+  background: rgba(220, 38, 38, 0.85);
+}
+
+@media (max-width: 640px) {
+  .theater-top-bar {
+    font-size: 0.7rem;
+    flex-wrap: wrap;
+  }
+}

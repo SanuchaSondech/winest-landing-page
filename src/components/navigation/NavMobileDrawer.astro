@@ -1,0 +1,57 @@
+---
+// NavMobileDrawer.astro - เมนูดรอว์เวอร์สำหรับจอมือถือ
+import Icon from '../common/Icon.astro';
+export interface NavLink {
+  href: string;
+  label: string;
+}
+
+export interface Brand {
+  name: string;
+  sub: string;
+  ariaHome: string;
+  menuTitle: string;
+}
+
+export interface DrawerCta {
+  href: string;
+  label: string;
+}
+
+export interface Props {
+  brand: Brand;
+  navLinks: NavLink[];
+  drawerCta: DrawerCta;
+}
+
+const { brand, navLinks, drawerCta } = Astro.props;
+---
+
+<div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <div class="drawer-content">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <img src="/logo/winest_logo_128.webp" alt={brand.name} width="32" height="32" loading="lazy" decoding="async" />
+        <span>{brand.menuTitle}</span>
+      </div>
+      <button id="close-drawer-btn" class="close-drawer-btn" aria-label="ปิดเมนูนำทาง">
+        <Icon name="close" width="20" height="20" />
+      </button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="เมนูมือถือ">
+      <ul class="drawer-list">
+        {navLinks.map((item) => (
+          <li><a href={item.href} class="drawer-link">{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href={drawerCta.href} class="btn-primary" style="width: 100%;">
+        {drawerCta.label}
+      </a>
+    </div>
+  </div>
+</div>

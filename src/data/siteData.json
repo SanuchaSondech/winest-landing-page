@@ -1,0 +1,91 @@
+{
+  "agency": {
+    "name": "WINEST",
+    "tagline": "The Virtual Wonderland of Talents & Creative Art",
+    "taglineTh": "ค่าย VTuber และสตูดิโองานวาดครบวงจร",
+    "bio": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber สุดน่ารัก และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่ Character Sheet, สติกเกอร์/อีโมจิ ไปจนถึงฉากห้องสตรีมมิ่ง 3 มิติและ 2 มิติ",
+    "stats": [
+      { "label": "สมาชิก VTuber ในสังกัด", "value": "6+", "sub": "Talents" },
+      { "label": "งานวาดที่ส่งมอบแล้ว", "value": "150+", "sub": "Artworks" },
+      { "label": "ยอดวิวรวมทุกช่องทาง", "value": "1.2M+", "sub": "Total Views" },
+      { "label": "คะแนนความพึงพอใจ", "value": "100%", "sub": "5-Star Rating" }
+    ],
+    "socials": [
+      { "platform": "YouTube", "url": "https://youtube.com", "handle": "@winest_official" },
+      { "platform": "X", "url": "https://x.com/Winest_vt", "handle": "@Winest_vt" },
+      { "platform": "Discord", "url": "https://discord.gg", "handle": "WINEST Community" },
+      { "platform": "Email", "url": "mailto:contact@winest.studio", "handle": "contact@winest.studio" }
+    ]
+  },
+  "videoSection": {
+    "title": "Welcome to WINEST Wonderland",
+    "subtitle": "ชมเทรลเลอร์เปิดตัวค่ายและโชว์เคสผลงานล่าสุด",
+    "badge": "PARK SHOWCASE 2026",
+    "duration": "01:45",
+    "ratio": "16:9"
+  },
+  "artsPreview": [
+    {
+      "id": "char-01",
+      "category": "Character Sheet",
+      "title": "Astra - The Star Guardian Live2D",
+      "client": "Commercial License",
+      "tags": ["3-Views", "Costume Details", "Color Palette"],
+      "description": "ออกแบบตัวละครสามมุมพร้อมระบุองค์ประกอบเลเยอร์ สำหรับนำไปตัดริก Live2D เคลื่อนไหวสมจริง",
+      "aspect": "4:3",
+      "zone": "Zone B: Atelier Plaza"
+    },
+    {
+      "id": "stickers-01",
+      "category": "Stickers & Emotes",
+      "title": "Winest Panda & Chibi Emote Set",
+      "client": "Twitch & LINE Stickers",
+      "tags": ["24 Emotes", "Pixel-Crisp", "Animated Ready"],
+      "description": "เซ็ตสติกเกอร์และซับแบดจ์ 24 ลาย คมชัดทุกขนาด พร้อมใช้งานทั้ง Discord, LINE และ Twitch",
+      "aspect": "1:1",
+      "zone": "Zone C: Chibi Arcade"
+    },
+    {
+      "id": "scene-01",
+      "category": "Backgrounds & Overlays",
+      "title": "Midnight Celestial Gaming Room",
+      "client": "Streamer Room Background",
+      "tags": ["16:9 4K", "Day/Night Layers", "Animated Looping"],
+      "description": "ฉากห้องสตรีมมิ่งสไตล์โมเดิร์นแฟนตาซี แยกเลเยอร์โต๊ะ เก้าอี้ และหน้าจอสำหรับจัดวางกล้อง",
+      "aspect": "16:9",
+      "zone": "Zone D: Panorama Kingdom"
+    }
+  ],
+  "membersPreview": [
+    {
+      "id": "member-01",
+      "name": "Lunaire Spark",
+      "title": "The Starlight Magician",
+      "gen": "Generation 1: Astral Odyssey",
+      "color": "#8a9cf5",
+      "subscribers": "120K",
+      "badge": "Park Ambassador",
+      "description": "จอมเวทแห่งดวงดาวผู้ชอบสร้างเสียงหัวเราะ สตรีมเกมเนื้อเรื่องและร้องเพลงเป็นหลัก"
+    },
+    {
+      "id": "member-02",
+      "name": "Kuro Panda",
+      "title": "The Gatekeeper Mascot",
+      "gen": "Mascot & Streamer",
+      "color": "#9bb0ff",
+      "subscribers": "85K",
+      "badge": "Mascot Talent",
+      "description": "แพนด้าแห่งค่าย WINEST ผู้มาพร้อมพลังเสียงแร็ปและคอนเทนต์สายบันเทิง"
+    },
+    {
+      "id": "member-03",
+      "name": "Zephyr Gear",
+      "title": "The Clockwork Inventor",
+      "gen": "Generation 1: Astral Odyssey",
+      "color": "#b8c5ff",
+      "subscribers": "94K",
+      "badge": "Tech Sorcerer",
+      "description": "วิศวกรสตรีมเมอร์สายคราฟต์ของและสร้างโลก Minecraft พร้อมลูกเล่นอุปกรณ์ไฮเทค"
+    }
+  ]
+}

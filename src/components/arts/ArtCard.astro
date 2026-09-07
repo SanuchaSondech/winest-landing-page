@@ -1,0 +1,98 @@
+---
+// ArtCard.astro - การ์ดแสดงผลงานบริการงานศิลป์ (สัดส่วนภาพ 16:9 ระดับพรีเมียม ลำดับสายตาคมชัด สแกนง่าย ไม่ต้องอ่านยาว)
+import Icon from '../common/Icon.astro';
+
+export interface ArtItem {
+  id: string;
+  badge: string;
+  zone?: string;
+  license?: string;
+  title: string;
+  desc: string;
+  specs: string[];
+  image?: string;
+}
+
+export interface Props {
+  item: ArtItem;
+  index: number;
+}
+
+const { item, index } = Astro.props;
+
+// แปลง bullet points ขนาดยาวให้เป็น Short Chips กวาดสายตาง่าย
+const shortChipsMap: Record<string, string[]> = {
+  "service-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
+  "service-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
+  "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งเสียง"],
+  "art-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
+  "art-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
+  "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งเสียง"]
+};
+
+const chips = shortChipsMap[item.id] || item.specs?.slice(0, 3) || [];
+
+const conceptArts: Record<string, string> = {
+  'service-01': 'arts/art-concept-1',
+  'service-02': 'arts/art-concept-2',
+  'service-03': 'arts/art-concept-3',
+  'art-01': 'arts/art-concept-1',
+  'art-02': 'arts/art-concept-2',
+  'art-03': 'arts/art-concept-3',
+};
+const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
+---
+
+<article class={`art-preview-card reveal-init reveal-card stagger-${Math.min(index + 1, 4)}`} data-index={index}>
+  <!-- 1. Visual Stage: Strict 16:9 Aspect Ratio for Imported Images -->
+  <div class="art-visual-stage">
+    {item.image ? (
+      <img 
+        src={item.image} 
+        alt={item.title} 
+        class="art-visual-media" 
+        loading="lazy" 
+        decoding="async"
+      />
+    ) : (
+      <div class="art-vector-wrapper">
+        {conceptArtName && <Icon name={conceptArtName} class="art-vector-art" />}
+      </div>
+    )}
+
+    <!-- Floating Glassmorphic Category Badge -->
+    <div class="art-category-pill">
+      <span class="pill-dot"></span>
+      <span>{item.badge}</span>
+    </div>
+  </div>
+
+  <!-- 2. Content Body: Strict Visual Hierarchy & High Scannability -->
+  <div class="art-detail-body">
+    <!-- Level 1: Service Title -->
+    <h3 class="art-service-title">{item.title}</h3>
+
+    <!-- Level 2: Concise 1-2 sentence hook (No wall of text) -->
+    <p class="art-desc-text">{item.desc}</p>
+
+    <!-- Level 3: Scannable Feature Chips (No boring <ul> bullets) -->
+    <div class="art-chips-row">
+      {chips.map((chip) => (
+        <span class="art-chip-tag">{chip}</span>
+      ))}
+    </div>
+
+    <!-- Level 4: Clear Bottom Action Bar -->
+    <div class="art-card-footer">
+      <span class="art-license-indicator">
+        <Icon name="check" class="license-check-icon" width="13" height="13" />
+        <span>สิทธิ์เชิงพาณิชย์ครบวงจร</span>
+      </span>
+
+      <a href="/arts" class="art-detail-link" aria-label={`ดูรายละเอียดบริการ ${item.title}`}>
+        <span>รายละเอียด</span>
+        <Icon name="chevron-right" width="13" height="13" />
+      </a>
+    </div>
+  </div>
+</article>

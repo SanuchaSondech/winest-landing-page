@@ -1,0 +1,117 @@
+---
+// MemberCard.astro - การ์ดโปรไฟล์สมาชิก VTuber (เชื่อมต่อข้อมูลจริงจาก members.json)
+import Icon from '../common/Icon.astro';
+
+export interface Props {
+  talent?: any;
+  member?: any;
+  index: number;
+}
+
+const { talent, member, index } = Astro.props;
+
+// รองรับทั้งข้อมูลจริงจาก members.json (talent) และ legacy fallback
+const data = talent || member || {};
+const name = data.name || '';
+const thaiName = data.thaiName || '';
+const title = data.title || '';
+const gen = data.genName || (data.gen ? data.gen.replace(' · 1st GEN', '') : 'GENESIS');
+const bio = data.lore || data.bio || '';
+const message = data.greeting || data.quote || '';
+const bustImage = data.bustImage || (data.slug === 'karake' ? '/images/karake_bust.webp' : data.slug === 'yunaria-zayu' ? '/images/Yunaria_bust.webp' : '');
+const profileUrl = data.slug ? `/members/${data.slug}` : '/members';
+const socials = data.socials || [];
+const themeColor = data.themeColor || '#8a9cf5';
+const themeDarker = data.themeDarker || '#1e1430';
+---
+
+<article 
+  class="member-card" 
+  data-index={index}
+  style={`--card-theme: ${themeColor}; --card-theme-darker: ${themeDarker};`}
+>
+  <!-- Visual Banner Stage with 3x Larger Character Art (Upper Body / Bust) -->
+  <div 
+    class="member-visual-stage" 
+    style={`background: linear-gradient(135deg, ${themeDarker} 0%, ${themeColor} 100%);`}
+  >
+    <div class="member-stage-mesh-glow"></div>
+    {bustImage && (
+      <img 
+        src={bustImage} 
+        alt={name} 
+        class="member-bust-art" 
+        loading="lazy"
+        decoding="async"
+        width="360"
+        height="270"
+      />
+    )}
+  </div>
+
+  <!-- Profile Details Area -->
+  <div class="member-detail-body">
+    <!-- Header: Name on Left, Gen (Glass) on Top-Right -->
+    <div class="member-header-row">
+      <div class="member-name-block">
+        <h3 class="member-full-name">
+          {name}
+          {thaiName && <span class="member-thai-sub">({thaiName})</span>}
+        </h3>
+        <span class="member-role-title">{title}</span>
+      </div>
+      <div class="member-gen-glass">
+        {gen}
+      </div>
+    </div>
+
+    <!-- Brief Specs: คอนเซ็ปต์ & สิ่งที่ฝากบอกคนดู (No AI Emojis, Clean SVG Dots) -->
+    <div class="member-brief-specs" aria-label={`ข้อมูลย่อของ ${name}`}>
+      {bio && (
+        <div class="spec-row">
+          <svg class="spec-bullet-svg" width="6" height="6" viewBox="0 0 6 6" fill="currentColor" aria-hidden="true">
+            <circle cx="3" cy="3" r="3" />
+          </svg>
+          <div class="spec-text">
+            <strong class="spec-label">คอนเซ็ปต์:</strong>
+            <span class="spec-desc">{bio}</span>
+          </div>
+        </div>
+      )}
+
+      {message && (
+        <div class="spec-row">
+          <svg class="spec-bullet-svg" width="6" height="6" viewBox="0 0 6 6" fill="currentColor" aria-hidden="true">
+            <circle cx="3" cy="3" r="3" />
+          </svg>
+          <div class="spec-text">
+            <strong class="spec-label">สิ่งที่ฝากบอก:</strong>
+            <span class="spec-desc message-desc">“{message}”</span>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Bottom Interactive Bar -->
+    <div class="member-card-footer">
+      <div class="member-platforms">
+        {socials.map((soc: any) => (
+          <a 
+            href={soc.url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="platform-mini-pill"
+            aria-label={`${name} บน ${soc.platform}`}
+          >
+            {soc.platform}
+          </a>
+        ))}
+      </div>
+
+      <a href={profileUrl} class="member-view-profile-btn" aria-label={`ดูโปรไฟล์ของ ${name}`}>
+        <span>PROFILE</span>
+        <Icon name="arrow-right" width="14" height="14" />
+      </a>
+    </div>
+  </div>
+</article>

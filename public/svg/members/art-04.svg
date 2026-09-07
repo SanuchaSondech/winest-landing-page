@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="member-vector-art" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="var(--bg-dominant)" />
+  <circle cx="200" cy="180" r="120" fill="#f59e0b" opacity="0.15" />
+  <circle cx="200" cy="180" r="60" stroke="#f59e0b" stroke-width="1" opacity="0.3" />
+  <polygon points="200,20 208,45 235,52 208,60 200,85 192,60 165,52 192,45" fill="#f59e0b" opacity="0.8" />
+  <circle cx="70" cy="60" r="3" fill="#f59e0b" opacity="0.6" />
+  <circle cx="330" cy="70" r="2.5" fill="#ffffff" opacity="0.8" />
+</svg>

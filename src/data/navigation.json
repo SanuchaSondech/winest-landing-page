@@ -1,0 +1,29 @@
+{
+  "brand": {
+    "name": "WINEST",
+    "sub": "AGENCY",
+    "ariaHome": "WINEST หน้าหลัก",
+    "menuTitle": "WINEST MENU",
+    "copyright": "WINEST Wonderland. All rights reserved."
+  },
+  "navLinks": [
+    { "label": "Home", "href": "/", "path": "/" },
+    { "label": "Members", "href": "/members", "path": "/members" },
+    { "label": "Arts", "href": "/arts", "path": "/arts" },
+    { "label": "About", "href": "/about", "path": "/about" }
+  ],
+  "drawerCta": {
+    "label": "ติดต่อจ้างงาน",
+    "href": "/about#hiring-contact"
+  },
+  "footer": {
+    "kioskTitlePrefix": "พร้อมร่วมงานกับ",
+    "kioskTitleHighlight": "WINEST",
+    "kioskTitleSuffix": "แล้วหรือยัง?",
+    "kioskDesc": "ไม่ว่าจะเป็นการว่าจ้างออกแบบ Character Sheet, เซ็ตสติกเกอร์, ฉากสตรีม หรือติดต่องานสปอนเซอร์ VTuber ทีมงานยินดีให้คำปรึกษาและจัดทำใบเสนอราคาอย่างรวดเร็ว",
+    "emailButtonText": "ส่งอีเมลติดต่อ",
+    "aboutFormButtonText": "แบบฟอร์มติดต่อ ➔",
+    "channelsTitle": "ช่องทางติดตามและคอมมิวนิตี้",
+    "topButtonText": "Top"
+  }
+}

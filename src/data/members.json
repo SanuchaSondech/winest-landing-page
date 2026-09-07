@@ -1,0 +1,195 @@
+{
+  "generations": [
+    {
+      "id": "gen-1",
+      "name": "GENESIS",
+      "displayName": "Genesis",
+      "operationLabel": "1st GENERATION",
+      "concept": "ไสยเวท มนตราไทยโบราณ",
+      "bgColor": "#190c1f",
+      "bgLightColor": "#fcedf2",
+      "tagline": "ปอบพร้อมกิน หมอผีพร้อมหม้อ",
+      "desc": "เรื่องราวของหมอผีที่คอยตามจับปอบลงหม้ออาคม แต่วัน ๆ ปอบดันเอาแต่หนีไปไลฟ์สตรีม! จากตำนานไสยศาสตร์เลยกลายเป็นความป่วนของสองสาว จาก Winest",
+      "themeDesc": "หมอผีลงอาคม ปอบลงกระทะ เปลี่ยนสายสิญจน์เป็นความบันเทิง",
+      "colors": "ชมพู ม่วง",
+      "memberSlugs": [
+        "yunaria-zayu",
+        "karake"
+      ]
+    },
+    {
+      "id": "gen-2",
+      "name": "ANIMALIA",
+      "displayName": "Animalia",
+      "operationLabel": "2nd GENERATION",
+      "bgColor": "#0e1814",
+      "bgLightColor": "#e2e7e1",
+      "tagline": "สัญชาตญาณสัตว์ป่าในดินแดนมหัศจรรย์",
+      "desc": "รุ่นที่สองที่กำลังจะมาถึงกับการรวมตัวของ 3 สปิริตสัตว์ป่าสุดลึกลับและน่ารัก เร็ว ๆ นี้",
+      "memberSlugs": [
+        "animalia-01",
+        "animalia-02",
+        "animalia-03"
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "id": "yunaria-zayu",
+      "slug": "yunaria-zayu",
+      "name": "Yunaria Zayu",
+      "shortName": "Yunaria",
+      "japaneseName": "",
+      "title": "หมอผีสายกิน",
+      "genId": "gen-1",
+      "genName": "GENESIS",
+      "isTeaser": false,
+      "themeColor": "#e098a1",
+      "themeDarker": "#9b334d",
+      "videoTitle": "【DEBUT SHOWCASE】ยินดีต้อนรับสู่ห้วงเวทมนตร์กับ Yunaria Zayu ✦",
+      "youtubeVideoId": "",
+      "videoCover": "/images/Yunaria.webp",
+      "characterDesignImage": "/images/Yunaria.webp",
+      "modelImage": "/images/Yunaria.webp",
+      "bustImage": "/images/Yunaria_bust.webp",
+      "credits": {
+        "characterDesign": "Lumiel Lucius",
+        "live2dRigger": "ฮิเระฮิเระ no 誕生!_Winest"
+      },
+      "lore": "หมอผี ที่ได้รับสืบทอดวิชา มาจาก หญิงปริศนา",
+      "greeting": "สาวน้อยเวทย์มนต์ เป็นลูกสาวท่านดยุก นางร้ายต้นกำเนิดไม่มีใครเทียบเทียม",
+      "profile": {
+        "species": "หมอผี",
+        "gender": "หญิง",
+        "age": "-",
+        "birthday": "18/02/xxxx",
+        "height": "150 ซม. / แล้วแต่ศรัทรา",
+        "weight": "แล้วแต่เวทย์",
+        "languages": "Thai / Japanese / English",
+        "favoriteFood": "อะไรที่กินได้ ชอบหมด, มาสไรเดอร์, อุลตร้าแมน, เซนไต",
+        "dislikes": "สัตว์เลื้อยคลาน, อากาศร้อน, ป่วยบ่อย, เกมผี",
+        "signatureColor": "ชมพู ดำ",
+        "fanName": "เหล่าคุณผีน้อย"
+      },
+      "hashtags": [
+        "#Yunariazayu",
+        "#Khunnooart"
+      ],
+      "quote": "จะจับลงหม้อให้หมดเลย",
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@yunaria_zayu",
+          "label": "@yunaria_zayu"
+        },
+        {
+          "platform": "X",
+          "url": "https://x.com/Yunariazayu",
+          "label": "@Yunariazayu"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/gAwCGkxpa2",
+          "label": "Community Discord"
+        }
+      ]
+    },
+    {
+      "id": "karake",
+      "slug": "karake",
+      "name": "Karake",
+      "shortName": "Karake",
+      "thaiName": "วิลาไลย ศักดิ์พัตร",
+      "japaneseName": "",
+      "title": "หมอผี สายเกม",
+      "genId": "gen-1",
+      "genName": "GENESIS",
+      "isTeaser": false,
+      "themeColor": "#7a3c82",
+      "themeDarker": "#38133d",
+      "videoTitle": "【DEBUT SHOWCASE】ยินดีต้อนรับสู่โลกของ Karake ✦",
+      "youtubeVideoId": "",
+      "videoCover": "/images/karake.webp",
+      "characterDesignImage": "/images/karake.webp",
+      "modelImage": "/images/karake.webp",
+      "bustImage": "/images/karake_bust.webp",
+      "credits": {
+        "characterDesign": "Lucius Lumiel",
+        "live2dRigger": "Lucius Lumiel"
+      },
+      "lore": "วิลาไลย ศักดิ์พัตร หรือ คาราเกะ ปอบจากความเข้าใจผิดและถูกใส่ร้ายจากคนในครอบครัว",
+      "greeting": "หิวไก่",
+      "profile": {
+        "species": "ผีปอบ",
+        "gender": "หญิง",
+        "age": "-",
+        "birthday": "12/03/****",
+        "height": "168 ซม.",
+        "weight": "-",
+        "languages": "Thai / Japanese / English",
+        "favoriteFood": "ส้มตำ, หมาล่า, ผี, เรื่องสยองขวัญ, ภาพวาด",
+        "dislikes": "คณิตศาสตร์, ฟิสิกส์, เคมี, สมการ",
+        "signatureColor": "ม่วง แดง",
+        "fanName": "พรายน้อย"
+      },
+      "hashtags": [
+        "#vilalai_S",
+        "#ไก่ออกล่า",
+        "#พรายไก่ทำของ",
+        "#G_kaiJDT"
+      ],
+      "quote": "ไม่ใช่คน เดินสองขา มีหูมีตา หางไม่มี พระจันทร์เต็มดวง",
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@karake_Winest",
+          "label": "@karake_Winest"
+        },
+        {
+          "platform": "X",
+          "url": "https://x.com/Karake_Winest",
+          "label": "@Karake_Winest"
+        }
+      ]
+    },
+    {
+      "id": "animalia-01",
+      "slug": "animalia-01",
+      "name": "????",
+      "shortName": "????",
+      "title": "ANIMALIA SPIRIT",
+      "genId": "gen-2",
+      "genName": "ANIMALIA",
+      "isTeaser": true,
+      "themeColor": "#d97706",
+      "themeDarker": "#78350f",
+      "teaserLabel": "COMING SOON"
+    },
+    {
+      "id": "animalia-02",
+      "slug": "animalia-02",
+      "name": "????",
+      "shortName": "????",
+      "title": "ANIMALIA SPIRIT",
+      "genId": "gen-2",
+      "genName": "ANIMALIA",
+      "isTeaser": true,
+      "themeColor": "#db2777",
+      "themeDarker": "#831843",
+      "teaserLabel": "COMING SOON"
+    },
+    {
+      "id": "animalia-03",
+      "slug": "animalia-03",
+      "name": "????",
+      "shortName": "????",
+      "title": "ANIMALIA SPIRIT",
+      "genId": "gen-2",
+      "genName": "ANIMALIA",
+      "isTeaser": true,
+      "themeColor": "#059669",
+      "themeDarker": "#064e3b",
+      "teaserLabel": "COMING SOON"
+    }
+  ]
+}

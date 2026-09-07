@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="art-vector-art" viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+  <rect width="1600" height="900" fill="#0c101c" />
+  
+  <!-- Interior Studio Isometric Perspective -->
+  <path d="M0,0 L360,200 L1240,200 L1600,0" fill="#13192c" stroke="#252f4c" stroke-width="3" />
+  <path d="M360,200 L360,700 L0,900" fill="#171e35" stroke="#252f4c" stroke-width="3" />
+  <path d="M1240,200 L1240,700 L1600,900" fill="#171e35" stroke="#252f4c" stroke-width="3" />
+
+  <!-- Virtual Monitor & Stream Gear -->
+  <rect x="520" y="270" width="560" height="280" rx="20" fill="#080c18" stroke="#8a9cf5" stroke-width="5" />
+  <circle cx="800" cy="410" r="80" stroke="#8a9cf5" stroke-width="4" fill="none" opacity="0.6" />
+  
+  <!-- Stream Desk & Audio Gear -->
+  <rect x="460" y="580" width="680" height="110" rx="12" fill="#1e253e" stroke="#8a9cf5" stroke-width="4" />
+  <rect x="540" y="520" width="180" height="90" rx="8" fill="#8a9cf5" opacity="0.4" stroke="#8a9cf5" stroke-width="3" />
+  <rect x="880" y="520" width="180" height="90" rx="8" fill="#5567e2" opacity="0.4" stroke="#5567e2" stroke-width="3" />
+
+  <text x="100" y="830" fill="#8a9cf5" font-size="32" font-family="monospace" font-weight="bold" letter-spacing="3">STREAM OVERLAY // 16:9 4K DAY & NIGHT</text>
+</svg>

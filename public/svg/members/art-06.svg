@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="member-vector-art" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="var(--bg-dominant)" />
+  <circle cx="200" cy="180" r="120" fill="#06b6d4" opacity="0.14" />
+  <path d="M100,180 L100,140 L160,140 L160,100 L240,100 L240,140 L300,140 L300,180" stroke="#06b6d4" stroke-width="1" opacity="0.3" fill="none" />
+  <circle cx="160" cy="100" r="3" fill="#06b6d4" opacity="0.8" />
+  <circle cx="240" cy="100" r="3" fill="#06b6d4" opacity="0.8" />
+  <circle cx="65" cy="40" r="2.5" fill="#ffffff" opacity="0.8" />
+  <circle cx="335" cy="50" r="3" fill="#06b6d4" opacity="0.6" />
+</svg>

@@ -1,0 +1,70 @@
+---
+// HeroVideo.astro - ส่วน 1: พื้นที่สำหรับคลิป 16:9 (Main Stage Showcase)
+import homeData from '../../data/home.json';
+import HeroWonderlandSvg from './HeroWonderlandSvg.astro';
+import HeroVideoFooter from './HeroVideoFooter.astro';
+import '../../styles/hero.css';
+
+const { hero } = homeData;
+---
+
+<section class="hero-section" id="hero">
+  <div class="container">
+    <!-- 16:9 Video Showcase Screen Frame (Zero-Clutter Above-the-Fold Canvas) -->
+    <div class="theater-stage-container">
+      <div class="video-canvas-ratio" id="video-wrapper">
+        <!-- SVG Vector Background for Amusement Park Scene -->
+        <HeroWonderlandSvg />
+
+        <!-- Video Overlay UI (Play Controls & Frosted Footer Bar) -->
+        <HeroVideoFooter 
+          playHint={hero.playHint} 
+          trackTitle={hero.trackTitle} 
+          trackSub={hero.trackSub} 
+          duration={hero.duration} 
+        />
+
+        <!-- Interactive Modal / Video Playing Simulated State -->
+        <div class="video-playing-state" id="playing-state">
+          <iframe 
+            id="video-iframe"
+            class="video-frame-embed"
+            src="" 
+            title="WINEST Promotional Video"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+          ></iframe>
+          <button class="close-video-btn" id="close-video-btn" aria-label="ปิดวิดีโอ">
+            {hero.closeButtonText}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('play-trailer-btn');
+    const playingState = document.getElementById('playing-state');
+    const closeBtn = document.getElementById('close-video-btn');
+    const iframe = document.getElementById('video-iframe');
+
+    if (playBtn && playingState) {
+      playBtn.addEventListener('click', () => {
+        playingState.classList.add('active');
+        if (iframe) {
+          iframe.src = "https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1&rel=0";
+        }
+      });
+    }
+
+    if (closeBtn && playingState) {
+      closeBtn.addEventListener('click', () => {
+        playingState.classList.remove('active');
+        if (iframe) iframe.src = "";
+      });
+    }
+  });
+</script>

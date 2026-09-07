@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="art-vector-art" viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+  <rect width="1600" height="900" fill="#111625" />
+  <path d="M0,0 L1600,900 M0,900 L1600,0" stroke="#1c233a" stroke-width="1.5" />
+  
+  <!-- Grid Background Lines -->
+  <line x1="0" y1="450" x2="1600" y2="450" stroke="#1c233a" stroke-width="1" stroke-dasharray="8 8" />
+  <line x1="800" y1="0" x2="800" y2="900" stroke="#1c233a" stroke-width="1" stroke-dasharray="8 8" />
+
+  <!-- Character Silhouette 3-Views -->
+  <g opacity="0.95" transform="translate(0, 20)">
+    <!-- Side Left View -->
+    <circle cx="400" cy="270" r="90" fill="#5567e2" opacity="0.25" stroke="#5567e2" stroke-width="3" />
+    <path d="M350,400 Q400,360 450,400 L470,720 L330,720 Z" fill="#181e33" stroke="#5567e2" stroke-width="3" />
+    <text x="400" y="780" fill="#64748b" font-size="28" font-family="sans-serif" font-weight="700" text-anchor="middle">SIDE VIEW</text>
+
+    <!-- Center Front View (Hero) -->
+    <circle cx="800" cy="250" r="110" fill="#8a9cf5" opacity="0.3" stroke="#8a9cf5" stroke-width="4" />
+    <path d="M710,400 Q800,340 890,400 L930,720 L670,720 Z" fill="#202742" stroke="#8a9cf5" stroke-width="4" />
+    <line x1="800" y1="110" x2="800" y2="760" stroke="#8a9cf5" stroke-dasharray="10 10" stroke-width="3" />
+    <text x="800" y="780" fill="#8a9cf5" font-size="32" font-family="sans-serif" font-weight="800" text-anchor="middle">FRONT VIEW</text>
+
+    <!-- Back View -->
+    <circle cx="1200" cy="270" r="90" fill="#5567e2" opacity="0.25" stroke="#5567e2" stroke-width="3" />
+    <path d="M1150,400 Q1200,360 1250,400 L1270,720 L1130,720 Z" fill="#181e33" stroke="#5567e2" stroke-width="3" />
+    <text x="1200" y="780" fill="#64748b" font-size="28" font-family="sans-serif" font-weight="700" text-anchor="middle">BACK VIEW</text>
+  </g>
+
+  <!-- Color Swatches Bar -->
+  <g transform="translate(100, 100)">
+    <circle cx="0" cy="0" r="22" fill="#8a9cf5" />
+    <circle cx="65" cy="0" r="22" fill="#a0b1ff" />
+    <circle cx="130" cy="0" r="22" fill="#b8c5ff" />
+    <circle cx="195" cy="0" r="22" fill="#ffffff" />
+  </g>
+
+  <!-- Technical Watermark -->
+  <text x="100" y="830" fill="#8a9cf5" font-size="32" font-family="monospace" font-weight="bold" letter-spacing="3">LIVE2D MODEL DESIGN // 16:9 MASTER</text>
+</svg>

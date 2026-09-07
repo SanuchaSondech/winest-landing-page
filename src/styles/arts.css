@@ -1,0 +1,324 @@
+/* ==========================================================================
+   WINEST - ArtsSection Styles (Matching VTuber Section Architecture)
+   Theme: Creative Commercial Art Studio & Live2D Atelier
+   Layout: Static Responsive Grid (Zero Carousel) + Centered Magnetic CTA
+   ========================================================================== */
+
+.arts-section {
+  padding-top: clamp(56px, 7vw, 88px);
+  padding-bottom: clamp(56px, 7vw, 88px);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-dominant);
+  position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 580px;
+}
+
+.accent-color {
+  color: var(--accent-primary);
+}
+
+/* Header Block (Identical to MembersSection) */
+.arts-header-block {
+  margin-bottom: clamp(36px, 4.5vw, 52px);
+}
+
+.kicker-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.editorial-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+
+.kicker-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  display: inline-block;
+}
+
+.kicker-meta {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.section-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 8px;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.section-subheadline {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 3 Core Services Preview Grid (Static Grid, Zero Carousel) */
+.arts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: clamp(36px, 4.5vw, 52px);
+}
+
+/* Art Card (Hype4 Glassmorphism 16:9 Showcase - GPU Layer Optimized) */
+.art-preview-card {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  contain: layout style;
+  transform: translateZ(0);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+  position: relative;
+  box-shadow: var(--glass-shadow), var(--glass-bevel);
+}
+
+.art-preview-card:hover {
+  transform: translateY(-6px) translateZ(0);
+  background: var(--glass-surface-hover);
+  border: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover), var(--glass-bevel-hover);
+}
+
+/* 1. Visual Stage: Strict 16:9 Aspect Ratio */
+.art-visual-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111625;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.art-visual-media {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.art-vector-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.art-vector-art {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.art-preview-card:hover .art-visual-media,
+.art-preview-card:hover .art-vector-art {
+  transform: scale(1.04);
+}
+
+/* Floating Glassmorphic Category Badge (Hype4 Standard) */
+.art-category-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 20, 36, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 6px var(--accent-primary);
+}
+
+/* 2. Content Details: Hierarchy & Scannability */
+.art-detail-body {
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Level 1: Service Title */
+.art-service-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.12rem, 1.35vw, 1.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+/* Level 2: Concise Hook (No Text Walls) */
+.art-desc-text {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Level 3: Scannable Feature Chips (Glassmorphic Badges) */
+.art-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.art-chip-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  background: var(--bg-dominant-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 3px 8px;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.art-preview-card:hover .art-chip-tag {
+  border-color: var(--accent-primary);
+  background: var(--accent-tint);
+  color: var(--accent-primary);
+}
+
+/* Level 4: Clear Bottom Action Bar */
+.art-card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.art-license-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.license-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.art-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.art-detail-link:hover {
+  color: var(--accent-primary);
+}
+
+.link-arrow {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+.art-detail-link:hover .link-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Arts Editorial CTA Bar (Centered Harmonious Finale identical to VTuber)
+   ========================================================================== */
+.arts-cta-bar {
+  margin-top: clamp(28px, 3.5vw, 44px);
+  padding: 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Grid */
+@media (max-width: 980px) {
+  .arts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .arts-grid {
+    grid-template-columns: 1fr;
+  }
+  .arts-header-block {
+    margin-bottom: 28px;
+  }
+}

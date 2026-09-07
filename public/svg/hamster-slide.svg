@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- Soft Ambient Shadow underneath -->
+  <ellipse cx="24" cy="42" rx="14" ry="4" fill="rgba(0, 0, 0, 0.3)" />
+
+  <!-- Ears with Wind Flap -->
+  <!-- Left Ear -->
+  <circle cx="12" cy="12" r="6" fill="#f59e0b" stroke="#d97706" stroke-width="1.2" />
+  <circle cx="12" cy="12" r="3.5" fill="#fbcfe8" />
+  <!-- Right Ear -->
+  <circle cx="36" cy="12" r="6" fill="#f59e0b" stroke="#d97706" stroke-width="1.2" />
+  <circle cx="36" cy="12" r="3.5" fill="#fbcfe8" />
+
+  <!-- Chubby Sliding Body (ทรงก้นกลมนั่งถไลบนราง) -->
+  <ellipse cx="24" cy="28" rx="16" ry="14" fill="#fcd34d" stroke="#d97706" stroke-width="1.2" />
+  <!-- Soft White Belly -->
+  <ellipse cx="24" cy="30" rx="10" ry="10" fill="#ffffff" opacity="0.95" />
+
+  <!-- Head & Chubby Cheeks -->
+  <ellipse cx="24" cy="20" rx="15" ry="11" fill="#fde68a" />
+
+  <!-- Blushing Cheeks (แก้มป่องสีชมพูตื่นเต้น) -->
+  <circle cx="13" cy="23" r="3.5" fill="#f43f5e" opacity="0.6" />
+  <circle cx="35" cy="23" r="3.5" fill="#f43f5e" opacity="0.6" />
+
+  <!-- Happy Excited Eyes (ตากลมโตเป็นประกายสนุกสนาน) -->
+  <!-- Left Eye -->
+  <ellipse cx="18" cy="19" rx="2.5" ry="3" fill="#1e1b4b" />
+  <circle cx="17.2" cy="17.8" r="1" fill="#ffffff" />
+  <circle cx="19" cy="20" r="0.5" fill="#ffffff" />
+  <!-- Right Eye -->
+  <ellipse cx="30" cy="19" rx="2.5" ry="3" fill="#1e1b4b" />
+  <circle cx="29.2" cy="17.8" r="1" fill="#ffffff" />
+  <circle cx="31" cy="20" r="0.5" fill="#ffffff" />
+
+  <!-- Tiny Pink Nose & Happy Smiling Mouth -->
+  <polygon points="24,21.5 22.8,23 25.2,23" fill="#f43f5e" />
+  <path d="M22,24 Q24,26 24,24.5 Q24,26 26,24" stroke="#78350f" stroke-width="1.2" stroke-linecap="round" fill="none" />
+
+  <!-- Front Paws: Holding Slide Lip & Sliding Happily -->
+  <ellipse cx="10" cy="27" rx="3.5" ry="2.5" fill="#fde68a" stroke="#d97706" stroke-width="1" transform="rotate(-15 10 27)" />
+  <ellipse cx="38" cy="27" rx="3.5" ry="2.5" fill="#fde68a" stroke="#d97706" stroke-width="1" transform="rotate(15 38 27)" />
+
+  <!-- Little Feet Sliding Forward -->
+  <ellipse cx="17" cy="40" rx="4" ry="2.2" fill="#fde68a" stroke="#d97706" stroke-width="0.9" />
+  <ellipse cx="31" cy="40" rx="4" ry="2.2" fill="#fde68a" stroke="#d97706" stroke-width="0.9" />
+</svg>

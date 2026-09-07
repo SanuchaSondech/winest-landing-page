@@ -1,0 +1,265 @@
+{
+  "hero": {
+    "stageLabel": "MAIN STAGE: AGENCY TRAILER",
+    "duration": "01:45",
+    "playHint": "กดเพื่อรับชมตัวอย่าง WINEST",
+    "trackTitle": "Welcome to WINEST Wonderland",
+    "trackSub": "VIRTUAL TALENTS & ILLUSTRATION STUDIOS",
+    "closeButtonText": "✕ ปิดหน้าต่าง"
+  },
+  "aboutBrief": {
+    "brandTitle": "WINEST",
+    "brandTaglinePrefix": "ยินดีต้อนรับสู่",
+    "brandTaglineSuffix": "พื้นที่แห่งจินตนาการและการสร้างสรรค์",
+    "storyHeadline": "สร้างสรรค์จินตนาการสู่โลกเสมือน",
+    "storyParagraph": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber สุดน่ารัก และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่ Character Sheet, สติกเกอร์/อีโมจิ ไปจนถึงฉากห้องสตรีมมิ่ง 3 มิติและ 2 มิติ",
+    "xLink": {
+      "handle": "@Winest_vt",
+      "url": "https://x.com/Winest_vt",
+      "ariaLabel": "ติดตาม WINEST บน X @Winest_vt"
+    },
+    "pillarsKicker": "AGENCY PILLARS",
+    "pillarsMeta": "INDEX 01-04",
+    "pillars": [
+      {
+        "num": "01",
+        "title": "VTuber Talents & Creators",
+        "desc": "พบกับครีเอเตอร์และเวอร์ชวลทาเลนต์ในสังกัด ผู้สร้างสีสันและความสนุกในโลกเสมือน",
+        "href": "/members",
+        "disabled": false
+      },
+      {
+        "num": "02",
+        "title": "Arts & Creative Studio",
+        "desc": "บริการวาดรูปครบวงจร (คาแรกเตอร์ดีไซน์ วาดคน วาดฉาก), บริการริกโมเดล และบริการมิกซ์เพลง",
+        "href": "/arts",
+        "disabled": false
+      },
+      {
+        "num": "03",
+        "title": "Agency Profile & Contact",
+        "desc": "ข้อมูลค่าย นโยบายลิขสิทธิ์เชิงพาณิชย์ ทีมงานผู้สร้าง และช่องทางติดต่อร่วมงาน",
+        "href": "/about",
+        "disabled": false
+      },
+      {
+        "num": "04",
+        "title": "Official Merchandise",
+        "desc": "สินค้าที่ระลึก สแตนดี้ พวงกุญแจ และของสะสมสุดพิเศษสำหรับคอมมิวนิตี้",
+        "disabled": true,
+        "badge": "COMING SOON"
+      }
+    ],
+    "metricsKicker": "SCALE & METRICS",
+    "metricsMeta": "VERIFIED DATA",
+    "metrics": [
+      {
+        "num": "6+",
+        "title": "VTuber Talents",
+        "desc": "ครีเอเตอร์และเวอร์ชวลทาเลนต์ในสังกัด ผู้ร่วมขับเคลื่อนคอมมิวนิตี้โลกเสมือน",
+        "tag": "ROSTER"
+      },
+      {
+        "num": "150+",
+        "title": "Artworks Delivered",
+        "desc": "งานออกแบบ Character Sheet, โมเดล Live2D และกราฟิกเชิงพาณิชย์ 4K",
+        "tag": "PROJECTS"
+      },
+      {
+        "num": "1.2M+",
+        "title": "Total Channel Views",
+        "desc": "ยอดการรับชมรวมจากคอมมิวนิตี้และแฟนคลับผู้ติดตามในทุกแพลตฟอร์มโซเชียล",
+        "tag": "VIEWS"
+      },
+      {
+        "num": "100%",
+        "title": "Client Satisfaction",
+        "desc": "\"ส่งมอบงานประณีต ลายเส้นคมชัด รองรับเชิงพาณิชย์ระดับสากล\"",
+        "author": "— Commercial Partner",
+        "badge": "SCORE 5.0"
+      }
+    ]
+  },
+  "artsSection": {
+    "kicker": "CREATIVE SERVICES",
+    "titlePrefix": "บริการสร้างสรรค์",
+    "titleHighlight": "วาดรูปครบวงจร · ริกโมเดล · มิกซ์เพลง",
+    "desc": "สตูดิโอ WINEST ให้บริการงานโปรดักชันระดับพรีเมียมสำหรับ VTuber, สตรีมเมอร์ และครีเอเตอร์ พร้อมสิทธิ์เชิงพาณิชย์ครบวงจร",
+    "viewAllText": "ดูรายละเอียดบริการและงานวาดทั้งหมด",
+    "items": [
+      {
+        "id": "service-01",
+        "badge": "Illustration Suite",
+        "zone": "Zone B : Atelier Plaza",
+        "license": "Commercial Ready",
+        "title": "บริการวาดรูปครบวงจร",
+        "desc": "บริการวาดรูปครบวงจรทั้งคาแรกเตอร์ดีไซน์ วาดคน และวาดฉากหลังสตรีมมิ่ง 4K",
+        "specs": [
+          "ออกแบบคาแรคเตอร์ดีไซน์ 3 มุมมอง",
+          "วาดคน ภาพประกอบตัวละคร และงานอาร์ตโปรโมต",
+          "วาดฉากหลังห้องสตรีมมิ่ง 2D/2.5D คมชัด 4K"
+        ]
+      },
+      {
+        "id": "service-02",
+        "badge": "Live2D Rigging",
+        "zone": "Zone C : Rigging Lab",
+        "license": "Commercial Ready",
+        "title": "บริการริกโมเดล",
+        "desc": "บริการตัดต่อและริกโมเดลสำหรับ VTuber คุณภาพสูง ขยับเป็นธรรมชาติ ฟิสิกส์ผมนุ่มนวล พร้อมการแสดงอารมณ์ครบถ้วน",
+        "specs": [
+          "ระบบฟิสิกส์เส้นผม เสื้อผ้า และเครื่องประดับพริ้วไหว",
+          "รองรับการหมุนศีรษะและลำตัวมุมมอง XYZ",
+          "เซ็ตอัปการแสดงอารมณ์ทางใบหน้าครบชุด"
+        ]
+      },
+      {
+        "id": "service-03",
+        "badge": "Audio Mixing",
+        "zone": "Zone D : Sound Studio",
+        "license": "Master Quality",
+        "title": "บริการมิกซ์เพลง",
+        "desc": "บริการปรับแต่งเสียงร้อง จูนคีย์ มิกซ์ดนตรี และมาสเตอริ่ง สำหรับเพลงคัฟเวอร์ VTuber ซิงเกิลออริจินัล และงานเสียงทุกรูปแบบ",
+        "specs": [
+          "จูนเสียงร้องระดับมืออาชีพ",
+          "มิกซ์บาลานซ์ดนตรีและมาสเตอริ่งมิติเสียงสมบูรณ์",
+          "ส่งมอบไฟล์คุณภาพสูงพร้อมเผยแพร่ทุกสตรีมมิ่ง"
+        ]
+      }
+    ],
+    "ctaBanner": {
+      "title": "ต้องการดูอัลบั้มผลงานทั้งหมด หรือขอใบเสนอราคา?",
+      "desc": "เข้าชมหอศิลป์ WINEST ดูขั้นตอนการสั่งจ้าง กฎการใช้เชิงพาณิชย์ และตารางคิวงานล่าสุด",
+      "buttonText": "เข้าสู่แกลเลอรีผลงานทั้งหมด"
+    }
+  },
+  "membersSection": {
+    "kicker": "TALENTS ROSTER",
+    "titlePrefix": "พบกับ",
+    "titleHighlight": "VTuber Talents",
+    "titleSuffix": "ของค่าย WINEST",
+    "desc": "ครีเอเตอร์เสมือนจริงผู้สร้างรอยยิ้ม ความสนุกสนาน และเสียงเพลงในโลกเวอร์ชวล",
+    "viewAllText": "ดูประวัติ ตารางสตรีม และช่องทางติดตามทาเลนต์ทั้งหมด",
+    "ctaBanner": {
+      "title": "สำรวจข้อมูลเชิงลึกและสเปกโมเดล Live2D ของสมาชิกทุกคน",
+      "desc": "เข้าชมประวัติฉบับเต็ม คอนเซ็ปต์การออกแบบ ข้อมูลทีมผู้สร้าง (Mama & Papa) และช่องทางติดตามสตรีมสดได้ที่หน้ารวมสมาชิก",
+      "buttonText": "เข้าชมโปรไฟล์สมาชิกทั้งหมด"
+    },
+    "members": [
+      {
+        "id": "member-01",
+        "name": "Lunaire Spark",
+        "title": "The Starlight Magician",
+        "gen": "Gen 1: Astral Odyssey",
+        "subscribers": "120K Subscribers",
+        "status": "LIVE SOON",
+        "bio": "จอมเวทแห่งแสงดาวผู้ชื่นชอบการร้องเพลงและเล่นเกมแฟนตาซี ถ่ายทอดความสุขสู่ผู้ชมทุกค่ำคืน",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "X",
+            "url": "https://x.com"
+          }
+        ]
+      },
+      {
+        "id": "member-02",
+        "name": "Kuro Panda",
+        "title": "The Gatekeeper Mascot",
+        "gen": "Mascot & Entertainer",
+        "subscribers": "85K Subscribers",
+        "status": "OFFLINE",
+        "bio": "แพนด้าแห่งค่าย WINEST ผู้มาพร้อมพลังเสียงแร็ปและคอนเทนต์สายบันเทิงสุดฮา",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "Twitch",
+            "url": "https://twitch.tv"
+          }
+        ]
+      },
+      {
+        "id": "member-03",
+        "name": "Zephyr Gear",
+        "title": "The Clockwork Inventor",
+        "gen": "Gen 1: Astral Odyssey",
+        "subscribers": "94K Subscribers",
+        "status": "STREAM TODAY",
+        "bio": "วิศวกรสตรีมเมอร์สายคราฟต์ของและสร้างโลกเกม พร้อมลูกเล่นสิ่งประดิษฐ์ไฮเทคไม่ซ้ำใคร",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "Discord",
+            "url": "https://discord.gg"
+          }
+        ]
+      },
+      {
+        "id": "member-04",
+        "name": "Solaria Flare",
+        "title": "The Solar Vanguard",
+        "gen": "Gen 2: Nova Pulse",
+        "subscribers": "76K Subscribers",
+        "status": "STREAM TODAY",
+        "bio": "นักรบแห่งแสงสุริยันผู้เชี่ยวชาญการต่อสู้ในเกม FPS และการพากย์เสียงสดสุดตื่นเต้นเร้าใจ",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "Twitch",
+            "url": "https://twitch.tv"
+          }
+        ]
+      },
+      {
+        "id": "member-05",
+        "name": "Nyx Velvet",
+        "title": "The Midnight Siren",
+        "gen": "Gen 2: Nova Pulse",
+        "subscribers": "110K Subscribers",
+        "status": "LIVE SOON",
+        "bio": "ดีว่าสาวแห่งค่ำคืนกับเสียงร้องสะกดอารมณ์ คอนเสิร์ตเปียโนอะคูสติก และบทเพลง Original Song",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "Spotify",
+            "url": "https://spotify.com"
+          }
+        ]
+      },
+      {
+        "id": "member-06",
+        "name": "Mirai Byte",
+        "title": "The Cyber Archivist",
+        "gen": "Gen 2: Nova Pulse",
+        "subscribers": "68K Subscribers",
+        "status": "OFFLINE",
+        "bio": "แฮกเกอร์สาว AI ผู้บันทึกประวัติศาสตร์โลกไซเบอร์ สตรีมเกมสืบสวนและบทสนทนาเทคโนโลยี",
+        "socials": [
+          {
+            "platform": "YouTube",
+            "url": "https://youtube.com"
+          },
+          {
+            "platform": "X",
+            "url": "https://x.com"
+          }
+        ]
+      }
+    ]
+  }
+}

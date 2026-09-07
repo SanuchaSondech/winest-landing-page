@@ -1,0 +1,357 @@
+---
+// src/pages/members/[slug].astro - Dedicated Talent Dossier (Route: /members/[slug])
+// Pre-rendered Static Pages for individual VTubers with direct SEO & Open Graph
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/common/Icon.astro";
+import membersData from "../../data/members.json";
+import "../../styles/global.css";
+import "../../styles/scroll-reveal.css";
+import "../../styles/members-page.css";
+
+export async function getStaticPaths() {
+  const { talents } = membersData;
+  const activeTalents = talents.filter((t) => !t.isTeaser);
+
+  const paths = activeTalents.map((talent) => ({
+    params: { slug: talent.slug },
+    props: { talent },
+  }));
+
+  // Add alias for 'yunaria' -> 'yunaria-zayu'
+  const yunaria = activeTalents.find((t) => t.slug === "yunaria-zayu");
+  if (yunaria) {
+    paths.push({
+      params: { slug: "yunaria" },
+      props: { talent: yunaria },
+    });
+  }
+
+  return paths;
+}
+
+const { talent } = Astro.props;
+const profile: any = talent.profile ?? {};
+const rawHashtags = (talent as any).hashtags || [];
+const hashtags: string[] = (Array.isArray(rawHashtags) ? rawHashtags : [])
+  .map((ht: any) => {
+    const str = typeof ht === "string" ? ht : ht?.tag || ht?.name || "";
+    return str.startsWith("#") ? str : `#${str}`;
+  })
+  .filter((t: string) => t.length > 1);
+const socials = talent.socials || [];
+---
+
+<Layout
+  title={`${talent.name}${talent.japaneseName ? ` · ${talent.japaneseName}` : talent.thaiName ? ` · ${talent.thaiName}` : talent.title ? ` · ${talent.title}` : ""} | WINEST Production`}
+  description={talent.lore}
+  image={talent.videoCover || talent.modelImage}
+>
+  <Navbar />
+
+  <main class="arp-members-main" id="membersMain">
+    <!-- ===================================================================
+         DEDICATED TALENT DOSSIER (/members/[slug])
+         =================================================================== -->
+    <div
+      class="arp-talent-detail-view"
+      id="talentDetailView"
+      data-talent={talent.slug}
+    >
+      <!-- ส่วนที่ 1: ปกบน (Header Cover Stage พร้อมปุ่ม Glassmorphism ย้อนกลับไป /members) -->
+      <header
+        class="dossier-cover-banner"
+        id="talentCoverBanner"
+        style={`--cover-theme-color: ${talent.themeColor}; --cover-theme-darker: ${talent.themeDarker || talent.themeColor};`}
+      >
+        <div class="dossier-cover-backdrop"></div>
+        <div class="dossier-cover-gradient"></div>
+
+        <!-- Top-Left Glassmorphic Back Button -->
+        <div class="dossier-banner-controls">
+          <a
+            href="/members"
+            class="dossier-banner-back-btn"
+            id="backToRosterBtn"
+            aria-label="กลับสู่หน้ารวมสมาชิก"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                points="12 19 5 12 12 5"></polyline></svg
+            >
+            <span>กลับสู่หน้ารวมสมาชิก</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Dossier Container -->
+      <div class="container dossier-main-container">
+        <!-- 2:5 Grid: ส่วนที่ 2 (โมเดลโปร่งใสซ้าย 2 ส่วน) + ส่วนที่ 4 (พื้นที่ข้อมูลขวา 5 ส่วน) -->
+        <div class="dossier-content-grid">
+          <!-- ส่วนที่ 2: โมเดลเดี่ยวพื้นหลังโปร่งใสแบบเต็มตัว (เกยลอยล้ำขึ้นไปบนปกบน) -->
+          <div class="dossier-model-col">
+            <div class="dossier-model-frame">
+              {talent.greeting && (
+                <button
+                  type="button"
+                  class="dossier-speech-balloon"
+                  id="dossierSpeechBalloon"
+                  aria-label={`คำทักทาย: ${talent.greeting} (คลิกเพื่อปิด)`}
+                  title="คลิกเพื่อปิด"
+                >
+                  <span class="speech-balloon-text">"{talent.greeting}"</span>
+                  <span class="speech-balloon-close" aria-hidden="true">&times;</span>
+                </button>
+              )}
+              <img
+                id="detailModelImage"
+                src={talent.modelImage}
+                alt={talent.name}
+                class="dossier-full-model-img"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <!-- ส่วนที่ 4: พื้นที่ของข้อมูล + ส่วนที่ 3: ชื่อของ VTuber -->
+          <div class="dossier-info-col">
+            <!-- ส่วนที่ 3: ชื่อของ VTuber (ล้ำขึ้นไปในส่วนปกบน) -->
+            <div class="dossier-glass-nameplate" id="detailGlassNameplate">
+              <div class="dossier-nameplate-meta">
+                <span class="dossier-gen-badge" id="detailGenBadge"
+                  >{talent.genName || "GENESIS"}</span
+                >
+                {talent.title && (
+                  <span class="dossier-title-badge">{talent.title}</span>
+                )}
+              </div>
+              <h1 class="dossier-talent-name">
+                <span id="detailTalentName">{talent.name}</span>
+                {talent.thaiName && (
+                  <span class="dossier-thai-name">({talent.thaiName})</span>
+                )}
+              </h1>
+            </div>
+
+            <!-- Story Lore -->
+            <div class="dossier-block dossier-lore-block">
+              <h2 class="dossier-block-header">เรื่องราวและประวัติ</h2>
+              <p class="dossier-lore-text" id="detailBioText">{talent.lore}</p>
+            </div>
+
+            <!-- ข้อมูลประจำตัว (Specs) -->
+            <div class="dossier-block dossier-specs-block">
+              <h2 class="dossier-block-header">ข้อมูลประจำตัว</h2>
+              <div class="dossier-specs-list">
+                <!-- แถว 1: เผ่าพันธุ์, เพศ, วันเกิด -->
+                <div class="spec-cell">
+                  <span class="spec-kicker">เผ่าพันธุ์</span>
+                  <span class="spec-value" id="specSpecies"
+                    >{profile.species}</span
+                  >
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">เพศ</span>
+                  <span class="spec-value" id="specGender"
+                    >{profile.gender}</span
+                  >
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">วันเกิด</span>
+                  <span class="spec-value" id="specBirthday"
+                    >{profile.birthday}</span
+                  >
+                </div>
+
+                <!-- แถว 2: อายุ, น้ำหนัก, ส่วนสูง -->
+                <div class="spec-cell">
+                  <span class="spec-kicker">อายุ</span>
+                  <span class="spec-value" id="specAge">{profile.age}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">น้ำหนัก</span>
+                  <span class="spec-value" id="specWeight"
+                    >{profile.weight}</span
+                  >
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">ส่วนสูง</span>
+                  <span class="spec-value" id="specHeight"
+                    >{profile.height}</span
+                  >
+                </div>
+
+                <!-- แถว 3: ชื่อแฟนคลับ, สีประจำตัว, ภาษา (ถ้ามี) -->
+                {profile.fanName && (
+                  <div class="spec-cell">
+                    <span class="spec-kicker">ชื่อแฟนคลับ</span>
+                    <span class="spec-value" id="specFanName">{profile.fanName}</span>
+                  </div>
+                )}
+                {profile.signatureColor && (
+                  <div class="spec-cell">
+                    <span class="spec-kicker">สีประจำตัว</span>
+                    <span class="spec-value" id="specSignatureColor">{profile.signatureColor}</span>
+                  </div>
+                )}
+                {profile.languages && (
+                  <div class="spec-cell">
+                    <span class="spec-kicker">ภาษา</span>
+                    <span class="spec-value" id="specLanguages">{profile.languages}</span>
+                  </div>
+                )}
+
+                <!-- แถว 4: สิ่งที่ชอบ และ สิ่งที่ไม่ชอบ (50/50 split) -->
+                <div class="spec-row-split">
+                  <div class="spec-cell">
+                    <span class="spec-kicker">สิ่งที่ชอบ</span>
+                    <span class="spec-value" id="specFavoriteFood"
+                      >{profile.favoriteFood}</span
+                    >
+                  </div>
+                  <div class="spec-cell">
+                    <span class="spec-kicker">สิ่งที่ไม่ชอบ</span>
+                    <span class="spec-value" id="specDislikes"
+                      >{profile.dislikes}</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- เครดิตผู้สร้าง (Credits) -->
+            {talent.credits && (talent.credits.characterDesign || talent.credits.live2dRigger) && (
+              <div class="dossier-block dossier-credits-block">
+                <h2 class="dossier-block-header">เครดิตผู้สร้าง</h2>
+                <div class="dossier-credits-grid">
+                  {talent.credits.characterDesign && (
+                    <div class="credit-item">
+                      <span class="credit-role">ผู้ออกแบบตัวละคร (Mama / Artist)</span>
+                      <span class="credit-name">{talent.credits.characterDesign}</span>
+                    </div>
+                  )}
+                  {talent.credits.live2dRigger && (
+                    <div class="credit-item">
+                      <span class="credit-role">ผู้ทำริก Live2D (Papa / Rigger)</span>
+                      <span class="credit-name">{talent.credits.live2dRigger}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <!-- หัวข้อ แฮชแท็ก -->
+            <div class="dossier-block dossier-hashtags-block">
+              <h2 class="dossier-block-header">แฮชแท็ก</h2>
+              <div class="dossier-hashtags-list" id="detailHashtagsList">
+                {
+                  hashtags.map((tag: string) => (
+                    <span class="dossier-hashtag-pill">{tag}</span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- ข้อความที่ฝากถึงคนดู (ล่างสุดของพื้นที่ข้อมูล) -->
+            <div class="dossier-quote-block" id="detailQuoteCard">
+              <div class="quote-top-badge">
+                <span class="quote-tag-pill">ข้อความจากใจถึงคนดู</span>
+              </div>
+              <blockquote class="quote-statement" id="detailQuoteText">
+                "{talent.quote}"
+              </blockquote>
+              <div class="quote-signature" id="detailQuoteSign">
+                — {talent.name}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ส่วนที่ 5: ช่องทางติดตามผลงาน (Official Channels) -->
+        <section class="dossier-channels-section">
+          <div class="channels-header-row">
+            <h2 class="dossier-block-header">ช่องทางการติดตามผลงาน</h2>
+            <span class="channels-subtitle">Official Channels & Links</span>
+          </div>
+          <div class="dossier-socials-grid" id="detailSocialsGrid">
+            {
+              socials.map((soc: any) => {
+                const isYt = soc.platform.includes("YouTube");
+                const isTw = soc.platform.includes("Twitch");
+                const isX =
+                  soc.platform.includes("X") ||
+                  soc.platform.includes("Twitter");
+                const isDiscord = soc.platform.includes("Discord");
+
+                return (
+                  <a
+                    href={soc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`arp-social-btn ${isYt ? "is-youtube" : isTw ? "is-twitch" : isX ? "is-twitter" : isDiscord ? "is-discord" : ""}`}
+                    aria-label={`ติดตาม ${talent.name} บน ${soc.platform}`}
+                  >
+                    <span class="soc-icon">
+                      {isYt && <Icon name="youtube" width="20" height="20" />}
+                      {isTw && <Icon name="twitch" width="20" height="20" />}
+                      {isX && <Icon name="x-twitter" width="18" height="18" />}
+                      {isDiscord && (
+                        <Icon name="discord" width="20" height="20" />
+                      )}
+                    </span>
+                    <div class="soc-meta">
+                      <span class="soc-platform">{soc.platform}</span>
+                      <span class="soc-handle">{soc.label}</span>
+                    </div>
+                    <Icon
+                      name="arrow-diagonal"
+                      width="14"
+                      height="14"
+                      class="soc-arrow"
+                    />
+                  </a>
+                );
+              })
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <!-- Interactive Controller: Speech Balloon Dismiss & Page Re-entry Reset -->
+  <script is:inline>
+    (function () {
+      function setupSpeechBalloon() {
+        var balloon = document.getElementById('dossierSpeechBalloon');
+        if (!balloon) return;
+
+        // Reset visibility whenever entering or re-entering the page
+        balloon.classList.remove('is-dismissed');
+
+        balloon.onclick = function (e) {
+          e.stopPropagation();
+          balloon.classList.add('is-dismissed');
+        };
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupSpeechBalloon);
+      } else {
+        setupSpeechBalloon();
+      }
+      document.addEventListener('astro:page-load', setupSpeechBalloon);
+    })();
+  </script>
+</Layout>

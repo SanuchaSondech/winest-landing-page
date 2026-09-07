@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout title="WINEST - ผลงานวาดทั้งหมด">
+  <Navbar />
+  <main style="padding: 100px 0; text-align: center; min-height: 60vh; display: flex; align-items: center;">
+    <div class="container math-card" style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+      <div class="park-badge" style="margin-bottom: 16px;">
+        <span>ZONE B & C · ATELIER GALLERY</span>
+      </div>
+      <h1 style="font-size: 2rem; margin-bottom: 12px;">แกลเลอรีผลงานและบริการงานอาร์ต</h1>
+      <p style="margin-bottom: 24px;">หน้านี้อยู่ในแผนการทำขั้นตอนถัดไป คุณสามารถกลับไปสำรวจหน้าหลักก่อนได้ครับ</p>
+      <a href="/" class="btn-primary">← กลับสู่หน้าหลัก</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

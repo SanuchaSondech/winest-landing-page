@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 36" fill="none">
+  <!-- Carousel Pole -->
+  <line x1="23" y1="0" x2="23" y2="36" stroke="var(--accent-primary)" stroke-width="1.5" opacity="0.3" stroke-dasharray="2 2" />
+
+  <!-- Unicorn Tail -->
+  <path d="M36,18 Q44,20 42,26 Q39,28 35,23" fill="#a0b1ff" />
+
+  <!-- Unicorn Back Legs -->
+  <rect x="29" y="24" width="3.5" height="9" rx="1.5" fill="#e2e8f0" />
+  <rect x="29" y="31" width="3.5" height="2" rx="0.5" fill="#8a9cf5" />
+
+  <!-- Unicorn Front Legs -->
+  <rect x="13" y="24" width="3.5" height="9" rx="1.5" fill="#e2e8f0" />
+  <rect x="13" y="31" width="3.5" height="2" rx="0.5" fill="#8a9cf5" />
+
+  <!-- Unicorn Boxy Body -->
+  <rect x="11" y="14" width="25" height="12" rx="3" fill="#ffffff" />
+  <!-- Saddle / Blanket -->
+  <rect x="19" y="14" width="10" height="7" rx="2" fill="#8a9cf5" opacity="0.85" />
+  <circle cx="24" cy="17.5" r="1.5" fill="#f59e0b" />
+
+  <!-- Unicorn Neck -->
+  <rect x="8" y="9" width="8" height="9" rx="2" fill="#ffffff" />
+
+  <!-- Unicorn Boxy Head (Facing Left) -->
+  <rect x="2" y="5" width="14" height="10" rx="2.5" fill="#ffffff" />
+  <circle cx="4.5" cy="11.5" r="1" fill="#8a9cf5" />
+  <!-- Muzzle band -->
+  <rect x="2" y="9" width="4" height="6" rx="1.5" fill="#f1f5f9" />
+  <!-- Eye (Cute dot) -->
+  <circle cx="8" cy="9" r="1.2" fill="#0f172a" />
+
+  <!-- Golden Sparkle Unicorn Horn -->
+  <polygon points="6.5,1 4.5,5.5 8.5,5.5" fill="#f59e0b" />
+
+  <!-- Cute Ear -->
+  <polygon points="12,2 10.5,6.5 14,6.5" fill="#8a9cf5" />
+
+  <!-- Unicorn Mane (Pastel blue/purple) -->
+  <rect x="14" y="6" width="4" height="8" rx="2" fill="#8a9cf5" />
+  <circle cx="16" cy="9" r="2.5" fill="#a0b1ff" />
+
+  <!-- Rider: Cute Boxy Flat Character -->
+  <!-- Rider Body/Jacket -->
+  <rect x="19.5" y="10" width="9" height="8.5" rx="2.5" fill="#6366f1" />
+  <!-- Reins (held by rider) -->
+  <path d="M22,14.5 L12,12.5" stroke="#cbd5e1" stroke-width="1.2" stroke-linecap="round" fill="none" />
+  <!-- Rider Head -->
+  <rect x="20.5" y="3.5" width="7" height="6.5" rx="2" fill="#ffd1b3" />
+  <!-- Flat Boxy Hair & Cap -->
+  <path d="M19.5,3.5 Q24,1.5 29,3.5 L28.5,6.5 L19.5,6.5 Z" fill="#1e293b" />
+  <circle cx="22" cy="6.5" r="0.8" fill="#0f172a" />
+</svg>

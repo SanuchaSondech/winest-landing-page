@@ -1,0 +1,126 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "WINEST - ค่าย VTuber และบริการงานวาดครบวงจร",
+  description = "WINEST ค่าย VTuber และสตูดิโอสร้างสรรค์งานอาร์ตระดับพรีเมียม รับออกแบบโมเดล Live2D, Character Sheet, สติกเกอร์ และฉากสตรีมมิ่ง",
+  image = "/logo/winest_logo.png"
+} = Astro.props;
+
+import HamsterScrollSlider from '../components/common/HamsterScrollSlider.astro';
+
+const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
+---
+
+<!doctype html>
+<html lang="th" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="WINEST, ค่าย VTuber, วาดรูป VTuber, Live2D, รับวาด Character Sheet, สติกเกอร์ LINE, ฉากสตรีม, VTuber Agency Thailand, รับวาดรูปคอมมิชชัน" />
+    <meta name="author" content="WINEST Studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="WINEST" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@winest_studio" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo/winest_logo_128.png" />
+    <link rel="apple-touch-icon" href="/logo/winest_logo_128.png" />
+
+    <!-- Google Fonts Preconnect & Parallel Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" />
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://winest.studio/#organization",
+            "name": "WINEST",
+            "url": "https://winest.studio",
+            "logo": "https://winest.studio/logo/winest_logo.png",
+            "description": "ค่าย VTuber และสตูดิโองานวาด คาแรคเตอร์ชีท สติกเกอร์ และฉากสตรีมมิ่ง",
+            "sameAs": [
+              "https://x.com/winest_studio",
+              "https://youtube.com/@winest_official"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://winest.studio/#website",
+            "url": "https://winest.studio",
+            "name": "WINEST Wonderland",
+            "publisher": { "@id": "https://winest.studio/#organization" }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Theme Initialization Script (Prevent FOUT) -->
+    <script is:inline>
+      (function() {
+        const savedTheme = localStorage.getItem('winest-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Amusement Park Background Decor Pattern & Chromatic Glass Ambient Orbs -->
+    <div class="park-map-bg" aria-hidden="true"></div>
+    <div class="glass-ambient-orbs" aria-hidden="true">
+      <div class="glass-orb orb-1"></div>
+      <div class="glass-orb orb-2"></div>
+      <div class="glass-orb orb-3"></div>
+    </div>
+
+    <slot />
+
+    <!-- Cute Kawaii Hamster Long-Slider Progress Engine -->
+    <HamsterScrollSlider />
+
+    <!-- Theme Toggle Handler -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('theme-toggle-btn');
+        const mobileToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+        
+        function switchTheme() {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('winest-theme', nextTheme);
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener('click', switchTheme);
+        if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', switchTheme);
+      });
+    </script>
+
+    <!-- Scroll Reveal Motion Engine -->
+    <script src="../scripts/scroll-reveal.js"></script>
+  </body>
+</html>

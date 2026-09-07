@@ -1,0 +1,24 @@
+---
+// MemberSliderControl.astro - บาร์สไลด์เซอร์รูปคนขี่ยูนิคอนแบนสี่เหลี่ยมวิ่งบนเส้นราง (-------🦄-------)
+import Icon from '../common/Icon.astro';
+---
+
+<div class="members-slider-control" aria-label="แถบตำแหน่งสมาชิก">
+  <div 
+    class="slider-track-wrap" 
+    id="sliderTrackWrap" 
+    role="slider" 
+    aria-label="ตำแหน่งแถบเลื่อนสมาชิก" 
+    aria-valuemin="0" 
+    aria-valuemax="100" 
+    aria-valuenow="0" 
+    tabindex="0"
+  >
+    <div class="slider-track-rail" id="sliderTrackRail">
+      <div class="slider-rider-thumb" id="sliderPillThumb" aria-hidden="true">
+        <!-- Cute Flat Boxy Unicorn Carousel Rider SVG -->
+        <Icon name="members/unicorn-rider" class="unicorn-rider-svg" />
+      </div>
+    </div>
+  </div>
+</div>

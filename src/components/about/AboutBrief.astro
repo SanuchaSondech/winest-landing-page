@@ -1,0 +1,70 @@
+---
+// AboutBrief.astro - ส่วน 2: ข้อมูลค่ายและผังบริการ สไตล์ Editorial Z-Line
+import homeData from '../../data/home.json';
+import AboutPillars from './AboutPillars.astro';
+import AboutMetrics from './AboutMetrics.astro';
+import Icon from '../common/Icon.astro';
+import '../../styles/about.css';
+
+const { aboutBrief } = homeData;
+---
+
+<section class="about-brief-section" id="about-brief">
+  <div class="container">
+    <!-- Hero Brand Section (Minimalist Centered Brand Masthead) -->
+    <div class="hero agency-hero-minimal reveal-init reveal-header" id="agency-hero">
+      <h1 class="minimal-brand-title">{aboutBrief.brandTitle}</h1>
+      <p class="minimal-brand-tagline">
+        {aboutBrief.brandTaglinePrefix} <span class="accent-color">{aboutBrief.brandTitle}</span> {aboutBrief.brandTaglineSuffix}
+      </p>
+    </div>
+
+    <!-- Structural Hairline Divider (Seamless Transition from Centered Display to Left Reading) -->
+    <div class="editorial-divider-line brand-story-divider reveal-init reveal-line-draw stagger-1" aria-hidden="true"></div>
+
+    <!-- Editorial Architecture -->
+    <div class="editorial-about">
+      <!-- Tier 1: Story & Manifesto (Left-Aligned Reading Area) -->
+      <div class="editorial-row top-row">
+        <!-- Vision & Manifesto -->
+        <div class="editorial-col story-col reveal-init reveal-card stagger-1">
+          <div class="story-header-row">
+            <h2 class="story-headline">
+              {aboutBrief.storyHeadline}
+            </h2>
+            <a 
+              href={aboutBrief.xLink.url} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="x-handle-link" 
+              aria-label={aboutBrief.xLink.ariaLabel}
+            >
+              <Icon name="x-twitter" class="x-icon" width="14" height="14" />
+              <span>{aboutBrief.xLink.handle}</span>
+            </a>
+          </div>
+          <p class="story-paragraph">
+            {aboutBrief.storyParagraph}
+          </p>
+        </div>
+      </div>
+
+      <!-- Mid-Section Hairline Divider (Connecting the Z diagonal) -->
+      <div class="editorial-divider-line reveal-init reveal-line-draw stagger-1" aria-hidden="true"></div>
+
+      <!-- Tier 2 (Bottom of Z): 4 Pillars on Left <-> 4 Metrics on Right (Ultra-Premium Bilateral Matrix) -->
+      <div class="editorial-row bottom-row reveal-init reveal-card stagger-2">
+        <AboutPillars 
+          kicker={aboutBrief.pillarsKicker} 
+          meta={aboutBrief.pillarsMeta} 
+          pillars={aboutBrief.pillars} 
+        />
+        <AboutMetrics 
+          kicker={aboutBrief.metricsKicker} 
+          meta={aboutBrief.metricsMeta} 
+          metrics={aboutBrief.metrics} 
+        />
+      </div>
+    </div>
+  </div>
+</section>

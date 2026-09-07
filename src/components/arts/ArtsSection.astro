@@ -1,0 +1,82 @@
+---
+// ArtsSection.astro - ส่วนแสดงผลงานบริการงานศิลป์ (ดีไซน์เทียบเท่า VTuber แต่เป็น Static Grid ไม่ต้องหมุน)
+import homeData from '../../data/home.json';
+import ArtCard from './ArtCard.astro';
+import Icon from '../common/Icon.astro';
+import '../../styles/arts.css';
+
+const { artsSection } = homeData;
+// ตัด (/arts) ออกเพื่อให้ปุ่มแสดงประโยคเดี่ยวที่คมกริบ
+const cleanButtonText = artsSection.ctaBanner.buttonText.replace(/\s*\(\/arts\)/, '');
+---
+
+<section class="arts-section" id="arts">
+  <div class="container">
+    <!-- Section Header Block (Editorial Alignment identical to VTuber) -->
+    <div class="arts-header-block reveal-init reveal-header">
+
+      <div class="section-title-wrap">
+        <h2 class="section-headline">
+          {artsSection.titlePrefix} <span class="accent-color">{artsSection.titleHighlight}</span>
+        </h2>
+        <p class="section-subheadline">{artsSection.desc}</p>
+      </div>
+    </div>
+
+    <!-- 3 Core Services Preview Grid (Static Grid, Zero Carousel) -->
+    <div class="arts-grid">
+      {artsSection.items.map((item, index) => (
+        <ArtCard item={item} index={index} />
+      ))}
+    </div>
+
+    <!-- Arts Editorial CTA Bar (Harmonious Centered Finale identical to VTuber) -->
+    <div class="arts-cta-bar reveal-init reveal-card stagger-3">
+      <div class="cta-center-stack">
+        <h3 class="cta-title">{artsSection.ctaBanner.title}</h3>
+        <p class="cta-desc">{artsSection.ctaBanner.desc}</p>
+        <div class="cta-bar-action">
+          <a href="/arts" class="roster-magnetic-btn" id="artsMagneticBtn" aria-label="เข้าสู่แกลเลอรีผลงานทั้งหมด">
+            <!-- Raycast cursor spotlight layer -->
+            <span class="btn-spotlight" aria-hidden="true"></span>
+            
+            <!-- Specular rim light -->
+            <span class="btn-specular-rim" aria-hidden="true"></span>
+
+            <!-- Content container -->
+            <span class="btn-content-wrap">
+              <span class="btn-text">{cleanButtonText}</span>
+
+              <!-- Kinetic Arrow Lens -->
+              <span class="btn-arrow-lens" aria-hidden="true">
+                <Icon name="arrow-diagonal" class="arrow-svg" width="16" height="16" />
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Magnetic Spotlight Script for Arts Button -->
+<script is:inline>
+  function initArtsSection() {
+    const magneticBtn = document.getElementById('artsMagneticBtn');
+    if (magneticBtn && !magneticBtn.dataset.bound) {
+      magneticBtn.dataset.bound = 'true';
+      magneticBtn.addEventListener('mousemove', (e) => {
+        const rect = magneticBtn.getBoundingClientRect();
+        magneticBtn.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        magneticBtn.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArtsSection);
+  } else {
+    initArtsSection();
+  }
+  document.addEventListener('astro:page-load', initArtsSection);
+</script>

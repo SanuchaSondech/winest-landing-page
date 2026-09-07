@@ -1,0 +1,61 @@
+---
+// MemberAvatar.astro - กรอบรูปโปรไฟล์ ไอคอนอวาตาร์ และสถานะ Live
+import Icon from '../common/Icon.astro';
+
+export interface Props {
+  memberId?: string;
+  name?: string;
+  status?: string;
+  bustImage?: string;
+}
+
+const { memberId = '', name = '', status = 'ACTIVE', bustImage } = Astro.props;
+const isLive = status.includes('LIVE') || status.includes('STREAM');
+
+const avatarIcons: Record<string, string> = {
+  'member-01': 'avatar-star',
+  'member-04': 'avatar-sun',
+  'member-05': 'avatar-music',
+  'member-06': 'avatar-code',
+};
+const defaultIcon = 'avatar-gear';
+---
+
+<div class="member-avatar-anchor">
+  <div class={`member-avatar-frame ${memberId === 'member-02' ? 'mascot-frame' : ''}`}>
+    {bustImage ? (
+      <img 
+        src={bustImage} 
+        alt={name} 
+        class="mascot-img member-bust-portrait" 
+        width="76" 
+        height="76" 
+        loading="lazy"
+        decoding="async"
+        style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;"
+      />
+    ) : memberId === 'member-02' ? (
+      <img 
+        src="/logo/winest_logo_128.webp" 
+        alt={name} 
+        class="mascot-img" 
+        width="72" 
+        height="72" 
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <Icon 
+        name={avatarIcons[memberId] || defaultIcon} 
+        width="38" 
+        height="38" 
+      />
+    )}
+  </div>
+
+  <!-- Live Status Indicator -->
+  <span class="talent-status-pill">
+    <span class={`status-pip ${isLive ? 'live' : ''}`}></span>
+    {status}
+  </span>
+</div>

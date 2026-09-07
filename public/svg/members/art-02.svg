@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="member-vector-art" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="var(--bg-dominant)" />
+  <circle cx="200" cy="180" r="120" fill="var(--accent-primary)" opacity="0.18" />
+  <circle cx="75" cy="45" r="3" fill="var(--accent-primary)" opacity="0.7" />
+  <circle cx="325" cy="55" r="2.5" fill="#ffffff" opacity="0.8" />
+  <path d="M40,150 Q80,130 120,150 T200,150 T280,150 T360,150" stroke="var(--accent-primary)" stroke-width="1.5" opacity="0.3" fill="none" />
+</svg>

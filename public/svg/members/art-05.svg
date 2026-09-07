@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="member-vector-art" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="var(--bg-dominant)" />
+  <circle cx="200" cy="180" r="120" fill="#ec4899" opacity="0.12" />
+  <path d="M60,120 Q130,60 200,120 T340,120" stroke="#ec4899" stroke-width="1.5" opacity="0.35" fill="none" />
+  <path d="M60,140 Q130,80 200,140 T340,140" stroke="var(--accent-primary)" stroke-width="1" opacity="0.25" fill="none" />
+  <circle cx="290" cy="45" r="3" fill="#ec4899" opacity="0.75" />
+  <circle cx="110" cy="50" r="2" fill="#ffffff" opacity="0.8" />
+</svg>

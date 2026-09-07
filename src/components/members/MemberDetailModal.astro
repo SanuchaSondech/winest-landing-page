@@ -1,0 +1,163 @@
+---
+// MemberDetailModal.astro - หน้าต่าง Glassmorphic Modal ดูข้อมูลเชิงลึกของเมมเบอร์
+import Icon from '../common/Icon.astro';
+---
+
+<div class="talent-modal-overlay" id="talentModalOverlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="talent-modal-dialog" id="talentModalDialog">
+    <!-- Close Button -->
+    <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="ปิดหน้าต่าง">✕</button>
+
+    <!-- Visual Top Stage -->
+    <div class="modal-banner-stage" id="modalBannerStage">
+      <!-- Injected dynamically or shows default glow -->
+    </div>
+
+    <!-- Body Information -->
+    <div class="modal-body-content">
+      <div class="modal-meta-row">
+        <span class="member-gen-tag" id="modalGenTag">GEN 1</span>
+        <span class="talent-status-pill" id="modalStatusPill">
+          <span class="status-pip"></span>
+          <span id="modalStatusText">OFFLINE</span>
+        </span>
+      </div>
+
+      <h2 class="modal-talent-name" id="modalName">Lunaire Spark</h2>
+      <span class="modal-talent-title" id="modalTitle">The Starlight Magician</span>
+      
+      <p class="modal-bio-text" id="modalBio">
+        จอมเวทแห่งแสงดาวผู้ชื่นชอบการร้องเพลงและเล่นเกมแฟนตาซี
+      </p>
+
+      <!-- Specifications & Lore Matrix -->
+      <div class="modal-specs-grid">
+        <div class="spec-box">
+          <span class="spec-box-label">เดบิวต์อย่างเป็นทางการ (Debut)</span>
+          <span class="spec-box-val" id="modalDebut">14 กุมภาพันธ์ 2024</span>
+        </div>
+        <div class="spec-box">
+          <span class="spec-box-label">ชุดสีประจำตัว (Signature Color)</span>
+          <span class="spec-box-val" id="modalColorWrap">
+            <span class="color-swatch" id="modalColorSwatch"></span>
+            <span id="modalColorName">#5567e2 Royal Starlight</span>
+          </span>
+        </div>
+        <div class="spec-box">
+          <span class="spec-box-label">แท็กสตรีมสด (Stream Tag)</span>
+          <span class="spec-box-val" id="modalStreamTag">#LunaireLive</span>
+        </div>
+        <div class="spec-box">
+          <span class="spec-box-label">แท็กผลงานแฟนอาร์ต (Fanart Tag)</span>
+          <span class="spec-box-val" id="modalFanartTag">#LunaireArt</span>
+        </div>
+      </div>
+
+      <!-- Action Row -->
+      <div class="modal-cta-row">
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="audition-primary-btn" id="modalPrimaryLink">
+          <span>เข้าสู่ช่องสตรีมมิ่งหลัก</span>
+          <Icon name="arrow-diagonal" width="14" height="14" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('talentModalOverlay');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const modalName = document.getElementById('modalName');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalGen = document.getElementById('modalGenTag');
+    const modalBio = document.getElementById('modalBio');
+    const modalStatusText = document.getElementById('modalStatusText');
+    const modalStatusPill = document.getElementById('modalStatusPill');
+    const modalDebut = document.getElementById('modalDebut');
+    const modalColorSwatch = document.getElementById('modalColorSwatch');
+    const modalColorName = document.getElementById('modalColorName');
+    const modalStreamTag = document.getElementById('modalStreamTag');
+    const modalFanartTag = document.getElementById('modalFanartTag');
+    const modalPrimaryLink = document.getElementById('modalPrimaryLink');
+    const modalBannerStage = document.getElementById('modalBannerStage');
+
+    function openModal(data) {
+      if (!overlay) return;
+      modalName.textContent = data.name || '';
+      modalTitle.textContent = data.title || '';
+      modalGen.textContent = data.gen || '';
+      modalBio.textContent = data.bio || '';
+      modalStatusText.textContent = data.status || '';
+      
+      const isLive = (data.status || '').includes('LIVE') || (data.status || '').includes('STREAM');
+      const pip = modalStatusPill ? modalStatusPill.querySelector('.status-pip') : null;
+      if (pip) {
+        if (isLive) pip.classList.add('live');
+        else pip.classList.remove('live');
+      }
+
+      modalDebut.textContent = data.debut || '14 FEB 2024';
+      if (modalColorSwatch) modalColorSwatch.style.backgroundColor = data.color || '#5567e2';
+      if (modalColorName) modalColorName.textContent = `${data.color || '#5567e2'} ${data.colorTitle || ''}`;
+      if (modalStreamTag) modalStreamTag.textContent = data.streamTag || `#${data.name.replace(/\s+/g, '')}Live`;
+      if (modalFanartTag) modalFanartTag.textContent = data.fanartTag || `#${data.name.replace(/\s+/g, '')}Art`;
+      if (modalPrimaryLink && data.mainUrl) modalPrimaryLink.href = data.mainUrl;
+
+      // Copy vector art into modal banner
+      if (modalBannerStage) {
+        modalBannerStage.innerHTML = '';
+        if (data.cardEl) {
+          const art = data.cardEl.querySelector('.member-vector-art');
+          if (art) {
+            modalBannerStage.appendChild(art.cloneNode(true));
+          }
+        }
+      }
+
+      overlay.classList.add('is-active');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!overlay) return;
+      overlay.classList.remove('is-active');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay && overlay.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+
+    // Attach to detail buttons
+    document.querySelectorAll('.view-detail-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = btn.closest('.roster-card');
+        if (!card) return;
+
+        try {
+          const rawData = card.getAttribute('data-member-json');
+          if (rawData) {
+            const data = JSON.parse(rawData);
+            data.cardEl = card;
+            openModal(data);
+          }
+        } catch (err) {
+          console.error('Failed to parse member data', err);
+        }
+      });
+    });
+  });
+</script>

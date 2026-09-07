@@ -1,0 +1,440 @@
+@import './scroll-reveal.css';
+
+/* ==========================================================================
+   WINEST - Global Design System & Token Variables
+   Aesthetic: Amusement Park Map / Theme Park Wonderland (Apple/Agoda Precision)
+   ========================================================================== */
+
+:root {
+  /* -------------------------------------------------------------
+     1. Corner Radius Mathematical Rule:
+     Outer Radius = Inner Radius + Internal Spacing/Border
+     ------------------------------------------------------------- */
+  --space-card-inner: 16px;
+  --space-card-outer: 24px;
+  --radius-sm: 8px;
+  --radius-inner: 14px;
+  --radius-outer: calc(var(--radius-inner) + var(--space-card-inner)); /* 30px */
+  --radius-container: calc(var(--radius-outer) + 8px); /* 38px */
+  --radius-pill: 9999px;
+
+  /* -------------------------------------------------------------
+     2. 60-30-10 Color Formula (Dark Mode by default - matches logo)
+     ------------------------------------------------------------- */
+  /* 60% Dominant */
+  --bg-dominant: #0a0d16;
+  --bg-dominant-subtle: #0f1422;
+  --bg-map-pattern: #13192b;
+
+  /* 30% Secondary */
+  --surface-card: rgba(20, 27, 45, 0.60);
+  --surface-card-hover: rgba(27, 36, 60, 0.72);
+  --surface-glass: rgba(16, 22, 38, 0.75);
+  --border-subtle: #232d47;
+  --border-subtle-hover: #323f64;
+  --text-primary: #f2f5fc;
+  --text-secondary: #9aa5be;
+  --text-muted: #606b85;
+
+  /* Hype4 Academy Glassmorphism Design Tokens - Silky GPU Optimized */
+  --glass-surface: rgba(20, 27, 45, 0.70);
+  --glass-surface-hover: rgba(27, 36, 60, 0.85);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+  --glass-border-hover: 1px solid rgba(138, 156, 245, 0.40);
+  --glass-blur: blur(10px);
+  --glass-blur-heavy: blur(14px);
+  --glass-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.30);
+  --glass-shadow-hover: 0 16px 36px 0 rgba(0, 0, 0, 0.40), 0 0 20px rgba(138, 156, 245, 0.16);
+  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+  --glass-bevel-hover: inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+
+  /* 10% Accent */
+  --accent-primary: #8a9cf5;
+  --accent-hover: #a0b1ff;
+  --accent-soft: #b8c5ff;
+  --accent-tint: rgba(138, 156, 245, 0.12);
+  --accent-glow: rgba(138, 156, 245, 0.35);
+
+  /* Shadows, Elevation & Specular Rim-Lighting */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 32px -6px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 28px rgba(138, 156, 245, 0.28);
+  --rim-light: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --rim-light-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.24);
+  --glass-backdrop: blur(10px);
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 72px;
+
+  /* -------------------------------------------------------------
+     3. Typography System (Harmonious 3-Tier Hierarchy)
+     ------------------------------------------------------------- */
+  /* 1. หัวข้อหลัก (H1, H2, Hero Titles) - Plus Jakarta Sans ExtraBold + Prompt (สะอาด คมกริบ เป็นทางการ) */
+  --font-display: 'Plus Jakarta Sans', 'Prompt', -apple-system, sans-serif;
+  
+  /* 2. เนื้อหารอง (H3, H4, Feature Titles, Numbers, Kickers) - Plus Jakarta Sans Bold + Prompt */
+  --font-heading: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+  
+  /* 3. เนื้อหาย่อย (Body, Paragraphs, Specs, Metadata, Nav) - Inter + Sarabun */
+  --font-body: 'Inter', 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-body);
+}
+
+/* -------------------------------------------------------------
+   Light Mode (60-30-10)
+   ------------------------------------------------------------- */
+[data-theme="light"] {
+  /* 60% Dominant */
+  --bg-dominant: #f5f7fc;
+  --bg-dominant-subtle: #ebf0f9;
+  --bg-map-pattern: #dfe5f2;
+
+  /* 30% Secondary */
+  --surface-card: #ffffff;
+  --surface-card-hover: #f9faff;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --border-subtle: #dbe2f0;
+  --border-subtle-hover: #c3cee3;
+  --text-primary: #121829;
+  --text-secondary: #4e5875;
+  --text-muted: #818ba4;
+
+  /* Hype4 Glassmorphism Light Mode Tokens (Clean White Frosted Glass) */
+  --glass-surface: rgba(255, 255, 255, 0.82);
+  --glass-surface-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.90);
+  --glass-border-hover: 1px solid rgba(85, 103, 226, 0.45);
+  --glass-shadow: 0 8px 32px 0 rgba(30, 41, 74, 0.07);
+  --glass-shadow-hover: 0 16px 48px 0 rgba(30, 41, 74, 0.14), 0 0 24px rgba(85, 103, 226, 0.12);
+  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+  --glass-bevel-hover: inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+
+  /* 10% Accent */
+  --accent-primary: #5567e2;
+  --accent-hover: #4355ce;
+  --accent-soft: #7a8af0;
+  --accent-tint: rgba(85, 103, 226, 0.1);
+  --accent-glow: rgba(85, 103, 226, 0.2);
+
+  --shadow-sm: 0 2px 8px rgba(30, 41, 74, 0.05);
+  --shadow-md: 0 10px 28px -6px rgba(30, 41, 74, 0.08);
+  --shadow-glow: 0 0 24px rgba(85, 103, 226, 0.18);
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dominant);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Hide native browser scrollbar across all engines */
+  -ms-overflow-style: none; /* IE / Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide native scrollbar for Chrome, Safari, Chromium */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-dominant);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  position: relative;
+  /* Isolate stacking context — prevents backdrop-filter layers from bleeding up */
+  isolation: isolate;
+}
+
+/* Amusement Park Map Background Decor (SVG vector grid & paths - Isolated GPU Layer) */
+.park-map-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    radial-gradient(var(--bg-map-pattern) 1.2px, transparent 1.2px),
+    radial-gradient(circle at 10% 20%, var(--accent-tint) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, var(--accent-tint) 0%, transparent 45%);
+  background-size: 32px 32px, 100% 100%, 100% 100%;
+  opacity: 0.6;
+  contain: strict;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Chromatic Ambient Orbs (GPU Hardware-Accelerated, Zero 100px Filter Blur Penalty) */
+.glass-ambient-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  contain: strict;
+  transform: translateZ(0);
+}
+
+[data-theme="light"] .glass-ambient-orbs {
+  display: none;
+}
+
+.glass-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.glass-orb.orb-1 {
+  top: 15%;
+  right: -5%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(138, 156, 245, 0.38) 0%, rgba(99, 102, 241, 0.16) 35%, rgba(99, 102, 241, 0.04) 55%, transparent 75%);
+}
+
+.glass-orb.orb-2 {
+  top: 45%;
+  left: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.32) 0%, rgba(138, 156, 245, 0.12) 38%, rgba(138, 156, 245, 0.03) 58%, transparent 78%);
+}
+
+.glass-orb.orb-3 {
+  bottom: 10%;
+  right: 10%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.28) 0%, rgba(138, 156, 245, 0.10) 36%, rgba(138, 156, 245, 0.02) 56%, transparent 76%);
+}
+
+/* Typography Hierarchy (3-Tier Font System) */
+h1, h2 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+body, p, span, li, a, button, input {
+  font-family: var(--font-body);
+}
+
+p {
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-radius: var(--radius-inner);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 14px var(--accent-glow);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--surface-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-inner);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  background: var(--surface-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Mathematical Corner Radius Card System (Outer Radius = Inner Radius + Internal Spacing) */
+.math-card {
+  border-radius: var(--radius-outer);
+  padding: var(--space-card-inner);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--rim-light), var(--shadow-sm);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.28s ease, 
+              box-shadow 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.math-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-subtle-hover);
+  box-shadow: var(--rim-light-hover), var(--shadow-md), 0 0 24px var(--accent-tint);
+}
+
+/* Card Inner Element with calculated inner radius (Zero nested borders) */
+.math-card-inner {
+  border-radius: var(--radius-inner);
+  overflow: hidden;
+  background: var(--bg-dominant-subtle);
+  border: none;
+}
+
+/* Animations using @keyframes and transform */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dashTrack {
+  to { stroke-dashoffset: -40; }
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spin-slow {
+  animation: spinSlow 24s linear infinite;
+}
+
+/* Hero Brand Header (Primary Agency Showcase Title) */
+.hero {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto clamp(40px, 6vw, 68px) auto;
+}
+
+.hero .hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1.0;
+  text-transform: uppercase;
+  margin-bottom: clamp(12px, 1.8vw, 18px);
+}
+
+.hero .hero-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.hero .hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.3vw, 1.125rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Section Header */
+.section-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 52px auto;
+}
+
+.section-head h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-head p {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+    --space-card-inner: 12px;
+    --radius-inner: 10px;
+    --radius-outer: calc(var(--radius-inner) + var(--space-card-inner)); /* 22px */
+  }
+
+  .hero,
+  .section-head {
+    margin-bottom: 36px;
+    text-align: left;
+  }
+}

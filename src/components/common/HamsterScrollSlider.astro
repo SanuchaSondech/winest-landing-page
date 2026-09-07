@@ -1,0 +1,153 @@
+---
+// HamsterScrollSlider.astro - สไลเดอร์น้องแฮมเตอร์ถไลลงรางสไลเดอร์ใส (Transparent Playground Slide Chute)
+import '../../styles/hamster-slider.css';
+---
+
+<aside class="playground-slide-wrap" id="hamsterScrollWrap" aria-label="รางสไลเดอร์น้องแฮมเตอร์">
+  <!-- Central Seamless Acrylic Slide Chute (รางสไลเดอร์ใสไร้รอยต่อ) -->
+  <div class="playground-slide-chute" id="hamsterSliderTrack" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="รางสไลเดอร์">
+    <!-- Smooth Slide Floor Reflection -->
+    <div class="slide-trough-groove"></div>
+
+    <!-- The Sliding Hamster Rider (น้องแฮมเตอร์โพสท่านั่งถไลลงมาสุดน่ารัก) -->
+    <div class="hamster-sliding-rider" id="hamsterThumbRider" tabindex="0" title="น้องแฮมเตอร์กำลังถไลลงสไลเดอร์!">
+      <!-- Percentage Tooltip on Hover/Drag -->
+      <div class="hamster-slide-tooltip" id="hamsterTooltip">0%</div>
+
+      <!-- Sliding Hamster Icon (โหลดจากไฟล์ /svg/hamster-slide.svg) -->
+      <img
+        src="/svg/hamster-slide.svg"
+        alt="น้องแฮมเตอร์ถไลสไลเดอร์"
+        class="hamster-slide-svg"
+        width="42"
+        height="42"
+        draggable="false"
+      />
+    </div>
+  </div>
+</aside>
+
+
+<script is:inline>
+  function setupPlaygroundSlide() {
+    const wrap = document.getElementById('hamsterScrollWrap');
+    const track = document.getElementById('hamsterSliderTrack');
+    const thumb = document.getElementById('hamsterThumbRider');
+    const tooltip = document.getElementById('hamsterTooltip');
+    const btnTop = document.getElementById('hamsterScrollTop');
+    const btnBottom = document.getElementById('hamsterScrollBottom');
+
+    if (!wrap || !track || !thumb) return;
+
+    let isDragging = false;
+    let lastScrollY = window.scrollY;
+    let scrollTimeout = null;
+    const thumbHeight = 44;
+
+    function updateSlider() {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = docHeight > 0 ? Math.min(Math.max(window.scrollY / docHeight, 0), 1) : 0;
+      const trackHeight = track.clientHeight || (window.innerHeight - 180);
+      const maxTravel = Math.max(trackHeight - thumbHeight, 0);
+      const thumbY = scrollProgress * maxTravel;
+
+      // Move the sliding hamster along the chute
+      thumb.style.transform = `translate3d(-50%, ${thumbY}px, 0)`;
+
+      if (tooltip) {
+        tooltip.textContent = `${Math.round(scrollProgress * 100)}%`;
+      }
+      track.setAttribute('aria-valuenow', String(Math.round(scrollProgress * 100)));
+
+      // Sliding motion feedback
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY + 2) {
+        thumb.classList.add('sliding-down');
+        thumb.classList.remove('sliding-up');
+      } else if (currentScrollY < lastScrollY - 2) {
+        thumb.classList.add('sliding-up');
+        thumb.classList.remove('sliding-down');
+      }
+      lastScrollY = currentScrollY;
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        thumb.classList.remove('sliding-down');
+        thumb.classList.remove('sliding-up');
+      }, 150);
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', updateSlider, { passive: true });
+    window.addEventListener('resize', updateSlider, { passive: true });
+    window.addEventListener('load', updateSlider, { passive: true });
+
+    if (window.ResizeObserver && document.body) {
+      new ResizeObserver(updateSlider).observe(document.body);
+    }
+
+    updateSlider();
+    setTimeout(updateSlider, 60);
+    setTimeout(updateSlider, 200);
+
+    // Click anywhere on the slide chute to slide there
+    track.addEventListener('click', (e) => {
+      if (e.target === thumb || thumb.contains(e.target)) return;
+      const rect = track.getBoundingClientRect();
+      const clickY = e.clientY - rect.top;
+      const progress = Math.min(Math.max(clickY / rect.height, 0), 1);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({
+        top: progress * docHeight,
+        behavior: 'smooth'
+      });
+    });
+
+    // Top / Bottom Jump
+    if (btnTop) {
+      btnTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    if (btnBottom) {
+      btnBottom.addEventListener('click', () => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      });
+    }
+
+    // Dragging the hamster down the slide
+    thumb.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      thumb.classList.add('is-dragging');
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const rect = track.getBoundingClientRect();
+      const dragY = e.clientY - rect.top;
+      const progress = Math.min(Math.max(dragY / rect.height, 0), 1);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({
+        top: progress * docHeight,
+        behavior: 'auto'
+      });
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        thumb.classList.remove('is-dragging');
+        document.body.style.userSelect = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPlaygroundSlide);
+  } else {
+    setupPlaygroundSlide();
+  }
+  document.addEventListener('astro:page-load', setupPlaygroundSlide);
+</script>

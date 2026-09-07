@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="member-vector-art" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="var(--bg-dominant)" />
+  <circle cx="200" cy="180" r="120" fill="var(--accent-primary)" opacity="0.14" />
+  <polygon points="90,35 96,47 108,51 96,55 90,67 84,55 72,51 84,47" fill="var(--accent-primary)" opacity="0.8" />
+  <polygon points="315,30 319,38 327,41 319,44 315,52 311,44 303,41 311,38" fill="#ffffff" opacity="0.75" />
+  <circle cx="345" cy="120" r="3" fill="var(--accent-primary)" opacity="0.6" />
+  <circle cx="55" cy="100" r="2.5" fill="#ffffff" opacity="0.8" />
+  <ellipse cx="200" cy="165" rx="130" ry="22" stroke="var(--accent-primary)" stroke-width="1" opacity="0.25" stroke-dasharray="4 4" />
+</svg>
