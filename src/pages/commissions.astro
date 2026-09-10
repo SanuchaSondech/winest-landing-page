@@ -10,6 +10,7 @@ import '../styles/commissions.css';
 
 const { 
   atelier, 
+  tierLegend,
   recommendedPackages, 
   tierPricing, 
   accessories, 
@@ -112,7 +113,18 @@ const {
       <!-- Complete Price Comparison Matrix (Tiers & Accessories) -->
       <section class="pricing-matrix-section" id="pricing-matrix">
         <span class="section-label">Full Price Catalog</span>
-        <h2 class="section-heading">ตารางเปรียบเทียบราคาโมเดลทั้งหมด</h2>
+        <h2 class="section-heading has-desc">ตารางเปรียบเทียบราคาโมเดลทั้งหมด</h2>
+        <p class="section-desc">รายละเอียดเรทราคาแยกตามระดับความละเอียดของการเคลื่อนไหว และชิ้นส่วนเสริม</p>
+
+        <!-- Tier Guide Bar (Clears all doubts about Tier 1, 2, 3) -->
+        <div class="tier-legend-strip">
+          {tierLegend && tierLegend.map((tl) => (
+            <div class="tier-legend-item">
+              <span class="tier-legend-badge">{tl.tier} · {tl.name}</span>
+              <span class="tier-legend-text">{tl.summary}</span>
+            </div>
+          ))}
+        </div>
 
         <!-- Tier 1-3 Table -->
         <h3 class="table-subheading">เรทราคาวาดและริกโมเดลแยกตามระดับ (Tier 1 – 3)</h3>

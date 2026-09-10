@@ -265,6 +265,44 @@
   margin: 0 0 14px;
 }
 
+.tier-legend-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-inner);
+}
+
+@media (max-width: 860px) {
+  .tier-legend-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+}
+
+.tier-legend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tier-legend-badge {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.tier-legend-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
 .table-scroll-wrapper {
   overflow-x: auto;
   margin-bottom: 36px;
