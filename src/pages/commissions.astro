@@ -1,5 +1,5 @@
 ---
-// src/pages/commissions.astro - World-Class Editorial Commissions Showcase
+// src/pages/commissions.astro - World-Class Two-Part Architecture
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -8,7 +8,7 @@ import commissionsData from '../data/commissions.json';
 import '../styles/global.css';
 import '../styles/commissions.css';
 
-const { atelier, models, terms, showcases } = commissionsData;
+const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases } = commissionsData;
 ---
 
 <Layout 
@@ -21,7 +21,7 @@ const { atelier, models, terms, showcases } = commissionsData;
     <div class="container">
 
       <!-- ============================================================
-           1. Editorial Masthead
+           HEADER: Editorial Masthead
            ============================================================ -->
       <header class="commissions-masthead">
         <div class="masthead-meta">{atelier.collaboration}</div>
@@ -29,12 +29,16 @@ const { atelier, models, terms, showcases } = commissionsData;
         <p class="masthead-lead">{atelier.lead}</p>
 
         <div class="masthead-action-row">
-          <a href="#models-matrix" class="editorial-text-link">
-            <span>เลือกแพ็กเกจโมเดล</span>
+          <a href="#recommended" class="editorial-text-link">
+            <span>แพ็กเกจแนะนำ</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#pricing-matrix" class="editorial-text-link">
+            <span>ตารางราคาทั้งหมด</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#studio-terms" class="editorial-text-link">
-            <span>เงื่อนไขและการผ่อนชำระ</span>
+            <span>เงื่อนไข & การผ่อนชำระ</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="editorial-text-link primary">
@@ -45,113 +49,46 @@ const { atelier, models, terms, showcases } = commissionsData;
       </header>
 
       <!-- ============================================================
-           2. Self-Contained Model Cards Grid
-           Organized with | and clean SVGs for effortless scanning
+           PART 1: 3 Recommended Packages (Ultra-Clean, High-Readability Cards)
            ============================================================ -->
-      <section class="models-matrix-section" id="models-matrix">
-        <span class="section-label">Model Architecture</span>
-        <h2 class="section-heading">แพ็กเกจโมเดล Live2D</h2>
+      <section class="recommended-section" id="recommended">
+        <span class="section-label">Recommended Packages</span>
+        <h2 class="section-heading">แพ็กเกจแนะนำ</h2>
 
-        <div class="models-card-grid">
-          {models.map((model) => (
-            <article class="package-editorial-card">
-              <!-- Card Header -->
+        <div class="recommended-cards-grid">
+          {recommendedPackages.map((pkg) => (
+            <article class="package-card">
               <div class="pkg-header">
                 <div class="pkg-identity">
-                  <h3 class="pkg-title">{model.name}</h3>
-                  <span class="pkg-tag">{model.subtitle}</span>
+                  <h3 class="pkg-title">{pkg.name}</h3>
+                  <span class="pkg-tag">{pkg.subtitle}</span>
                 </div>
-                <p class="pkg-summary">{model.summary}</p>
 
-                <!-- Starting Price Block with Pipe -->
-                <div class="pkg-price-banner">
-                  <div class="pkg-price-main">
-                    <span class="price-val">฿{model.startingPrice.toLocaleString()}</span>
-                    <span class="price-unit">THB</span>
-                  </div>
-                  <div class="pkg-price-sub">
-                    <span>วาด ฿{model.tiers[0].draw.toLocaleString()}</span>
-                    <span class="pipe" aria-hidden="true">|</span>
-                    <span>ริก ฿{model.tiers[0].rig.toLocaleString()}</span>
-                    <span class="pipe" aria-hidden="true">|</span>
-                    <span class="pkg-discount">{model.discount}</span>
-                  </div>
+                <div class="pkg-price-row">
+                  <span class="price-lead">เริ่มต้น</span>
+                  <span class="price-num">฿{pkg.startingPrice.toLocaleString()}</span>
+                  <span class="price-save">({pkg.discount})</span>
                 </div>
               </div>
 
-              <!-- Specs Bullets with SVGs & Pipe -->
-              <div class="pkg-specs-block">
-                <div class="pkg-spec-row">
-                  <Icon name="check" width="14" height="14" class="spec-svg" />
-                  <span class="spec-text">
-                    <strong>สัดส่วน:</strong> {model.specs.scope}
-                  </span>
-                </div>
-                <div class="pkg-spec-row">
-                  <Icon name="check" width="14" height="14" class="spec-svg" />
-                  <span class="spec-text">
-                    <strong>โครงสร้าง:</strong> {model.specs.interiorBody}
-                    <span class="pipe" aria-hidden="true">|</span>
-                    {model.specs.outfitSystem}
-                  </span>
-                </div>
-                <div class="pkg-spec-row highlight">
-                  <Icon name="avatar-star" width="14" height="14" class="spec-svg star" />
-                  <span class="spec-text">
-                    <strong>ของแถม:</strong> {model.specs.included}
-                  </span>
-                </div>
-              </div>
+              <!-- 3 Clean Bullets -->
+              <ul class="pkg-bullets">
+                {pkg.bullets.map((bullet, bIdx) => (
+                  <li class="pkg-bullet-item">
+                    <Icon name={bIdx === 2 ? 'avatar-star' : 'check'} width="13" height="13" class="pkg-bullet-svg" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
 
-              <!-- Compact Tier Rates Table inside Card -->
-              <div class="pkg-tiers-section">
-                <div class="pkg-section-label">
-                  <span>เรทราคา Tier 1–3</span>
-                  <span class="pipe" aria-hidden="true">|</span>
-                  <span>วาด · ริก · คอมโบ</span>
-                </div>
-
-                <div class="pkg-tier-rows">
-                  {model.tiers.map((t) => (
-                    <div class="pkg-tier-row">
-                      <span class="tier-name">{t.name}</span>
-                      <div class="tier-rates">
-                        <span>วาด ฿{t.draw.toLocaleString()}</span>
-                        <span class="pipe" aria-hidden="true">|</span>
-                        <span>ริก ฿{t.rig.toLocaleString()}</span>
-                        <span class="pipe" aria-hidden="true">|</span>
-                        <span class="rate-item combo">Combo ฿{t.combo.toLocaleString()}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Accessory Section inside Card -->
-              <div class="pkg-acc-section">
-                <div class="pkg-section-label">
-                  <span>ส่วนเสริม Accessory ({model.accessory.label})</span>
-                  <span class="pipe" aria-hidden="true">|</span>
-                  <span class="acc-discount">{model.accessory.discount}</span>
-                </div>
-                <div class="pkg-acc-items">
-                  {model.accessory.items.map((acc, i) => (
-                    <span>
-                      {acc.type.split('/')[0].trim()} <strong>฿{acc.combo.toLocaleString()}</strong>
-                      {i < model.accessory.items.length - 1 ? <span class="pipe" aria-hidden="true">|</span> : ''}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Action Link -->
+              <!-- Action Button -->
               <a 
                 href={atelier.discordUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="pkg-cta-btn"
+                class="pkg-cta"
               >
-                <span>ปรึกษาบรีฟ {model.name}</span>
+                <span>สั่งทำ {pkg.name}</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </article>
@@ -160,42 +97,103 @@ const { atelier, models, terms, showcases } = commissionsData;
       </section>
 
       <!-- ============================================================
-           3. Terms, Timeline & Installment (Editorial 3-Col Split)
+           PART 2: Complete Price Comparison Matrix (Clean, Scannable Tables)
+           ============================================================ -->
+      <section class="pricing-matrix-section" id="pricing-matrix">
+        <span class="section-label">Full Price Catalog</span>
+        <h2 class="section-heading">ตารางเปรียบเทียบราคาทั้งหมด</h2>
+
+        <!-- Tier 1-3 Table -->
+        <h3 class="table-subheading">เรทราคาวาดและริกโมเดลแยกตามระดับ (Tier 1 – 3)</h3>
+        <div class="table-scroll-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>แพ็กเกจโมเดล</th>
+                <th>ระดับ (Tier)</th>
+                <th>เฉพาะวาด (Draw)</th>
+                <th>เฉพาะริก (Rig)</th>
+                <th>โปร วาด & ริก (Combo Set)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tierPricing.flatMap((group) =>
+                group.tiers.map((t, tIdx) => (
+                  <tr class={tIdx === 0 ? 'group-start' : ''}>
+                    <td class="pkg-cell">{tIdx === 0 ? group.package : ''}</td>
+                    <td>{t.tier}</td>
+                    <td class="num-cell">฿{t.draw.toLocaleString()}</td>
+                    <td class="num-cell">฿{t.rig.toLocaleString()}</td>
+                    <td class="combo-cell">฿{t.combo.toLocaleString()}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Accessory Table -->
+        <h3 class="table-subheading">ส่วนเสริม Accessory (ACC) แยกตามขนาดโมเดล</h3>
+        <div class="table-scroll-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>รายการส่วนเสริม</th>
+                <th>Half Body (Tier 1)</th>
+                <th>Simple Full (Tier 2)</th>
+                <th>Full Body (Tier 3)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {accessories.map((acc) => (
+                <tr>
+                  <td><strong>{acc.category}</strong></td>
+                  {acc.customNote ? (
+                    <td colspan="3" style="color: var(--text-secondary);">{acc.customNote}</td>
+                  ) : (
+                    <>
+                      <td class="num-cell">฿{acc.half?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(วาด {acc.half?.draw} / ริก {acc.half?.rig})</span></td>
+                      <td class="num-cell">฿{acc.simple?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(วาด {acc.simple?.draw} / ริก {acc.simple?.rig})</span></td>
+                      <td class="combo-cell">฿{acc.full?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(วาด {acc.full?.draw} / ริก {acc.full?.rig})</span></td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 3: Terms, Timeline & Installment (Editorial 3-Col Split)
            ============================================================ -->
       <section class="terms-split-section" id="studio-terms">
         <span class="section-label">Commercial Guidelines</span>
-        <h2 class="section-heading">ระยะเวลา การผ่อนชำระ และนโยบายสตูดิโอ</h2>
+        <h2 class="section-heading">ระยะเวลา การผ่อนชำระ และนโยบาย</h2>
 
         <div class="terms-3col-layout">
           {terms.map((col) => (
             <div class="terms-col">
-              <div class="terms-col-head">
-                <h3 class="terms-col-title">{col.title}</h3>
-                <div class="terms-col-sub">{col.subtitle}</div>
-              </div>
-
-              <div class="terms-kv-list">
-                {col.items.map((item) => (
-                  <div class="terms-kv-item">
-                    <div class="terms-item-line">
-                      <Icon name="check" width="13" height="13" class="terms-svg" />
-                      <span class="terms-k">{item.label}</span>
-                    </div>
-                    <span class="terms-v">{item.value}</span>
-                  </div>
+              <h3 class="terms-col-title">{col.title}</h3>
+              <ul class="terms-list">
+                {col.points.map((pt) => (
+                  <li class="terms-item">
+                    <Icon name="check" width="12" height="12" class="terms-svg" />
+                    <span>{pt}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
       </section>
 
       <!-- ============================================================
-           4. Official Talents Showcase (Pristine Art Duet)
+           PART 4: Official Talents Showcase
            ============================================================ -->
       <section class="showcase-duet-section">
         <span class="section-label">Selected Works</span>
-        <h2 class="section-heading">โมเดลทาเลนต์ประจำค่าย WINEST</h2>
+        <h2 class="section-heading">โมเดลประจำค่าย WINEST</h2>
 
         <div class="showcase-duet-grid">
           {showcases.map((talent) => (
@@ -216,12 +214,12 @@ const { atelier, models, terms, showcases } = commissionsData;
       </section>
 
       <!-- ============================================================
-           5. Minimal Closing Action
+           PART 5: Minimal Closing Action
            ============================================================ -->
       <section class="closing-action-section">
         <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันโมเดลของคุณ?</h2>
         <p class="closing-desc">
-          พูดคุยสอบถามรายละเอียด ประเมินคิวงาน หรือส่งไฟล์บรีฟตัวละครกับทีมงาน Kenelix Studio โดยตรง
+          พูดคุยสอบถาม ประเมินคิวงาน หรือส่งไฟล์บรีฟตัวละครกับทีมงาน Kenelix Studio โดยตรง
         </p>
         <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="closing-btn">
           <span>ติดต่อผ่าน Discord (Kenelix Studio)</span>
