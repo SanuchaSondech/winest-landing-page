@@ -1,7 +1,7 @@
 /* ==========================================================================
    WINEST - Commissions Page Styles (World-Class Editorial Architecture)
    Concept: Atelier Studio & Japanese VTuber Production Showcase
-   Philosophy: Zero AI Slop · No Box Disease · Pure Typographic Hierarchy
+   Philosophy: Zero AI Slop · No Box Disease · Structured with | and SVG Bullets
    ========================================================================== */
 
 .commissions-main {
@@ -10,11 +10,11 @@
 }
 
 /* -------------------------------------------------------------
-   1. Editorial Masthead (Clean, Confident, Box-Free)
+   1. Editorial Masthead
    ------------------------------------------------------------- */
 .commissions-masthead {
   max-width: 860px;
-  margin: 0 auto clamp(48px, 6vw, 72px);
+  margin: 0 auto clamp(40px, 5.5vw, 64px);
   text-align: center;
 }
 
@@ -25,7 +25,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-primary);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .masthead-title {
@@ -43,14 +43,14 @@
   line-height: 1.65;
   color: var(--text-secondary);
   max-width: 640px;
-  margin: 0 auto 28px;
+  margin: 0 auto 24px;
 }
 
 .masthead-action-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -74,8 +74,16 @@
   color: var(--accent-primary);
 }
 
+/* Common Pipe Divider Token */
+.pipe {
+  color: rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
+  font-weight: 300;
+  user-select: none;
+}
+
 /* -------------------------------------------------------------
-   2. Master Model Comparison (Apple/Linear Style Spec Matrix)
+   2. Self-Contained Model Cards Grid (Structured with | and SVGs)
    ------------------------------------------------------------- */
 .models-matrix-section {
   margin-bottom: clamp(72px, 9vw, 108px);
@@ -98,189 +106,257 @@
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--text-primary);
-  margin: 0 0 36px;
+  margin: 0 0 32px;
 }
 
-/* 3-Column Clean Model Spec Grid */
-.models-spec-grid {
+/* 3-Column Card Grid with Perfect Proportion */
+.models-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 20px;
   margin-bottom: 48px;
 }
 
-@media (max-width: 880px) {
-  .models-spec-grid {
+@media (max-width: 980px) {
+  .models-card-grid {
     grid-template-columns: 1fr;
-    border-bottom: none;
+    gap: 24px;
   }
 }
 
-.model-spec-col {
-  padding: clamp(24px, 3.5vw, 36px) clamp(16px, 2.5vw, 28px);
-  position: relative;
+.package-editorial-card {
+  background: rgba(20, 27, 45, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-inner);
+  padding: clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 26px);
   display: flex;
   flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.model-spec-col:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+.package-editorial-card:hover {
+  border-color: rgba(138, 156, 245, 0.4);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 880px) {
-  .model-spec-col:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
+/* Card Header */
+.pkg-header {
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.model-col-header {
-  margin-bottom: 24px;
+.pkg-identity {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
 }
 
-.model-col-name {
+.pkg-title {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 4px;
+  margin: 0;
 }
 
-.model-col-sub {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin: 0 0 12px;
-}
-
-.model-price-lockup {
-  margin-top: 16px;
-}
-
-.price-caption {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.price-figure {
+.pkg-tag {
   font-family: var(--font-heading);
-  font-size: 2.125rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.price-unit {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.price-discount-note {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--accent-primary);
-  margin-top: 4px;
 }
 
-/* Spec Rows List */
-.model-spec-list {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
+.pkg-summary {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 16px;
+  min-height: 2.5em;
+}
+
+.pkg-price-banner {
+  background: rgba(15, 20, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.pkg-price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.price-val {
+  font-family: var(--font-heading);
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.price-unit {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pkg-price-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pkg-discount {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+/* Specs Block (Organized with SVGs and | ) */
+.pkg-specs-block {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pkg-spec-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.spec-svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.spec-svg.star {
+  color: #ffbe53;
+}
+
+.spec-text strong {
+  color: var(--text-primary);
+}
+
+.pkg-spec-row.highlight .spec-text {
+  color: var(--text-primary);
+}
+
+/* Tier Rate Matrix inside Card */
+.pkg-tiers-section {
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pkg-section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.pkg-tier-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pkg-tier-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+
+.tier-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.75rem;
+}
+
+.tier-rates {
+  font-family: var(--font-heading);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.rate-item.combo {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+/* Accessory Section inside Card */
+.pkg-acc-section {
+  margin-bottom: 24px;
   flex-grow: 1;
 }
 
-.model-spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.spec-key {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
-}
-
-.spec-val {
-  font-size: 0.875rem;
-  color: var(--text-primary);
-  line-height: 1.45;
-}
-
-/* -------------------------------------------------------------
-   3. Detailed Tier & Accessory Data Tables (Clean Editorial)
-   ------------------------------------------------------------- */
-.pricing-tables-wrapper {
-  margin-bottom: 48px;
-}
-
-.data-section-title {
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 16px;
-}
-
-.editorial-data-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  margin-bottom: 36px;
-  font-size: 0.875rem;
-}
-
-.editorial-data-table th {
-  padding: 12px 16px;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.editorial-data-table td {
-  padding: 14px 16px;
-  color: var(--text-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.editorial-data-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.cell-num {
-  font-family: var(--font-heading);
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-}
-
-.cell-num.highlight {
-  font-weight: 700;
+.acc-discount {
   color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.pkg-acc-items {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pkg-acc-items strong {
+  color: var(--text-primary);
+}
+
+/* Action CTA inside Card */
+.pkg-cta-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.pkg-cta-btn:hover {
+  background: var(--accent-primary);
+  color: #0a0d16;
+  border-color: var(--accent-primary);
 }
 
 /* -------------------------------------------------------------
-   4. Commercial Terms, Timeline & Installment (3-Column Split)
+   3. Terms, Timeline & Installment (Editorial 3-Col Split)
    ------------------------------------------------------------- */
 .terms-split-section {
   margin-bottom: clamp(72px, 9vw, 108px);
@@ -339,7 +415,7 @@
 .terms-kv-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .terms-kv-item {
@@ -348,22 +424,34 @@
   gap: 3px;
 }
 
+.terms-item-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terms-svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
 .terms-k {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .terms-v {
-  font-size: 0.875rem;
-  color: var(--text-primary);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
   line-height: 1.5;
+  padding-left: 20px;
 }
 
 /* -------------------------------------------------------------
-   5. Official Talents Showcase (Pristine Art Duet)
+   4. Official Talents Showcase (Pristine Art Duet)
    ------------------------------------------------------------- */
 .showcase-duet-section {
   margin-bottom: clamp(72px, 9vw, 108px);
@@ -435,7 +523,7 @@
 }
 
 /* -------------------------------------------------------------
-   6. Minimal Closing Action (Quiet Confidence)
+   5. Minimal Closing Action
    ------------------------------------------------------------- */
 .closing-action-section {
   text-align: center;
