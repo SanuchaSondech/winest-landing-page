@@ -9,7 +9,7 @@
   "navLinks": [
     { "label": "Home", "href": "/", "path": "/" },
     { "label": "Members", "href": "/members", "path": "/members" },
-    { "label": "Arts", "href": "/arts", "path": "/arts" },
+    { "label": "Commissions", "href": "/commissions", "path": "/commissions" },
     { "label": "About", "href": "/about", "path": "/about" }
   ],
   "drawerCta": {

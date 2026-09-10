@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/common/Icon.astro';
+import commissionsData from '../data/commissions.json';
+import '../styles/global.css';
+import '../styles/commissions.css';
+
+const { studio, packages, turnaround, payment, showcaseSlots } = commissionsData;
+---
+
+<Layout 
+  title="WINEST x KENELIX STUDIO - รับวาดและทำโมเดล VTuber คุณภาพสูง (Commissions)"
+  description="บริการวาดชิ้นส่วนและริกโมเดล Live2D ครบวงจร ทั้ง Half Body, Simple Full, Full Body พร้อมโปรโมชันคอมโบเซ็ต ระบบผ่อนชำระสูงสุด 7 เดือน และกระดานคิวงานสด"
+>
+  <Navbar />
+
+  <main class="commissions-page-main" id="commissions-main">
+    <div class="container">
+
+      <!-- ============================================================
+           SECTION 1: Commissions Hero & Studio Head
+           ============================================================ -->
+      <header class="commissions-hero reveal-init reveal-header">
+        <div class="studio-kicker-badge">
+          <span class="studio-kicker-dot" aria-hidden="true"></span>
+          <span>{studio.brandName} · {studio.partnerBadge}</span>
+        </div>
+
+        <h1 class="commissions-title">{studio.title}</h1>
+
+        <div class="commissions-categories-pills">
+          {studio.categories.map((cat, i) => (
+            <span class={`category-tag ${i === 1 ? 'accent' : ''}`}>{cat}</span>
+          ))}
+        </div>
+
+        <p class="commissions-lead">{studio.desc}</p>
+
+        <!-- Quick Jump Anchor Bar -->
+        <div class="hero-action-row">
+          <a href="#pricing" class="btn-anchor primary">
+            <span>ดูเรทราคาและแพ็กเกจ</span>
+            <Icon name="arrow-right" width="16" height="16" />
+          </a>
+          <a href="#payment" class="btn-anchor secondary">
+            <span>เงื่อนไขการผ่อนชำระ</span>
+          </a>
+          <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" class="btn-anchor discord" aria-label="ติดต่อผ่าน Discord">
+            <Icon name="discord" width="16" height="16" />
+            <span>ติดต่อ Discord</span>
+          </a>
+        </div>
+
+        <!-- 4 Highlights Bar (No AI Slop, High Precision) -->
+        <div class="studio-highlights-grid">
+          {studio.features.map((feat) => (
+            <div class="highlight-box">
+              <div class="highlight-icon-wrap" aria-hidden="true">
+                <Icon name={feat.icon} width="18" height="18" />
+              </div>
+              <h2 class="highlight-title">{feat.title}</h2>
+              <p class="highlight-desc">{feat.desc}</p>
+            </div>
+          ))}
+        </div>
+      </header>
+
+      <!-- ============================================================
+           SECTION 2: Interactive Package & Pricing Matrix
+           ============================================================ -->
+      <section class="pricing-matrix-section" id="pricing">
+        <div class="section-head-center">
+          <span class="section-tag">PRICING & SPECIFICATIONS</span>
+          <h2 class="section-title">แพ็กเกจโมเดล VTuber และเรทราคา</h2>
+          <p class="section-desc">เลือกชมรายละเอียดแพ็กเกจ เรทราคาวาด/ริก และส่วนเสริม Accessory ได้ตามระดับความต้องการ</p>
+        </div>
+
+        <!-- Segmented Tab Nav -->
+        <div class="package-tab-nav" role="tablist" aria-label="เลือกแพ็กเกจโมเดล">
+          {packages.map((pkg, idx) => (
+            <button
+              type="button"
+              role="tab"
+              id={`tab-btn-${pkg.id}`}
+              class={`package-tab-btn ${idx === 0 ? 'active' : ''}`}
+              aria-selected={idx === 0 ? 'true' : 'false'}
+              aria-controls={`tab-panel-${pkg.id}`}
+              data-package={pkg.id}
+            >
+              <span>{pkg.nameEn}</span>
+              <span style="opacity: 0.7; font-size: 0.75rem;">({pkg.nameTh.split(':')[1]?.trim() || pkg.nameTh})</span>
+            </button>
+          ))}
+        </div>
+
+        <!-- Tab Panels for Each Package -->
+        {packages.map((pkg, idx) => (
+          <div
+            id={`tab-panel-${pkg.id}`}
+            class={`package-tab-panel ${idx === 0 ? 'active' : ''}`}
+            role="tabpanel"
+            aria-labelledby={`tab-btn-${pkg.id}`}
+          >
+            <!-- Package Scope Banner -->
+            <div class="package-scope-card">
+              <div class="scope-main">
+                <h3>{pkg.nameEn} — {pkg.nameTh}</h3>
+                <p>{pkg.tagline}</p>
+                
+                <div class="scope-checklist">
+                  <div class="scope-check-item">
+                    <Icon name="check" width="16" height="16" />
+                    <span><strong>ตัวละครหญิง:</strong> {pkg.scopeWomen}</span>
+                  </div>
+                  <div class="scope-check-item">
+                    <Icon name="check" width="16" height="16" />
+                    <span><strong>ตัวละครชาย:</strong> {pkg.scopeMen}</span>
+                  </div>
+                  <div class="scope-check-item">
+                    <Icon name="alert-circle" width="16" height="16" />
+                    <span style="color: var(--text-secondary);">{pkg.scopeNote}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scope-bonuses">
+                <div class="bonus-pill">
+                  <Icon name="avatar-star" width="18" height="18" />
+                  <span>{pkg.freeEmotes}</span>
+                </div>
+                <div class="discount-tag">
+                  <Icon name="check" width="16" height="16" />
+                  <span>โปรโมชัน Combo Set ลดสูงสุด {pkg.comboDiscount}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Tier Cards Grid -->
+            <div class="tiers-grid">
+              {pkg.tiers.map((t, tIdx) => (
+                <div class={`tier-card ${tIdx === 1 ? 'featured' : ''}`}>
+                  <div class="tier-card-header">
+                    <span class="tier-badge">{t.tier}</span>
+                    <span class="tier-label">{t.tierLabel}</span>
+                  </div>
+
+                  <div class="tier-prices-stack">
+                    <div class="price-line">
+                      <span>เฉพาะวาด (Draw):</span>
+                      <span class="price-val">฿{t.drawPrice.toLocaleString()}</span>
+                    </div>
+                    <div class="price-line">
+                      <span>เฉพาะริก (Rig):</span>
+                      <span class="price-val">฿{t.rigPrice.toLocaleString()}</span>
+                    </div>
+                    <div class="price-line combo">
+                      <span>โปร วาด & ริก Combo Set:</span>
+                      <span class="price-val highlight">฿{t.comboPrice.toLocaleString()}</span>
+                    </div>
+                  </div>
+
+                  <ul class="tier-feature-list">
+                    {t.features.map((feat) => (
+                      <li class="tier-feature-item">
+                        <Icon name="check" width="14" height="14" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a 
+                    href="#discord-contact" 
+                    class={`btn-anchor ${tIdx === 1 ? 'primary' : 'secondary'}`} 
+                    style="width: 100%; justify-content: center; text-align: center;"
+                  >
+                    <span>สั่งทำ {pkg.nameEn} ({t.tier})</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <!-- Accessories Add-On Table -->
+            <div class="accessories-box">
+              <div class="acc-header">
+                <h4 class="acc-title">Accessory (ส่วนเสริมเพิ่มเติมสำหรับโมเดล) — {pkg.accessories.tierName}</h4>
+                <span class="discount-tag">โปรโมชัน Combo Set ลด {pkg.accessories.discount}</span>
+              </div>
+
+              <div class="acc-table-wrapper">
+                <table class="acc-table">
+                  <thead>
+                    <tr>
+                      <th>รายการส่วนเสริม</th>
+                      <th>เฉพาะวาด (Draw)</th>
+                      <th>เฉพาะริก (Rig)</th>
+                      <th>โปร วาด & ริก (Combo)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pkg.accessories.items.map((acc) => (
+                      <tr>
+                        <td><strong>{acc.category}</strong></td>
+                        <td class="price-col">
+                          {typeof acc.drawPrice === 'number' ? `฿${acc.drawPrice.toLocaleString()}` : acc.drawPrice}
+                        </td>
+                        <td class="price-col">
+                          {typeof acc.rigPrice === 'number' ? `฿${acc.rigPrice.toLocaleString()}` : acc.rigPrice}
+                        </td>
+                        <td class="combo-col">
+                          {typeof acc.comboPrice === 'number' ? `฿${acc.comboPrice.toLocaleString()}` : acc.comboPrice}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        ))}
+      </section>
+
+      <!-- ============================================================
+           SECTION 3: Turnaround & Delivery Timeline
+           ============================================================ -->
+      <section class="turnaround-section" id="turnaround">
+        <div class="section-head-center">
+          <span class="section-tag">WORKFLOW & TIMELINE</span>
+          <h2 class="section-title">{turnaround.title}</h2>
+          <p class="section-desc">{turnaround.subtitle}</p>
+        </div>
+
+        <div class="turnaround-grid">
+          {turnaround.items.map((item) => (
+            <div class="turnaround-card">
+              <h3 class="service-name">{item.service}</h3>
+              <div class="duration">{item.duration}</div>
+              <p class="note">{item.note}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="turnaround-meta-bar">
+          <div class="rush-note-badge">
+            <Icon name="alert-circle" width="18" height="18" />
+            <span>{turnaround.rushOrder}</span>
+          </div>
+
+          <div class="delivery-pills">
+            <span>ส่งมอบไฟล์ผ่าน:</span>
+            {turnaround.deliveryMethods.map((dm) => (
+              <span class="delivery-pill">{dm}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 4: Payment Terms & Installment Plans (7 Months)
+           ============================================================ -->
+      <section class="payment-section" id="payment">
+        <div class="section-head-center">
+          <span class="section-tag">PAYMENT & INSTALLMENTS</span>
+          <h2 class="section-title">{payment.title}</h2>
+          <p class="section-desc">{payment.subtitle}</p>
+        </div>
+
+        <div class="payment-grid">
+          <!-- Standard Payment & Deposit -->
+          <div class="payment-card">
+            <div class="payment-card-head">
+              <h3 class="payment-card-title">{payment.fullPayment.title}</h3>
+            </div>
+            <ul class="payment-points">
+              {payment.fullPayment.points.map((pt) => (
+                <li class="payment-point-item">
+                  <Icon name="check" width="16" height="16" />
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Installment Plans (Up to 7 Months) -->
+          <div class="payment-card">
+            <div class="payment-card-head">
+              <h3 class="payment-card-title">{payment.installment.title}</h3>
+              <span class="discount-tag">{payment.installment.badge}</span>
+            </div>
+            <p style="font-size: 0.84375rem; color: var(--text-secondary); margin: 0 0 12px;">
+              {payment.installment.desc}
+            </p>
+
+            <div class="installment-plans-row">
+              {payment.installment.plans.map((plan) => (
+                <div class="inst-plan-box">
+                  <h4 class="inst-period">{plan.period}</h4>
+                  <div class="inst-fee">{plan.fee}</div>
+                  <div class="inst-desc">{plan.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin: 0;">
+              <strong>หมายเหตุ:</strong> {payment.installment.note}
+            </p>
+          </div>
+        </div>
+
+        <!-- Trust Guarantee Banner -->
+        <div class="trust-banner">
+          <Icon name="check" width="20" height="20" />
+          <span>{payment.trustNote}</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================
+           SECTION 6: Showcase Slots (Designed & Ready for Portfolio)
+           ============================================================ -->
+      <section class="showcase-section" id="showcase">
+        <div class="section-head-center">
+          <span class="section-tag">PORTFOLIO DEMONSTRATION</span>
+          <h2 class="section-title">ตัวอย่างผลงานโมเดล Live2D</h2>
+          <p class="section-desc">โมเดลคุณภาพสูง ออกแบบและริกด้วยมาตรฐานความละเอียดระดับสตูดิโอ</p>
+        </div>
+
+        <div class="showcase-grid">
+          {showcaseSlots.map((slot) => (
+            <div class="showcase-card">
+              <div class="showcase-media">
+                {slot.image ? (
+                  <img src={slot.image} alt={slot.title} loading="lazy" decoding="async" />
+                ) : (
+                  <div class="showcase-placeholder">
+                    <Icon name="play" width="32" height="32" />
+                    <span style="font-size: 0.8125rem;">Showcase Clip / Portfolio Asset</span>
+                  </div>
+                )}
+              </div>
+              <div class="showcase-body">
+                <span class="showcase-badge">{slot.category}</span>
+                <h3 class="showcase-title">{slot.title}</h3>
+                <span class="showcase-artist">{slot.artist}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 7: Discord Callout & Contact Action
+           ============================================================ -->
+      <section class="discord-callout-banner" id="discord-contact">
+        <h3>พร้อมสร้างสรรค์โมเดล VTuber ของคุณแล้วหรือยัง?</h3>
+        <p>
+          ปรึกษาแนวคิด ประเมินคิวงาน หรือส่งรายละเอียดบรีฟตัวละครกับทีมงาน Kenelix Studio ได้โดยตรงผ่าน Discord
+        </p>
+        <a 
+          href="https://discord.gg" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="discord-cta-big-btn"
+          aria-label="ติดต่อสั่งทำโมเดลผ่าน Discord"
+        >
+          <Icon name="discord" width="22" height="22" />
+          <span>ติดต่อสอบถาม / สั่งงานผ่าน Discord</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- Client Script for Interactive Package Tab Switching -->
+<script is:inline>
+  function initCommissionTabs() {
+    const tabBtns = document.querySelectorAll('.package-tab-btn');
+    const tabPanels = document.querySelectorAll('.package-tab-panel');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetPackage = btn.getAttribute('data-package');
+        if (!targetPackage) return;
+
+        tabBtns.forEach((b) => {
+          const isTarget = b === btn;
+          b.classList.toggle('active', isTarget);
+          b.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        });
+
+        tabPanels.forEach((panel) => {
+          const isPanel = panel.id === `tab-panel-${targetPackage}`;
+          panel.classList.toggle('active', isPanel);
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCommissionTabs);
+  document.addEventListener('astro:page-load', initCommissionTabs);
+  initCommissionTabs();
+</script>

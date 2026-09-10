@@ -8,10 +8,10 @@ interface Props {
 const {
   title = "WINEST - ค่าย VTuber และบริการงานวาดครบวงจร",
   description = "WINEST ค่าย VTuber และสตูดิโอสร้างสรรค์งานอาร์ตระดับพรีเมียม รับออกแบบโมเดล Live2D, Character Sheet, สติกเกอร์ และฉากสตรีมมิ่ง",
-  image = "/logo/winest_logo.png"
+  image = "/logo/winest_logo.png",
 } = Astro.props;
 
-import HamsterScrollSlider from '../components/common/HamsterScrollSlider.astro';
+import HamsterScrollSlider from "../components/common/HamsterScrollSlider.astro";
 
 const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
 ---
@@ -23,7 +23,10 @@ const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="WINEST, ค่าย VTuber, วาดรูป VTuber, Live2D, รับวาด Character Sheet, สติกเกอร์ LINE, ฉากสตรีม, VTuber Agency Thailand, รับวาดรูปคอมมิชชัน" />
+    <meta
+      name="keywords"
+      content="WINEST, ค่าย VTuber, วาดรูป VTuber, Live2D, รับวาด Character Sheet, สติกเกอร์ LINE, ฉากสตรีม, VTuber Agency Thailand, รับวาดรูปคอมมิชชัน"
+    />
     <meta name="author" content="WINEST Studio" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
@@ -50,7 +53,10 @@ const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
     <!-- Google Fonts Preconnect & Parallel Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
+    />
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json" is:inline>
@@ -82,9 +88,9 @@ const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
 
     <!-- Theme Initialization Script (Prevent FOUT) -->
     <script is:inline>
-      (function() {
-        const savedTheme = localStorage.getItem('winest-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+      (function () {
+        const savedTheme = localStorage.getItem("winest-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
       })();
     </script>
   </head>
@@ -104,19 +110,23 @@ const canonicalURL = Astro.url ? Astro.url.href : "https://winest.studio/";
 
     <!-- Theme Toggle Handler -->
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.getElementById('theme-toggle-btn');
-        const mobileToggleBtn = document.getElementById('mobile-theme-toggle-btn');
-        
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("theme-toggle-btn");
+        const mobileToggleBtn = document.getElementById(
+          "mobile-theme-toggle-btn",
+        );
+
         function switchTheme() {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-          document.documentElement.setAttribute('data-theme', nextTheme);
-          localStorage.setItem('winest-theme', nextTheme);
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+          const nextTheme = currentTheme === "light" ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", nextTheme);
+          localStorage.setItem("winest-theme", nextTheme);
         }
 
-        if (toggleBtn) toggleBtn.addEventListener('click', switchTheme);
-        if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', switchTheme);
+        if (toggleBtn) toggleBtn.addEventListener("click", switchTheme);
+        if (mobileToggleBtn)
+          mobileToggleBtn.addEventListener("click", switchTheme);
       });
     </script>
 
