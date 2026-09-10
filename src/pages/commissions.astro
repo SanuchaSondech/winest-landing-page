@@ -1,5 +1,5 @@
 ---
-// src/pages/commissions.astro - World-Class Two-Part Architecture
+// src/pages/commissions.astro - World-Class Three-Pillar Creative Studio Showcase
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -8,12 +8,21 @@ import commissionsData from '../data/commissions.json';
 import '../styles/global.css';
 import '../styles/commissions.css';
 
-const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases } = commissionsData;
+const { 
+  atelier, 
+  recommendedPackages, 
+  tierPricing, 
+  accessories, 
+  illustrations, 
+  audioMixing, 
+  terms, 
+  showcases 
+} = commissionsData;
 ---
 
 <Layout 
-  title="WINEST x KENELIX STUDIO - Live2D Model Commissions"
-  description="บริการออกแบบ วาดชิ้นส่วนแยกเลเยอร์ และริกโมเดล Live2D ครบวงจรสำหรับ VTuber และครีเอเตอร์ เปรียบเทียบสเปก 3 แพ็กเกจ เรทราคา และเงื่อนไขการผ่อนชำระ"
+  title="WINEST x KENELIX STUDIO - Creative Studio & Commissions"
+  description="บริการสร้างสรรค์งานโปรดักชันครบวงจร: โมเดล Live2D, วาดภาพประกอบและฉากสตรีมมิ่ง 4K, และบริการมิกซ์เพลงคุณภาพสูง"
 >
   <Navbar />
 
@@ -29,31 +38,36 @@ const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases
         <p class="masthead-lead">{atelier.lead}</p>
 
         <div class="masthead-action-row">
-          <a href="#recommended" class="editorial-text-link">
-            <span>แพ็กเกจแนะนำ</span>
+          <a href="#models-section" class="editorial-text-link">
+            <span>1. โมเดล Live2D</span>
             <span aria-hidden="true">↓</span>
           </a>
-          <a href="#pricing-matrix" class="editorial-text-link">
-            <span>ตารางราคาทั้งหมด</span>
+          <a href="#illustration-section" class="editorial-text-link">
+            <span>2. งานวาด & ฉากหลัง</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#audio-section" class="editorial-text-link">
+            <span>3. งานเสียง & มิกซ์เพลง</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#studio-terms" class="editorial-text-link">
-            <span>เงื่อนไข & การผ่อนชำระ</span>
+            <span>เงื่อนไข & การผ่อน</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="editorial-text-link primary">
-            <span>ติดต่อสั่งทำผ่าน Discord</span>
+            <span>ติดต่อ Discord</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>
       </header>
 
       <!-- ============================================================
-           PART 1: 3 Recommended Packages (Ultra-Clean, High-Readability Cards)
+           PART 1: โมเดล Live2D (Live2D Model Commissions)
            ============================================================ -->
-      <section class="recommended-section" id="recommended">
-        <span class="section-label">Recommended Packages</span>
-        <h2 class="section-heading">แพ็กเกจแนะนำ</h2>
+      <section class="recommended-section" id="models-section">
+        <span class="section-label">Pillar 01 · Live2D Models</span>
+        <h2 class="section-heading has-desc">โมเดล Live2D (แพ็กเกจแนะนำ)</h2>
+        <p class="section-desc">แพ็กเกจคอมโบงานวาดแยกชิ้นส่วนและริกเกลี่ยการเคลื่อนไหวครบวงจร พร้อมไฟล์ติดตั้งใช้งานได้ทันที</p>
 
         <div class="recommended-cards-grid">
           {recommendedPackages.map((pkg) => (
@@ -96,12 +110,10 @@ const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases
         </div>
       </section>
 
-      <!-- ============================================================
-           PART 2: Complete Price Comparison Matrix (Clean, Scannable Tables)
-           ============================================================ -->
+      <!-- Complete Price Comparison Matrix (Tiers & Accessories) -->
       <section class="pricing-matrix-section" id="pricing-matrix">
         <span class="section-label">Full Price Catalog</span>
-        <h2 class="section-heading">ตารางเปรียบเทียบราคาทั้งหมด</h2>
+        <h2 class="section-heading">ตารางเปรียบเทียบราคาโมเดลทั้งหมด</h2>
 
         <!-- Tier 1-3 Table -->
         <h3 class="table-subheading">เรทราคาวาดและริกโมเดลแยกตามระดับ (Tier 1 – 3)</h3>
@@ -165,7 +177,101 @@ const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases
       </section>
 
       <!-- ============================================================
-           PART 3: Terms, Timeline & Installment (Editorial 3-Col Split)
+           PART 2: บริการงานวาด & ฉากหลัง (Illustration & Backgrounds)
+           ============================================================ -->
+      <section class="recommended-section" id="illustration-section">
+        <span class="section-label">Pillar 02 · Creative Illustration</span>
+        <h2 class="section-heading has-desc">{illustrations.title}</h2>
+        <p class="section-desc">{illustrations.lead}</p>
+
+        <div class="recommended-cards-grid">
+          {illustrations.items.map((item) => (
+            <article class="package-card">
+              <div class="pkg-header">
+                <div class="pkg-identity">
+                  <h3 class="pkg-title">{item.title}</h3>
+                  <span class="pkg-tag">{item.badge}</span>
+                </div>
+
+                <div class="pkg-price-row">
+                  <span class="price-num" style="font-size: 1.25rem;">{item.rate}</span>
+                  <span class="price-lead" style="font-size: 0.75rem;">({item.rateSub})</span>
+                </div>
+              </div>
+
+              <!-- 3 Clean Bullets -->
+              <ul class="pkg-bullets">
+                {item.bullets.map((bullet) => (
+                  <li class="pkg-bullet-item">
+                    <Icon name="check" width="13" height="13" class="pkg-bullet-svg" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Action Button -->
+              <a 
+                href={atelier.discordUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="pkg-cta"
+              >
+                <span>ส่งบรีฟงานวาด ↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 3: บริการงานเสียง & มิกซ์เพลง (Audio Mixing & Sound)
+           ============================================================ -->
+      <section class="recommended-section" id="audio-section">
+        <span class="section-label">Pillar 03 · Audio & Sound Studio</span>
+        <h2 class="section-heading has-desc">{audioMixing.title}</h2>
+        <p class="section-desc">{audioMixing.lead}</p>
+
+        <div class="recommended-cards-grid">
+          {audioMixing.items.map((item) => (
+            <article class="package-card">
+              <div class="pkg-header">
+                <div class="pkg-identity">
+                  <h3 class="pkg-title">{item.title}</h3>
+                  <span class="pkg-tag">{item.badge}</span>
+                </div>
+
+                <div class="pkg-price-row">
+                  <span class="price-num" style="font-size: 1.25rem;">{item.rate}</span>
+                  <span class="price-lead" style="font-size: 0.75rem;">({item.rateSub})</span>
+                </div>
+              </div>
+
+              <!-- 3 Clean Bullets -->
+              <ul class="pkg-bullets">
+                {item.bullets.map((bullet) => (
+                  <li class="pkg-bullet-item">
+                    <Icon name="check" width="13" height="13" class="pkg-bullet-svg" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Action Button -->
+              <a 
+                href={atelier.discordUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="pkg-cta"
+              >
+                <span>ส่งบรีฟงานเสียง ↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 4: Terms, Timeline & Installment (Editorial 3-Col Split)
            ============================================================ -->
       <section class="terms-split-section" id="studio-terms">
         <span class="section-label">Commercial Guidelines</span>
@@ -189,7 +295,7 @@ const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases
       </section>
 
       <!-- ============================================================
-           PART 4: Official Talents Showcase
+           PART 5: Official Talents Showcase
            ============================================================ -->
       <section class="showcase-duet-section">
         <span class="section-label">Selected Works</span>
@@ -214,12 +320,12 @@ const { atelier, recommendedPackages, tierPricing, accessories, terms, showcases
       </section>
 
       <!-- ============================================================
-           PART 5: Minimal Closing Action
+           PART 6: Minimal Closing Action
            ============================================================ -->
       <section class="closing-action-section">
-        <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันโมเดลของคุณ?</h2>
+        <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันของคุณ?</h2>
         <p class="closing-desc">
-          พูดคุยสอบถาม ประเมินคิวงาน หรือส่งไฟล์บรีฟตัวละครกับทีมงาน Kenelix Studio โดยตรง
+          ปรึกษาประเมินคิวงาน หรือส่งไฟล์บรีฟสำหรับงานโมเดล งานวาด และมิกซ์เพลงกับทีมงาน Kenelix Studio โดยตรง
         </p>
         <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="closing-btn">
           <span>ติดต่อผ่าน Discord (Kenelix Studio)</span>
