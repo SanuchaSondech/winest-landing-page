@@ -1,263 +1,141 @@
 {
-  "studio": {
-    "brandName": "KENELIX STUDIO",
-    "partnerBadge": "WINEST CREATIVE PARTNER",
-    "subtitle": "รับวาดและทำโมเดล VTuber คุณภาพสูง",
-    "title": "VTUBER MODEL COMMISSION",
-    "categories": ["DRAW", "RIG", "ILLUSTRATION"],
-    "desc": "สตูดิโอรับออกแบบ วาดชิ้นส่วน และริกโมเดล Live2D สำหรับ VTuber และสตรีมเมอร์ พร้อมส่งมอบไฟล์ระดับมืออาชีพ รองรับ VTube Studio และโปรแกรมสตรีมมิ่งชั้นนำ",
-    "discordCta": {
-      "label": "ติดต่อสั่งงาน / สอบถามผ่าน Discord",
-      "hint": "DISCORD CONTACT NOW!"
-    },
-    "features": [
-      {
-        "id": "quality",
-        "title": "งานคุณภาพสูง",
-        "desc": "ใส่ใจในทุกดีเทล ลายเส้นคมชัด แยกเลเยอร์พร้อมริก",
-        "icon": "avatar-star"
-      },
-      {
-        "id": "ontime",
-        "title": "ส่งงานตรงเวลา",
-        "desc": "วางแผนคิวชัดเจน การันตีไม่เทงาน 100%",
-        "icon": "check"
-      },
-      {
-        "id": "friendly",
-        "title": "สื่อสารง่าย ตอบไว",
-        "desc": "อัปเดตสเตจงานสม่ำเสมอ คุยเป็นกันเอง",
-        "icon": "avatar-music"
-      },
-      {
-        "id": "revisions",
-        "title": "แก้ไขฟรีแต่ละส่วน 3 รอบ",
-        "desc": "ปรับแต่งได้ตามโควตา (รอบเสริม +10 บาท/จุด)",
-        "icon": "refresh"
-      }
-    ]
+  "atelier": {
+    "collaboration": "KENELIX STUDIO × WINEST",
+    "title": "Live2D Model Commissions",
+    "lead": "บริการออกแบบ วาดแยกชิ้นส่วน และริกโมเดล Live2D ครบวงจรสำหรับ VTuber และครีเอเตอร์ รองรับ VTube Studio พร้อมส่งมอบไฟล์ระดับโปรดักชัน",
+    "discordUrl": "https://discord.gg"
   },
-  "packages": [
+  "models": [
     {
       "id": "half-body",
-      "nameEn": "Half Body",
-      "nameTh": "วาด&ริก : ครึ่งตัว",
-      "tagline": "เหมาะสำหรับผู้เริ่มต้นใช้งาน VTuber ในงบประมาณที่เข้าถึงได้ง่าย คล่องตัว",
-      "scopeWomen": "สิ้นสุดบริเวณกระโปรงหรือช่วงสะโพก",
-      "scopeMen": "สิ้นสุดบริเวณกางเกงขาสั้น หรือช่วงต้นขา",
-      "scopeNote": "แพ็กเกจนี้จะไม่มีการวาดช่วงขาตั้งแต่เหนือเข่าลงไป",
-      "freeEmotes": "ฟรี! อิโมท / สีหน้า 3 แบบ",
-      "comboDiscount": "-25%",
+      "name": "Half Body",
+      "subtitle": "ครึ่งตัว",
+      "summary": "เหมาะสำหรับผู้เริ่มต้นใช้งาน VTuber เน้นความคล่องตัวในงบประมาณที่เข้าถึงได้ง่าย",
+      "startingPrice": 3900,
+      "discount": "Combo -25%",
+      "specs": {
+        "scope": "สิ้นสุดบริเวณสะโพก (หญิง) หรือต้นขา (ชาย)",
+        "interiorBody": "ไม่มีโครงสร้างร่างกายภายใน",
+        "outfitSystem": "ชุดหลักตามแบบ ไม่รองรับการถอดชุด",
+        "included": "ฟรี สีหน้า / อิโมท 3 แบบ"
+      },
       "tiers": [
-        {
-          "tier": "Tier 1",
-          "tierLabel": "Standard Detail",
-          "drawPrice": 3100,
-          "rigPrice": 2100,
-          "comboPrice": 3900,
-          "features": ["โครงสร้างโมเดลมาตรฐาน", "มุมขยับพื้นฐานคล่องตัว", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 2",
-          "tierLabel": "Enhanced Dynamic",
-          "drawPrice": 4100,
-          "rigPrice": 3100,
-          "comboPrice": 5400,
-          "features": ["ฟิสิกส์เส้นผมและเสื้อผ้านุ่มนวลขึ้น", "การแสดงอารมณ์ละเอียด", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 3",
-          "tierLabel": "Master Precision",
-          "drawPrice": 5100,
-          "rigPrice": 4100,
-          "comboPrice": 6900,
-          "features": ["ฟิสิกส์มิติความลึกขั้นสูง", "มุมองศา XYZ กว้างเป็นธรรมชาติ", "ฟรี 3 สีหน้าพื้นฐาน"]
-        }
+        { "name": "Tier 1", "draw": 3100, "rig": 2100, "combo": 3900 },
+        { "name": "Tier 2", "draw": 4100, "rig": 3100, "combo": 5400 },
+        { "name": "Tier 3", "draw": 5100, "rig": 4100, "combo": 6900 }
       ],
-      "accessories": {
-        "tierName": "Tier 1 Accessory",
+      "accessory": {
+        "label": "Tier 1",
         "discount": "-20%",
         "items": [
-          { "category": "ทรงผม / ศีรษะ", "drawPrice": 65, "rigPrice": 60, "comboPrice": 125 },
-          { "category": "เสื้อผ้า / เครื่องแต่งกาย", "drawPrice": 450, "rigPrice": 350, "comboPrice": 640 },
-          { "category": "ตัวละครจิบิ (Chibi)", "drawPrice": 1200, "rigPrice": 1500, "comboPrice": 2200 },
-          { "category": "พร็อพ / เครื่องประดับอื่นๆ", "drawPrice": "ตามตกลง", "rigPrice": "ตามตกลง", "comboPrice": "แจ้งร้านได้เลยครับ" }
+          { "type": "ทรงผม / ศีรษะ", "draw": 65, "rig": 60, "combo": 125 },
+          { "type": "เสื้อผ้า / เครื่องแต่งกาย", "draw": 450, "rig": 350, "combo": 640 },
+          { "type": "ตัวละครจิบิ (Chibi)", "draw": 1200, "rig": 1500, "combo": 2200 }
         ]
       }
     },
     {
       "id": "simple-full",
-      "nameEn": "Simple Full",
-      "nameTh": "เรียบง่าย เต็มตัว",
-      "tagline": "โมเดลเต็มตัวพร้อมการเคลื่อนไหวตามปกติ เหมาะสำหรับผู้ที่ต้องการโมเดลเต็มตัวโดยไม่จำเป็นต้องถอดเสื้อผ้า",
-      "scopeWomen": "เต็มตัวครบสัดส่วน สามารถเปลี่ยนชุดและเพิ่มชุดเสริมได้",
-      "scopeMen": "เต็มตัวครบสัดส่วน สามารถเปลี่ยนชุดและเพิ่มชุดเสริมได้",
-      "scopeNote": "ไม่มีร่างกายใต้เสื้อผ้า และไม่สามารถถอดเสื้อหรือแสดงสัดส่วนร่างกายภายในได้",
-      "freeEmotes": "ฟรี! อิโมท / สีหน้า 3 แบบ",
-      "comboDiscount": "-20%",
+      "name": "Simple Full",
+      "subtitle": "เรียบง่าย เต็มตัว",
+      "summary": "โมเดลเต็มตัวพร้อมการเคลื่อนไหวครบสัดส่วน เหมาะสำหรับผู้ที่ไม่ต้องการระบบถอดเสื้อผ้า",
+      "startingPrice": 8000,
+      "discount": "Combo -20%",
+      "specs": {
+        "scope": "เต็มตัวครบสัดส่วนศีรษะจรดปลายเท้า",
+        "interiorBody": "ไม่มีร่างกายใต้เสื้อผ้า",
+        "outfitSystem": "สามารถเปลี่ยนชุดและเพิ่มชุดเสริมได้",
+        "included": "ฟรี สีหน้า / อิโมท 3 แบบ"
+      },
       "tiers": [
-        {
-          "tier": "Tier 1",
-          "tierLabel": "Standard Full",
-          "drawPrice": 5500,
-          "rigPrice": 4500,
-          "comboPrice": 8000,
-          "features": ["โมเดลเต็มตัวสเกลมาตรฐาน", "การเคลื่อนไหวครบสัดส่วน", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 2",
-          "tierLabel": "Fluid Motion",
-          "drawPrice": 6500,
-          "rigPrice": 5250,
-          "comboPrice": 9400,
-          "features": ["ฟิสิกส์ชายกระโปรง/กางเกงและเส้นผม", "การเอียงตัวและเคลื่อนไหวสมูธ", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 3",
-          "tierLabel": "Ultimate Stage",
-          "drawPrice": 7800,
-          "rigPrice": 6700,
-          "comboPrice": 11600,
-          "features": ["มิติฟิสิกส์เต็มตัวขั้นสูงสุด", "องศาการเคลื่อนไหวรอบทิศทาง", "ฟรี 3 สีหน้าพื้นฐาน"]
-        }
+        { "name": "Tier 1", "draw": 5500, "rig": 4500, "combo": 8000 },
+        { "name": "Tier 2", "draw": 6500, "rig": 5250, "combo": 9400 },
+        { "name": "Tier 3", "draw": 7800, "rig": 6700, "combo": 11600 }
       ],
-      "accessories": {
-        "tierName": "Tier 2 Accessory",
+      "accessory": {
+        "label": "Tier 2",
         "discount": "-25%",
         "items": [
-          { "category": "ทรงผม / ศีรษะ", "drawPrice": 140, "rigPrice": 180, "comboPrice": 240 },
-          { "category": "เสื้อผ้า / เครื่องแต่งกาย", "drawPrice": 750, "rigPrice": 730, "comboPrice": 1100 },
-          { "category": "ตัวละครจิบิ (Chibi)", "drawPrice": 2180, "rigPrice": 1700, "comboPrice": 2910 },
-          { "category": "พร็อพ / เครื่องประดับอื่นๆ", "drawPrice": "ตามตกลง", "rigPrice": "ตามตกลง", "comboPrice": "แจ้งร้านได้เลยครับ" }
+          { "type": "ทรงผม / ศีรษะ", "draw": 140, "rig": 180, "combo": 240 },
+          { "type": "เสื้อผ้า / เครื่องแต่งกาย", "draw": 750, "rig": 730, "combo": 1100 },
+          { "type": "ตัวละครจิบิ (Chibi)", "draw": 2180, "rig": 1700, "combo": 2910 }
         ]
       }
     },
     {
       "id": "full-body",
-      "nameEn": "Full Body",
-      "nameTh": "วาด&ริก : เต็มตัวสมบูรณ์",
-      "tagline": "มีร่างกายตัวละครครบถ้วน ถอดชุดได้ มองเห็นสัดส่วนภายในตามปกติ รองรับการต่อยอดชุดใหม่อย่างไร้ขีดจำกัด",
-      "scopeWomen": "มีบอดี้ครบถ้วนสมบูรณ์ สามารถถอดเสื้อผ้าและใส่ชุดเสริมได้อิสระ",
-      "scopeMen": "มีบอดี้ครบถ้วนสมบูรณ์ สามารถถอดเสื้อผ้าและใส่ชุดเสริมได้อิสระ",
-      "scopeNote": "ความยืดหยุ่นสูงสุด เหมาะสำหรับครีเอเตอร์ที่ต้องการโมเดลระยะยาวสำหรับเปลี่ยนคอสตูม",
-      "freeEmotes": "ฟรี! อิโมท / สีหน้า 3 แบบ",
-      "comboDiscount": "-30%",
+      "name": "Full Body",
+      "subtitle": "เต็มตัวสมบูรณ์",
+      "summary": "โมเดลเต็มตัวแบบสมบูรณ์ มีโครงสร้างร่างกายครบถ้วน ถอดชุดได้ รองรับการต่อยอดชุดใหม่อย่างไร้ขีดจำกัด",
+      "startingPrice": 10500,
+      "discount": "Combo -30%",
+      "specs": {
+        "scope": "เต็มตัวครบสัดส่วน กายวิภาคสมบูรณ์",
+        "interiorBody": "มีโครงสร้างร่างกายตัวละครครบถ้วน",
+        "outfitSystem": "เสื้อผ้าถอดได้อิสระ รองรับชุดเสริมในอนาคต",
+        "included": "ฟรี สีหน้า / อิโมท 3 แบบ"
+      },
       "tiers": [
-        {
-          "tier": "Tier 1",
-          "tierLabel": "Complete Body",
-          "drawPrice": 8500,
-          "rigPrice": 7000,
-          "comboPrice": 10500,
-          "features": ["บอดี้ครบถ้วนถอดชุดได้", "รองรับพิกัดขยับสมบูรณ์", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 2",
-          "tierLabel": "Deluxe Dynamics",
-          "drawPrice": 9200,
-          "rigPrice": 8300,
-          "comboPrice": 12250,
-          "features": ["ฟิสิกส์เนื้อผ้าและสัดส่วนสมจริง", "สวิงนุ่มนวลหลายทิศทาง", "ฟรี 3 สีหน้าพื้นฐาน"]
-        },
-        {
-          "tier": "Tier 3",
-          "tierLabel": "Masterpiece Premier",
-          "drawPrice": 11500,
-          "rigPrice": 10500,
-          "comboPrice": 15400,
-          "features": ["งานประณีตระดับแฟล็กชิป", "ฟิสิกส์ตาสะท้อนแสงและการเคลื่อนไหวระดับสูงสุด", "ฟรี 3 สีหน้าพื้นฐาน"]
-        }
+        { "name": "Tier 1", "draw": 8500, "rig": 7000, "combo": 10500 },
+        { "name": "Tier 2", "draw": 9200, "rig": 8300, "combo": 12250 },
+        { "name": "Tier 3", "draw": 11500, "rig": 10500, "combo": 15400 }
       ],
-      "accessories": {
-        "tierName": "Tier 3 Accessory",
+      "accessory": {
+        "label": "Tier 3",
         "discount": "-30%",
         "items": [
-          { "category": "ทรงผม / ศีรษะ", "drawPrice": 260, "rigPrice": 290, "comboPrice": 385 },
-          { "category": "เสื้อผ้า / เครื่องแต่งกาย", "drawPrice": 1150, "rigPrice": 1150, "comboPrice": 1610 },
-          { "category": "ตัวละครจิบิ (Chibi)", "drawPrice": 2900, "rigPrice": 2400, "comboPrice": 3710 },
-          { "category": "พร็อพ / เครื่องประดับอื่นๆ", "drawPrice": "ตามตกลง", "rigPrice": "ตามตกลง", "comboPrice": "แจ้งร้านได้เลยครับ" }
+          { "type": "ทรงผม / ศีรษะ", "draw": 260, "rig": 290, "combo": 385 },
+          { "type": "เสื้อผ้า / เครื่องแต่งกาย", "draw": 1150, "rig": 1150, "combo": 1610 },
+          { "type": "ตัวละครจิบิ (Chibi)", "draw": 2900, "rig": 2400, "combo": 3710 }
         ]
       }
     }
   ],
-  "turnaround": {
-    "title": "ระยะเวลาการทำงาน",
-    "subtitle": "กำหนดการส่งมอบงานประเมินตามความละเอียดและความซับซ้อนของแต่ละโปรเจกต์",
-    "items": [
-      {
-        "service": "จ้างเฉพาะวาด (Draw)",
-        "duration": "3 – 6 สัปดาห์",
-        "note": "ไม่รวมระยะเวลาการตรวจและแก้ไขงาน"
-      },
-      {
-        "service": "จ้างเฉพาะริก (Rig)",
-        "duration": "2 – 6 สัปดาห์",
-        "note": "ไม่รวมระยะเวลาการตรวจและแก้ไขงาน"
-      },
-      {
-        "service": "จ้างทั้งวาดและริก (Combo)",
-        "duration": "5 – 8 สัปดาห์",
-        "note": "ไม่รวมระยะเวลาการตรวจและแก้ไขงาน (อาจเสร็จก่อนกำหนด)"
-      }
-    ],
-    "rushOrder": "กรณีงานเร่งรีบใช้งาน สามารถแจ้งทางร้านเพื่อประเมินคิวและคิดค่าเร่งงานตามที่ตกลงกันได้ครับ",
-    "deliveryMethods": ["Gmail (ส่งไฟล์ผ่านอีเมล)", "Google Drive (ลิงก์ดาวน์โหลดความละเอียดสูง)"]
-  },
-  "payment": {
-    "title": "การชำระเงินและเงื่อนไขการผ่อน",
-    "subtitle": "ยืดหยุ่น โปร่งใส มั่นใจ ปลอดภัยด้วยข้อตกลงที่ชัดเจนทั้งสองฝ่าย",
-    "fullPayment": {
-      "title": "ชำระเงินเต็มจำนวน / มัดจำมาตรฐาน",
-      "points": [
-        "ชำระมัดจำ 50% ก่อนเริ่มดำเนินการเข้าคิวทำงาน",
-        "ชำระยอดที่เหลืออีก 50% เมื่องานเสร็จสมบูรณ์และพร้อมส่งมอบ",
-        "กรณีลูกค้ายกเลิกงานหลังจากวางมัดจำแล้ว ขอสงวนสิทธิ์ไม่คืนเงินมัดจำทุกกรณี เพื่อเป็นค่าชดเชยเวลาและรักษาคิวของลูกค้าท่านอื่น"
+  "terms": [
+    {
+      "title": "ระยะเวลาและการส่งมอบ",
+      "subtitle": "Production & Delivery",
+      "items": [
+        { "label": "งานวาด (Draw Only)", "value": "3 – 6 สัปดาห์" },
+        { "label": "งานริก (Rig Only)", "value": "2 – 6 สัปดาห์" },
+        { "label": "วาดและริก (Combo)", "value": "5 – 8 สัปดาห์" },
+        { "label": "การส่งมอบไฟล์", "value": "Gmail / Google Drive (PSD & VTube Studio ready)" },
+        { "label": "งานเร่งด่วน", "value": "แจ้งประเมินคิวด่วนและค่าเร่งงานตามตกลง" }
       ]
     },
-    "installment": {
-      "title": "เงื่อนไขการผ่อนชำระ (Installment Plans)",
-      "badge": "ผ่อนได้สูงสุด 7 เดือน",
-      "desc": "ร้านรองรับการผ่อนชำระในราคาโปรโมชันสูงสุด 7 เดือน โดยมีค่าบริการตามระยะเวลาดังนี้:",
-      "plans": [
-        {
-          "period": "ผ่อน 1 – 3 งวด",
-          "fee": "+6%",
-          "desc": "จากราคาสุทธิของแพ็กเกจ"
-        },
-        {
-          "period": "ผ่อน 4 – 7 งวด",
-          "fee": "+8%",
-          "desc": "จากราคาสุทธิของแพ็กเกจ"
-        }
-      ],
-      "note": "คิวงานจะเริ่มจัดตามกำหนดงวดแรก และจะส่งมอบไฟล์งานตัวเต็มเมื่อชำระครบเต็มจำนวนแล้วเท่านั้น"
-    },
-    "trustNote": "ไม่ต้องกังวล ทางร้านไม่บิด ไม่หนี ไม่เทงาน 100% สื่อสารและส่งมอบผลงานเต็มที่แน่นอนครับ"
-  },
-  "showcaseSlots": [
     {
-      "id": "showcase-1",
-      "title": "Yunaria Zayu (Official Model)",
-      "category": "Live2D Model · Full Body Tier 3",
-      "artist": "Kenelix Studio x WINEST",
-      "status": "Official Talent Model",
+      "title": "เงื่อนไขการผ่อนชำระ",
+      "subtitle": "Installment Plans (สูงสุด 7 เดือน)",
+      "items": [
+        { "label": "ระยะเวลาผ่อน 1 – 3 งวด", "value": "ค่าบริการ +6% จากราคาสุทธิ" },
+        { "label": "ระยะเวลาผ่อน 4 – 7 งวด", "value": "ค่าบริการ +8% จากราคาสุทธิ" },
+        { "label": "การจัดคิว", "value": "ล็อกคิวทำงานทันทีหลังชำระงวดแรก" },
+        { "label": "การส่งมอบไฟล์", "value": "ส่งมอบไฟล์ตัวเต็มเมื่อชำระครบตามสัญญา" }
+      ]
+    },
+    {
+      "title": "ข้อตกลงและนโยบาย",
+      "subtitle": "Terms & Conditions",
+      "items": [
+        { "label": "การชำระเงินมาตรฐาน", "value": "มัดจำ 50% ก่อนเริ่มงาน / ยอดคงเหลือเมื่องานเสร็จ" },
+        { "label": "โควตาการแก้ไข", "value": "แก้ไขฟรีแต่ละขั้นตอน 3 ครั้ง (รอบเสริมคิดตามขอบเขตงาน)" },
+        { "label": "การยกเลิกงาน", "value": "สงวนสิทธิ์ไม่คืนเงินมัดจำทุกกรณี เพื่อชดเชยเวลาและรักษาคิวงาน" },
+        { "label": "สิทธิ์การใช้งาน", "value": "รวมสิทธิ์นำโมเดลไปใช้งานสตรีมมิ่งและสร้างรายได้" }
+      ]
+    }
+  ],
+  "showcases": [
+    {
+      "name": "Yunaria Zayu",
+      "title": "Full Body Model · Tier 3",
+      "artist": "Kenelix Studio × WINEST",
       "image": "/images/Yunaria_bust.webp"
     },
     {
-      "id": "showcase-2",
-      "title": "Karake (Official Model)",
-      "category": "Live2D Model · Full Body Tier 3",
-      "artist": "Kenelix Studio x WINEST",
-      "status": "Official Talent Model",
+      "name": "Karake",
+      "title": "Full Body Model · Tier 3",
+      "artist": "Kenelix Studio × WINEST",
       "image": "/images/karake_bust.webp"
-    },
-    {
-      "id": "showcase-3",
-      "title": "Concept & Rigging Showcase",
-      "category": "Live2D Dynamics · Physics Showcase",
-      "artist": "Kenelix Studio",
-      "status": "Portfolio Demonstration",
-      "placeholder": true
     }
   ]
 }
