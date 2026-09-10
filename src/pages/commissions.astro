@@ -15,8 +15,7 @@ const {
   accessories, 
   illustrations, 
   audioMixing, 
-  terms, 
-  showcases 
+  terms 
 } = commissionsData;
 ---
 
@@ -295,32 +294,7 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 5: Official Talents Showcase
-           ============================================================ -->
-      <section class="showcase-duet-section">
-        <span class="section-label">Selected Works</span>
-        <h2 class="section-heading">โมเดลประจำค่าย WINEST</h2>
-
-        <div class="showcase-duet-grid">
-          {showcases.map((talent) => (
-            <article class="showcase-talent-frame">
-              <div class="showcase-talent-art">
-                <img src={talent.image} alt={talent.name} loading="lazy" decoding="async" />
-              </div>
-              <div class="talent-caption-bar">
-                <div>
-                  <h3>{talent.name}</h3>
-                  <div style="font-size: 0.8125rem; color: var(--text-secondary);">{talent.artist}</div>
-                </div>
-                <span class="talent-spec-meta">{talent.title}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- ============================================================
-           PART 6: Minimal Closing Action
+           PART 5: Minimal Closing Action
            ============================================================ -->
       <section class="closing-action-section">
         <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันของคุณ?</h2>
