@@ -1,6 +1,7 @@
 ---
 // Footer.astro - Root Bridge component pointing to modular feature folder
 import FooterComponent from './navigation/Footer.astro';
+const props = Astro.props;
 ---
 
-<FooterComponent />
+<FooterComponent {...props} />

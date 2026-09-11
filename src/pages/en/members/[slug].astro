@@ -1,0 +1,290 @@
+---
+// src/pages/en/members/[slug].astro - Dedicated Talent Dossier (English Version)
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import Icon from "../../../components/common/Icon.astro";
+import membersData from "../../../data/members.json";
+import "../../../styles/global.css";
+import "../../../styles/scroll-reveal.css";
+import "../../../styles/members-page.css";
+
+export async function getStaticPaths() {
+  const { talents } = membersData;
+  const activeTalents = talents.filter((t) => !t.isTeaser);
+
+  const paths = activeTalents.map((talent) => ({
+    params: { slug: talent.slug },
+    props: { talent },
+  }));
+
+  // Add alias for 'yunaria' -> 'yunaria-zayu'
+  const yunaria = activeTalents.find((t) => t.slug === "yunaria-zayu");
+  if (yunaria) {
+    paths.push({
+      params: { slug: "yunaria" },
+      props: { talent: yunaria },
+    });
+  }
+
+  return paths;
+}
+
+const { talent } = Astro.props;
+const profile: any = talent.profile ?? {};
+const rawHashtags = (talent as any).hashtags || [];
+const hashtags: string[] = (Array.isArray(rawHashtags) ? rawHashtags : [])
+  .map((ht: any) => {
+    const str = typeof ht === "string" ? ht : ht?.tag || ht?.name || "";
+    return str.startsWith("#") ? str : `#${str}`;
+  })
+  .filter((t: string) => t.length > 1);
+const socials = talent.socials || [];
+
+const personSchema = {
+  "@type": "Person",
+  "@id": `https://winest.studio/en/members/${talent.slug}#person`,
+  "name": talent.name,
+  "alternateName": [talent.japaneseName, talent.thaiName].filter(Boolean),
+  "description": talent.lore,
+  "image": talent.modelImage ? `https://winest.studio${talent.modelImage}` : undefined,
+  "jobTitle": "Virtual YouTuber",
+  "worksFor": { "@id": "https://winest.studio/#organization" },
+  "sameAs": socials.map((s: any) => s.url).filter(Boolean)
+};
+---
+
+<Layout
+  title={`${talent.name}${talent.japaneseName ? ` · ${talent.japaneseName}` : talent.thaiName ? ` · ${talent.thaiName}` : talent.title ? ` · ${talent.title}` : ""} | WINEST Production`}
+  description={talent.lore}
+  image={talent.videoCover || talent.modelImage}
+  type="profile"
+  schema={personSchema}
+  lang="en"
+>
+  <Navbar lang="en" />
+
+  <main class="arp-members-main" id="membersMain">
+    <div
+      class="arp-talent-detail-view"
+      id="talentDetailView"
+      data-talent={talent.slug}
+    >
+      <!-- Section 1: Header Cover Banner -->
+      <header
+        class="dossier-cover-banner"
+        id="talentCoverBanner"
+        style={`--cover-theme-color: ${talent.themeColor}; --cover-theme-darker: ${talent.themeDarker || talent.themeColor};`}
+      >
+        <div class="dossier-cover-backdrop"></div>
+        <div class="dossier-cover-gradient"></div>
+
+        <!-- Top-Left Back Button -->
+        <div class="dossier-banner-controls">
+          <a
+            href="/en/members"
+            class="dossier-banner-back-btn"
+            id="backToRosterBtn"
+            aria-label="Back to Members Roster"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Members Roster</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Dossier Container -->
+      <div class="container dossier-main-container">
+        <div class="dossier-content-grid">
+          <!-- Section 2: Full-Body Transparent Model Frame -->
+          <div class="dossier-model-col">
+            <div class="dossier-model-frame">
+              {talent.greeting && (
+                <button
+                  type="button"
+                  class="dossier-speech-balloon"
+                  id="dossierSpeechBalloon"
+                  aria-label={`Greeting: ${talent.greeting} (Click to dismiss)`}
+                  title="Click to dismiss"
+                >
+                  <span class="speech-balloon-text">"{talent.greeting}"</span>
+                  <span class="speech-balloon-close" aria-hidden="true">&times;</span>
+                </button>
+              )}
+              <img
+                id="detailModelImage"
+                src={talent.modelImage}
+                alt={`${talent.name} (${talent.japaneseName || talent.thaiName || ''}) - WINEST VTuber Model`}
+                class="dossier-full-model-img"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- Section 3 & 4: Talent Details & Metadata -->
+          <div class="dossier-info-col">
+            <!-- Glass Nameplate -->
+            <div class="dossier-glass-nameplate" id="detailGlassNameplate">
+              <div class="dossier-nameplate-meta">
+                <span class="dossier-gen-badge" id="detailGenBadge"
+                  >{talent.genName || "GENESIS"}</span
+                >
+                {talent.title && (
+                  <span class="dossier-title-badge">{talent.title}</span>
+                )}
+              </div>
+              <h1 class="dossier-talent-name">
+                <span id="detailTalentName">{talent.name}</span>
+                {talent.thaiName && (
+                  <span class="dossier-thai-name">({talent.thaiName})</span>
+                )}
+              </h1>
+            </div>
+
+            <!-- Story Lore -->
+            <div class="dossier-block dossier-lore-block">
+              <h2 class="dossier-block-header">Story & Background Lore</h2>
+              <p class="dossier-lore-text" id="detailBioText">{talent.lore}</p>
+            </div>
+
+            <!-- Specifications -->
+            <div class="dossier-block dossier-specs-block">
+              <h2 class="dossier-block-header">Identity Specifications</h2>
+              <div class="dossier-specs-list">
+                <div class="spec-cell">
+                  <span class="spec-kicker">Species</span>
+                  <span class="spec-value" id="specSpecies">{profile.species}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Gender</span>
+                  <span class="spec-value" id="specGender">{profile.gender}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Birthday</span>
+                  <span class="spec-value" id="specBirthday">{profile.birthday}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Age</span>
+                  <span class="spec-value" id="specAge">{profile.age}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Height</span>
+                  <span class="spec-value" id="specHeight">{profile.height}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Weight</span>
+                  <span class="spec-value" id="specWeight">{profile.weight}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Languages</span>
+                  <span class="spec-value" id="specLanguages">{profile.languages}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Signature Color</span>
+                  <span class="spec-value" id="specColor">{profile.signatureColor}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Likes</span>
+                  <span class="spec-value" id="specFavoriteFood">{profile.favoriteFood}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Dislikes</span>
+                  <span class="spec-value" id="specDislikes">{profile.dislikes}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-kicker">Fanbase Name</span>
+                  <span class="spec-value" id="specFanName">{profile.fanName}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Credits -->
+            {talent.credits && (
+              <div class="dossier-block dossier-credits-block">
+                <h2 class="dossier-block-header">Creative Credits</h2>
+                <div class="dossier-credits-grid">
+                  {talent.credits.characterDesign && (
+                    <div class="credit-item">
+                      <span class="credit-role">Character Design (Mama / Artist)</span>
+                      <span class="credit-name">{talent.credits.characterDesign}</span>
+                    </div>
+                  )}
+                  {talent.credits.live2dRigger && (
+                    <div class="credit-item">
+                      <span class="credit-role">Live2D Rigging (Papa / Rigger)</span>
+                      <span class="credit-name">{talent.credits.live2dRigger}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <!-- Hashtags -->
+            <div class="dossier-block dossier-hashtags-block">
+              <h2 class="dossier-block-header">Official Hashtags</h2>
+              <div class="dossier-hashtags-list" id="detailHashtagsList">
+                {hashtags.map((tag: string) => (
+                  <span class="dossier-hashtag-pill">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Quote Block -->
+            <div class="dossier-quote-block" id="detailQuoteCard">
+              <div class="quote-top-badge">
+                <span class="quote-tag-pill">Message to the Community</span>
+              </div>
+              <blockquote class="quote-statement" id="detailQuoteText">
+                "{talent.quote}"
+              </blockquote>
+              <div class="quote-signature" id="detailQuoteSign">
+                — {talent.name}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Official Channels -->
+        <section class="dossier-channels-section">
+          <div class="channels-header-row">
+            <h2 class="dossier-block-header">Official Channels & Links</h2>
+            <span class="channels-subtitle">Official Channels & Community</span>
+          </div>
+          <div class="dossier-socials-grid" id="detailSocialsGrid">
+            {socials.map((soc: any) => {
+              const isYt = soc.platform.includes("YouTube");
+              const isTw = soc.platform.includes("Twitch");
+              const isX = soc.platform.includes("X") || soc.platform.includes("Twitter");
+              const isDiscord = soc.platform.includes("Discord");
+
+              return (
+                <a
+                  href={soc.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`arp-social-btn ${isYt ? "is-youtube" : isTw ? "is-twitch" : isX ? "is-twitter" : isDiscord ? "is-discord" : ""}`}
+                >
+                  <span class="social-btn-name">{soc.platform}</span>
+                  <span class="social-btn-handle">{soc.handle}</span>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

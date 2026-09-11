@@ -721,3 +721,91 @@ html {
   background: var(--accent-primary);
   transform: translateY(-1px);
 }
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES FOR COMMISSIONS
+   ========================================================================== */
+[data-theme="light"] .package-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .package-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 28px rgba(85, 103, 226, 0.12);
+}
+
+[data-theme="light"] .pkg-cta {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .pkg-cta:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+}
+
+[data-theme="light"] .comparison-table th {
+  background: #f1f5f9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #475569;
+}
+
+[data-theme="light"] .comparison-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #0f172a;
+}
+
+[data-theme="light"] .comparison-table tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .group-start td {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .terms-3col-layout {
+  border-top-color: rgba(0, 0, 0, 0.08);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .terms-col:not(:last-child) {
+  border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 860px) {
+  [data-theme="light"] .terms-col:not(:last-child) {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+[data-theme="light"] .motion-demo-card,
+[data-theme="light"] .model-portfolio-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .motion-demo-card:hover,
+[data-theme="light"] .model-portfolio-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 28px rgba(85, 103, 226, 0.12);
+}
+
+[data-theme="light"] .closing-action-section {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .closing-btn {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+[data-theme="light"] .closing-btn:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+

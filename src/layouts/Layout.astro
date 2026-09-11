@@ -5,6 +5,7 @@ interface Props {
   image?: string;
   type?: string;
   schema?: Record<string, any> | Record<string, any>[];
+  lang?: "th" | "en";
 }
 
 const {
@@ -13,13 +14,20 @@ const {
   image = "/logo/winest_logo.png",
   type = "website",
   schema,
+  lang,
 } = Astro.props;
 
 import HamsterScrollSlider from "../components/common/HamsterScrollSlider.astro";
 
 const siteUrl = "https://winest.studio";
+const pageLang = lang || (Astro.url && Astro.url.pathname.startsWith("/en") ? "en" : "th");
 const canonicalURL = Astro.url ? new URL(Astro.url.pathname, siteUrl).href : siteUrl;
 const formattedImage = image.startsWith("http") ? image : `${siteUrl}${image.startsWith("/") ? "" : "/"}${image}`;
+
+// Compute hreflang alternates
+const currentPath = Astro.url ? Astro.url.pathname : "/";
+const thPath = currentPath.replace(/^\/en(\/|$)/, "/") || "/";
+const enPath = currentPath.startsWith("/en") ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
 
 // Global Base Schema.org Graph
 const jsonLdGraph = [
@@ -52,7 +60,7 @@ const structuredDataString = JSON.stringify({
 ---
 
 <!doctype html>
-<html lang="th" data-theme="dark">
+<html lang={pageLang} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,6 +74,9 @@ const structuredDataString = JSON.stringify({
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="theme-color" content="#0a0c16" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="th" href={`${siteUrl}${thPath}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${enPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -74,7 +85,7 @@ const structuredDataString = JSON.stringify({
     <meta property="og:description" content={description} />
     <meta property="og:image" content={formattedImage} />
     <meta property="og:site_name" content="WINEST" />
-    <meta property="og:locale" content="th_TH" />
+    <meta property="og:locale" content={pageLang === "en" ? "en_US" : "th_TH"} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

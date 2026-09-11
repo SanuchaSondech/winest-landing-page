@@ -1,0 +1,24 @@
+{
+  "brand": {
+    "name": "WINEST",
+    "sub": "AGENCY",
+    "ariaHome": "WINEST Home",
+    "menuTitle": "WINEST MENU",
+    "copyright": "WINEST Wonderland. All rights reserved."
+  },
+  "navLinks": [
+    { "label": "Home", "href": "/en", "path": "/en" },
+    { "label": "Members", "href": "/en/members", "path": "/en/members" },
+    { "label": "Commissions", "href": "/en/commissions", "path": "/en/commissions" },
+    { "label": "About", "href": "/en/about", "path": "/en/about" }
+  ],
+  "drawerCta": {
+    "label": "Commissions Inquiry",
+    "href": "/en/about#hiring-contact"
+  },
+  "footer": {
+    "colophonBrand": "WINEST AGENCY",
+    "contactLinkText": "Contact & Collab",
+    "backToTop": "TOP ↑"
+  }
+}

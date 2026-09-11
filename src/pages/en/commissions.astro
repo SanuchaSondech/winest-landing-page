@@ -1,0 +1,400 @@
+---
+// src/pages/en/commissions.astro - World-Class Creative Studio Showcase & Commissions (English Version)
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/common/Icon.astro';
+import commissionsData from '../../data/commissions.en.json';
+import '../../styles/global.css';
+import '../../styles/commissions.css';
+
+const { 
+  atelier, 
+  recommendedPackages, 
+  tierPricing, 
+  accessories, 
+  illustrations, 
+  showcases, 
+  terms 
+} = commissionsData;
+
+const commissionsSchema = {
+  "@type": "ProfessionalService",
+  "@id": "https://winest.studio/en/commissions#service",
+  "name": "WINEST x KENELIX STUDIO Commissions",
+  "url": "https://winest.studio/en/commissions",
+  "description": "Full production services: Live2D VTuber models, rigging, and streaming background art for creators with commercial rights.",
+  "provider": { "@id": "https://winest.studio/#organization" },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Live2D & Creative Art Production",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Live2D Model Design & Rigging"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Streaming Background & Room Illustration"
+        }
+      }
+    ]
+  }
+};
+---
+
+<Layout 
+  title="WINEST x KENELIX STUDIO - Creative Studio & Commissions"
+  description="Full production services: Live2D VTuber models, rigging, and streaming background art for creators with commercial rights."
+  schema={commissionsSchema}
+  lang="en"
+>
+  <Navbar lang="en" />
+
+  <main class="commissions-main" id="commissions-main">
+    <div class="container">
+
+      <!-- ============================================================
+           HEADER: Editorial Masthead
+           ============================================================ -->
+      <header class="commissions-masthead">
+        <h1 class="masthead-title">{atelier.title}</h1>
+        <p class="masthead-lead">{atelier.lead}</p>
+
+        <!-- Quick Navigation Anchors -->
+        <nav class="about-nav-anchors" aria-label="Quick section navigation">
+          <a href="#models-section" class="about-anchor-pill dock-link">
+            <span class="dock-index">01</span>
+            <span>Live2D Models</span>
+          </a>
+          <a href="#illustration-section" class="about-anchor-pill dock-link">
+            <span class="dock-index">02</span>
+            <span>Backgrounds</span>
+          </a>
+          <a href="#showcase-section" class="about-anchor-pill dock-link">
+            <span class="dock-index">03</span>
+            <span>Motion Showcase</span>
+          </a>
+          <a href="#studio-terms" class="about-anchor-pill dock-link">
+            <span class="dock-index">04</span>
+            <span>Terms & Guidelines</span>
+          </a>
+        </nav>
+      </header>
+
+      <!-- ============================================================
+           PART 1: Live2D Models (Recommended Packages)
+           ============================================================ -->
+      <section class="recommended-section" id="models-section">
+        <h2 class="section-heading has-desc">Live2D Model Packages</h2>
+        <p class="section-desc">Comprehensive drawing and smooth rigging combo packages, delivered fully calibrated and ready to stream.</p>
+
+        <div class="recommended-cards-grid">
+          {recommendedPackages.map((pkg) => (
+            <article class="package-card">
+              <div class="pkg-header">
+                <div class="pkg-identity">
+                  <h3 class="pkg-title">{pkg.name}</h3>
+                </div>
+
+                <div class="pkg-price-row">
+                  <span class="price-lead">From</span>
+                  <span class="price-num">฿{pkg.startingPrice.toLocaleString()}</span>
+                  {pkg.originalPrice && (
+                    <s class="price-original">฿{pkg.originalPrice.toLocaleString()}</s>
+                  )}
+                  {pkg.discountPercent && (
+                    <span class="price-discount-badge">{pkg.discountPercent}</span>
+                  )}
+                </div>
+              </div>
+
+              <!-- Clean Bullets -->
+              <ul class="pkg-bullets">
+                {pkg.bullets.map((bullet, bIdx) => (
+                  <li class="pkg-bullet-item">
+                    <Icon name={bIdx === 2 ? 'avatar-star' : 'check'} width="13" height="13" class="pkg-bullet-svg" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Action Button -->
+              <a 
+                href={atelier.discordUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="pkg-cta"
+              >
+                <span>Order {pkg.name}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Complete Price Comparison Matrix (Tiers & Accessories) -->
+      <section class="pricing-matrix-section" id="pricing-matrix">
+        <h2 class="section-heading has-desc">Full Pricing Catalog</h2>
+        <p class="section-desc">Detailed drawing and rigging rates categorized by package and custom accessories.</p>
+
+        <!-- Tier 1-3 Table -->
+        <h3 class="table-subheading">Model Drawing & Rigging Rates by Level (Tier 1 – 3)</h3>
+        <div class="table-scroll-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Model Package</th>
+                <th>Level (Tier)</th>
+                <th>Draw Only</th>
+                <th>Rig Only</th>
+                <th>Combo Set (Draw + Rig)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tierPricing.flatMap((group) =>
+                group.tiers.map((t, tIdx) => (
+                  <tr class={tIdx === 0 ? 'group-start' : ''}>
+                    <td class="pkg-cell">{tIdx === 0 ? group.package : ''}</td>
+                    <td>{t.tier}</td>
+                    <td class="num-cell">฿{t.draw.toLocaleString()}</td>
+                    <td class="num-cell">฿{t.rig.toLocaleString()}</td>
+                    <td class="combo-cell">฿{t.combo.toLocaleString()}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Accessory Table -->
+        <h3 class="table-subheading">Accessory & Prop Rates (ACC) by Tier Complexity</h3>
+        <div class="table-scroll-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Accessory Category</th>
+                <th>Tier 1 (-20%)</th>
+                <th>Tier 2 (-25%)</th>
+                <th>Tier 3 (-30%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {accessories.map((acc) => (
+                <tr>
+                  <td><strong>{acc.category}</strong></td>
+                  {acc.customNote ? (
+                    <td colspan="3" style="color: var(--text-secondary);">{acc.customNote}</td>
+                  ) : (
+                    <>
+                      <td class="num-cell">฿{acc.half?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.half?.draw} / Rig {acc.half?.rig})</span></td>
+                      <td class="num-cell">฿{acc.simple?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.simple?.draw} / Rig {acc.simple?.rig})</span></td>
+                      <td class="combo-cell">฿{acc.full?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.full?.draw} / Rig {acc.full?.rig})</span></td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note" style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: -20px; margin-bottom: 32px; line-height: 1.5;">
+          * Accessory items are quoted by detail complexity · All base packages include 3 free expressions.
+        </p>
+      </section>
+
+      <!-- ============================================================
+           PART 2: Background Illustration
+           ============================================================ -->
+      <section class="recommended-section" id="illustration-section">
+        <h2 class="section-heading has-desc">{illustrations.title}</h2>
+        <p class="section-desc">{illustrations.lead}</p>
+
+        <div class="recommended-cards-grid">
+          {illustrations.items.map((item) => (
+            <article class="package-card">
+              <div class="pkg-header">
+                <div class="pkg-identity">
+                  <h3 class="pkg-title">{item.title}</h3>
+                </div>
+
+                <div class="pkg-price-row">
+                  <span class="price-num" style="font-size: 1.25rem;">{item.rate}</span>
+                  <span class="price-lead" style="font-size: 0.75rem;">({item.rateSub})</span>
+                </div>
+              </div>
+
+              <!-- Bullets -->
+              <ul class="pkg-bullets">
+                {item.bullets.map((bullet) => (
+                  <li class="pkg-bullet-item">
+                    <Icon name="check" width="13" height="13" class="pkg-bullet-svg" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Action Button -->
+              <a 
+                href={atelier.discordUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="pkg-cta"
+              >
+                <span>Order {item.title} Room ↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 3: Showcase & Motion Preview
+           ============================================================ -->
+      <section class="portfolio-showcase-section" id="showcase-section">
+        <h2 class="section-heading has-desc">Showcase & Motion Preview</h2>
+        <p class="section-desc">Client models produced by Kenelix Studio with video demonstrations of actual rigging physics.</p>
+
+        <!-- Featured Rigging Video Showcase -->
+        <div class="motion-demo-duet">
+          <div class="motion-demo-card">
+            <div class="motion-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/eiN2K9_ywZ8"
+                title="Butterfly Pea Soda - Rigging Showcase"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="motion-card-caption">
+              <div>
+                <span class="motion-badge">Rigging Showcase 01</span>
+                <h3 class="motion-title">Butterfly Pea Soda (Tier 1)</h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=eiN2K9_ywZ8" target="_blank" rel="noopener noreferrer" class="motion-yt-link">
+                <span>Watch on YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="motion-demo-card">
+            <div class="motion-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/fr13SGsi8ac"
+                title="Starberry Cake - Rigging Showcase"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="motion-card-caption">
+              <div>
+                <span class="motion-badge">Rigging Showcase 02</span>
+                <h3 class="motion-title">Starberry Cake (Tier 2)</h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=fr13SGsi8ac" target="_blank" rel="noopener noreferrer" class="motion-yt-link">
+                <span>Watch on YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Models Portfolio Grid -->
+        <div class="models-portfolio-grid">
+          {showcases && showcases.map((model) => (
+            <article class="model-portfolio-card">
+              <div class="model-img-wrapper">
+                <img 
+                  src={model.image} 
+                  alt={`${model.name} Live2D Model Showcase (${model.tier}) - WINEST Kenelix Studio`} 
+                  loading="lazy" 
+                  decoding="async" 
+                  width="480"
+                  height="600"
+                />
+              </div>
+              <div class="model-card-body">
+                <div class="model-meta-top">
+                  <span class="model-num">{model.number}</span>
+                  <span class="model-tier-pill">{model.tier}</span>
+                </div>
+                <h3 class="model-name">{model.name}</h3>
+                <div class="model-credits">
+                  <span>Art: {model.artist}</span>
+                  <span class="credit-sep">|</span>
+                  <span>Rig: {model.rigger}</span>
+                </div>
+                <p class="model-features">{model.features}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 4: Terms & Guidelines
+           ============================================================ -->
+      <section class="terms-split-section" id="studio-terms">
+        <h2 class="section-heading has-desc">Terms & Guidelines</h2>
+        <p class="section-desc">Production timeline, installment guidelines, and revision policies.</p>
+
+        <div class="terms-3col-layout">
+          {terms.map((col) => (
+            <div class="terms-col">
+              <h3 class="terms-col-title">{col.title}</h3>
+              <ul class="terms-list">
+                {col.points.map((point) => (
+                  <li class="terms-item">
+                    <Icon name="check" width="13" height="13" class="terms-svg" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bottom Studio CTA Banner -->
+      <section class="commissions-closing-cta">
+        <h2 class="closing-title">Ready to bring your Virtual Identity to life?</h2>
+        <p class="closing-desc">Open a ticket in the Kenelix Studio Discord to submit your brief and reserve your production slot.</p>
+        <a 
+          href={atelier.discordUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="closing-btn"
+        >
+          <Icon name="discord" width="18" height="18" />
+          <span>Open Ticket on Discord</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    document.querySelectorAll('.dock-link[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</Layout>

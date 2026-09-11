@@ -1,0 +1,132 @@
+{
+  "th": {
+    "metaTitle": "ช่องทางการติดต่อ - WINEST Official Contact",
+    "metaDescription": "ศูนย์ข้อมูลและการติดต่อค่าย WINEST: ติดต่อค่ายสำหรับงานสปอนเซอร์และ Collab VTuber และช่องทางติดต่องานคอมมิชชันโมเดล Live2D กับสตูดิโอ",
+    "hero": {
+      "title": "ช่องทางการติดต่อ",
+      "anchors": {
+        "agency": "1. ติดต่อค่าย & ความร่วมมือ VTuber",
+        "studio": "2. ติดต่องานคอมมิชชันสตูดิโอ",
+        "policies": "3. นโยบายค่าย"
+      }
+    },
+    "agency": {
+      "kicker": "PART 01 · AGENCY & VTUBER",
+      "title": "1. ติดต่อค่าย และความร่วมมือ VTuber",
+      "desc": "สำหรับเสนอความร่วมมือทางธุรกิจ, งานสปอนเซอร์แบรนด์, งานอีเวนต์ หรือนัดหมายสตรีม Collab ร่วมกับทาเลนต์ VTuber ของค่าย",
+      "cardX": {
+        "title": "X Direct Message",
+        "tag": "@Winest_vt",
+        "desc": "ทัก DM ได้ทันทีสำหรับเสนองานสปอนเซอร์ คอลแลปด่วน หรือสอบถามข้อเสนอความร่วมมือเบื้องต้นกับทีมงานค่าย",
+        "action": "ทัก DM บน X (@Winest_vt)"
+      },
+      "cardDiscord": {
+        "title": "Discord Community",
+        "tag": "WINEST Server",
+        "desc": "ส่งข้อความในห้อง #collab-inquiries เพื่อนัดหมายสตรีมร่วมกัน หรือประสานงานสำหรับครีเอเตอร์และพาร์ตเนอร์",
+        "action": "เข้าร่วม WINEST Discord"
+      }
+    },
+    "studio": {
+      "kicker": "PART 02 · CREATIVE STUDIO & COMMISSIONS",
+      "title": "2. ติดต่องานคอมมิชชันสตูดิโอ (Kenelix Studio)",
+      "desc": "สำหรับครีเอเตอร์และบุคคลทั่วไปที่ต้องการสั่งจ้างงานโปรดักชัน: วาดและริกโมเดล VTuber Live2D, ออกแบบ Character Sheet หรือวาดฉากสตรีมมิ่ง 4K พร้อมสิทธิ์เชิงพาณิชย์",
+      "cardRates": {
+        "title": "สำรวจเรทราคา & ผลงานจริง",
+        "tag": "Commissions Portfolio & Rates",
+        "desc": "เข้าชมหน้ารวมงานคอมมิชชันเพื่อดูสเปกโมเดล Live2D ทุกระดับ (Tier 1–3), คลิปวิดีโอตัวอย่างการเคลื่อนไหวจริง และภาพผลงานโมเดลทั้ง 6 รายการ",
+        "action": "ดูข้อมูลคอมมิชชันทั้งหมด"
+      },
+      "cardTicket": {
+        "title": "เปิด Ticket สั่งจ้างงาน (Kenelix Studio)",
+        "tag": "Direct Studio Inquiry",
+        "desc": "เปิด Ticket ส่งไฟล์บรีฟ ปรึกษาคิวงาน หรือขอใบเสนอราคาสำหรับการสั่งทำโมเดลและงานวาดกับทีมสตูดิโอ Kenelix Studio โดยตรง",
+        "action": "เปิด Ticket จ้างงานสตูดิโอ ↗"
+      }
+    },
+    "policies": {
+      "kicker": "PART 03 · GUIDELINES & POLICIES",
+      "title": "3. นโยบายของค่าย และข้อตกลง",
+      "desc": "แนวทางปฏิบัติเบื้องต้นสำหรับการสนับสนุนทาเลนต์และการประสานงานกับสตูดิโอ",
+      "items": [
+        {
+          "title": "ผลงานแฟนอาร์ต (Fan Art)",
+          "desc": "ยินดีและสนับสนุนให้แฟนคลับสร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อย่างอิสระ สำหรับการใช้งานที่ไม่ใช่เชิงพาณิชย์"
+        },
+        {
+          "title": "ความเป็นส่วนตัวและความปลอดภัย (Talent Safety)",
+          "desc": "ขอความร่วมมือในการเคารพพื้นที่ส่วนตัวของทาเลนต์ ไม่สืบค้นหรือเผยแพร่ข้อมูลตัวตนจริง (IRL) และรักษาบรรยากาศการมีส่วนร่วมที่สุภาพ"
+        },
+        {
+          "title": "การจัดคิวงานและส่งมอบ (Studio Workflow)",
+          "desc": "งานสั่งทำสตูดิโอจะจัดคิวงานตามลำดับการชำระเงินมัดจำ และจะส่งมอบไฟล์งานสมบูรณ์เมื่อชำระครบเต็มจำนวนแล้วเท่านั้น"
+        }
+      ]
+    }
+  },
+  "en": {
+    "metaTitle": "Contact Directory - WINEST Official Contact",
+    "metaDescription": "WINEST official contact directory: Agency sponsorships, VTuber collaborations, and Kenelix Studio Live2D commissions.",
+    "hero": {
+      "title": "Contact Directory",
+      "anchors": {
+        "agency": "1. Agency & VTuber Collab",
+        "studio": "2. Studio Commissions",
+        "policies": "3. Agency Policies"
+      }
+    },
+    "agency": {
+      "kicker": "PART 01 · AGENCY & VTUBER",
+      "title": "1. Agency Contact & VTuber Collaborations",
+      "desc": "For business inquiries, brand sponsorships, special events, or streaming collaborations with WINEST talents.",
+      "cardX": {
+        "title": "X Direct Message",
+        "tag": "@Winest_vt",
+        "desc": "Send an immediate DM for brand proposals, urgent collaborations, or general business partnership inquiries.",
+        "action": "DM on X (@Winest_vt)"
+      },
+      "cardDiscord": {
+        "title": "Discord Community",
+        "tag": "WINEST Server",
+        "desc": "Connect in #collab-inquiries for co-stream scheduling, creator networking, and community partnership coordination.",
+        "action": "Join WINEST Discord"
+      }
+    },
+    "studio": {
+      "kicker": "PART 02 · CREATIVE STUDIO & COMMISSIONS",
+      "title": "2. Creative Studio & Commissions (Kenelix Studio)",
+      "desc": "For creators and clients ordering full production: Live2D VTuber models, character design, and 4K streaming backgrounds with commercial licensing.",
+      "cardRates": {
+        "title": "Explore Rates & Portfolio",
+        "tag": "Commissions Portfolio & Rates",
+        "desc": "Visit our commissions showcase to view Live2D model tiers (Tier 1–3), live rigging motion previews, and our 6-model portfolio.",
+        "action": "View All Commissions Info"
+      },
+      "cardTicket": {
+        "title": "Open Commission Ticket (Kenelix Studio)",
+        "tag": "Direct Studio Inquiry",
+        "desc": "Open a direct ticket on Discord to submit your brief, reserve a production slot, or request a custom quotation.",
+        "action": "Open Studio Ticket ↗"
+      }
+    },
+    "policies": {
+      "kicker": "PART 03 · GUIDELINES & POLICIES",
+      "title": "3. Guidelines & Community Policies",
+      "desc": "Core guidelines for supporting talents and collaborating professionally with our studio.",
+      "items": [
+        {
+          "title": "Fan Art & Derivative Works",
+          "desc": "We warmly encourage fans to create and share derivative works to support our talents freely for non-commercial purposes."
+        },
+        {
+          "title": "Talent Safety & Privacy",
+          "desc": "Please respect talent privacy by not investigating or disclosing real-life identities (IRL), maintaining a polite and respectful community."
+        },
+        {
+          "title": "Studio Workflow & Delivery",
+          "desc": "Studio commissions are queued based on deposit confirmations. Final deliverable source files are released upon full payment completion."
+        }
+      ]
+    }
+  }
+}

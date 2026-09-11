@@ -1,6 +1,7 @@
 ---
 // ArtsSection.astro - Root Bridge component pointing to modular feature folder
 import ArtsSectionComponent from './arts/ArtsSection.astro';
+const props = Astro.props;
 ---
 
-<ArtsSectionComponent />
+<ArtsSectionComponent {...props} />

@@ -1,18 +1,35 @@
 ---
 // Navbar.astro - Amusement Park Map Navigation Bar
-import navData from '../../data/navigation.json';
+import navDataTh from '../../data/navigation.json';
+import navDataEn from '../../data/navigation.en.json';
 import NavMobileDrawer from './NavMobileDrawer.astro';
 import Icon from '../common/Icon.astro';
 import '../../styles/navbar.css';
 
-const { brand, navLinks, drawerCta } = navData;
+interface Props {
+  lang?: 'th' | 'en';
+}
+
+const { lang } = Astro.props;
 const currentPath = Astro.url ? Astro.url.pathname : '/';
+const isEn = lang === 'en' || currentPath.startsWith('/en');
+const navData = isEn ? navDataEn : navDataTh;
+const { brand, navLinks, drawerCta } = navData;
+
+const homeHref = isEn ? '/en' : '/';
+let targetLangUrl = '/';
+if (isEn) {
+  const stripped = currentPath.replace(/^\/en(\/|$)/, '/');
+  targetLangUrl = stripped || '/';
+} else {
+  targetLangUrl = `/en${currentPath === '/' ? '' : currentPath}`;
+}
 ---
 
 <header class="site-header">
   <div class="container header-container">
     <!-- Left: Brand Logo & Name -->
-    <a href="/" class="brand-link" aria-label={brand.ariaHome}>
+    <a href={homeHref} class="brand-link" aria-label={brand.ariaHome}>
       <div class="logo-wrapper">
         <img 
           src="/logo/winest_logo_128.webp" 
@@ -34,31 +51,38 @@ const currentPath = Astro.url ? Astro.url.pathname : '/';
     <!-- Right: Desktop Navigation Links -->
     <nav class="desktop-nav" aria-label="Main Navigation">
       <ul class="nav-list">
-        <li>
-          <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
-            <Icon name="nav-home" class="nav-icon" />
-            <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="/members" class={`nav-link ${currentPath.startsWith('/members') ? 'active' : ''}`}>
-            <Icon name="nav-members" class="nav-icon" />
-            <span>Members</span>
-          </a>
-        </li>
-        <li>
-          <a href="/commissions" class={`nav-link ${currentPath.startsWith('/commissions') ? 'active' : ''}`}>
-            <Icon name="nav-arts" class="nav-icon" />
-            <span>Commissions</span>
-          </a>
-        </li>
-        <li>
-          <a href="/about" class={`nav-link ${currentPath.startsWith('/about') ? 'active' : ''}`}>
-            <Icon name="nav-about" class="nav-icon" />
-            <span>About</span>
-          </a>
-        </li>
+        {navLinks.map((link) => {
+          const isActive = link.path === '/' || link.path === '/en'
+            ? (currentPath === link.path || currentPath === `${link.path}/`)
+            : currentPath.startsWith(link.path);
+          
+          let iconName = "nav-home";
+          if (link.path.includes("members")) iconName = "nav-members";
+          else if (link.path.includes("commissions")) iconName = "nav-arts";
+          else if (link.path.includes("about")) iconName = "nav-about";
+
+          return (
+            <li>
+              <a href={link.href} class={`nav-link ${isActive ? 'active' : ''}`}>
+                <Icon name={iconName} class="nav-icon" />
+                <span>{link.label}</span>
+              </a>
+            </li>
+          );
+        })}
       </ul>
+
+      <!-- Language Switcher [ TH | EN ] -->
+      <a 
+        href={targetLangUrl} 
+        class="lang-switch-btn" 
+        aria-label={isEn ? "Switch to Thai version" : "Switch to English version"}
+        title={isEn ? "เปลี่ยนเป็นภาษาไทย" : "Switch to English"}
+      >
+        <span class={`lang-opt ${!isEn ? 'active' : ''}`}>TH</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
+        <span class={`lang-opt ${isEn ? 'active' : ''}`}>EN</span>
+      </a>
 
       <!-- Luminous Segmented Glass Theme Switcher [ ☀️ | 🌙 ] -->
       <button 
@@ -78,8 +102,19 @@ const currentPath = Astro.url ? Astro.url.pathname : '/';
       </button>
     </nav>
 
-    <!-- Right Mobile: Hamburger & Theme Toggle -->
+    <!-- Right Mobile: Hamburger, Lang, & Theme Toggle -->
     <div class="mobile-actions">
+      <!-- Mobile Language Switcher -->
+      <a 
+        href={targetLangUrl} 
+        class="lang-switch-btn mobile-lang-btn" 
+        aria-label={isEn ? "Switch to Thai version" : "Switch to English version"}
+      >
+        <span class={`lang-opt ${!isEn ? 'active' : ''}`}>TH</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
+        <span class={`lang-opt ${isEn ? 'active' : ''}`}>EN</span>
+      </a>
+
       <button 
         id="mobile-theme-toggle-btn" 
         class="theme-toggle-switch mobile-theme-btn" 

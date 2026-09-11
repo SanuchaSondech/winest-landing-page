@@ -1,6 +1,7 @@
 ---
 // AboutBrief.astro - Root Bridge component pointing to modular feature folder
 import AboutBriefComponent from './about/AboutBrief.astro';
+const props = Astro.props;
 ---
 
-<AboutBriefComponent />
+<AboutBriefComponent {...props} />

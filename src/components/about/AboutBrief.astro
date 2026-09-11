@@ -6,7 +6,12 @@ import AboutMetrics from './AboutMetrics.astro';
 import Icon from '../common/Icon.astro';
 import '../../styles/about.css';
 
-const { aboutBrief } = homeData;
+interface Props {
+  data?: any;
+}
+
+const { data } = Astro.props;
+const aboutBrief = data || homeData.aboutBrief;
 ---
 
 <section class="about-brief-section" id="about-brief">

@@ -1,0 +1,198 @@
+---
+// src/pages/en/members/index.astro - WINEST Official Talents Directory (English Version)
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/common/Icon.astro';
+import membersData from '../../../data/members.json';
+import '../../../styles/global.css';
+import '../../../styles/scroll-reveal.css';
+import '../../../styles/members-page.css';
+
+export interface ActiveTalent {
+  id: string;
+  slug: string;
+  name: string;
+  shortName?: string;
+  japaneseName: string;
+  title: string;
+  genId: string;
+  genName: string;
+  isTeaser: false;
+  themeColor: string;
+  themeDarker: string;
+  videoTitle: string;
+  youtubeVideoId: string;
+  videoCover: string;
+  characterDesignImage: string;
+  modelImage: string;
+  bustImage?: string;
+}
+
+export interface TeaserTalent {
+  id: string;
+  slug: string;
+  name: string;
+  shortName?: string;
+  title: string;
+  genId: string;
+  genName: string;
+  isTeaser: true;
+  themeColor: string;
+  themeDarker: string;
+  teaserLabel: string;
+}
+
+export type AnyTalent = ActiveTalent | TeaserTalent;
+
+const { generations, talents } = membersData;
+const rawTalents = talents as unknown as AnyTalent[];
+const talentsMap = new Map<string, AnyTalent>(rawTalents.map((t) => [t.slug, t]));
+if (talentsMap.has('yunaria-zayu')) {
+  talentsMap.set('yunaria', talentsMap.get('yunaria-zayu')!);
+}
+
+const activeTalents = rawTalents.filter((t) => !t.isTeaser) as ActiveTalent[];
+
+const membersSchema = {
+  "@type": "CollectionPage",
+  "@id": "https://winest.studio/en/members#collection",
+  "name": "WINEST - VTuber Talents Directory",
+  "url": "https://winest.studio/en/members",
+  "description": "Official directory of virtual creators and talents in WINEST Production.",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": activeTalents.map((t, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://winest.studio/en/members/${t.slug}`,
+      "name": t.name,
+      "image": t.bustImage ? `https://winest.studio${t.bustImage}` : undefined
+    }))
+  }
+};
+---
+
+<Layout 
+  title="WINEST - VTuber Talents Directory"
+  description="Official directory of virtual creators and talents in WINEST Production."
+  schema={membersSchema}
+  lang="en"
+>
+  <Navbar lang="en" />
+
+  <main class="arp-members-main" id="membersMain">
+    <!-- Header Masthead for SEO & Clear Hierarchy -->
+    <header class="members-index-masthead">
+      <div class="arp-gen-container">
+        <h1 class="members-index-h1">VTuber Talents Directory</h1>
+        <p class="members-index-sub">Virtual Creators & Talents under WINEST Production</p>
+      </div>
+    </header>
+    
+    <!-- GENERATIONS ROSTER -->
+    <div class="arp-roster-view" id="membersRosterView">
+      
+      {generations.map((gen) => {
+        const genTalents = gen.memberSlugs.map((slug) => talentsMap.get(slug)).filter(Boolean);
+
+        return (
+          <section 
+            class="arp-generation-band" 
+            id={`gen-band-${gen.id}`}
+            style={`--gen-bg-dark: ${gen.bgColor || '#0c101d'}; --gen-bg-light: ${(gen as any).bgLightColor || (gen.id === 'gen-1' ? '#f0f4fc' : '#edf5ef')};`}
+            aria-label={gen.name}
+          >
+            <div class="arp-gen-container">
+              <div class="arp-gen-row">
+                
+                <!-- Left Column: Generation Name & Info -->
+                <div class="arp-gen-info-col">
+                  <div class="arp-gen-header-block">
+                    {(gen as any).concept && (
+                      <span class="arp-gen-concept-badge">{(gen as any).concept}</span>
+                    )}
+                    <h2 class="arp-gen-title">
+                      {gen.name}
+                      <span class="arp-gen-operation-tag">{gen.id === 'gen-1' ? '1st' : (gen.id === 'gen-2' ? '2nd' : (gen.operationLabel?.split(' ')[0] || '1st'))}</span>
+                    </h2>
+                    {gen.tagline && <p class="arp-gen-tagline">{gen.tagline}</p>}
+                    {gen.desc && <p class="arp-gen-desc">{gen.desc}</p>}
+                  </div>
+                </div>
+
+                <!-- Right Column: Member Cards Row -->
+                <div class="arp-gen-members-col">
+                  <div class="arp-cards-row">
+                    {genTalents.map((talent) => {
+                      if (talent?.isTeaser) {
+                        return (
+                          <div 
+                            class="arp-member-card is-teaser"
+                            style={`--talent-primary: ${talent.themeColor}; --talent-darker: ${talent.themeDarker};`}
+                            title={`${talent.name} - Coming Soon`}
+                          >
+                            <div class="arp-card-inner">
+                              <div class="arp-card-visual-frame teaser-visual">
+                                <svg viewBox="0 0 100 120" class="arp-teaser-silhouette-svg" aria-hidden="true">
+                                  <path d="M50 20 C40 20 32 28 32 38 C32 46 37 53 43 56 C30 62 20 74 18 90 L82 90 C80 74 70 62 57 56 C63 53 68 46 68 38 C68 28 60 20 50 20 Z" fill="currentColor" />
+                                </svg>
+                                <div class="arp-teaser-glow-mark">?</div>
+                                <div class="arp-card-gradient-scrim"></div>
+                              </div>
+
+                              <div class="arp-card-info-plate">
+                                <h3 class="arp-card-name">????</h3>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      const bustSrc = (talent as any)?.bustImage || (talent?.slug === 'karake' ? '/images/karake_bust.webp' : '/images/Yunaria_bust.webp');
+
+                      return (
+                        <a 
+                          href={`/en/members/${talent?.slug}`}
+                          class="arp-member-card is-active"
+                          data-talent-slug={talent?.slug}
+                          style={`--talent-primary: ${talent?.themeColor}; --talent-darker: ${talent?.themeDarker};`}
+                          aria-label={`View dossier for ${talent?.name}`}
+                        >
+                          <div class="arp-card-inner">
+                            <div class="arp-card-visual-frame">
+                              <img 
+                                src={bustSrc} 
+                                alt={`${talent?.name} (${talent?.japaneseName || ''}) - WINEST VTuber Talent`} 
+                                class="arp-card-character-img" 
+                                loading="lazy"
+                                decoding="async"
+                                width="340"
+                                height="340"
+                              />
+                              <div class="arp-card-gradient-scrim"></div>
+                            </div>
+
+                            <span class="arp-card-cta">View Dossier &rarr;</span>
+
+                            <div class="arp-card-info-plate">
+                              <h3 class="arp-card-name">{talent?.name}</h3>
+                            </div>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

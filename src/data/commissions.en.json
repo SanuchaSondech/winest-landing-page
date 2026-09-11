@@ -1,0 +1,239 @@
+{
+  "atelier": {
+    "collaboration": "KENELIX STUDIO × WINEST",
+    "title": "Creative Studio & Commissions",
+    "lead": "Full production services: Live2D VTuber models, rigging, and streaming background art for creators with commercial rights.",
+    "discordUrl": "https://discord.gg"
+  },
+  "recommendedPackages": [
+    {
+      "id": "half-body",
+      "name": "Half Body",
+      "subtitle": "Starter Model (Waist-Up)",
+      "startingPrice": 3900,
+      "originalPrice": 5200,
+      "discountPercent": "-25%",
+      "bullets": [
+        "Female ends at skirt/hips (Male ends at shorts/thighs)",
+        "No leg drawing above knee downwards",
+        "Includes 3 free emotes / expressions"
+      ]
+    },
+    {
+      "id": "simple-full",
+      "name": "Simple Full",
+      "subtitle": "Full Body (Standard Motion)",
+      "startingPrice": 8000,
+      "originalPrice": 10000,
+      "discountPercent": "-20%",
+      "bullets": [
+        "Full body model; can change and add outfits",
+        "No internal body mesh under clothing (outer layers only)",
+        "Includes 3 free emotes / expressions"
+      ]
+    },
+    {
+      "id": "full-body",
+      "name": "Full Body",
+      "subtitle": "Complete Full Body Model",
+      "startingPrice": 10500,
+      "originalPrice": 15500,
+      "discountPercent": "-30%",
+      "bullets": [
+        "Complete body anatomy underneath with removable outfits",
+        "Full perspective and proportion rendering",
+        "Future accessory ready (Includes 3 free emotes / expressions)"
+      ]
+    }
+  ],
+  "tierPricing": [
+    {
+      "package": "Half Body (Waist-Up)",
+      "tiers": [
+        { "tier": "Tier 1", "draw": 3100, "rig": 2100, "combo": 3900 },
+        { "tier": "Tier 2", "draw": 4100, "rig": 3100, "combo": 5400 },
+        { "tier": "Tier 3", "draw": 5100, "rig": 4100, "combo": 6900 }
+      ]
+    },
+    {
+      "package": "Simple Full (Full Body)",
+      "tiers": [
+        { "tier": "Tier 1", "draw": 5500, "rig": 4500, "combo": 8000 },
+        { "tier": "Tier 2", "draw": 6500, "rig": 5250, "combo": 9400 },
+        { "tier": "Tier 3", "draw": 7800, "rig": 6700, "combo": 11600 }
+      ]
+    },
+    {
+      "package": "Full Body (Comprehensive)",
+      "tiers": [
+        { "tier": "Tier 1", "draw": 8500, "rig": 7000, "combo": 10500 },
+        { "tier": "Tier 2", "draw": 9200, "rig": 8300, "combo": 12250 },
+        { "tier": "Tier 3", "draw": 11500, "rig": 10500, "combo": 15400 }
+      ]
+    }
+  ],
+  "accessories": [
+    {
+      "category": "Hairstyle / Headgear",
+      "half": { "draw": 65, "rig": 60, "combo": 125 },
+      "simple": { "draw": 140, "rig": 180, "combo": 240 },
+      "full": { "draw": 260, "rig": 290, "combo": 385 }
+    },
+    {
+      "category": "Outfit / Costume",
+      "half": { "draw": 450, "rig": 350, "combo": 640 },
+      "simple": { "draw": 750, "rig": 730, "combo": 1100 },
+      "full": { "draw": 1150, "rig": 1150, "combo": 1610 }
+    },
+    {
+      "category": "Chibi Character",
+      "half": { "draw": 1200, "rig": 1500, "combo": 2200 },
+      "simple": { "draw": 2180, "rig": 1700, "combo": 2910 },
+      "full": { "draw": 2900, "rig": 2400, "combo": 3710 }
+    },
+    {
+      "category": "Props / Weapons / Others",
+      "customNote": "Inquire directly via Discord ticket for custom quotation."
+    }
+  ],
+  "illustrations": {
+    "title": "Background Illustration",
+    "subtitle": "Background Illustration Suite",
+    "lead": "Custom streaming room and background illustrations for VTubers and creators.",
+    "items": [
+      {
+        "id": "simple-scene",
+        "title": "Simple",
+        "badge": "Clean & Minimal",
+        "rate": "฿400 – ฿1,500",
+        "rateSub": "For clean, uncomplicated scenes",
+        "bullets": [
+          "Few elements · Minimal props · Base lighting",
+          "Ideal for simple bedrooms, sky backdrops, nature scenes",
+          "Focuses on clean aesthetics without high detail clutter"
+        ]
+      },
+      {
+        "id": "standard-scene",
+        "title": "Standard",
+        "badge": "Medium Detail",
+        "rate": "฿1,500 – ฿2,700",
+        "rateSub": "For detailed streaming environments",
+        "bullets": [
+          "Multi-element composition · Moderate props and decor",
+          "Defined surface textures · Realistic lighting and depth",
+          "Perfect for streamer setups, coffee shops, bedrooms, cozy workspaces",
+          "Emphasizes immersion, warmth, and visual balance"
+        ]
+      },
+      {
+        "id": "full-scale-scene",
+        "title": "Full Scale",
+        "badge": "Ultra High Detail",
+        "rate": "From ฿2,700",
+        "rateSub": "For complex, highly detailed worlds",
+        "bullets": [
+          "Extensive props · Rich particle lighting & custom visual effects",
+          "Pronounced depth, cinematic realism, and custom layers",
+          "Ideal for fantasy realms, sci-fi battle stations, and custom branded sets",
+          "Top-tier masterwork precision in every visual element"
+        ]
+      }
+    ]
+  },
+  "showcases": [
+    {
+      "id": "model-01",
+      "number": "Model 01",
+      "name": "Butterfly Pea Soda",
+      "tier": "Tier 1",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/5.png",
+      "videoUrl": "https://www.youtube.com/watch?v=eiN2K9_ywZ8",
+      "features": "Outer jacket toggle · 2 Emotes"
+    },
+    {
+      "id": "model-02",
+      "number": "Model 02",
+      "name": "Starberry Cake",
+      "tier": "Tier 2",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/6.png",
+      "videoUrl": "https://www.youtube.com/watch?v=fr13SGsi8ac",
+      "features": "3 Outfits (Inner, Onsen, Outer) · 3 Emotes"
+    },
+    {
+      "id": "model-03",
+      "number": "Model 03",
+      "name": "Leoneir (The violet Liger)",
+      "tier": "Tier 3",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/7.png",
+      "features": "Coat toggle / Main outfit · 5 Emotes"
+    },
+    {
+      "id": "model-04",
+      "number": "Model 04",
+      "name": "The Dog Model",
+      "tier": "Tier 3",
+      "artist": "W Doub-lu Ken",
+      "rigger": "Kenelix Studio",
+      "image": "/commission/8.png",
+      "features": "2 Traditional Chinese Outfits · Heart eyes + 6 Emotes"
+    },
+    {
+      "id": "model-05",
+      "number": "Model 05",
+      "name": "The Boy Model",
+      "tier": "Tier 2",
+      "artist": "@Lumiel Lucius",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/9.png",
+      "features": "Student & Casual Outfits · 7 Emotes"
+    },
+    {
+      "id": "model-06",
+      "number": "Model 06",
+      "name": "SeztionV",
+      "tier": "Tier 2",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/10.png",
+      "features": "3 Layers (Full suit, Suit off, Shirt) · 10 Emotes"
+    }
+  ],
+  "terms": [
+    {
+      "title": "Timeline & Delivery",
+      "points": [
+        "Illustration Only: 3–6 weeks (excluding revisions, depending on complexity)",
+        "Rigging Only: 2–6 weeks (excluding revisions, depending on complexity)",
+        "Drawing & Rigging Combo: 5–8 weeks (excluding revisions, depending on complexity)",
+        "Rush orders can be accommodated with an agreed express rush fee",
+        "Final source files delivered via Google Drive and Email"
+      ]
+    },
+    {
+      "title": "Payment & Installments",
+      "points": [
+        "Full Payment: 50% deposit before work starts, remaining 50% upon completion",
+        "Installments: Promotional installment plans supported up to 7 months",
+        "1–3 installments: +6% installment processing fee",
+        "4–7 installments: +8% installment processing fee",
+        "Production schedule begins upon 1st installment; final files released upon 100% completion"
+      ]
+    },
+    {
+      "title": "Terms & Policies",
+      "points": [
+        "3 free revisions included per production phase (Additional adjustments: +฿10/point)",
+        "Deposits are non-refundable under all circumstances if client cancels",
+        "If client becomes unresponsive or fails to pay agreed schedule, project will be terminated with forfeiture of deposit",
+        "The studio reserves the right to pursue appropriate legal remedies for contractual breaches"
+      ]
+    }
+  ]
+}

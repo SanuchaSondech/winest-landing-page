@@ -35,6 +35,19 @@
   margin: 0;
 }
 
+[data-theme="light"] .members-index-masthead {
+  background-color: #f5f7fc;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .members-index-h1 {
+  color: #0f172a;
+}
+
+[data-theme="light"] .members-index-sub {
+  color: #475569;
+}
+
 /* ==========================================================================
    1. GENERATION BANDS (ROSTER VIEW) - แบ่งเจนด้วยสี
    ========================================================================== */

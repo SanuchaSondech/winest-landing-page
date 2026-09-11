@@ -1,0 +1,36 @@
+---
+// src/pages/en/index.astro - WINEST Official Landing Page (English Version)
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import HeroVideo from "../../components/HeroVideo.astro";
+import AboutBrief from "../../components/AboutBrief.astro";
+import ArtsSection from "../../components/ArtsSection.astro";
+import MembersSection from "../../components/MembersSection.astro";
+import Footer from "../../components/Footer.astro";
+import homeEnData from "../../data/home.en.json";
+import "../../styles/global.css";
+---
+
+<Layout
+  title="WINEST - VTuber Agency & Creative Production Atelier"
+  description="Welcome to WINEST: Virtual Creator Agency and Creative Studio specializing in Live2D models, character design sheets, emotes, and 4K streaming rooms."
+  lang="en"
+>
+  <Navbar lang="en" />
+
+  <main id="main-content">
+    <!-- Section 1: Main Stage Video Trailer -->
+    <HeroVideo data={homeEnData.hero} />
+
+    <!-- Section 2: Agency Profile & Manifesto -->
+    <AboutBrief data={homeEnData.aboutBrief} />
+
+    <!-- Section 3: Virtual Talents Roster -->
+    <MembersSection data={homeEnData.membersSection} />
+
+    <!-- Section 4: Creative Arts & Rigging Services -->
+    <ArtsSection data={homeEnData.artsSection} />
+  </main>
+
+  <Footer />
+</Layout>

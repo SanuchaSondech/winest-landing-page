@@ -5,7 +5,12 @@ import HeroWonderlandSvg from './HeroWonderlandSvg.astro';
 import HeroVideoFooter from './HeroVideoFooter.astro';
 import '../../styles/hero.css';
 
-const { hero } = homeData;
+interface Props {
+  data?: any;
+}
+
+const { data } = Astro.props;
+const hero = data || homeData.hero;
 ---
 
 <section class="hero-section" id="hero">

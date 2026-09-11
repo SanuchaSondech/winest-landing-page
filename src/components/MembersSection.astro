@@ -1,6 +1,7 @@
 ---
 // MembersSection.astro - Root Bridge component pointing to modular feature folder
 import MembersSectionComponent from './members/MembersSection.astro';
+const props = Astro.props;
 ---
 
-<MembersSectionComponent />
+<MembersSectionComponent {...props} />

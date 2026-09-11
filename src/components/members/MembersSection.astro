@@ -7,7 +7,15 @@ import MemberSliderControl from './MemberSliderControl.astro';
 import Icon from '../common/Icon.astro';
 import '../../styles/members.css';
 
-const { membersSection } = homeData;
+interface Props {
+  data?: any;
+}
+
+const { data } = Astro.props;
+const membersSection = data || homeData.membersSection;
+const isEn = Astro.url.pathname.startsWith('/en');
+const membersLink = isEn ? '/en/members' : '/members';
+const ctaBanner = membersSection?.ctaBanner || homeData.membersSection.ctaBanner;
 // ดึงข้อมูลจริงเฉพาะสมาชิกที่เปิดตัวแล้ว (Gen 1: Yunaria Zayu และ Karake)
 const activeTalents = membersData.talents.filter((t) => !t.isTeaser);
 ---
@@ -52,10 +60,10 @@ const activeTalents = membersData.talents.filter((t) => !t.isTeaser);
     <!-- Members Editorial CTA Bar (Centered Harmonious Finale) -->
     <div class="members-cta-bar reveal-init reveal-card stagger-2">
       <div class="cta-center-stack">
-        <h3 class="cta-title">{membersSection.ctaBanner.title}</h3>
-        <p class="cta-desc">{membersSection.ctaBanner.desc}</p>
+        <h3 class="cta-title">{ctaBanner.title}</h3>
+        <p class="cta-desc">{ctaBanner.desc}</p>
         <div class="cta-bar-action">
-          <a href="/members" class="roster-magnetic-btn" id="rosterMagneticBtn" aria-label={membersSection.ctaBanner.buttonText || "เข้าชมโปรไฟล์สมาชิกทั้งหมด"}>
+          <a href={membersLink} class="roster-magnetic-btn" id="rosterMagneticBtn" aria-label={ctaBanner.buttonText || (isEn ? "View Full Talent Roster" : "เข้าชมโปรไฟล์สมาชิกทั้งหมด")}>
             <!-- Raycast cursor spotlight layer -->
             <span class="btn-spotlight" aria-hidden="true"></span>
             
@@ -64,7 +72,7 @@ const activeTalents = membersData.talents.filter((t) => !t.isTeaser);
 
             <!-- Content container -->
             <span class="btn-content-wrap">
-              <span class="btn-text">{membersSection.ctaBanner.buttonText || "เข้าชมโปรไฟล์สมาชิกทั้งหมด"}</span>
+              <span class="btn-text">{ctaBanner.buttonText || (isEn ? "View Full Talent Roster" : "เข้าชมโปรไฟล์สมาชิกทั้งหมด")}</span>
 
               <!-- Kinetic Arrow Lens -->
               <span class="btn-arrow-lens" aria-hidden="true">

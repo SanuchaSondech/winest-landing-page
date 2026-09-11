@@ -5,9 +5,16 @@ import ArtCard from './ArtCard.astro';
 import Icon from '../common/Icon.astro';
 import '../../styles/arts.css';
 
-const { artsSection } = homeData;
+interface Props {
+  data?: any;
+}
+
+const { data } = Astro.props;
+const artsSection = data || homeData.artsSection;
+const isEn = Astro.url.pathname.startsWith('/en');
+const commissionsLink = isEn ? '/en/commissions' : '/commissions';
 // ตัด (/arts) ออกเพื่อให้ปุ่มแสดงประโยคเดี่ยวที่คมกริบ
-const cleanButtonText = artsSection.ctaBanner.buttonText.replace(/\s*\(\/arts\)/, '');
+const cleanButtonText = (artsSection.ctaBanner?.buttonText || '').replace(/\s*\(\/arts\)/, '');
 ---
 
 <section class="arts-section" id="arts">
@@ -36,7 +43,7 @@ const cleanButtonText = artsSection.ctaBanner.buttonText.replace(/\s*\(\/arts\)/
         <h3 class="cta-title">{artsSection.ctaBanner.title}</h3>
         <p class="cta-desc">{artsSection.ctaBanner.desc}</p>
         <div class="cta-bar-action">
-          <a href="/commissions" class="roster-magnetic-btn" id="artsMagneticBtn" aria-label="เข้าสู่หน้าบริการคอมมิชชันและเรทราคา">
+          <a href={commissionsLink} class="roster-magnetic-btn" id="artsMagneticBtn" aria-label={isEn ? "View all commissions and rates" : "เข้าสู่หน้าบริการคอมมิชชันและเรทราคา"}>
             <!-- Raycast cursor spotlight layer -->
             <span class="btn-spotlight" aria-hidden="true"></span>
             

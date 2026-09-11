@@ -6,6 +6,7 @@ import '../../styles/footer.css';
 
 const { brand } = navData;
 const currentYear = new Date().getFullYear();
+const isEn = Astro.props.lang === 'en' || Astro.url.pathname.startsWith('/en');
 
 // Compact social icon links for footer baseline
 const socials = [
@@ -52,8 +53,8 @@ const socials = [
           ))}
         </div>
         <span class="colophon-divider">/</span>
-        <a href="/about" class="colophon-contact-link">
-          <span>ติดต่อค่าย & Collab</span>
+        <a href={isEn ? "/en/about" : "/about"} class="colophon-contact-link">
+          <span>{isEn ? "Agency Contact & Collab" : "ติดต่อค่าย & Collab"}</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </div>
@@ -62,7 +63,7 @@ const socials = [
       <div class="colophon-right">
         <span class="colophon-time" id="bkkFooterTime">BANGKOK --:--:-- ICT</span>
         <span class="colophon-divider">/</span>
-        <button type="button" class="colophon-top-link" id="footerBackToTop" aria-label="เลื่อนขึ้นสู่ด้านบน">
+        <button type="button" class="colophon-top-link" id="footerBackToTop" aria-label={isEn ? "Back to top" : "เลื่อนขึ้นสู่ด้านบน"}>
           TOP ↑
         </button>
       </div>

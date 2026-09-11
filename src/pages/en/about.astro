@@ -1,22 +1,21 @@
 ---
-// src/pages/about.astro - WINEST Official Contact Channels & Directory
-// Unified Design Architecture: 1. ติดต่อค่าย | 2. ติดต่องานคอมมิชชัน | 3. นโยบาย
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-import Icon from "../components/common/Icon.astro";
-import commissionsData from "../data/commissions.json";
-import aboutData from "../data/about.json";
-import "../styles/global.css";
-import "../styles/about-page.css";
+// src/pages/en/about.astro - WINEST Official Contact Channels & Directory (English Version)
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/common/Icon.astro";
+import commissionsData from "../../data/commissions.en.json";
+import aboutData from "../../data/about.json";
+import "../../styles/global.css";
+import "../../styles/about-page.css";
 
 const { atelier } = commissionsData;
-const content = aboutData.th;
+const content = aboutData.en;
 
 const contactSchema = {
   "@type": "ContactPage",
-  "@id": "https://winest.studio/about#webpage",
-  "url": "https://winest.studio/about",
+  "@id": "https://winest.studio/en/about#webpage",
+  "url": "https://winest.studio/en/about",
   "name": content.metaTitle,
   "description": content.metaDescription,
   "isPartOf": { "@id": "https://winest.studio/#website" },
@@ -28,8 +27,9 @@ const contactSchema = {
   title={content.metaTitle}
   description={content.metaDescription}
   schema={contactSchema}
+  lang="en"
 >
-  <Navbar />
+  <Navbar lang="en" />
 
   <main class="about-page-main">
     <div class="about-container">
@@ -41,7 +41,7 @@ const contactSchema = {
         <h1 class="about-hero-title">{content.hero.title}</h1>
 
         <!-- Quick Navigation Anchors -->
-        <nav class="about-nav-anchors" aria-label="หมวดหมู่หน้าติดต่อ">
+        <nav class="about-nav-anchors" aria-label="Contact page quick anchors">
           <a href="#agency-contact" class="about-anchor-pill">
             <Icon name="x-twitter" width="14" height="14" />
             <span>{content.hero.anchors.agency}</span>
@@ -60,7 +60,7 @@ const contactSchema = {
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 1: ติดต่อค่าย (สปอนเซอร์, คอลแลป, งานเกี่ยวกับค่ายและ VTuber)
+           SECTION 1: Agency & VTuber Collaborations
            ============================================================ -->
       <section class="about-zone" id="agency-contact">
         <div class="zone-header-block">
@@ -121,8 +121,7 @@ const contactSchema = {
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 2: ติดต่องานคอมมิชชัน (โมเดล Live2D, วาดคน, วาดฉากหลัง)
-           ใช้อีกลิงก์ตามที่ผู้ใช้กำหนด (Kenelix Studio & /commissions)
+           SECTION 2: Creative Studio & Commissions (Kenelix Studio)
            ============================================================ -->
       <section class="about-zone" id="hiring-contact">
         <div class="zone-header-block">
@@ -132,9 +131,9 @@ const contactSchema = {
         </div>
 
         <div class="zone-cards-grid-2">
-          <!-- Option A: ดูรายละเอียดเรทราคา & ผลงานจริง -->
+          <!-- Option A: View Rates & Portfolio -->
           <a
-            href="/commissions"
+            href="/en/commissions"
             class="unified-card"
           >
             <div class="card-top-row">
@@ -153,7 +152,7 @@ const contactSchema = {
             </span>
           </a>
 
-          <!-- Option B: เปิด Ticket สั่งจ้างงานสตูดิโอ (ใช้อีกลิงก์) -->
+          <!-- Option B: Open Discord Ticket -->
           <a
             href={atelier.discordUrl}
             target="_blank"
@@ -181,7 +180,7 @@ const contactSchema = {
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 3: นโยบายและแนวทางปฏิบัติเบื้องต้น
+           SECTION 3: Guidelines & Policies
            ============================================================ -->
       <section class="about-zone" id="policies">
         <div class="zone-header-block">
@@ -206,7 +205,6 @@ const contactSchema = {
   <Footer />
 
   <script>
-    // Smooth scrolling for in-page anchors
     document.querySelectorAll('.about-anchor-pill[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
         const targetId = anchor.getAttribute('href');
