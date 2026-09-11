@@ -47,112 +47,73 @@
 }
 
 /* -------------------------------------------------------------
-   Refined Masthead Navigation Dock Bar
+   Quick Navigation Anchor Pills (Unified with /about)
    ------------------------------------------------------------- */
-.masthead-action-row {
+.about-nav-anchors {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  gap: 0.65rem;
   margin-top: 24px;
 }
 
-.masthead-dock-bar {
+.about-anchor-pill {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 5px;
-  border-radius: var(--radius-pill);
-  background: rgba(20, 27, 45, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.3s ease;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary, #94a3b8);
+  text-decoration: none;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.dock-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
+.about-anchor-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary, #e098a1);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .about-anchor-pill {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #475569;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .about-anchor-pill:hover {
+  border-color: #e098a1;
+  color: #9b334d;
+  background: #fdf2f4;
 }
 
 .dock-index {
   font-family: var(--font-heading);
-  font-size: 0.6875rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: var(--accent-primary);
-  opacity: 0.85;
+  color: var(--accent-primary, #e098a1);
   letter-spacing: 0.05em;
 }
 
-.dock-text {
-  color: var(--text-primary);
-  transition: color 0.2s ease;
+[data-theme="light"] .dock-index {
+  color: #9b334d;
 }
 
-.dock-arrow {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
-}
-
-.dock-link:hover {
-  background: rgba(138, 156, 245, 0.12);
-  border-color: rgba(138, 156, 245, 0.25);
-  transform: translateY(-1px);
-}
-
-.dock-link:hover .dock-text {
-  color: #ffffff;
-}
-
-.dock-link:hover .dock-arrow {
-  color: var(--accent-primary);
-  transform: translateY(2px);
-}
-
-/* Light Theme Support for Dock Bar */
-[data-theme="light"] .masthead-dock-bar {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(30, 41, 74, 0.1);
-  box-shadow: 0 6px 24px rgba(30, 41, 74, 0.08), inset 0 1px 0 #ffffff;
-}
-
-[data-theme="light"] .dock-link:hover {
-  background: rgba(85, 103, 226, 0.08);
-  border-color: rgba(85, 103, 226, 0.22);
-}
-
-[data-theme="light"] .dock-link:hover .dock-text {
-  color: var(--text-primary);
-}
-
-/* Mobile Responsive Dock */
-@media (max-width: 720px) {
-  .masthead-dock-bar {
-    border-radius: 18px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    width: 100%;
-    max-width: 440px;
-    padding: 6px;
+@media (max-width: 640px) {
+  .about-nav-anchors {
+    gap: 0.5rem;
   }
 
-  .dock-link {
-    justify-content: center;
-    padding: 9px 12px;
-    font-size: 0.78rem;
+  .about-anchor-pill {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
   }
 }
 
