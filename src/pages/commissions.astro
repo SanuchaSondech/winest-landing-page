@@ -35,24 +35,30 @@ const {
         <h1 class="masthead-title">{atelier.title}</h1>
         <p class="masthead-lead">{atelier.lead}</p>
 
-        <div class="masthead-action-row">
-          <a href="#models-section" class="editorial-text-link">
-            <span>1. Live2D Models</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a href="#illustration-section" class="editorial-text-link">
-            <span>2. Backgrounds</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a href="#showcase-section" class="editorial-text-link">
-            <span>3. Motion Showcase</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a href="#studio-terms" class="editorial-text-link">
-            <span>Terms & Guidelines</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-        </div>
+        <nav class="masthead-action-row" aria-label="Quick section navigation">
+          <div class="masthead-dock-bar">
+            <a href="#models-section" class="dock-link">
+              <span class="dock-index">01</span>
+              <span class="dock-text">Live2D Models</span>
+              <span class="dock-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#illustration-section" class="dock-link">
+              <span class="dock-index">02</span>
+              <span class="dock-text">Backgrounds</span>
+              <span class="dock-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#showcase-section" class="dock-link">
+              <span class="dock-index">03</span>
+              <span class="dock-text">Motion Showcase</span>
+              <span class="dock-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#studio-terms" class="dock-link">
+              <span class="dock-index">04</span>
+              <span class="dock-text">Terms & Guidelines</span>
+              <span class="dock-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </nav>
       </header>
 
       <!-- ============================================================
@@ -344,4 +350,27 @@ const {
   </main>
 
   <Footer />
+
+  <script>
+    // Smooth scroll navigation with precise offset
+    document.querySelectorAll('.dock-link[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            const navbar = document.querySelector('.navbar');
+            const navOffset = navbar ? (navbar as HTMLElement).offsetHeight : 72;
+            const targetY = targetEl.getBoundingClientRect().top + window.pageYOffset - navOffset - 24;
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+            history.pushState(null, '', targetId);
+          }
+        }
+      });
+    });
+  </script>
 </Layout>

@@ -46,40 +46,125 @@
   margin: 0 auto 20px;
 }
 
+/* -------------------------------------------------------------
+   Refined Masthead Navigation Dock Bar
+   ------------------------------------------------------------- */
 .masthead-action-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  margin-top: 24px;
 }
 
-.editorial-text-link {
+.masthead-dock-bar {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.875rem;
+  gap: 4px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  background: rgba(20, 27, 45, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.dock-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
+  border: 1px solid transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
-.editorial-text-link:hover {
+.dock-index {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 800;
   color: var(--accent-primary);
-  transform: translateX(2px);
+  opacity: 0.85;
+  letter-spacing: 0.05em;
 }
 
-.editorial-text-link.primary {
+.dock-text {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.dock-arrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.dock-link:hover {
+  background: rgba(138, 156, 245, 0.12);
+  border-color: rgba(138, 156, 245, 0.25);
+  transform: translateY(-1px);
+}
+
+.dock-link:hover .dock-text {
+  color: #ffffff;
+}
+
+.dock-link:hover .dock-arrow {
   color: var(--accent-primary);
+  transform: translateY(2px);
 }
 
-/* Pipe Divider */
-.pipe {
-  color: rgba(255, 255, 255, 0.2);
-  margin: 0 4px;
-  font-weight: 300;
-  user-select: none;
+/* Light Theme Support for Dock Bar */
+[data-theme="light"] .masthead-dock-bar {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(30, 41, 74, 0.1);
+  box-shadow: 0 6px 24px rgba(30, 41, 74, 0.08), inset 0 1px 0 #ffffff;
+}
+
+[data-theme="light"] .dock-link:hover {
+  background: rgba(85, 103, 226, 0.08);
+  border-color: rgba(85, 103, 226, 0.22);
+}
+
+[data-theme="light"] .dock-link:hover .dock-text {
+  color: var(--text-primary);
+}
+
+/* Mobile Responsive Dock */
+@media (max-width: 720px) {
+  .masthead-dock-bar {
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    width: 100%;
+    max-width: 440px;
+    padding: 6px;
+  }
+
+  .dock-link {
+    justify-content: center;
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Smooth Scroll & Scroll Margin for Anchor Jumps */
+html {
+  scroll-behavior: smooth;
+}
+
+.recommended-section,
+.pricing-matrix-section,
+.terms-split-section {
+  scroll-margin-top: 96px;
 }
 
 /* Section Headings */
