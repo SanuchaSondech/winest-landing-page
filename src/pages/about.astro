@@ -1,345 +1,228 @@
 ---
-// src/pages/about.astro - WINEST Official Contact, Services & Policies
-// 3 หมวดหมู่หลัก: 1. ติดต่อค่าย & VTuber | 2. ติดต่อจ้างงาน (3 บริการ) | 3. นโยบายค่าย
+// src/pages/about.astro - WINEST Official About, Collaboration & Guidelines
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Icon from "../components/common/Icon.astro";
 import "../styles/global.css";
-import "../styles/scroll-reveal.css";
 import "../styles/about-page.css";
 
-// 3 บริการหลักของค่าย WINEST (กระชับ ชัดเจน กวาดตาอ่านได้ทันที)
-const studioServices = [
+const pillars = [
   {
-    title: "บริการวาดรูปครบวงจร",
-    subTitle: "Character Design · วาดคน · วาดฉาก",
-    bullets: [
-      "ออกแบบคาแรกเตอร์ดีไซน์ (3 มุมมอง)",
-      "วาดคน ภาพประกอบตัวละคร และงานโปรโมต",
-      "วาดฉากหลังสตรีมมิ่ง 4K (2D / 2.5D)",
-    ],
-    accent: "#e098a1",
+    title: "Virtual Talent Roster",
+    desc: "ส่งเสริมและสนับสนุนทาเลนต์ VTuber ของค่าย ให้ได้แสดงเอกลักษณ์ ความสามารถ และสร้างความสุขให้กับคอมมิวนิตี้อย่างเต็มศักยภาพ",
   },
   {
-    title: "บริการริกโมเดล",
-    subTitle: "Live2D Model Rigging",
-    bullets: [
-      "ระบบฟิสิกส์เส้นผมและเสื้อผ้าพริ้วไหว",
-      "การเคลื่อนไหวศีรษะและลำตัว XYZ",
-      "เซ็ตอัปการแสดงอารมณ์ทางใบหน้าครบชุด",
-    ],
-    accent: "#8b5cf6",
+    title: "Creative Production",
+    desc: "ยกระดับคุณภาพงานโปรดักชันระดับพรีเมียม ทั้งการออกแบบตัวละคร (Character Design) งานวาดฉาก และการริกโมเดล Live2D ให้มีมิติเป็นธรรมชาติ",
   },
   {
-    title: "บริการมิกซ์เพลง",
-    subTitle: "Audio Mixing & Mastering",
-    bullets: [
-      "จูนเสียงร้องและจัดจังหวะระดับโปร",
-      "มิกซ์บาลานซ์ดนตรีและมิติเสียงสมบูรณ์",
-      "มาสเตอริ่งพร้อมเผยแพร่ทุกสตรีมมิ่ง",
-    ],
-    accent: "#06b6d4",
+    title: "Community & Safe Space",
+    desc: "มุ่งมั่นสร้างพื้นที่ปลอดภัยและอบอุ่นสำหรับแฟนคลับ ครีเอเตอร์ และผู้ติดตามทุกคน ได้ร่วมพูดคุยและสร้างสรรค์ความทรงจำที่ดีไปด้วยกัน",
   },
 ];
 
-// นโยบายของค่าย (สรุปเฉพาะประเด็นสำคัญ กระชับ ไม่เวิ่นเว้อ)
-const policies = [
+const guidelines = [
   {
-    id: "fanart",
-    title: "ผลงานแฟนอาร์ต (Fan Art)",
-    desc: "สร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อิสระ โดยไม่อนุญาตให้นำไปใช้ในเชิงพาณิชย์",
-    tag: "Fan Work",
+    title: "แนวทางผลงานแฟนอาร์ต (Fan Art)",
+    desc: "ยินดีและสนับสนุนให้แฟนคลับสร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อย่างอิสระ สำหรับการใช้งานที่ไม่ใช่เชิงพาณิชย์",
   },
   {
-    id: "commercial",
-    title: "การว่าจ้างและลิขสิทธิ์ (Commercial Terms)",
-    desc: "งานวาด ริกโมเดล และมิกซ์เพลง ได้รับสิทธิ์การใช้งานเชิงพาณิชย์เต็มรูปแบบตามขอบเขตงาน",
-    tag: "Commercial Ready",
+    title: "ความปลอดภัยและความเป็นส่วนตัว (Safety & Privacy)",
+    desc: "ขอความร่วมมือในการเคารพพื้นที่ส่วนตัวของทาเลนต์ ไม่สืบค้นหรือเผยแพร่ข้อมูลตัวตนจริง (IRL) และรักษาบรรยากาศการมีส่วนร่วมที่สร้างสรรค์และสุภาพ",
   },
   {
-    id: "safety",
-    title: "ความปลอดภัยและชุมชน (Safety & Privacy)",
-    desc: "เคารพความเป็นส่วนตัวของทาเลนต์และเพื่อนร่วมคอมมิวนิตี้ ห้ามคุกคามหรือเผยแพร่ข้อมูลตัวตนจริง",
-    tag: "Community First",
+    title: "การว่าจ้างและลิขสิทธิ์เชิงพาณิชย์ (Commercial Terms)",
+    desc: "งานสั่งทำโมเดลและภาพประกอบจากสตูดิโอจะได้รับสิทธิ์การใช้งานเชิงพาณิชย์ตามที่ตกลง สามารถตรวจสอบรายละเอียดเงื่อนไขและคิวงานได้ที่หน้าคอมมิชชัน",
   },
 ];
 ---
 
 <Layout
-  title="WINEST - ติดต่อค่าย ติดต่องาน และนโยบาย"
-  description="ศูนย์ข้อมูลและการติดต่อ WINEST: ประสานงาน VTuber, บริการจ้างงานสตูดิโอ (วาดรูปครบวงจร, ริกโมเดล, มิกซ์เพลง) และนโยบายค่าย"
+  title="About WINEST - เกี่ยวกับค่ายและการติดต่อ"
+  description="เรื่องราวของ WINEST ค่ายเวอร์ชวลครีเอเตอร์และสตูดิโอสร้างสรรค์คอนเทนต์ ช่องทางการติดต่อประสานงาน Collab และแนวทางคอมมิวนิตี้"
 >
   <Navbar />
 
   <main class="about-page-main">
-    <!-- ===================================================================
-         HERO MASTHEAD & QUICK NAVIGATION
-         =================================================================== -->
-    <header class="about-hero-section">
-      <h1 class="about-hero-title">ศูนย์ข้อมูลและการติดต่อ</h1>
+    <div class="about-container">
 
-      <!-- Quick Navigation Anchors -->
-      <nav class="about-nav-anchors" aria-label="หมวดหมู่หน้าติดต่อ">
-        <a href="#agency-contact" class="about-anchor-pill">
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle
-              cx="9"
-              cy="7"
-              r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
-              d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
-          >
-          <span>ติดต่อค่าย & ทาเลนต์</span>
-        </a>
-        <a href="#hiring-contact" class="about-anchor-pill">
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path
-              d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg
-          >
-          <span>บริการจ้างงานสตูดิโอ</span>
-        </a>
-        <a href="#policies" class="about-anchor-pill">
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path
-              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-            ></path><polyline points="14 2 14 8 20 8"></polyline><line
-              x1="16"
-              y1="13"
-              x2="8"
-              y2="13"></line><line x1="16" y1="17" x2="8" y2="17"
-            ></line><polyline points="10 9 9 9 8 9"></polyline></svg
-          >
-          <span>นโยบายค่าย</span>
-        </a>
-      </nav>
-    </header>
-
-    <!-- ===================================================================
-         ส่วนที่ 1: ติดต่อค่ายและความร่วมมือ VTUBER
-         (Collab, Sponsor, Event, Media)
-         =================================================================== -->
-    <section class="about-zone" id="agency-contact">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">ติดต่อค่าย และความร่วมมือ VTuber</h2>
-        <p class="zone-subtext">
-          สำหรับเสนอ Collab สตรีมเกม/เพลง, งานสปอนเซอร์แบรนด์, อีเวนต์
-          หรือติดต่องานกับทาเลนต์
+      <!-- ============================================================
+           HERO MASTHEAD: Human Editorial Typography
+           ============================================================ -->
+      <header class="about-masthead">
+        <span class="about-kicker">About WINEST</span>
+        <h1 class="about-headline">
+          โปรเจกต์เวอร์ชวลครีเอเตอร์<br class="hidden-mobile" />
+          และสตูดิโอสร้างสรรค์คอนเทนต์
+        </h1>
+        <p class="about-lead">
+          WINEST คือพื้นที่รวมตัวของ VTuber ครีเอเตอร์ และทีมงานสร้างสรรค์ที่มุ่งมั่นนำเสนองานโปรดักชันคุณภาพ ควบคู่ไปกับการสร้างคอมมิวนิตี้ที่อบอุ่นและเป็นมิตรในโลกเวอร์ชวล
         </p>
-      </div>
 
-      <!-- Fast-Track Contact Lanes (Editorial Split-Lane with Vertical Divider, No Box Cards) -->
-      <div class="fast-track-lanes">
-        <!-- Lane 1: X Direct Message -->
-        <a
-          href="https://x.com/Winest_vt"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-lane-item is-x"
-        >
-          <div class="lane-identity">
-            <div class="lane-icon-frame is-x" aria-hidden="true">
-              <Icon name="x-twitter" width="22" height="22" />
-            </div>
-            <div class="lane-title-group">
-              <h3 class="lane-headline">X Direct Message</h3>
-              <span class="lane-handle">@Winest_vt</span>
-            </div>
-          </div>
+        <!-- Minimal Section Dock (Clean text links, no pill spam) -->
+        <nav class="about-dock-nav" aria-label="สารบัญหน้า About">
+          <a href="#about-pillars" class="dock-nav-link">วิสัยทัศน์ & พันธกิจ</a>
+          <span class="dock-sep">/</span>
+          <a href="#contact-collab" class="dock-nav-link">ติดต่อค่าย & Collab</a>
+          <span class="dock-sep">/</span>
+          <a href="#studio-commissions" class="dock-nav-link">สตูดิโอ & คอมมิชชัน</a>
+          <span class="dock-sep">/</span>
+          <a href="#community-guidelines" class="dock-nav-link">แนวทางชุมชน</a>
+        </nav>
+      </header>
 
-          <p class="lane-description">
-            ทัก DM ได้ทันทีสำหรับเสนอ Collab ด่วน ชวนสตรีมเกม หรือสอบถามข้อเสนอเบื้องต้นกับทีมงาน
-          </p>
+      <div class="about-divider" aria-hidden="true"></div>
 
-          <div class="lane-action-link">
-            <span>ทัก DM บน X</span>
-            <Icon name="arrow-diagonal" width="14" height="14" />
-          </div>
-        </a>
+      <!-- ============================================================
+           SECTION 1: Core Pillars (Authentic Editorial 3-Col Split)
+           ============================================================ -->
+      <section class="about-section" id="about-pillars">
+        <div class="section-intro">
+          <h2 class="section-title">วิสัยทัศน์และการทำงาน</h2>
+          <p class="section-desc">หัวใจสำคัญในการขับเคลื่อนค่ายและสตูดิโอ WINEST</p>
+        </div>
 
-        <!-- Central Vertical Divider -->
-        <div class="lane-vertical-divider" aria-hidden="true"></div>
+        <div class="pillars-grid">
+          {pillars.map((pillar, idx) => (
+            <article class="pillar-card">
+              <span class="pillar-index">0{idx + 1}</span>
+              <h3 class="pillar-title">{pillar.title}</h3>
+              <p class="pillar-desc">{pillar.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <!-- Lane 2: Discord Community -->
-        <a
-          href="https://discord.gg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-lane-item is-discord"
-        >
-          <div class="lane-identity">
-            <div class="lane-icon-frame is-discord" aria-hidden="true">
-              <Icon name="discord" width="22" height="22" />
-            </div>
-            <div class="lane-title-group">
-              <h3 class="lane-headline">Discord Community</h3>
-              <span class="lane-handle">WINEST Server</span>
-            </div>
-          </div>
+      <div class="about-divider" aria-hidden="true"></div>
 
-          <p class="lane-description">
-            ส่งข้อความในห้อง <em>#collab-inquiries</em> เพื่อนัดหมายสตรีมร่วมกัน หรือพูดคุยแลกเปลี่ยนกับครีเอเตอร์
-          </p>
-
-          <div class="lane-action-link">
-            <span>เข้าร่วม Discord</span>
-            <Icon name="arrow-diagonal" width="14" height="14" />
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Section Spacer -->
-    <div class="zone-spacer" aria-hidden="true"></div>
-
-    <!-- ===================================================================
-         ส่วนที่ 2: บริการจ้างงานสตูดิโอ (CREATIVE STUDIO SERVICES)
-         (3 บริการหลัก: วาดรูปครบวงจร, ริกโมเดล, มิกซ์เพลง)
-         =================================================================== -->
-    <section class="about-zone" id="hiring-contact">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">บริการจ้างงานสตูดิโอ</h2>
-        <p class="zone-subtext">
-          สตูดิโอ WINEST ให้บริการโปรดักชันระดับพรีเมียมสำหรับ VTuber
-          และครีเอเตอร์ พร้อมสิทธิ์เชิงพาณิชย์ครบวงจร
-        </p>
-      </div>
-
-      <!-- 3 Service Cards Grid -->
-      <div class="services-three-grid">
-        {
-          studioServices.map((srv) => (
-            <div
-              class="service-three-card"
-              style={`--service-accent: ${srv.accent};`}
-            >
-              <div>
-                <h3 class="service-three-title">{srv.title}</h3>
-                <div class="service-three-subtitle">{srv.subTitle}</div>
-                <ul class="service-three-bullets">
-                  {srv.bullets.map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- Action Banner -->
-      <div class="commercial-contact-banner">
-        <div class="banner-left-info">
-          <h3 class="banner-headline">สนใจจ้างงาน หรือขอใบเสนอราคา?</h3>
-          <p class="banner-desc">
-            เปิด Ticket ใน Discord หรือทัก DM บน X
-            เพื่อเช็กคิวงานและประเมินราคาได้ทันที
+      <!-- ============================================================
+           SECTION 2: Contact & Collaboration (Clean 2-Col Lanes)
+           ============================================================ -->
+      <section class="about-section" id="contact-collab">
+        <div class="section-intro">
+          <h2 class="section-title">ติดต่อค่าย และความร่วมมือ</h2>
+          <p class="section-desc">
+            สำหรับเสนอร่วมงาน Collab สตรีมเกม/เพลง, งานสปอนเซอร์แบรนด์ หรือติดต่อพูดคุยกับทีมงาน
           </p>
         </div>
-        <div class="banner-actions-wrap">
-          <a
-            href="https://discord.gg"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="discord-ticket-btn"
-          >
-            <Icon name="discord" width="16" height="16" />
-            <span>เปิด Ticket ใน Discord</span>
-          </a>
+
+        <div class="contact-duet-grid">
+          <!-- X (Twitter) -->
           <a
             href="https://x.com/Winest_vt"
             target="_blank"
             rel="noopener noreferrer"
-            class="x-dm-btn"
+            class="contact-channel-card"
           >
-            <Icon name="x-twitter" width="16" height="16" />
-            <span>ทัก DM บน X</span>
-          </a>
-          <button
-            type="button"
-            class="copy-email-btn"
-            id="copyEmailBtn"
-            data-email="contact@winest.studio"
-            title="สำหรับส่งอีเมลสำรอง"
-          >
-            <Icon name="mail" width="14" height="14" />
-            <span id="copyBtnText">คัดลอกอีเมล</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Spacer -->
-    <div class="zone-spacer" aria-hidden="true"></div>
-
-    <!-- ===================================================================
-         ส่วนที่ 3: นโยบายของค่าย (POLICIES & GUIDELINES)
-         (สรุปสาระสำคัญ สั้น กระชับ)
-         =================================================================== -->
-    <section class="about-zone" id="policies">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">นโยบายของค่าย</h2>
-        <p class="zone-subtext">
-          แนวทางปฏิบัติและข้อกำหนดเบื้องต้น (เอกสารฉบับสมบูรณ์อยู่ระหว่างจัดทำ)
-        </p>
-      </div>
-
-      <!-- 3 Compact Policy Cards -->
-      <div class="policy-card-grid">
-        {
-          policies.map((p) => (
-            <div class="policy-card" id={`policy-${p.id}`}>
-              <span class="policy-badge">{p.tag}</span>
-              <h3 class="policy-card-title">{p.title}</h3>
-              <p class="policy-lorem-text" style="margin: 0;">
-                {p.desc}
-              </p>
+            <div class="channel-card-header">
+              <div class="channel-icon-wrap" aria-hidden="true">
+                <Icon name="x-twitter" width="22" height="22" />
+              </div>
+              <div>
+                <h3 class="channel-name">X (Twitter)</h3>
+                <span class="channel-handle">@Winest_vt</span>
+              </div>
             </div>
-          ))
-        }
-      </div>
-    </section>
+            <p class="channel-desc">
+              ติดตามประกาศทางการ ตารางกิจกรรม และสามารถส่ง Direct Message (DM) เพื่อเสนอข้อตกลงเบื้องต้นได้อย่างสะดวกรวดเร็ว
+            </p>
+            <span class="channel-action">
+              <span>ไปยังบัญชี @Winest_vt</span>
+              <Icon name="arrow-diagonal" width="14" height="14" />
+            </span>
+          </a>
+
+          <!-- Discord -->
+          <a
+            href="https://discord.gg"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-channel-card"
+          >
+            <div class="channel-card-header">
+              <div class="channel-icon-wrap" aria-hidden="true">
+                <Icon name="discord" width="22" height="22" />
+              </div>
+              <div>
+                <h3 class="channel-name">Discord Server</h3>
+                <span class="channel-handle">WINEST Official Community</span>
+              </div>
+            </div>
+            <p class="channel-desc">
+              เข้าร่วมพื้นที่คอมมิวนิตี้ทางการสำหรับแฟนคลับ และช่องทางติดต่อห้อง <em>#collab-inquiries</em> เพื่อนัดหมายสตรีมร่วมกัน
+            </p>
+            <span class="channel-action">
+              <span>เข้าร่วม Discord</span>
+              <Icon name="arrow-diagonal" width="14" height="14" />
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <div class="about-divider" aria-hidden="true"></div>
+
+      <!-- ============================================================
+           SECTION 3: Studio & Production Commissions (Bridge to /commissions)
+           ============================================================ -->
+      <section class="about-section" id="studio-commissions">
+        <div class="studio-bridge-card">
+          <div class="studio-bridge-content">
+            <span class="studio-bridge-kicker">Creative Production & Commissions</span>
+            <h2 class="studio-bridge-title">ต้องการสั่งทำโมเดล Live2D หรือวาดฉากสตรีมมิ่ง?</h2>
+            <p class="studio-bridge-desc">
+              สตูดิโอ WINEST และ Kenelix Studio ให้บริการงานโปรดักชันระดับมืออาชีพ ทั้งงานวาดคาแรกเตอร์ดีไซน์, ริกโมเดล Live2D พร้อมฟิสิกส์สมจริง และวาดฉากสตรีมมิ่ง 4K สามารถดูตัวอย่างผลงานจริง วิดีโอทดสอบการเคลื่อนไหว และเช็กคิวงานได้ที่หน้ารับงานคอมมิชชัน
+            </p>
+          </div>
+          <div class="studio-bridge-action">
+            <a href="/commissions" class="studio-primary-btn">
+              <span>ไปยังหน้ารับงานคอมมิชชัน</span>
+              <Icon name="arrow-right" width="16" height="16" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="about-divider" aria-hidden="true"></div>
+
+      <!-- ============================================================
+           SECTION 4: Community Guidelines & Policies (Clean 3-Col)
+           ============================================================ -->
+      <section class="about-section" id="community-guidelines">
+        <div class="section-intro">
+          <h2 class="section-title">แนวทางชุมชนและข้อกำหนด</h2>
+          <p class="section-desc">
+            แนวทางปฏิบัติเพื่อให้การอยู่ร่วมกันในคอมมิวนิตี้เป็นไปอย่างสร้างสรรค์และปลอดภัย
+          </p>
+        </div>
+
+        <div class="guidelines-grid">
+          {guidelines.map((item) => (
+            <article class="guideline-card">
+              <h3 class="guideline-title">{item.title}</h3>
+              <p class="guideline-desc">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <Footer />
 
-  <!-- Interactive Copy Email Script -->
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const copyBtn = document.getElementById("copyEmailBtn");
-      const copyText = document.getElementById("copyBtnText");
-      if (copyBtn && copyText) {
-        copyBtn.addEventListener("click", async () => {
-          const email =
-            copyBtn.getAttribute("data-email") || "contact@winest.studio";
-          try {
-            await navigator.clipboard.writeText(email);
-            copyText.textContent = "คัดลอกแล้ว! ✓";
-            setTimeout(() => {
-              copyText.textContent = "คัดลอกอีเมล";
-            }, 3000);
-          } catch (err) {
-            window.location.href = `mailto:${email}`;
-          }
-        });
-      }
+  <script>
+    // Smooth scrolling for in-page anchors
+    document.querySelectorAll('.dock-nav-link[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
 </Layout>
