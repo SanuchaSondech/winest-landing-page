@@ -15,14 +15,13 @@ const {
   tierPricing, 
   accessories, 
   illustrations, 
-  audioMixing, 
   terms 
 } = commissionsData;
 ---
 
 <Layout 
   title="WINEST x KENELIX STUDIO - Creative Studio & Commissions"
-  description="บริการสร้างสรรค์งานโปรดักชันครบวงจร: โมเดล Live2D, วาดภาพประกอบและฉากสตรีมมิ่ง 4K, และบริการมิกซ์เพลงคุณภาพสูง"
+  description="บริการสร้างสรรค์งานโปรดักชัน: โมเดล Live2D และภาพวาดฉากสตรีมมิ่ง สำหรับครีเอเตอร์และ VTuber คุณภาพระดับมืออาชีพ"
 >
   <Navbar />
 
@@ -43,11 +42,7 @@ const {
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#illustration-section" class="editorial-text-link">
-            <span>2. งานวาด & ฉากหลัง</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a href="#audio-section" class="editorial-text-link">
-            <span>3. งานเสียง & มิกซ์เพลง</span>
+            <span>2. วาดฉาก & พื้นหลัง</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#studio-terms" class="editorial-text-link">
@@ -235,54 +230,7 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 3: บริการงานเสียง & มิกซ์เพลง (Audio Mixing & Sound)
-           ============================================================ -->
-      <section class="recommended-section" id="audio-section">
-        <span class="section-label">Pillar 03 · Audio & Sound Studio</span>
-        <h2 class="section-heading has-desc">{audioMixing.title}</h2>
-        <p class="section-desc">{audioMixing.lead}</p>
-
-        <div class="recommended-cards-grid">
-          {audioMixing.items.map((item) => (
-            <article class="package-card">
-              <div class="pkg-header">
-                <div class="pkg-identity">
-                  <h3 class="pkg-title">{item.title}</h3>
-                  <span class="pkg-tag">{item.badge}</span>
-                </div>
-
-                <div class="pkg-price-row">
-                  <span class="price-num" style="font-size: 1.25rem;">{item.rate}</span>
-                  <span class="price-lead" style="font-size: 0.75rem;">({item.rateSub})</span>
-                </div>
-              </div>
-
-              <!-- 3 Clean Bullets -->
-              <ul class="pkg-bullets">
-                {item.bullets.map((bullet) => (
-                  <li class="pkg-bullet-item">
-                    <Icon name="check" width="13" height="13" class="pkg-bullet-svg" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <!-- Action Button -->
-              <a 
-                href={atelier.discordUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="pkg-cta"
-              >
-                <span>ส่งบรีฟงานเสียง ↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- ============================================================
-           PART 4: Terms, Timeline & Installment (Editorial 3-Col Split)
+           PART 3: Terms, Timeline & Installment (Editorial 3-Col Split)
            ============================================================ -->
       <section class="terms-split-section" id="studio-terms">
         <span class="section-label">Commercial Guidelines</span>
@@ -306,12 +254,12 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 5: Minimal Closing Action
+           PART 4: Minimal Closing Action
            ============================================================ -->
       <section class="closing-action-section">
         <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันของคุณ?</h2>
         <p class="closing-desc">
-          ปรึกษาประเมินคิวงาน หรือส่งไฟล์บรีฟสำหรับงานโมเดล งานวาด และมิกซ์เพลงกับทีมงาน Kenelix Studio โดยตรง
+          ปรึกษาประเมินคิวงาน หรือส่งไฟล์บรีฟสำหรับงานโมเดลและงานวาดฉากกับทีมงาน Kenelix Studio โดยตรง
         </p>
         <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="closing-btn">
           <span>ติดต่อผ่าน Discord (Kenelix Studio)</span>
