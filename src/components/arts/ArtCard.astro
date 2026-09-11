@@ -47,7 +47,12 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
 <article class={`art-preview-card ${item.isComingSoon ? 'is-coming-soon-card' : ''} reveal-init reveal-card stagger-${Math.min(index + 1, 4)}`} data-index={index}>
   <!-- 1. Visual Stage: Strict 16:9 Aspect Ratio for Imported Images -->
   <div class="art-visual-stage">
-    {item.image ? (
+    {item.isComingSoon ? (
+      <div class="art-coming-soon-stage">
+        <span class="coming-soon-banner-text">COMING SOON</span>
+        <span class="coming-soon-banner-sub">เตรียมเปิดให้บริการเร็ว ๆ นี้</span>
+      </div>
+    ) : item.image ? (
       <img 
         src={item.image} 
         alt={item.title} 

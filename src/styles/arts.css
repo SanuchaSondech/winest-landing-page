@@ -152,6 +152,38 @@
   transform: scale(1.04);
 }
 
+/* Coming Soon Text Stage (No Generated Art) */
+.art-coming-soon-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.08) 0%, rgba(13, 17, 28, 0.96) 75%);
+  text-align: center;
+  padding: 20px;
+  user-select: none;
+}
+
+.coming-soon-banner-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.95;
+}
+
+.coming-soon-banner-sub {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
 /* Floating Glassmorphic Category Badge (Hype4 Standard) */
 .art-category-pill {
   position: absolute;
