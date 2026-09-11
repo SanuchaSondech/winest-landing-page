@@ -1,67 +1,28 @@
 ---
-// src/pages/about.astro - WINEST Official Contact, Services & Policies
-// 3 หมวดหมู่หลัก: 1. ติดต่อค่าย & VTuber | 2. ติดต่อจ้างงาน (3 บริการ) | 3. นโยบายค่าย
+// src/pages/about.astro - WINEST Official Contact Channels & Directory
+// Unified Design Architecture: 1. ติดต่อค่าย | 2. ติดต่องานคอมมิชชัน | 3. นโยบาย
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Icon from "../components/common/Icon.astro";
+import commissionsData from "../data/commissions.json";
 import "../styles/global.css";
-import "../styles/scroll-reveal.css";
 import "../styles/about-page.css";
 
-// 3 บริการหลักของค่าย WINEST (กระชับ ชัดเจน กวาดตาอ่านได้ทันที)
-const studioServices = [
-  {
-    title: "บริการวาดรูปครบวงจร",
-    subTitle: "Character Design · วาดคน · วาดฉาก",
-    bullets: [
-      "ออกแบบคาแรกเตอร์ดีไซน์ (3 มุมมอง)",
-      "วาดคน ภาพประกอบตัวละคร และงานโปรโมต",
-      "วาดฉากหลังสตรีมมิ่ง 4K (2D / 2.5D)",
-    ],
-    accent: "var(--accent-primary, #e098a1)",
-  },
-  {
-    title: "บริการริกโมเดล",
-    subTitle: "Live2D Model Rigging",
-    bullets: [
-      "ระบบฟิสิกส์เส้นผมและเสื้อผ้าพริ้วไหว",
-      "การเคลื่อนไหวศีรษะและลำตัว XYZ",
-      "เซ็ตอัปการแสดงอารมณ์ทางใบหน้าครบชุด",
-    ],
-    accent: "var(--accent-primary, #e098a1)",
-  },
-  {
-    title: "บริการมิกซ์เพลง",
-    subTitle: "Audio Mixing & Mastering (Coming Soon)",
-    bullets: [
-      "จูนเสียงร้องและจัดจังหวะระดับโปร",
-      "มิกซ์บาลานซ์ดนตรีและมิติเสียงสมบูรณ์",
-      "Coming Soon (เปิดให้บริการในเฟส 2)",
-    ],
-    accent: "var(--accent-primary, #e098a1)",
-  },
-];
+const { atelier } = commissionsData;
 
-// นโยบายของค่าย (สรุปเฉพาะประเด็นสำคัญ กระชับ ไม่เวิ่นเว้อ)
-const policies = [
+const guidelines = [
   {
-    id: "fanart",
     title: "ผลงานแฟนอาร์ต (Fan Art)",
-    desc: "สร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อิสระ โดยไม่อนุญาตให้นำไปใช้ในเชิงพาณิชย์",
-    tag: "Fan Work",
+    desc: "ยินดีและสนับสนุนให้แฟนคลับสร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อย่างอิสระ สำหรับการใช้งานที่ไม่ใช่เชิงพาณิชย์",
   },
   {
-    id: "commercial",
-    title: "การว่าจ้างและลิขสิทธิ์ (Commercial Terms)",
-    desc: "งานวาด ริกโมเดล และมิกซ์เพลง ได้รับสิทธิ์การใช้งานเชิงพาณิชย์เต็มรูปแบบตามขอบเขตงาน",
-    tag: "Commercial Ready",
+    title: "ความเป็นส่วนตัวและความปลอดภัย (Talent Safety)",
+    desc: "ขอความร่วมมือในการเคารพพื้นที่ส่วนตัวของทาเลนต์ ไม่สืบค้นหรือเผยแพร่ข้อมูลตัวตนจริง (IRL) และรักษาบรรยากาศการมีส่วนร่วมที่สุภาพ",
   },
   {
-    id: "safety",
-    title: "ความปลอดภัยและชุมชน (Safety & Privacy)",
-    desc: "เคารพความเป็นส่วนตัวของทาเลนต์และเพื่อนร่วมคอมมิวนิตี้ ห้ามคุกคามหรือเผยแพร่ข้อมูลตัวตนจริง",
-    tag: "Community First",
+    title: "การจัดคิวงานและส่งมอบ (Studio Workflow)",
+    desc: "งานสั่งทำสตูดิโอจะจัดคิวงานตามลำดับการชำระเงินมัดจำ และจะส่งมอบไฟล์งานสมบูรณ์เมื่อชำระครบเต็มจำนวนแล้วเท่านั้น",
   },
 ];
 ---
@@ -73,200 +34,206 @@ const policies = [
   <Navbar />
 
   <main class="about-page-main">
-    <!-- ===================================================================
-         HERO MASTHEAD & QUICK NAVIGATION
-         =================================================================== -->
-    <header class="about-hero-section">
-      <h1 class="about-hero-title">ช่องทางการติดต่อ</h1>
+    <div class="about-container">
 
-      <!-- Quick Navigation Anchors -->
-      <nav class="about-nav-anchors" aria-label="หมวดหมู่หน้าติดต่อ">
-        <a href="#agency-contact" class="about-anchor-pill">
-          <Icon name="x-twitter" width="14" height="14" />
-          <span>1. ติดต่อค่าย & ความร่วมมือ VTuber</span>
-        </a>
-        <a href="#hiring-contact" class="about-anchor-pill">
-          <Icon name="grid" width="14" height="14" />
-          <span>2. ติดต่องานคอมมิชชันสตูดิโอ</span>
-        </a>
-        <a href="#policies" class="about-anchor-pill">
-          <Icon name="check" width="14" height="14" />
-          <span>3. นโยบายค่าย</span>
-        </a>
-      </nav>
-    </header>
+      <!-- ============================================================
+           HERO MASTHEAD: Concise Title & In-Page Anchors
+           ============================================================ -->
+      <header class="about-hero-section">
+        <span class="about-hero-kicker">CONTACT DIRECTORY</span>
+        <h1 class="about-hero-title">ช่องทางการติดต่อ</h1>
 
-    <!-- ===================================================================
-         ส่วนที่ 1: ติดต่อค่ายและความร่วมมือ VTUBER
-         (Collab, Sponsor, Event, Media)
-         =================================================================== -->
-    <section class="about-zone" id="agency-contact">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">1. ติดต่อค่าย และความร่วมมือ VTuber</h2>
-        <p class="zone-subtext">
-          สำหรับเสนอความร่วมมือทางธุรกิจ, งานสปอนเซอร์แบรนด์, งานอีเวนต์ หรือนัดหมายสตรีม Collab ร่วมกับทาเลนต์ VTuber ของค่าย
-        </p>
-      </div>
+        <!-- Quick Navigation Anchors -->
+        <nav class="about-nav-anchors" aria-label="หมวดหมู่หน้าติดต่อ">
+          <a href="#agency-contact" class="about-anchor-pill">
+            <Icon name="x-twitter" width="14" height="14" />
+            <span>1. ติดต่อค่าย & ความร่วมมือ VTuber</span>
+          </a>
+          <a href="#hiring-contact" class="about-anchor-pill">
+            <Icon name="grid" width="14" height="14" />
+            <span>2. ติดต่องานคอมมิชชันสตูดิโอ</span>
+          </a>
+          <a href="#policies" class="about-anchor-pill">
+            <Icon name="check" width="14" height="14" />
+            <span>3. นโยบายค่าย</span>
+          </a>
+        </nav>
+      </header>
 
-      <!-- Fast-Track Contact Lanes (Editorial Split-Lane with Vertical Divider, No Box Cards) -->
-      <div class="fast-track-lanes">
-        <!-- Lane 1: X Direct Message -->
-        <a
-          href="https://x.com/Winest_vt"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-lane-item is-x"
-        >
-          <div class="lane-identity">
-            <div class="lane-icon-frame is-x" aria-hidden="true">
-              <Icon name="x-twitter" width="22" height="22" />
-            </div>
-            <div class="lane-title-group">
-              <h3 class="lane-headline">X Direct Message</h3>
-              <span class="lane-handle">@Winest_vt</span>
-            </div>
-          </div>
+      <div class="about-divider" aria-hidden="true"></div>
 
-          <p class="lane-description">
-            ทัก DM ได้ทันทีสำหรับเสนอ Collab ด่วน ชวนสตรีมเกม หรือสอบถามข้อเสนอเบื้องต้นกับทีมงาน
-          </p>
-
-          <div class="lane-action-link">
-            <span>ทัก DM บน X</span>
-            <Icon name="arrow-diagonal" width="14" height="14" />
-          </div>
-        </a>
-
-        <!-- Central Vertical Divider -->
-        <div class="lane-vertical-divider" aria-hidden="true"></div>
-
-        <!-- Lane 2: Discord Community -->
-        <a
-          href="https://discord.gg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-lane-item is-discord"
-        >
-          <div class="lane-identity">
-            <div class="lane-icon-frame is-discord" aria-hidden="true">
-              <Icon name="discord" width="22" height="22" />
-            </div>
-            <div class="lane-title-group">
-              <h3 class="lane-headline">Discord Community</h3>
-              <span class="lane-handle">WINEST Server</span>
-            </div>
-          </div>
-
-          <p class="lane-description">
-            ส่งข้อความในห้อง <em>#collab-inquiries</em> เพื่อนัดหมายสตรีมร่วมกัน หรือพูดคุยแลกเปลี่ยนกับครีเอเตอร์
-          </p>
-
-          <div class="lane-action-link">
-            <span>เข้าร่วม Discord</span>
-            <Icon name="arrow-diagonal" width="14" height="14" />
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Section Spacer -->
-    <div class="zone-spacer" aria-hidden="true"></div>
-
-    <!-- ===================================================================
-         ส่วนที่ 2: บริการจ้างงานสตูดิโอ (CREATIVE STUDIO SERVICES)
-         (3 บริการหลัก: วาดรูปครบวงจร, ริกโมเดล, มิกซ์เพลง)
-         =================================================================== -->
-    <section class="about-zone" id="hiring-contact">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">2. ติดต่องานคอมมิชชันสตูดิโอ (Kenelix Studio)</h2>
-        <p class="zone-subtext">
-          สำหรับครีเอเตอร์และบุคคลทั่วไปที่ต้องการสั่งจ้างงานโปรดักชัน: วาดและริกโมเดล VTuber Live2D, ออกแบบ Character Sheet หรือวาดฉากสตรีมมิ่ง 4K พร้อมสิทธิ์เชิงพาณิชย์
-        </p>
-      </div>
-
-      <!-- 3 Service Cards Grid -->
-      <div class="services-three-grid">
-        {
-          studioServices.map((srv) => (
-            <div
-              class="service-three-card"
-              style={`--service-accent: ${srv.accent};`}
-            >
-              <div>
-                <h3 class="service-three-title">{srv.title}</h3>
-                <div class="service-three-subtitle">{srv.subTitle}</div>
-                <ul class="service-three-bullets">
-                  {srv.bullets.map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- Action Banner: Dedicated Commission Links -->
-      <div class="commercial-contact-banner">
-        <div class="banner-left-info">
-          <h3 class="banner-headline">สนใจจ้างงานคอมมิชชัน หรือต้องการดูเรทราคาและผลงานจริง?</h3>
-          <p class="banner-desc">
-            สามารถเข้าชมตัวอย่างโมเดลจริงและรายละเอียดแพ็กเกจได้ที่หน้ารวมคอมมิชชัน หรือเปิด Ticket สั่งจ้างงานกับทีมสตูดิโอ Kenelix Studio โดยตรง
+      <!-- ============================================================
+           SECTION 1: ติดต่อค่าย (สปอนเซอร์, คอลแลป, งานเกี่ยวกับค่ายและ VTuber)
+           ============================================================ -->
+      <section class="about-zone" id="agency-contact">
+        <div class="zone-header-block">
+          <span class="zone-tag-kicker">PART 01 · AGENCY & VTUBER</span>
+          <h2 class="zone-main-heading">1. ติดต่อค่าย และความร่วมมือ VTuber</h2>
+          <p class="zone-subtext">
+            สำหรับเสนอความร่วมมือทางธุรกิจ, งานสปอนเซอร์แบรนด์, งานอีเวนต์ หรือนัดหมายสตรีม Collab ร่วมกับทาเลนต์ VTuber ของค่าย
           </p>
         </div>
-        <div class="banner-actions-wrap">
+
+        <div class="zone-cards-grid-2">
+          <!-- Channel 1: X (Twitter) -->
           <a
-            href="/commissions"
-            class="discord-ticket-btn"
-            style="background: var(--accent-primary, #e098a1); color: #0f172a; border-color: var(--accent-primary, #e098a1); text-decoration: none;"
+            href="https://x.com/Winest_vt"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="unified-card"
           >
-            <span>ดูเรทราคา & ผลงานจริง ↗</span>
+            <div class="card-top-row">
+              <div class="card-icon-frame" aria-hidden="true">
+                <Icon name="x-twitter" width="22" height="22" />
+              </div>
+              <div class="card-title-group">
+                <h3>X Direct Message</h3>
+                <span class="card-sub-tag">@Winest_vt</span>
+              </div>
+            </div>
+            <p class="card-body-text">
+              ทัก DM ได้ทันทีสำหรับเสนองานสปอนเซอร์ คอลแลปด่วน หรือสอบถามข้อเสนอความร่วมมือเบื้องต้นกับทีมงานค่าย
+            </p>
+            <span class="card-action-row">
+              <span>ทัก DM บน X (@Winest_vt)</span>
+              <Icon name="arrow-diagonal" width="14" height="14" />
+            </span>
           </a>
+
+          <!-- Channel 2: Discord Community -->
           <a
             href="https://discord.gg"
             target="_blank"
             rel="noopener noreferrer"
-            class="x-dm-btn"
-            style="text-decoration: none;"
+            class="unified-card"
           >
-            <Icon name="discord" width="16" height="16" />
-            <span>เปิด Ticket จ้างงาน (Kenelix Studio)</span>
+            <div class="card-top-row">
+              <div class="card-icon-frame" aria-hidden="true">
+                <Icon name="discord" width="22" height="22" />
+              </div>
+              <div class="card-title-group">
+                <h3>Discord Community</h3>
+                <span class="card-sub-tag">WINEST Server</span>
+              </div>
+            </div>
+            <p class="card-body-text">
+              ส่งข้อความในห้อง <em>#collab-inquiries</em> เพื่อนัดหมายสตรีมร่วมกัน หรือประสานงานสำหรับครีเอเตอร์และพาร์ตเนอร์
+            </p>
+            <span class="card-action-row">
+              <span>เข้าร่วม WINEST Discord</span>
+              <Icon name="arrow-diagonal" width="14" height="14" />
+            </span>
           </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Section Spacer -->
-    <div class="zone-spacer" aria-hidden="true"></div>
+      <div class="about-divider" aria-hidden="true"></div>
 
-    <!-- ===================================================================
-         ส่วนที่ 3: นโยบายของค่าย (POLICIES & GUIDELINES)
-         (สรุปสาระสำคัญ สั้น กระชับ)
-         =================================================================== -->
-    <section class="about-zone" id="policies">
-      <div class="zone-header-block">
-        <h2 class="zone-main-heading">3. นโยบายของค่าย และข้อตกลง</h2>
-        <p class="zone-subtext">
-          แนวทางปฏิบัติเบื้องต้นสำหรับการสนับสนุนทาเลนต์และการสั่งจ้างงาน
-        </p>
-      </div>
+      <!-- ============================================================
+           SECTION 2: ติดต่องานคอมมิชชัน (โมเดล Live2D, วาดคน, วาดฉากหลัง)
+           ใช้อีกลิงก์ตามที่ผู้ใช้กำหนด (Kenelix Studio & /commissions)
+           ============================================================ -->
+      <section class="about-zone" id="hiring-contact">
+        <div class="zone-header-block">
+          <span class="zone-tag-kicker">PART 02 · CREATIVE STUDIO & COMMISSIONS</span>
+          <h2 class="zone-main-heading">2. ติดต่องานคอมมิชชันสตูดิโอ (Kenelix Studio)</h2>
+          <p class="zone-subtext">
+            สำหรับครีเอเตอร์และบุคคลทั่วไปที่ต้องการสั่งจ้างงานโปรดักชัน: วาดและริกโมเดล VTuber Live2D, ออกแบบ Character Sheet หรือวาดฉากสตรีมมิ่ง 4K พร้อมสิทธิ์เชิงพาณิชย์
+          </p>
+        </div>
 
-      <!-- 3 Compact Policy Cards -->
-      <div class="policy-card-grid">
-        {
-          policies.map((p) => (
-            <div class="policy-card" id={`policy-${p.id}`}>
-              <span class="policy-badge">{p.tag}</span>
-              <h3 class="policy-card-title">{p.title}</h3>
-              <p class="policy-desc-text" style="margin: 0; line-height: 1.7; font-size: 0.88rem; color: var(--text-secondary, #94a3b8);">
-                {p.desc}
-              </p>
+        <div class="zone-cards-grid-2">
+          <!-- Option A: ดูรายละเอียดเรทราคา & ผลงานจริง -->
+          <a
+            href="/commissions"
+            class="unified-card"
+          >
+            <div class="card-top-row">
+              <div class="card-icon-frame" aria-hidden="true">
+                <Icon name="grid" width="22" height="22" />
+              </div>
+              <div class="card-title-group">
+                <h3>สำรวจเรทราคา & ผลงานจริง</h3>
+                <span class="card-sub-tag">Commissions Portfolio & Rates</span>
+              </div>
             </div>
-          ))
-        }
-      </div>
-    </section>
+            <p class="card-body-text">
+              เข้าชมหน้ารวมงานคอมมิชชันเพื่อดูสเปกโมเดล Live2D ทุกระดับ (Tier 1–3), คลิปวิดีโอตัวอย่างการเคลื่อนไหวจริง และภาพผลงานโมเดลทั้ง 6 รายการ
+            </p>
+            <span class="card-solid-btn">
+              <span>ดูข้อมูลคอมมิชชันทั้งหมด</span>
+              <Icon name="arrow-right" width="15" height="15" />
+            </span>
+          </a>
+
+          <!-- Option B: เปิด Ticket สั่งจ้างงานสตูดิโอ (ใช้อีกลิงก์) -->
+          <a
+            href={atelier.discordUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="unified-card"
+          >
+            <div class="card-top-row">
+              <div class="card-icon-frame" aria-hidden="true">
+                <Icon name="discord" width="22" height="22" />
+              </div>
+              <div class="card-title-group">
+                <h3>เปิด Ticket สั่งจ้างงาน (Kenelix Studio)</h3>
+                <span class="card-sub-tag">Direct Studio Inquiry</span>
+              </div>
+            </div>
+            <p class="card-body-text">
+              เปิด Ticket ส่งไฟล์บรีฟ ปรึกษาคิวงาน หรือขอใบเสนอราคาสำหรับการสั่งทำโมเดลและงานวาดกับทีมสตูดิโอ Kenelix Studio โดยตรง
+            </p>
+            <span class="card-outline-btn">
+              <Icon name="discord" width="16" height="16" />
+              <span>เปิด Ticket จ้างงานสตูดิโอ ↗</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <div class="about-divider" aria-hidden="true"></div>
+
+      <!-- ============================================================
+           SECTION 3: นโยบายและแนวทางปฏิบัติเบื้องต้น
+           ============================================================ -->
+      <section class="about-zone" id="policies">
+        <div class="zone-header-block">
+          <span class="zone-tag-kicker">PART 03 · GUIDELINES & POLICIES</span>
+          <h2 class="zone-main-heading">3. นโยบายของค่าย และข้อตกลง</h2>
+          <p class="zone-subtext">
+            แนวทางปฏิบัติเบื้องต้นสำหรับการสนับสนุนทาเลนต์และการประสานงานกับสตูดิโอ
+          </p>
+        </div>
+
+        <div class="zone-cards-grid-3">
+          {guidelines.map((g) => (
+            <article class="unified-card">
+              <h3 class="policy-card-title">{g.title}</h3>
+              <p class="policy-body-text">{g.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <Footer />
+
+  <script>
+    // Smooth scrolling for in-page anchors
+    document.querySelectorAll('.about-anchor-pill[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </Layout>
