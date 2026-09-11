@@ -111,7 +111,7 @@
     }
   ],
   "illustrations": {
-    "title": "บริการงานวาดฉาก & พื้นหลัง",
+    "title": "Background Illustration",
     "subtitle": "Background Illustration Suite",
     "lead": "บริการวาดฉากสตรีมมิ่ง ห้องนอน คาเฟ่ และสถานที่ต่าง ๆ แยกตามระดับรายละเอียดขององค์ประกอบและแสงเงา",
     "items": [
@@ -153,6 +153,70 @@
       }
     ]
   },
+  "showcases": [
+    {
+      "id": "model-01",
+      "number": "Model 01",
+      "name": "Butterfly Pea Soda",
+      "tier": "Tier 1",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/5.png",
+      "videoUrl": "https://www.youtube.com/watch?v=eiN2K9_ywZ8",
+      "features": "ถอดชุดนอก / สวมชุดนอก · 2 Emotes"
+    },
+    {
+      "id": "model-02",
+      "number": "Model 02",
+      "name": "Starberry Cake",
+      "tier": "Tier 2",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/6.png",
+      "videoUrl": "https://www.youtube.com/watch?v=fr13SGsi8ac",
+      "features": "3 ชุด (ชุดใน, ชุดออนเซ็น, ชุดนอก) · 3 Emotes"
+    },
+    {
+      "id": "model-03",
+      "number": "Model 03",
+      "name": "Leoneir (The violet Liger)",
+      "tier": "Tier 3",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/7.png",
+      "features": "ถอดเสื้อคลุม / ชุดหลัก · 5 Emotes"
+    },
+    {
+      "id": "model-04",
+      "number": "Model 04",
+      "name": "The Dog Model",
+      "tier": "Tier 3",
+      "artist": "W Doub-lu Ken",
+      "rigger": "Kenelix Studio",
+      "image": "/commission/8.png",
+      "features": "2 ชุดจีนโบราณ · ตาหัวใจ + 6 Emotes"
+    },
+    {
+      "id": "model-05",
+      "number": "Model 05",
+      "name": "The Boy Model",
+      "tier": "Tier 2",
+      "artist": "@Lumiel Lucius",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/9.png",
+      "features": "ชุดนักเรียน-ลำลอง · 7 Emotes"
+    },
+    {
+      "id": "model-06",
+      "number": "Model 06",
+      "name": "SeztionV",
+      "tier": "Tier 2",
+      "artist": "W Doub-lu Ken",
+      "rigger": "@Lumiel Lucius",
+      "image": "/commission/10.png",
+      "features": "3 เลเยอร์ (ชุดเต็มตัว, ถอดสูท, เสื้อเชิ้ต) · 10 Emotes"
+    }
+  ],
   "terms": [
     {
       "title": "ระยะเวลาการผลิต",

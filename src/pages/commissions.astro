@@ -1,5 +1,5 @@
 ---
-// src/pages/commissions.astro - World-Class Three-Pillar Creative Studio Showcase
+// src/pages/commissions.astro - World-Class Creative Studio Showcase & Commissions
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -15,6 +15,7 @@ const {
   tierPricing, 
   accessories, 
   illustrations, 
+  showcases,
   terms 
 } = commissionsData;
 ---
@@ -38,30 +39,33 @@ const {
 
         <div class="masthead-action-row">
           <a href="#models-section" class="editorial-text-link">
-            <span>1. โมเดล Live2D</span>
+            <span>1. Live2D Models</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#illustration-section" class="editorial-text-link">
-            <span>2. วาดฉาก & พื้นหลัง</span>
+            <span>2. Backgrounds</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#showcase-section" class="editorial-text-link">
+            <span>3. Motion Showcase</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href="#studio-terms" class="editorial-text-link">
-            <span>เงื่อนไข & การผ่อน</span>
+            <span>Terms & Guidelines</span>
             <span aria-hidden="true">↓</span>
           </a>
           <a href={atelier.discordUrl} target="_blank" rel="noopener noreferrer" class="editorial-text-link primary">
-            <span>ติดต่อ Discord</span>
+            <span>Contact Discord</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>
       </header>
 
       <!-- ============================================================
-           PART 1: โมเดล Live2D (Live2D Model Commissions)
+           PART 1: Live2D Models (Recommended Packages)
            ============================================================ -->
       <section class="recommended-section" id="models-section">
-        <span class="section-label">Pillar 01 · Live2D Models</span>
-        <h2 class="section-heading has-desc">โมเดล Live2D (แพ็กเกจแนะนำ)</h2>
+        <h2 class="section-heading has-desc">Live2D Model Packages</h2>
         <p class="section-desc">แพ็กเกจคอมโบงานวาดแยกชิ้นส่วนและริกเกลี่ยการเคลื่อนไหวครบวงจร พร้อมไฟล์ติดตั้งใช้งานได้ทันที</p>
 
         <div class="recommended-cards-grid">
@@ -107,8 +111,7 @@ const {
 
       <!-- Complete Price Comparison Matrix (Tiers & Accessories) -->
       <section class="pricing-matrix-section" id="pricing-matrix">
-        <span class="section-label">Full Price Catalog</span>
-        <h2 class="section-heading has-desc">ตารางเปรียบเทียบราคาโมเดลทั้งหมด</h2>
+        <h2 class="section-heading has-desc">Full Pricing Catalog</h2>
         <p class="section-desc">รายละเอียดเรทราคาแยกตามระดับความละเอียดของการเคลื่อนไหว และชิ้นส่วนเสริม</p>
 
         <!-- Tier Guide Bar (Clears all doubts about Tier 1, 2, 3) -->
@@ -183,10 +186,9 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 2: บริการงานวาด & ฉากหลัง (Illustration & Backgrounds)
+           PART 2: Background Illustration
            ============================================================ -->
       <section class="recommended-section" id="illustration-section">
-        <span class="section-label">Pillar 02 · Background Illustration</span>
         <h2 class="section-heading has-desc">{illustrations.title}</h2>
         <p class="section-desc">{illustrations.lead}</p>
 
@@ -230,11 +232,101 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 3: Terms, Timeline & Installment (Editorial 3-Col Split)
+           PART 3: Showcase & Motion Preview (Real Portfolio & Videos)
+           ============================================================ -->
+      <section class="portfolio-showcase-section" id="showcase-section">
+        <h2 class="section-heading has-desc">Showcase & Motion Preview</h2>
+        <p class="section-desc">ผลงานโมเดลที่ผลิตโดย Kenelix Studio พร้อมคลิปสาธิตการริกการเคลื่อนไหวจริง</p>
+
+        <!-- Featured Rigging Video Showcase (Direct YouTube Motion Links) -->
+        <div class="motion-demo-duet">
+          <div class="motion-demo-card">
+            <div class="motion-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/eiN2K9_ywZ8"
+                title="Butterfly Pea Soda - Rigging Showcase"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="motion-card-caption">
+              <div>
+                <span class="motion-badge">Rigging Showcase 01</span>
+                <h3 class="motion-title">Butterfly Pea Soda (Tier 1)</h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=eiN2K9_ywZ8" target="_blank" rel="noopener noreferrer" class="motion-yt-link">
+                <span>เปิดดูบน YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="motion-demo-card">
+            <div class="motion-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/fr13SGsi8ac"
+                title="Starberry Cake - Rigging Showcase"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="motion-card-caption">
+              <div>
+                <span class="motion-badge">Rigging Showcase 02</span>
+                <h3 class="motion-title">Starberry Cake (Tier 2)</h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=fr13SGsi8ac" target="_blank" rel="noopener noreferrer" class="motion-yt-link">
+                <span>เปิดดูบน YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Models Portfolio Grid -->
+        <div class="models-portfolio-grid">
+          {showcases && showcases.map((model) => (
+            <article class="model-portfolio-card">
+              <div class="model-img-wrapper">
+                <img 
+                  src={model.image} 
+                  alt={`${model.name} - ${model.tier}`} 
+                  loading="lazy" 
+                  decoding="async" 
+                />
+              </div>
+              <div class="model-card-body">
+                <div class="model-meta-top">
+                  <span class="model-num">{model.number}</span>
+                  <span class="model-tier-pill">{model.tier}</span>
+                </div>
+                <h3 class="model-name">{model.name}</h3>
+                <div class="model-credits">
+                  <span>Art: {model.artist}</span>
+                  <span class="credit-sep">|</span>
+                  <span>Rig: {model.rigger}</span>
+                </div>
+                <p class="model-features">{model.features}</p>
+                {model.videoUrl && (
+                  <a href={model.videoUrl} target="_blank" rel="noopener noreferrer" class="model-video-btn">
+                    <span>▶ ดูคลิปการขยับ</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================
+           PART 4: Terms & Guidelines (Editorial 3-Col Split)
            ============================================================ -->
       <section class="terms-split-section" id="studio-terms">
-        <span class="section-label">Commercial Guidelines</span>
-        <h2 class="section-heading">ระยะเวลา การผ่อนชำระ และนโยบาย</h2>
+        <h2 class="section-heading has-desc">Terms & Guidelines</h2>
+        <p class="section-desc">รายละเอียดเงื่อนไขระยะเวลา การผ่อนชำระ และนโยบายการแก้งาน</p>
 
         <div class="terms-3col-layout">
           {terms.map((col) => (
@@ -254,10 +346,10 @@ const {
       </section>
 
       <!-- ============================================================
-           PART 4: Minimal Closing Action
+           PART 5: Minimal Closing Action
            ============================================================ -->
       <section class="closing-action-section">
-        <h2 class="closing-title">พร้อมเริ่มต้นโปรดักชันของคุณ?</h2>
+        <h2 class="closing-title">Ready to Start Your Production?</h2>
         <p class="closing-desc">
           ปรึกษาประเมินคิวงาน หรือส่งไฟล์บรีฟสำหรับงานโมเดลและงานวาดฉากกับทีมงาน Kenelix Studio โดยตรง
         </p>
