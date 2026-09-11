@@ -75,7 +75,12 @@ const {
                 <div class="pkg-price-row">
                   <span class="price-lead">เริ่มต้น</span>
                   <span class="price-num">฿{pkg.startingPrice.toLocaleString()}</span>
-                  <span class="price-save">({pkg.discount})</span>
+                  {pkg.originalPrice && (
+                    <s class="price-original">฿{pkg.originalPrice.toLocaleString()}</s>
+                  )}
+                  {pkg.discountPercent && (
+                    <span class="price-discount-badge">{pkg.discountPercent}</span>
+                  )}
                 </div>
               </div>
 

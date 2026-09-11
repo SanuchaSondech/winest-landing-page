@@ -179,7 +179,8 @@
 .pkg-price-row {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-top: 4px;
 }
 
@@ -190,17 +191,32 @@
 
 .price-num {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-primary);
+  line-height: 1;
 }
 
-.price-save {
-  font-size: 0.75rem;
-  font-weight: 700;
+.price-original {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  text-decoration: line-through;
+}
+
+.price-discount-badge {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 800;
   color: var(--accent-primary);
-  margin-left: 2px;
+  background: rgba(138, 156, 245, 0.12);
+  border: 1px solid rgba(138, 156, 245, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
 }
 
 .pkg-bullets {

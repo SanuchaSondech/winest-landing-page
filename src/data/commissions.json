@@ -28,7 +28,8 @@
       "name": "Half Body",
       "subtitle": "ครึ่งตัว (ถึงระดับสะโพก)",
       "startingPrice": 3900,
-      "discount": "Combo ประหยัด ฿1,300",
+      "originalPrice": 5200,
+      "discountPercent": "-25%",
       "bullets": [
         "มุมมองถึงระดับสะโพก ขยับศีรษะและลำตัวบนครบแกน",
         "ฟรี 3 สีหน้า · ไฟล์พร้อมใช้บน VTube Studio ทันที",
@@ -40,7 +41,8 @@
       "name": "Simple Full",
       "subtitle": "เต็มตัว (โครงสร้างมาตรฐาน)",
       "startingPrice": 8000,
-      "discount": "Combo ประหยัด ฿2,000",
+      "originalPrice": 10000,
+      "discountPercent": "-20%",
       "bullets": [
         "เต็มตัวจรดปลายเท้า ขยับและเอียงตามท่าทางหลัก",
         "รองรับชุดเสริม · ฟรี 3 สีหน้า · ไฟล์ VTube Studio",
@@ -52,7 +54,8 @@
       "name": "Full Body",
       "subtitle": "เต็มตัวสมบูรณ์ (ฟิสิกส์ระดับสูง)",
       "startingPrice": 10500,
-      "discount": "Combo ประหยัด ฿5,000",
+      "originalPrice": 15500,
+      "discountPercent": "-30%",
       "bullets": [
         "เต็มตัวกายวิภาคสมบูรณ์ ถอดเปลี่ยนเสื้อผ้าได้อิสระ",
         "ฟิสิกส์เส้นผมและเครื่องแต่งกายพริ้วไหวรอบทิศทาง",
