@@ -169,12 +169,6 @@
   margin: 0;
 }
 
-.pkg-tag {
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-}
 
 .pkg-price-row {
   display: flex;
