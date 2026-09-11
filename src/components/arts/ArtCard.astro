@@ -5,6 +5,7 @@ import Icon from '../common/Icon.astro';
 export interface ArtItem {
   id: string;
   badge: string;
+  isComingSoon?: boolean;
   zone?: string;
   license?: string;
   title: string;
@@ -24,10 +25,10 @@ const { item, index } = Astro.props;
 const shortChipsMap: Record<string, string[]> = {
   "service-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
   "service-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-  "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งเสียง"],
+  "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "Coming Soon (เร็ว ๆ นี้)"],
   "art-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
   "art-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-  "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งเสียง"]
+  "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "Coming Soon (เร็ว ๆ นี้)"]
 };
 
 const chips = shortChipsMap[item.id] || item.specs?.slice(0, 3) || [];
@@ -43,7 +44,7 @@ const conceptArts: Record<string, string> = {
 const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
 ---
 
-<article class={`art-preview-card reveal-init reveal-card stagger-${Math.min(index + 1, 4)}`} data-index={index}>
+<article class={`art-preview-card ${item.isComingSoon ? 'is-coming-soon-card' : ''} reveal-init reveal-card stagger-${Math.min(index + 1, 4)}`} data-index={index}>
   <!-- 1. Visual Stage: Strict 16:9 Aspect Ratio for Imported Images -->
   <div class="art-visual-stage">
     {item.image ? (
@@ -52,7 +53,7 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
         alt={item.title} 
         class="art-visual-media" 
         loading="lazy" 
-        decoding="async"
+        decoding="async" 
       />
     ) : (
       <div class="art-vector-wrapper">
@@ -61,16 +62,19 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
     )}
 
     <!-- Floating Glassmorphic Category Badge -->
-    <div class="art-category-pill">
-      <span class="pill-dot"></span>
-      <span>{item.badge}</span>
+    <div class={`art-category-pill ${item.isComingSoon ? 'coming-soon-pill' : ''}`}>
+      <span class={`pill-dot ${item.isComingSoon ? 'coming-soon-dot' : ''}`}></span>
+      <span>{item.isComingSoon ? 'COMING SOON' : item.badge}</span>
     </div>
   </div>
 
   <!-- 2. Content Body: Strict Visual Hierarchy & High Scannability -->
   <div class="art-detail-body">
     <!-- Level 1: Service Title -->
-    <h3 class="art-service-title">{item.title}</h3>
+    <div class="art-title-row">
+      <h3 class="art-service-title">{item.title}</h3>
+      {item.isComingSoon && <span class="coming-soon-inline-badge">Coming Soon</span>}
+    </div>
 
     <!-- Level 2: Concise 1-2 sentence hook (No wall of text) -->
     <p class="art-desc-text">{item.desc}</p>
@@ -78,21 +82,36 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
     <!-- Level 3: Scannable Feature Chips (No boring <ul> bullets) -->
     <div class="art-chips-row">
       {chips.map((chip) => (
-        <span class="art-chip-tag">{chip}</span>
+        <span class={`art-chip-tag ${chip.includes('Coming Soon') ? 'chip-coming-soon' : ''}`}>{chip}</span>
       ))}
     </div>
 
     <!-- Level 4: Clear Bottom Action Bar -->
     <div class="art-card-footer">
-      <span class="art-license-indicator">
-        <Icon name="check" class="license-check-icon" width="13" height="13" />
-        <span>สิทธิ์เชิงพาณิชย์ครบวงจร</span>
-      </span>
+      {item.isComingSoon ? (
+        <>
+          <span class="art-license-indicator is-soon">
+            <span class="soon-pulse-dot" aria-hidden="true"></span>
+            <span>เปิดรับงานเฟส 2</span>
+          </span>
 
-      <a href="/commissions" class="art-detail-link" aria-label={`ดูรายละเอียดบริการ ${item.title}`}>
-        <span>รายละเอียด</span>
-        <Icon name="chevron-right" width="13" height="13" />
-      </a>
+          <span class="art-status-btn disabled" aria-disabled="true">
+            <span>เร็ว ๆ นี้</span>
+          </span>
+        </>
+      ) : (
+        <>
+          <span class="art-license-indicator">
+            <Icon name="check" class="license-check-icon" width="13" height="13" />
+            <span>สิทธิ์เชิงพาณิชย์ครบวงจร</span>
+          </span>
+
+          <a href="/commissions" class="art-detail-link" aria-label={`ดูรายละเอียดบริการ ${item.title}`}>
+            <span>รายละเอียด</span>
+            <Icon name="chevron-right" width="13" height="13" />
+          </a>
+        </>
+      )}
     </div>
   </div>
 </article>

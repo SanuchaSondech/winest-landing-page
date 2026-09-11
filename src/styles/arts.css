@@ -297,6 +297,121 @@
 }
 
 /* ==========================================================================
+   Coming Soon Card State (Audio Mixing Phase 2)
+   ========================================================================== */
+.art-preview-card.is-coming-soon-card {
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.art-preview-card.is-coming-soon-card:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.1);
+}
+
+.art-category-pill.coming-soon-pill {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+.pill-dot.coming-soon-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+}
+
+.art-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.art-title-row .art-service-title {
+  margin-bottom: 0;
+}
+
+.coming-soon-inline-badge {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+.chip-coming-soon {
+  color: #fbbf24 !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  background: rgba(245, 158, 11, 0.1) !important;
+}
+
+.art-license-indicator.is-soon {
+  color: var(--text-muted);
+}
+
+.soon-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fbbf24;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+  animation: pulseComingSoon 2s infinite ease-in-out;
+}
+
+@keyframes pulseComingSoon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.art-status-btn.disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  cursor: default;
+  user-select: none;
+}
+
+[data-theme="light"] .coming-soon-inline-badge,
+[data-theme="light"] .art-category-pill.coming-soon-pill {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: rgba(217, 119, 6, 0.3);
+  color: #b45309;
+}
+
+[data-theme="light"] .pill-dot.coming-soon-dot,
+[data-theme="light"] .soon-pulse-dot {
+  background: #d97706;
+  box-shadow: 0 0 6px rgba(217, 119, 6, 0.4);
+}
+
+[data-theme="light"] .chip-coming-soon {
+  color: #b45309 !important;
+  border-color: rgba(217, 119, 6, 0.3) !important;
+  background: rgba(217, 119, 6, 0.08) !important;
+}
+
+[data-theme="light"] .art-status-btn.disabled {
+  background: rgba(30, 41, 74, 0.05);
+  border-color: rgba(30, 41, 74, 0.1);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
    Arts Editorial CTA Bar (Centered Harmonious Finale identical to VTuber)
    ========================================================================== */
 .arts-cta-bar {
