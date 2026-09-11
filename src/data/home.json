@@ -92,6 +92,7 @@
         "badge": "Illustration Suite",
         "zone": "Zone B : Atelier Plaza",
         "license": "Commercial Ready",
+        "image": "/commission/6.png",
         "title": "บริการวาดรูปครบวงจร",
         "desc": "บริการวาดรูปครบวงจรทั้งคาแรกเตอร์ดีไซน์ วาดคน และวาดฉากหลังสตรีมมิ่ง 4K",
         "specs": [
@@ -105,6 +106,7 @@
         "badge": "Live2D Rigging",
         "zone": "Zone C : Rigging Lab",
         "license": "Commercial Ready",
+        "image": "/commission/5.png",
         "title": "บริการริกโมเดล",
         "desc": "บริการตัดต่อและริกโมเดลสำหรับ VTuber คุณภาพสูง ขยับเป็นธรรมชาติ ฟิสิกส์ผมนุ่มนวล พร้อมการแสดงอารมณ์ครบถ้วน",
         "specs": [
@@ -119,6 +121,7 @@
         "isComingSoon": true,
         "zone": "Phase 2 : Sound Studio",
         "license": "Phase 2",
+        "image": "/images/audio_mixing_preview.jpg",
         "title": "บริการมิกซ์เพลง",
         "desc": "บริการปรับแต่งเสียงร้อง จูนคีย์ มิกซ์ดนตรี และมาสเตอริ่ง สำหรับเพลงคัฟเวอร์และเพลงออริจินัล (เตรียมเปิดให้บริการในเฟส 2)",
         "specs": [
