@@ -7,9 +7,9 @@
   min-height: 100vh;
   padding-top: clamp(32px, 5vw, 56px);
   padding-bottom: clamp(64px, 8vw, 96px);
-  background: var(--bg-dominant, #090c16);
   color: var(--text-primary, #ffffff);
   position: relative;
+  z-index: 1;
 }
 
 .about-container {
