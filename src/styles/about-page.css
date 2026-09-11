@@ -49,12 +49,12 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary);
   margin-bottom: 0.75rem;
 }
 
 [data-theme="light"] .about-hero-kicker {
-  color: #9b334d;
+  color: var(--accent-primary);
 }
 
 .about-hero-title {
@@ -97,8 +97,8 @@
 
 .about-anchor-pill:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-primary, #e098a1);
-  color: var(--accent-primary, #e098a1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
@@ -110,9 +110,9 @@
 }
 
 [data-theme="light"] .about-anchor-pill:hover {
-  border-color: #e098a1;
-  color: #9b334d;
-  background: #fdf2f4;
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(85, 103, 226, 0.08);
 }
 
 /* --------------------------------------------------------------------------
@@ -134,12 +134,12 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary);
   margin-bottom: 0.4rem;
 }
 
 [data-theme="light"] .zone-tag-kicker {
-  color: #9b334d;
+  color: var(--accent-primary);
 }
 
 .zone-main-heading {
@@ -203,7 +203,7 @@
 
 .unified-card:hover {
   background: rgba(255, 255, 255, 0.045);
-  border-color: rgba(224, 152, 161, 0.4);
+  border-color: rgba(138, 156, 245, 0.35);
   transform: translateY(-3px);
 }
 
@@ -214,8 +214,8 @@
 }
 
 [data-theme="light"] .unified-card:hover {
-  border-color: #e098a1;
-  box-shadow: 0 8px 24px rgba(224, 152, 161, 0.14);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 24px rgba(85, 103, 226, 0.12);
 }
 
 /* Card Header Area */
@@ -261,12 +261,12 @@
 .card-sub-tag {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.82rem;
-  color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
 [data-theme="light"] .card-sub-tag {
-  color: #9b334d;
+  color: var(--accent-primary);
 }
 
 /* Card Body Text */
@@ -291,13 +291,13 @@
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary);
   transition: gap 0.2s ease;
   margin-top: auto;
 }
 
 [data-theme="light"] .card-action-row {
-  color: #9b334d;
+  color: var(--accent-primary);
 }
 
 .unified-card:hover .card-action-row {
@@ -310,8 +310,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--accent-primary, #e098a1);
-  color: #0f172a;
+  background: var(--accent-primary);
+  color: #0a0d16;
   padding: 0.72rem 1.25rem;
   border-radius: 8px;
   font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
@@ -320,6 +320,10 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
   align-self: flex-start;
   text-decoration: none;
+}
+
+[data-theme="light"] .card-solid-btn {
+  color: #ffffff;
 }
 
 .unified-card:hover .card-solid-btn {
@@ -352,14 +356,14 @@
 }
 
 .unified-card:hover .card-outline-btn {
-  border-color: var(--accent-primary, #e098a1);
-  color: var(--accent-primary, #e098a1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
 [data-theme="light"] .unified-card:hover .card-outline-btn {
-  color: #9b334d;
-  border-color: #e098a1;
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
 }
 
 /* --------------------------------------------------------------------------

@@ -76,8 +76,8 @@
 
 .about-anchor-pill:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: var(--accent-primary, #e098a1);
-  color: var(--accent-primary, #e098a1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
@@ -89,21 +89,21 @@
 }
 
 [data-theme="light"] .about-anchor-pill:hover {
-  border-color: #e098a1;
-  color: #9b334d;
-  background: #fdf2f4;
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(85, 103, 226, 0.08);
 }
 
 .dock-index {
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--accent-primary, #e098a1);
+  color: var(--accent-primary);
   letter-spacing: 0.05em;
 }
 
 [data-theme="light"] .dock-index {
-  color: #9b334d;
+  color: var(--accent-primary);
 }
 
 @media (max-width: 640px) {

@@ -316,7 +316,7 @@
 
 [data-theme="light"] .lang-switch-btn:hover {
   border-color: var(--accent-primary);
-  background: #fdf2f4;
+  background: rgba(85, 103, 226, 0.08);
 }
 
 .mobile-lang-btn {
