@@ -99,19 +99,47 @@
   transition: transform 0.05s ease-out;
 }
 
-.hamster-sliding-rider:hover {
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(252, 211, 77, 0.5));
+/* Default/Dark theme glow: Soft pure white frosted aura */
+:not([data-theme="light"]) .hamster-sliding-rider:hover {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
 }
 
-.hamster-sliding-rider.is-dragging {
+:not([data-theme="light"]) .hamster-sliding-rider.is-dragging {
   cursor: grabbing;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(252, 211, 77, 0.7));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.7));
+}
+
+/* Light theme glow: Warm golden sunny aura */
+[data-theme="light"] .hamster-sliding-rider:hover {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+}
+
+[data-theme="light"] .hamster-sliding-rider.is-dragging {
+  cursor: grabbing;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.8));
 }
 
 .hamster-slide-svg {
   width: 42px;
   height: 42px;
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Theme-dependent Hamster Color Switching */
+:not([data-theme="light"]) .hamster-theme-light {
+  display: none !important;
+}
+
+:not([data-theme="light"]) .hamster-theme-dark {
+  display: block !important;
+}
+
+[data-theme="light"] .hamster-theme-dark {
+  display: none !important;
+}
+
+[data-theme="light"] .hamster-theme-light {
+  display: block !important;
 }
 
 /* Dynamic Sliding Motion: ถไลลงมาอย่างเป็นธรรมชาติ */
