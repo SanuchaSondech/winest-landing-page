@@ -1,46 +1,35 @@
 ---
-// src/pages/about.astro - WINEST Official About, Collaboration & Guidelines
+// src/pages/about.astro - WINEST Official Contact Channels & Directory
+// 2 หมวดหมู่หลัก: 1. ติดต่อค่าย (สปอนเซอร์, คอลแลป, งานค่ายและ V) | 2. ติดต่องานคอมมิชชัน (โมเดล Live2D, งานวาด)
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Icon from "../components/common/Icon.astro";
+import commissionsData from "../data/commissions.json";
 import "../styles/global.css";
 import "../styles/about-page.css";
 
-const pillars = [
-  {
-    title: "Virtual Talent Roster",
-    desc: "ส่งเสริมและสนับสนุนทาเลนต์ VTuber ของค่าย ให้ได้แสดงเอกลักษณ์ ความสามารถ และสร้างความสุขให้กับคอมมิวนิตี้อย่างเต็มศักยภาพ",
-  },
-  {
-    title: "Creative Production",
-    desc: "ยกระดับคุณภาพงานโปรดักชันระดับพรีเมียม ทั้งการออกแบบตัวละคร (Character Design) งานวาดฉาก และการริกโมเดล Live2D ให้มีมิติเป็นธรรมชาติ",
-  },
-  {
-    title: "Community & Safe Space",
-    desc: "มุ่งมั่นสร้างพื้นที่ปลอดภัยและอบอุ่นสำหรับแฟนคลับ ครีเอเตอร์ และผู้ติดตามทุกคน ได้ร่วมพูดคุยและสร้างสรรค์ความทรงจำที่ดีไปด้วยกัน",
-  },
-];
+const { atelier } = commissionsData;
 
 const guidelines = [
   {
-    title: "แนวทางผลงานแฟนอาร์ต (Fan Art)",
+    title: "ผลงานแฟนอาร์ต (Fan Art)",
     desc: "ยินดีและสนับสนุนให้แฟนคลับสร้างสรรค์และเผยแพร่ผลงานเพื่อสนับสนุนทาเลนต์ได้อย่างอิสระ สำหรับการใช้งานที่ไม่ใช่เชิงพาณิชย์",
   },
   {
-    title: "ความปลอดภัยและความเป็นส่วนตัว (Safety & Privacy)",
-    desc: "ขอความร่วมมือในการเคารพพื้นที่ส่วนตัวของทาเลนต์ ไม่สืบค้นหรือเผยแพร่ข้อมูลตัวตนจริง (IRL) และรักษาบรรยากาศการมีส่วนร่วมที่สร้างสรรค์และสุภาพ",
+    title: "ความเป็นส่วนตัวและความปลอดภัย (Talent Safety)",
+    desc: "ขอความร่วมมือในการเคารพพื้นที่ส่วนตัวของทาเลนต์ ไม่สืบค้นหรือเผยแพร่ข้อมูลตัวตนจริง (IRL) และรักษาบรรยากาศการมีส่วนร่วมที่สุภาพ",
   },
   {
-    title: "การว่าจ้างและลิขสิทธิ์เชิงพาณิชย์ (Commercial Terms)",
-    desc: "งานสั่งทำโมเดลและภาพประกอบจากสตูดิโอจะได้รับสิทธิ์การใช้งานเชิงพาณิชย์ตามที่ตกลง สามารถตรวจสอบรายละเอียดเงื่อนไขและคิวงานได้ที่หน้าคอมมิชชัน",
+    title: "การจัดคิวงานและส่งมอบ (Studio Workflow)",
+    desc: "งานสั่งทำสตูดิโอจะจัดคิวงานตามลำดับการชำระเงินมัดจำ และจะส่งมอบไฟล์งานสมบูรณ์เมื่อชำระครบเต็มจำนวนแล้วเท่านั้น",
   },
 ];
 ---
 
 <Layout
-  title="About WINEST - เกี่ยวกับค่ายและการติดต่อ"
-  description="เรื่องราวของ WINEST ค่ายเวอร์ชวลครีเอเตอร์และสตูดิโอสร้างสรรค์คอนเทนต์ ช่องทางการติดต่อประสานงาน Collab และแนวทางคอมมิวนิตี้"
+  title="ช่องทางการติดต่อ - WINEST Official Contact"
+  description="ศูนย์ข้อมูลและการติดต่อค่าย WINEST: ติดต่อค่ายสำหรับงานสปอนเซอร์และ Collab VTuber และช่องทางติดต่องานคอมมิชชันโมเดล Live2D กับสตูดิโอ"
 >
   <Navbar />
 
@@ -48,112 +37,93 @@ const guidelines = [
     <div class="about-container">
 
       <!-- ============================================================
-           HERO MASTHEAD: Human Editorial Typography
+           HERO MASTHEAD: Contact Directory Overview
            ============================================================ -->
       <header class="about-masthead">
-        <span class="about-kicker">About WINEST</span>
-        <h1 class="about-headline">
-          โปรเจกต์เวอร์ชวลครีเอเตอร์<br class="hidden-mobile" />
-          และสตูดิโอสร้างสรรค์คอนเทนต์
-        </h1>
+        <span class="about-kicker">CONTACT DIRECTORY</span>
+        <h1 class="about-headline">ช่องทางการติดต่อ</h1>
         <p class="about-lead">
-          WINEST คือพื้นที่รวมตัวของ VTuber ครีเอเตอร์ และทีมงานสร้างสรรค์ที่มุ่งมั่นนำเสนองานโปรดักชันคุณภาพ ควบคู่ไปกับการสร้างคอมมิวนิตี้ที่อบอุ่นและเป็นมิตรในโลกเวอร์ชวล
+          ศูนย์รวมช่องทางการติดต่อและประสานงานของ WINEST โดยแบ่งออกเป็น 2 ส่วนหลัก: <strong>1. ติดต่อค่าย</strong> สำหรับงานสปอนเซอร์ คอลแลป และงานเกี่ยวกับทาเลนต์ และ <strong>2. ติดต่องานคอมมิชชัน</strong> สำหรับสั่งทำโมเดล Live2D และงานวาดกับสตูดิโอ
         </p>
 
-        <!-- Minimal Section Dock (Clean text links, no pill spam) -->
-        <nav class="about-dock-nav" aria-label="สารบัญหน้า About">
-          <a href="#about-pillars" class="dock-nav-link">วิสัยทัศน์ & พันธกิจ</a>
+        <!-- Minimal Quick Anchors -->
+        <nav class="about-dock-nav" aria-label="สารบัญช่องทางติดต่อ">
+          <a href="#agency-contact" class="dock-nav-link">1. ติดต่อค่าย & ความร่วมมือ VTuber</a>
           <span class="dock-sep">/</span>
-          <a href="#contact-collab" class="dock-nav-link">ติดต่อค่าย & Collab</a>
+          <a href="#hiring-contact" class="dock-nav-link">2. ติดต่องานคอมมิชชันสตูดิโอ</a>
           <span class="dock-sep">/</span>
-          <a href="#studio-commissions" class="dock-nav-link">สตูดิโอ & คอมมิชชัน</a>
-          <span class="dock-sep">/</span>
-          <a href="#community-guidelines" class="dock-nav-link">แนวทางชุมชน</a>
+          <a href="#guidelines" class="dock-nav-link">ข้อควรรู้และแนวทางปฏิบัติ</a>
         </nav>
       </header>
 
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 1: Core Pillars (Authentic Editorial 3-Col Split)
+           PART 1: ติดต่อค่าย (สปอนเซอร์, คอลแลป, งานเกี่ยวกับค่ายและ VTuber)
            ============================================================ -->
-      <section class="about-section" id="about-pillars">
-        <div class="section-intro">
-          <h2 class="section-title">วิสัยทัศน์และการทำงาน</h2>
-          <p class="section-desc">หัวใจสำคัญในการขับเคลื่อนค่ายและสตูดิโอ WINEST</p>
-        </div>
-
-        <div class="pillars-grid">
-          {pillars.map((pillar, idx) => (
-            <article class="pillar-card">
-              <span class="pillar-index">0{idx + 1}</span>
-              <h3 class="pillar-title">{pillar.title}</h3>
-              <p class="pillar-desc">{pillar.desc}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <div class="about-divider" aria-hidden="true"></div>
-
-      <!-- ============================================================
-           SECTION 2: Contact & Collaboration (Clean 2-Col Lanes)
-           ============================================================ -->
-      <section class="about-section" id="contact-collab">
-        <div class="section-intro">
-          <h2 class="section-title">ติดต่อค่าย และความร่วมมือ</h2>
-          <p class="section-desc">
-            สำหรับเสนอร่วมงาน Collab สตรีมเกม/เพลง, งานสปอนเซอร์แบรนด์ หรือติดต่อพูดคุยกับทีมงาน
+      <section class="contact-section" id="agency-contact">
+        <div class="contact-section-header">
+          <span class="section-part-tag">PART 01 · AGENCY & TALENTS</span>
+          <h2 class="contact-section-title">ติดต่อค่าย และความร่วมมือ VTuber</h2>
+          <p class="contact-section-desc">
+            สำหรับเสนอความร่วมมือทางธุรกิจ, งานสปอนเซอร์แบรนด์, ข้อเสนอจัดกิจกรรม/อีเวนต์ หรือนัดหมายสตรีม Collab ร่วมกับทาเลนต์ VTuber ของค่าย
           </p>
+
+          <div class="section-scope-row" aria-label="ขอบเขตงานติดต่อค่าย">
+            <span class="scope-item">Brand Sponsorships</span>
+            <span class="scope-item">VTuber Collabs</span>
+            <span class="scope-item">Events & Media</span>
+            <span class="scope-item">Talent Business</span>
+          </div>
         </div>
 
-        <div class="contact-duet-grid">
-          <!-- X (Twitter) -->
+        <div class="agency-channel-grid">
+          <!-- Channel 1: X (Twitter) -->
           <a
             href="https://x.com/Winest_vt"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-channel-card"
+            class="agency-channel-card"
           >
-            <div class="channel-card-header">
-              <div class="channel-icon-wrap" aria-hidden="true">
+            <div class="channel-card-top">
+              <div class="channel-icon-box" aria-hidden="true">
                 <Icon name="x-twitter" width="22" height="22" />
               </div>
-              <div>
-                <h3 class="channel-name">X (Twitter)</h3>
-                <span class="channel-handle">@Winest_vt</span>
+              <div class="channel-title-group">
+                <h3>X Direct Message</h3>
+                <span class="channel-sub-tag">@Winest_vt</span>
               </div>
             </div>
-            <p class="channel-desc">
-              ติดตามประกาศทางการ ตารางกิจกรรม และสามารถส่ง Direct Message (DM) เพื่อเสนอข้อตกลงเบื้องต้นได้อย่างสะดวกรวดเร็ว
+            <p class="channel-card-text">
+              ส่งข้อความ Direct Message (DM) ถึงทีมงานค่ายโดยตรง สำหรับสอบถามข้อเสนอเบื้องต้น เสนองานด่วน หรือประสานงานความร่วมมือกับทาเลนต์
             </p>
-            <span class="channel-action">
-              <span>ไปยังบัญชี @Winest_vt</span>
+            <span class="channel-action-row">
+              <span>ทัก DM บน X (@Winest_vt)</span>
               <Icon name="arrow-diagonal" width="14" height="14" />
             </span>
           </a>
 
-          <!-- Discord -->
+          <!-- Channel 2: Discord Agency -->
           <a
             href="https://discord.gg"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-channel-card"
+            class="agency-channel-card"
           >
-            <div class="channel-card-header">
-              <div class="channel-icon-wrap" aria-hidden="true">
+            <div class="channel-card-top">
+              <div class="channel-icon-box" aria-hidden="true">
                 <Icon name="discord" width="22" height="22" />
               </div>
-              <div>
-                <h3 class="channel-name">Discord Server</h3>
-                <span class="channel-handle">WINEST Official Community</span>
+              <div class="channel-title-group">
+                <h3>Discord Community</h3>
+                <span class="channel-sub-tag">WINEST Server</span>
               </div>
             </div>
-            <p class="channel-desc">
-              เข้าร่วมพื้นที่คอมมิวนิตี้ทางการสำหรับแฟนคลับ และช่องทางติดต่อห้อง <em>#collab-inquiries</em> เพื่อนัดหมายสตรีมร่วมกัน
+            <p class="channel-card-text">
+              เข้าร่วม Discord ทางการของค่าย เพื่อประสานงานในห้อง <em>#collab-inquiries</em> สำหรับครีเอเตอร์และสตรีมเมอร์ที่ต้องการนัดหมายร่วมงาน
             </p>
-            <span class="channel-action">
-              <span>เข้าร่วม Discord</span>
+            <span class="channel-action-row">
+              <span>เข้าร่วม WINEST Discord</span>
               <Icon name="arrow-diagonal" width="14" height="14" />
             </span>
           </a>
@@ -163,44 +133,81 @@ const guidelines = [
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 3: Studio & Production Commissions (Bridge to /commissions)
+           PART 2: ติดต่องานคอมมิชชัน (โมเดล Live2D, วาดคน, วาดฉากหลัง)
+           ใช้อีกลิงก์ตามที่ผู้ใช้กำหนด (Kenelix Studio & /commissions)
            ============================================================ -->
-      <section class="about-section" id="studio-commissions">
-        <div class="studio-bridge-card">
-          <div class="studio-bridge-content">
-            <span class="studio-bridge-kicker">Creative Production & Commissions</span>
-            <h2 class="studio-bridge-title">ต้องการสั่งทำโมเดล Live2D หรือวาดฉากสตรีมมิ่ง?</h2>
-            <p class="studio-bridge-desc">
-              สตูดิโอ WINEST และ Kenelix Studio ให้บริการงานโปรดักชันระดับมืออาชีพ ทั้งงานวาดคาแรกเตอร์ดีไซน์, ริกโมเดล Live2D พร้อมฟิสิกส์สมจริง และวาดฉากสตรีมมิ่ง 4K สามารถดูตัวอย่างผลงานจริง วิดีโอทดสอบการเคลื่อนไหว และเช็กคิวงานได้ที่หน้ารับงานคอมมิชชัน
+      <section class="contact-section" id="hiring-contact">
+        <div class="contact-section-header">
+          <span class="section-part-tag">PART 02 · CREATIVE STUDIO & COMMISSIONS</span>
+          <h2 class="contact-section-title">ติดต่องานคอมมิชชันสตูดิโอ</h2>
+          <p class="contact-section-desc">
+            สำหรับครีเอเตอร์และบุคคลทั่วไปที่ต้องการสั่งจ้างงานโปรดักชัน: วาดและริกโมเดล VTuber Live2D, ออกแบบ Character Sheet หรือวาดฉากหลังสตรีมมิ่ง 4K
+          </p>
+
+          <div class="section-scope-row" aria-label="ขอบเขตงานคอมมิชชัน">
+            <span class="scope-item">Live2D Rigging</span>
+            <span class="scope-item">Character Design</span>
+            <span class="scope-item">4K Backgrounds</span>
+            <span class="scope-item">Commercial Ready</span>
+          </div>
+        </div>
+
+        <div class="commission-channel-grid">
+          <!-- Option A: ดูรายละเอียดแพ็กเกจ & ตัวอย่างผลงานจริง -->
+          <a
+            href="/commissions"
+            class="commission-link-card"
+          >
+            <span class="commission-badge-top">PORTFOLIO & PRICING</span>
+            <h3 class="commission-card-title">สำรวจรายละเอียดแพ็กเกจ และผลงานจริง</h3>
+            <p class="commission-card-desc">
+              เข้าชมหน้ารวมงานคอมมิชชัน: ตรวจสอบเรทราคาทุกระดับ (Tier 1–3), สเปกฟิสิกส์โมเดล, คลิปวิดีโอตัวอย่างการเคลื่อนไหวจริง และภาพโมเดลทั้ง 6 รายการ
             </p>
-          </div>
-          <div class="studio-bridge-action">
-            <a href="/commissions" class="studio-primary-btn">
-              <span>ไปยังหน้ารับงานคอมมิชชัน</span>
-              <Icon name="arrow-right" width="16" height="16" />
-            </a>
-          </div>
+            <span class="commission-btn-solid">
+              <span>ดูข้อมูลคอมมิชชันทั้งหมด</span>
+              <Icon name="arrow-right" width="15" height="15" />
+            </span>
+          </a>
+
+          <!-- Option B: เปิด Ticket สั่งจ้างงานสตูดิโอโดยตรง (ใช้อีกลิงก์) -->
+          <a
+            href={atelier.discordUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="commission-link-card"
+          >
+            <span class="commission-badge-top">DIRECT STUDIO INQUIRY</span>
+            <h3 class="commission-card-title">ติดต่อสั่งจ้างงานผ่าน Discord (Kenelix Studio)</h3>
+            <p class="commission-card-desc">
+              เปิด Ticket ส่งไฟล์บรีฟ ปรึกษาข้อกำหนดเฉพาะทาง หรือขอใบเสนอราคาสำหรับการสั่งทำโมเดลและงานวาดกับทีมผู้ผลิต Kenelix Studio โดยตรง
+            </p>
+            <span class="commission-btn-outline">
+              <Icon name="discord" width="16" height="16" />
+              <span>เปิด Ticket สั่งจ้างงานสตูดิโอ ↗</span>
+            </span>
+          </a>
         </div>
       </section>
 
       <div class="about-divider" aria-hidden="true"></div>
 
       <!-- ============================================================
-           SECTION 4: Community Guidelines & Policies (Clean 3-Col)
+           PART 3: นโยบายและแนวทางปฏิบัติเบื้องต้น
            ============================================================ -->
-      <section class="about-section" id="community-guidelines">
-        <div class="section-intro">
-          <h2 class="section-title">แนวทางชุมชนและข้อกำหนด</h2>
-          <p class="section-desc">
-            แนวทางปฏิบัติเพื่อให้การอยู่ร่วมกันในคอมมิวนิตี้เป็นไปอย่างสร้างสรรค์และปลอดภัย
+      <section class="contact-section" id="guidelines">
+        <div class="contact-section-header">
+          <span class="section-part-tag">PART 03 · GUIDELINES</span>
+          <h2 class="contact-section-title">ข้อควรรู้และแนวทางปฏิบัติ</h2>
+          <p class="contact-section-desc">
+            แนวทางปฏิบัติเบื้องต้นเกี่ยวกับการสนับสนุนทาเลนต์และการประสานงานกับสตูดิโอ
           </p>
         </div>
 
-        <div class="guidelines-grid">
-          {guidelines.map((item) => (
-            <article class="guideline-card">
-              <h3 class="guideline-title">{item.title}</h3>
-              <p class="guideline-desc">{item.desc}</p>
+        <div class="guidelines-3col-grid">
+          {guidelines.map((g) => (
+            <article class="guideline-minimal-card">
+              <h3 class="guideline-card-title">{g.title}</h3>
+              <p class="guideline-card-desc">{g.desc}</p>
             </article>
           ))}
         </div>
