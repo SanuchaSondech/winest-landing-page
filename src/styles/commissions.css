@@ -655,32 +655,7 @@
   font-size: 0.8125rem;
   color: var(--text-secondary);
   line-height: 1.4;
-  margin: 0 0 14px;
-  flex-grow: 1;
-}
-
-.model-video-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  text-decoration: none;
-  margin-top: auto;
-  transition: all 0.2s ease;
-}
-
-.model-video-btn:hover {
-  background: var(--accent-primary);
-  color: #0a0d16;
-  border-color: var(--accent-primary);
+  margin: 0;
 }
 
 /* -------------------------------------------------------------
