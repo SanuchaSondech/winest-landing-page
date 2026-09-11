@@ -14,14 +14,45 @@ const {
   tierPricing, 
   accessories, 
   illustrations, 
-  showcases,
+  showcases, 
   terms 
 } = commissionsData;
+
+const commissionsSchema = {
+  "@type": "ProfessionalService",
+  "@id": "https://winest.studio/commissions#service",
+  "name": "WINEST x KENELIX STUDIO Commissions",
+  "url": "https://winest.studio/commissions",
+  "description": "บริการสร้างสรรค์งานโปรดักชัน: โมเดล Live2D และภาพวาดฉากสตรีมมิ่ง สำหรับครีเอเตอร์และ VTuber คุณภาพระดับมืออาชีพ",
+  "provider": { "@id": "https://winest.studio/#organization" },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Live2D & Creative Art Production",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Live2D Model Design & Rigging"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Streaming Background & Room Illustration"
+        }
+      }
+    ]
+  }
+};
 ---
 
 <Layout 
   title="WINEST x KENELIX STUDIO - Creative Studio & Commissions"
   description="บริการสร้างสรรค์งานโปรดักชัน: โมเดล Live2D และภาพวาดฉากสตรีมมิ่ง สำหรับครีเอเตอร์และ VTuber คุณภาพระดับมืออาชีพ"
+  schema={commissionsSchema}
 >
   <Navbar />
 
@@ -283,9 +314,11 @@ const {
               <div class="model-img-wrapper">
                 <img 
                   src={model.image} 
-                  alt={`${model.name} - ${model.tier}`} 
+                  alt={`${model.name} Live2D Model Showcase (${model.tier}) - WINEST Kenelix Studio`} 
                   loading="lazy" 
                   decoding="async" 
+                  width="480"
+                  height="600"
                 />
               </div>
               <div class="model-card-body">

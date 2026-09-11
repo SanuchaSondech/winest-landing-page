@@ -13,6 +13,28 @@
   color: var(--text-primary, #ffffff);
 }
 
+/* Members Directory Header (Masthead) */
+.members-index-masthead {
+  padding: 3rem 0 2rem;
+  background-color: var(--bg-dominant, #090c16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.members-index-h1 {
+  font-family: var(--font-display, "Prompt", sans-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #ffffff);
+  margin: 0 0 0.5rem;
+}
+
+.members-index-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted, #94a3b8);
+  margin: 0;
+}
+
 /* ==========================================================================
    1. GENERATION BANDS (ROSTER VIEW) - แบ่งเจนด้วยสี
    ========================================================================== */

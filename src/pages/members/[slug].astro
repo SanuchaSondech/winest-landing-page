@@ -41,12 +41,26 @@ const hashtags: string[] = (Array.isArray(rawHashtags) ? rawHashtags : [])
   })
   .filter((t: string) => t.length > 1);
 const socials = talent.socials || [];
+
+const personSchema = {
+  "@type": "Person",
+  "@id": `https://winest.studio/members/${talent.slug}#person`,
+  "name": talent.name,
+  "alternateName": [talent.japaneseName, talent.thaiName].filter(Boolean),
+  "description": talent.lore,
+  "image": talent.modelImage ? `https://winest.studio${talent.modelImage}` : undefined,
+  "jobTitle": "Virtual YouTuber",
+  "worksFor": { "@id": "https://winest.studio/#organization" },
+  "sameAs": socials.map((s: any) => s.url).filter(Boolean)
+};
 ---
 
 <Layout
   title={`${talent.name}${talent.japaneseName ? ` · ${talent.japaneseName}` : talent.thaiName ? ` · ${talent.thaiName}` : talent.title ? ` · ${talent.title}` : ""} | WINEST Production`}
   description={talent.lore}
   image={talent.videoCover || talent.modelImage}
+  type="profile"
+  schema={personSchema}
 >
   <Navbar />
 
@@ -115,9 +129,10 @@ const socials = talent.socials || [];
               <img
                 id="detailModelImage"
                 src={talent.modelImage}
-                alt={talent.name}
+                alt={`${talent.name} (${talent.japaneseName || talent.thaiName || ''}) - โมเดลประจำตัว VTuber ค่าย WINEST`}
                 class="dossier-full-model-img"
                 loading="eager"
+                decoding="async"
               />
             </div>
           </div>

@@ -25,11 +25,22 @@ const guidelines = [
     desc: "งานสั่งทำสตูดิโอจะจัดคิวงานตามลำดับการชำระเงินมัดจำ และจะส่งมอบไฟล์งานสมบูรณ์เมื่อชำระครบเต็มจำนวนแล้วเท่านั้น",
   },
 ];
+
+const contactSchema = {
+  "@type": "ContactPage",
+  "@id": "https://winest.studio/about#webpage",
+  "url": "https://winest.studio/about",
+  "name": "ช่องทางการติดต่อ - WINEST Official Contact",
+  "description": "ศูนย์ข้อมูลและการติดต่อค่าย WINEST: ติดต่อค่ายสำหรับงานสปอนเซอร์และ Collab VTuber และช่องทางติดต่องานคอมมิชชันโมเดล Live2D กับสตูดิโอ",
+  "isPartOf": { "@id": "https://winest.studio/#website" },
+  "about": { "@id": "https://winest.studio/#organization" }
+};
 ---
 
 <Layout
   title="ช่องทางการติดต่อ - WINEST Official Contact"
   description="ศูนย์ข้อมูลและการติดต่อค่าย WINEST: ติดต่อค่ายสำหรับงานสปอนเซอร์และ Collab VTuber และช่องทางติดต่องานคอมมิชชันโมเดล Live2D กับสตูดิโอ"
+  schema={contactSchema}
 >
   <Navbar />
 

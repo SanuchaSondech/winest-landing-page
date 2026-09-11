@@ -52,15 +52,43 @@ const talentsMap = new Map<string, AnyTalent>(rawTalents.map((t) => [t.slug, t])
 if (talentsMap.has('yunaria-zayu')) {
   talentsMap.set('yunaria', talentsMap.get('yunaria-zayu')!);
 }
+
+const activeTalents = rawTalents.filter((t) => !t.isTeaser) as ActiveTalent[];
+
+const membersSchema = {
+  "@type": "CollectionPage",
+  "@id": "https://winest.studio/members#collection",
+  "name": "WINEST - สมาชิก VTuber",
+  "url": "https://winest.studio/members",
+  "description": "สารบบรายชื่อและข้อมูลทางการของเวอร์ชวลครีเอเตอร์ในสังกัด WINEST แบ่งตามรุ่นเดบิวต์",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": activeTalents.map((t, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://winest.studio/members/${t.slug}`,
+      "name": t.name,
+      "image": t.bustImage ? `https://winest.studio${t.bustImage}` : undefined
+    }))
+  }
+};
 ---
 
 <Layout 
   title="WINEST - สมาชิก VTuber"
   description="สารบบรายชื่อและข้อมูลทางการของเวอร์ชวลครีเอเตอร์ในสังกัด WINEST แบ่งตามรุ่นเดบิวต์"
+  schema={membersSchema}
 >
   <Navbar />
 
   <main class="arp-members-main" id="membersMain">
+    <!-- Header Masthead for SEO & Clear Hierarchy -->
+    <header class="members-index-masthead">
+      <div class="arp-gen-container">
+        <h1 class="members-index-h1">ทำเนียบสมาชิก VTuber</h1>
+        <p class="members-index-sub">เวอร์ชวลครีเอเตอร์ในสังกัด WINEST Production</p>
+      </div>
+    </header>
     
     <!-- ===================================================================
          GENERATIONS ROSTER (เรียบหรูตามแบบอย่าง Algorhythm Project)
@@ -140,9 +168,12 @@ if (talentsMap.has('yunaria-zayu')) {
                             <div class="arp-card-visual-frame">
                               <img 
                                 src={bustSrc} 
-                                alt={talent?.name} 
+                                alt={`${talent?.name} (${talent?.japaneseName || ''}) - สมาชิก VTuber ค่าย WINEST`} 
                                 class="arp-card-character-img" 
                                 loading="lazy"
+                                decoding="async"
+                                width="340"
+                                height="340"
                               />
                               <div class="arp-card-gradient-scrim"></div>
                             </div>
