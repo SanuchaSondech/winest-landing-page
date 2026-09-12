@@ -241,33 +241,30 @@
   overflow: hidden;
 }
 
-/* Level 3: Scannable Feature Chips (Glassmorphic Badges) */
-.art-chips-row {
+/* Level 3: Clean Specifications List (Matching /commissions Reference Architecture) */
+.art-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 18px;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
 }
 
-.art-chip-tag {
-  display: inline-flex;
+.art-spec-item {
+  display: flex;
   align-items: center;
-  font-family: var(--font-heading);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
   color: var(--text-secondary);
-  background: var(--bg-dominant-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 3px 8px;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  line-height: 1.45;
 }
 
-.art-preview-card:hover .art-chip-tag {
-  border-color: var(--accent-primary);
-  background: var(--accent-tint);
+.art-spec-svg {
   color: var(--accent-primary);
+  flex-shrink: 0;
 }
 
 /* Level 4: Clear Bottom Action Bar */

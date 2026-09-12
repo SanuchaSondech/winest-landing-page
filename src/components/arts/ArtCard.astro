@@ -21,26 +21,6 @@ const { item, index } = Astro.props;
 const isEn = Astro.url.pathname.startsWith('/en');
 const commissionsLink = isEn ? '/en/commissions' : '/commissions';
 
-const shortChipsMap: Record<string, string[]> = isEn
-  ? {
-      "service-01": ["Character Design", "Key Visuals & Art", "4K Stream Backgrounds"],
-      "service-02": ["Hair & Cloth Physics", "XYZ Head & Body Rig", "Full Expression Sets"],
-      "service-03": ["Vocal Pitch Tuning", "Music Balancing", "Track Mastering"],
-      "art-01": ["Character Design", "Key Visuals & Art", "4K Stream Backgrounds"],
-      "art-02": ["Hair & Cloth Physics", "XYZ Head & Body Rig", "Full Expression Sets"],
-      "art-03": ["Vocal Pitch Tuning", "Music Balancing", "Track Mastering"]
-    }
-  : {
-      "service-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
-      "service-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-      "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งแทร็ก"],
-      "art-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
-      "art-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-      "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งแทร็ก"]
-    };
-
-const chips = shortChipsMap[item.id] || item.specs?.slice(0, 3) || [];
-
 const conceptArts: Record<string, string> = {
   'service-01': 'arts/art-concept-1',
   'service-02': 'arts/art-concept-2',
@@ -75,7 +55,7 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
       </div>
     )}
 
-    <!-- Single Category Badge on Visual Stage -->
+    <!-- Single Category Badge on Visual Stage (Aligned with /commissions) -->
     <div class="art-category-pill">
       <span class="pill-dot"></span>
       <span>{item.badge}</span>
@@ -92,12 +72,15 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
     <!-- Level 2: Concise Description -->
     <p class="art-desc-text">{item.desc}</p>
 
-    <!-- Level 3: Feature Highlights -->
-    <div class="art-chips-row">
-      {chips.map((chip) => (
-        <span class="art-chip-tag">{chip}</span>
+    <!-- Level 3: Specifications (Clean List matching /commissions) -->
+    <ul class="art-specs-list">
+      {item.specs?.map((spec) => (
+        <li class="art-spec-item">
+          <Icon name="check" width="13" height="13" class="art-spec-svg" />
+          <span>{spec}</span>
+        </li>
       ))}
-    </div>
+    </ul>
 
     <!-- Level 4: Clear Footer -->
     <div class="art-card-footer">
