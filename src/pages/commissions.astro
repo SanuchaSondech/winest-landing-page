@@ -260,17 +260,36 @@ const commissionsSchema = {
         <h2 class="section-heading has-desc">Showcase & Motion Preview</h2>
         <p class="section-desc">ผลงานโมเดลที่ผลิตโดย Kenelix Studio พร้อมคลิปสาธิตการริกการเคลื่อนไหวจริง</p>
 
-        <!-- Featured Rigging Video Showcase (Direct YouTube Motion Links) -->
+        <!-- Featured Rigging Video Showcase (High-Performance YouTube Lite Facade) -->
         <div class="motion-demo-duet">
           <div class="motion-demo-card">
-            <div class="motion-video-frame">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/eiN2K9_ywZ8"
-                title="Butterfly Pea Soda - Rigging Showcase"
+            <div
+              class="motion-video-frame youtube-facade"
+              data-video-id="eiN2K9_ywZ8"
+              data-title="Butterfly Pea Soda - Rigging Showcase"
+              role="button"
+              tabindex="0"
+              aria-label="กดเพื่อเล่นคลิป Butterfly Pea Soda - Rigging Showcase"
+            >
+              <img
+                src="https://i.ytimg.com/vi/eiN2K9_ywZ8/hqdefault.jpg"
+                alt="Butterfly Pea Soda - Rigging Showcase Preview"
+                class="facade-poster"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                decoding="async"
+                width="480"
+                height="270"
+              />
+              <button
+                type="button"
+                class="facade-play-btn"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 24 24" width="28" height="28">
+                  <path d="M8 5v14l11-7z" fill="currentColor"></path>
+                </svg>
+              </button>
             </div>
             <div class="motion-card-caption">
               <div>
@@ -285,14 +304,33 @@ const commissionsSchema = {
           </div>
 
           <div class="motion-demo-card">
-            <div class="motion-video-frame">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/fr13SGsi8ac"
-                title="Starberry Cake - Rigging Showcase"
+            <div
+              class="motion-video-frame youtube-facade"
+              data-video-id="fr13SGsi8ac"
+              data-title="Starberry Cake - Rigging Showcase"
+              role="button"
+              tabindex="0"
+              aria-label="กดเพื่อเล่นคลิป Starberry Cake - Rigging Showcase"
+            >
+              <img
+                src="https://i.ytimg.com/vi/fr13SGsi8ac/hqdefault.jpg"
+                alt="Starberry Cake - Rigging Showcase Preview"
+                class="facade-poster"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                decoding="async"
+                width="480"
+                height="270"
+              />
+              <button
+                type="button"
+                class="facade-play-btn"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 24 24" width="28" height="28">
+                  <path d="M8 5v14l11-7z" fill="currentColor"></path>
+                </svg>
+              </button>
             </div>
             <div class="motion-card-caption">
               <div>
@@ -403,5 +441,42 @@ const commissionsSchema = {
         }
       });
     });
+
+    // YouTube Lite Facade Click-to-Play Engine
+    function initYouTubeFacades() {
+      document.querySelectorAll('.youtube-facade').forEach((facade) => {
+        const el = facade as HTMLElement;
+        if (el.dataset.bound) return;
+        el.dataset.bound = 'true';
+
+        function activateVideo() {
+          const videoId = el.getAttribute('data-video-id');
+          const title = el.getAttribute('data-title') || 'Rigging Showcase';
+          if (!videoId) return;
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+          iframe.title = title;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          el.innerHTML = '';
+          el.appendChild(iframe);
+        }
+
+        el.addEventListener('click', activateVideo);
+        el.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateVideo();
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initYouTubeFacades);
+    } else {
+      initYouTubeFacades();
+    }
+    document.addEventListener('astro:page-load', initYouTubeFacades);
   </script>
 </Layout>

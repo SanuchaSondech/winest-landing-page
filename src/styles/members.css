@@ -9,6 +9,8 @@
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-dominant);
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
 }
 
 /* Header Block */
@@ -613,7 +615,7 @@
   color: var(--text-primary);
   letter-spacing: -0.015em;
   line-height: 1.35;
-  margin: 0 0 10px;
+  margin: 0 0 clamp(16px, 2.2vw, 22px);
   text-wrap: balance;
 }
 

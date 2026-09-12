@@ -56,27 +56,22 @@
       {
         "num": "6+",
         "title": "VTuber Talents",
-        "desc": "Resident creators shaping our growing virtual universe.",
-        "tag": "ROSTER"
+        "desc": "Resident creators shaping our growing virtual universe."
       },
       {
         "num": "150+",
         "title": "Artworks Delivered",
-        "desc": "Character sheets, Live2D models, and commercial 4K streaming graphics.",
-        "tag": "PROJECTS"
+        "desc": "Character sheets, Live2D models, and commercial 4K streaming graphics."
       },
       {
         "num": "1.2M+",
         "title": "Total Channel Views",
-        "desc": "Combined views across YouTube, Twitch, and global community platforms.",
-        "tag": "VIEWS"
+        "desc": "Combined views across YouTube, Twitch, and global community platforms."
       },
       {
         "num": "100%",
-        "title": "Client Satisfaction",
-        "desc": "\"Crisp linework, meticulous rigging, and full commercial readiness.\"",
-        "author": "— Commercial Partner",
-        "badge": "SCORE 5.0"
+        "title": "Commercial Ready",
+        "desc": "Full commercial and streaming rights included with every production delivery."
       }
     ]
   },
@@ -85,13 +80,10 @@
     "titlePrefix": "Creative Services",
     "titleHighlight": "Full Artwork · Live2D Rigging (Audio Tuning Coming Soon)",
     "desc": "WINEST Studio provides high-end production services for VTubers, streamers, and creators, complete with comprehensive commercial rights.",
-    "viewAllText": "Explore all services and portfolio",
     "items": [
       {
         "id": "service-01",
         "badge": "Illustration Suite",
-        "zone": "Zone B : Atelier Plaza",
-        "license": "Commercial Ready",
         "image": "/commission/6.png",
         "title": "Full Illustration Services",
         "desc": "Comprehensive art services covering 3-view character designs, promotional illustrations, and 4K streaming rooms.",
@@ -104,8 +96,6 @@
       {
         "id": "service-02",
         "badge": "Live2D Rigging",
-        "zone": "Zone C : Rigging Lab",
-        "license": "Commercial Ready",
         "image": "/commission/5.png",
         "title": "Live2D Model Rigging",
         "desc": "High-precision VTuber model rigging with natural fluid physics, smooth hair motion, XYZ rotation, and complete emotional expressions.",
@@ -119,14 +109,12 @@
         "id": "service-03",
         "badge": "Audio Mixing",
         "isComingSoon": true,
-        "zone": "Phase 2 : Sound Studio",
-        "license": "Phase 2",
         "title": "Audio Tuning & Mixing",
         "desc": "Professional vocal pitch correction, audio tuning, track balancing, and mastering for covers and original music (Coming in Phase 2).",
         "specs": [
           "Professional Vocal Pitch Correction",
           "Music Balance & Track Mastering",
-          "Coming Soon (Phase 2)"
+          "High-Fidelity Track Mastering"
         ]
       }
     ],
@@ -142,7 +130,6 @@
     "titleHighlight": "VTuber Talents",
     "titleSuffix": "at WINEST",
     "desc": "Virtual creators bringing joy, entertainment, and musical artistry to the virtual world.",
-    "viewAllText": "View full profiles, schedule, and social channels",
     "ctaBanner": {
       "title": "Explore In-Depth Profiles & Live2D Specs for All Talents",
       "desc": "Discover full creator lore, design concepts, production crew (Mama & Papa), and live stream schedules in our talent directory.",

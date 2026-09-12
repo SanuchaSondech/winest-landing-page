@@ -121,6 +121,8 @@
 .about-zone {
   position: relative;
   scroll-margin-top: 85px;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
 }
 
 .zone-header-block {

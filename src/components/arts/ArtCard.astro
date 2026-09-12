@@ -1,13 +1,11 @@
 ---
-// ArtCard.astro - การ์ดแสดงผลงานบริการงานศิลป์ (สัดส่วนภาพ 16:9 ระดับพรีเมียม ลำดับสายตาคมชัด สแกนง่าย ไม่ต้องอ่านยาว)
+// ArtCard.astro - การ์ดแสดงผลงานบริการงานศิลป์ (Editorial Minimalist: ลำดับสายตาคมชัด ไม่ยัดป้ายซ้อนป้าย)
 import Icon from '../common/Icon.astro';
 
 export interface ArtItem {
   id: string;
   badge: string;
   isComingSoon?: boolean;
-  zone?: string;
-  license?: string;
   title: string;
   desc: string;
   specs: string[];
@@ -20,16 +18,26 @@ export interface Props {
 }
 
 const { item, index } = Astro.props;
+const isEn = Astro.url.pathname.startsWith('/en');
+const commissionsLink = isEn ? '/en/commissions' : '/commissions';
 
-// แปลง bullet points ขนาดยาวให้เป็น Short Chips กวาดสายตาง่าย
-const shortChipsMap: Record<string, string[]> = {
-  "service-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
-  "service-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-  "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "Coming Soon (เร็ว ๆ นี้)"],
-  "art-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
-  "art-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
-  "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "Coming Soon (เร็ว ๆ นี้)"]
-};
+const shortChipsMap: Record<string, string[]> = isEn
+  ? {
+      "service-01": ["Character Design", "Key Visuals & Art", "4K Stream Backgrounds"],
+      "service-02": ["Hair & Cloth Physics", "XYZ Head & Body Rig", "Full Expression Sets"],
+      "service-03": ["Vocal Pitch Tuning", "Music Balancing", "Track Mastering"],
+      "art-01": ["Character Design", "Key Visuals & Art", "4K Stream Backgrounds"],
+      "art-02": ["Hair & Cloth Physics", "XYZ Head & Body Rig", "Full Expression Sets"],
+      "art-03": ["Vocal Pitch Tuning", "Music Balancing", "Track Mastering"]
+    }
+  : {
+      "service-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
+      "service-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
+      "service-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งแทร็ก"],
+      "art-01": ["คาแรกเตอร์ดีไซน์", "วาดคน & ภาพโปรโมต", "วาดฉากหลัง 4K"],
+      "art-02": ["ฟิสิกส์ผม & เสื้อผ้า", "การขยับศีรษะ XYZ", "เซ็ตอัปอารมณ์สีหน้า"],
+      "art-03": ["จูนเสียงร้องระดับโปร", "มิกซ์บาลานซ์ดนตรี", "มาสเตอริ่งแทร็ก"]
+    };
 
 const chips = shortChipsMap[item.id] || item.specs?.slice(0, 3) || [];
 
@@ -45,12 +53,11 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
 ---
 
 <article class={`art-preview-card ${item.isComingSoon ? 'is-coming-soon-card' : ''} reveal-init reveal-card stagger-${Math.min(index + 1, 4)}`} data-index={index}>
-  <!-- 1. Visual Stage: Strict 16:9 Aspect Ratio for Imported Images -->
+  <!-- Visual Stage: 16:9 Aspect Ratio -->
   <div class="art-visual-stage">
     {item.isComingSoon ? (
       <div class="art-coming-soon-stage">
         <span class="coming-soon-banner-text">COMING SOON</span>
-        <span class="coming-soon-banner-sub">เตรียมเปิดให้บริการเร็ว ๆ นี้</span>
       </div>
     ) : item.image ? (
       <img 
@@ -68,53 +75,46 @@ const conceptArtName = conceptArts[item.id] || 'arts/art-concept-1';
       </div>
     )}
 
-    <!-- Floating Glassmorphic Category Badge -->
-    <div class={`art-category-pill ${item.isComingSoon ? 'coming-soon-pill' : ''}`}>
-      <span class={`pill-dot ${item.isComingSoon ? 'coming-soon-dot' : ''}`}></span>
-      <span>{item.isComingSoon ? 'COMING SOON' : item.badge}</span>
+    <!-- Single Category Badge on Visual Stage -->
+    <div class="art-category-pill">
+      <span class="pill-dot"></span>
+      <span>{item.badge}</span>
     </div>
   </div>
 
-  <!-- 2. Content Body: Strict Visual Hierarchy & High Scannability -->
+  <!-- Content Body: Clear Hierarchy -->
   <div class="art-detail-body">
-    <!-- Level 1: Service Title -->
+    <!-- Level 1: Title -->
     <div class="art-title-row">
       <h3 class="art-service-title">{item.title}</h3>
-      {item.isComingSoon && <span class="coming-soon-inline-badge">Coming Soon</span>}
     </div>
 
-    <!-- Level 2: Concise 1-2 sentence hook (No wall of text) -->
+    <!-- Level 2: Concise Description -->
     <p class="art-desc-text">{item.desc}</p>
 
-    <!-- Level 3: Scannable Feature Chips (No boring <ul> bullets) -->
+    <!-- Level 3: Feature Highlights -->
     <div class="art-chips-row">
       {chips.map((chip) => (
-        <span class={`art-chip-tag ${chip.includes('Coming Soon') ? 'chip-coming-soon' : ''}`}>{chip}</span>
+        <span class="art-chip-tag">{chip}</span>
       ))}
     </div>
 
-    <!-- Level 4: Clear Bottom Action Bar -->
+    <!-- Level 4: Clear Footer -->
     <div class="art-card-footer">
       {item.isComingSoon ? (
-        <>
-          <span class="art-license-indicator is-soon">
-            <span class="soon-pulse-dot" aria-hidden="true"></span>
-            <span>เปิดรับงานเฟส 2</span>
-          </span>
-
-          <span class="art-status-btn disabled" aria-disabled="true">
-            <span>เร็ว ๆ นี้</span>
-          </span>
-        </>
+        <span class="art-license-indicator is-soon">
+          <span class="soon-pulse-dot" aria-hidden="true"></span>
+          <span>{isEn ? "Available in Phase 2" : "เปิดรับงานเฟส 2"}</span>
+        </span>
       ) : (
         <>
           <span class="art-license-indicator">
             <Icon name="check" class="license-check-icon" width="13" height="13" />
-            <span>สิทธิ์เชิงพาณิชย์ครบวงจร</span>
+            <span>{isEn ? "Commercial Ready" : "สิทธิ์เชิงพาณิชย์ครบวงจร"}</span>
           </span>
 
-          <a href="/commissions" class="art-detail-link" aria-label={`ดูรายละเอียดบริการ ${item.title}`}>
-            <span>รายละเอียด</span>
+          <a href={commissionsLink} class="art-detail-link" aria-label={isEn ? `View details for ${item.title}` : `ดูรายละเอียดบริการ ${item.title}`}>
+            <span>{isEn ? "Details" : "รายละเอียด"}</span>
             <Icon name="chevron-right" width="13" height="13" />
           </a>
         </>

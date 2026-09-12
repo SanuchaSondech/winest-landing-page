@@ -1,12 +1,9 @@
 ---
-// AboutMetrics.astro - สถิติความสำเร็จและเสียงตอบรับ 4 ด้านของค่าย
+// AboutMetrics.astro - สถิติความสำเร็จเชิงประจักษ์ 4 ด้านของค่าย
 export interface Metric {
   num: string;
   title: string;
   desc: string;
-  tag?: string;
-  badge?: string;
-  author?: string;
 }
 
 export interface Props {
@@ -31,22 +28,8 @@ const { kicker, meta, metrics } = Astro.props;
         <span class="metric-num">{metric.num}</span>
         <div class="metric-content">
           <h3>{metric.title}</h3>
-          {metric.author ? (
-            <p class="metric-quote-text">
-              {metric.desc}
-              <span class="metric-author-tag">{metric.author}</span>
-            </p>
-          ) : (
-            <p>{metric.desc}</p>
-          )}
+          <p>{metric.desc}</p>
         </div>
-        {metric.badge ? (
-          <span class="metric-badge-score">
-            <span class="badge-dot dot-score"></span>{metric.badge}
-          </span>
-        ) : (
-          <span class="metric-unit-tag">{metric.tag}</span>
-        )}
       </div>
     ))}
   </div>
