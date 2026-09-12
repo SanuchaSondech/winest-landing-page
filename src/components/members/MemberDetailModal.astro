@@ -81,9 +81,21 @@ import Icon from '../common/Icon.astro';
     const modalFanartTag = document.getElementById('modalFanartTag');
     const modalPrimaryLink = document.getElementById('modalPrimaryLink');
     const modalBannerStage = document.getElementById('modalBannerStage');
+    let previousActiveElement = null;
+
+    function getFocusableElements() {
+      if (!overlay) return [];
+      return Array.from(
+        overlay.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+    }
 
     function openModal(data) {
       if (!overlay) return;
+      previousActiveElement = document.activeElement;
+
       modalName.textContent = data.name || '';
       modalTitle.textContent = data.title || '';
       modalGen.textContent = data.gen || '';
@@ -118,6 +130,11 @@ import Icon from '../common/Icon.astro';
       overlay.classList.add('is-active');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+
+      // Move focus into the modal
+      requestAnimationFrame(() => {
+        if (closeBtn) closeBtn.focus();
+      });
     }
 
     function closeModal() {
@@ -125,6 +142,11 @@ import Icon from '../common/Icon.astro';
       overlay.classList.remove('is-active');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+
+      // Restore focus to triggering element
+      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+        previousActiveElement.focus();
+      }
     }
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -135,8 +157,35 @@ import Icon from '../common/Icon.astro';
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay && overlay.classList.contains('is-active')) {
+      if (!overlay || !overlay.classList.contains('is-active')) return;
+
+      if (e.key === 'Escape') {
         closeModal();
+        return;
+      }
+
+      // Focus trap for accessibility
+      if (e.key === 'Tab') {
+        const focusable = getFocusableElements();
+        if (focusable.length === 0) {
+          e.preventDefault();
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       }
     });
 

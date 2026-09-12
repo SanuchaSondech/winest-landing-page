@@ -273,7 +273,9 @@
   background: rgba(138, 156, 245, 0.025);
 }
 
+.clickable-pillar:hover .pillar-content h3,
 .clickable-pillar:hover .pillar-content h4,
+.metric-row:hover .metric-content h3,
 .metric-row:hover .metric-content h4 {
   color: var(--accent-primary);
 }
@@ -321,7 +323,9 @@
   min-width: 0;
 }
 
+.pillar-content h3,
 .pillar-content h4,
+.metric-content h3,
 .metric-content h4 {
   font-family: var(--font-heading);
   font-size: 1.05rem;

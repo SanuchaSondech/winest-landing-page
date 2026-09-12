@@ -53,6 +53,9 @@ const personSchema = {
   "worksFor": { "@id": "https://winest.studio/#organization" },
   "sameAs": socials.map((s: any) => s.url).filter(Boolean)
 };
+
+const isAlias = Astro.params.slug === "yunaria";
+const canonical = isAlias ? "https://winest.studio/members/yunaria-zayu" : undefined;
 ---
 
 <Layout
@@ -61,6 +64,7 @@ const personSchema = {
   image={talent.videoCover || talent.modelImage}
   type="profile"
   schema={personSchema}
+  canonical={canonical}
 >
   <Navbar />
 

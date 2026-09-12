@@ -33,7 +33,7 @@ const { kicker, meta, pillars } = Astro.props;
         <div class="pillar-row disabled-pillar" aria-disabled="true">
           <span class="pillar-num">{pillar.num}</span>
           <div class="pillar-content">
-            <h4>{pillar.title}</h4>
+            <h3>{pillar.title}</h3>
             <p>{pillar.desc}</p>
           </div>
           <span class="pillar-badge-soon">
@@ -44,7 +44,7 @@ const { kicker, meta, pillars } = Astro.props;
         <a href={pillar.href} class="pillar-row clickable-pillar">
           <span class="pillar-num">{pillar.num}</span>
           <div class="pillar-content">
-            <h4>{pillar.title}</h4>
+            <h3>{pillar.title}</h3>
             <p>{pillar.desc}</p>
           </div>
           <span class="pillar-arrow-circle" aria-hidden="true">

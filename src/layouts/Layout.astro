@@ -6,6 +6,7 @@ interface Props {
   type?: string;
   schema?: Record<string, any> | Record<string, any>[];
   lang?: "th" | "en";
+  canonical?: string;
 }
 
 const {
@@ -15,17 +16,19 @@ const {
   type = "website",
   schema,
   lang,
+  canonical,
 } = Astro.props;
 
 import HamsterScrollSlider from "../components/common/HamsterScrollSlider.astro";
 
 const siteUrl = "https://winest.studio";
 const pageLang = lang || (Astro.url && Astro.url.pathname.startsWith("/en") ? "en" : "th");
-const canonicalURL = Astro.url ? new URL(Astro.url.pathname, siteUrl).href : siteUrl;
+const canonicalURL = canonical || (Astro.url ? new URL(Astro.url.pathname, siteUrl).href : siteUrl);
 const formattedImage = image.startsWith("http") ? image : `${siteUrl}${image.startsWith("/") ? "" : "/"}${image}`;
 
-// Compute hreflang alternates
-const currentPath = Astro.url ? Astro.url.pathname : "/";
+// Compute hreflang alternates (normalize alias /members/yunaria to /members/yunaria-zayu)
+const rawPath = Astro.url ? Astro.url.pathname : "/";
+const currentPath = rawPath.replace(/\/members\/yunaria(\/|$)/, "/members/yunaria-zayu$1");
 const thPath = currentPath.replace(/^\/en(\/|$)/, "/") || "/";
 const enPath = currentPath.startsWith("/en") ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
 
@@ -98,13 +101,26 @@ const structuredDataString = JSON.stringify({
     <link rel="icon" type="image/png" href="/logo/winest_logo_128.png" />
     <link rel="apple-touch-icon" href="/logo/winest_logo_128.png" />
 
-    <!-- Google Fonts Preconnect & Parallel Stylesheet -->
+    <!-- Google Fonts Preconnect & Asynchronous Non-Blocking Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
+      />
+    </noscript>
 
     <!-- JSON-LD Structured Data for Rich Search Snippets -->
     <script type="application/ld+json" set:html={structuredDataString} />

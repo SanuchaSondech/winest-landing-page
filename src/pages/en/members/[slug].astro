@@ -4,7 +4,7 @@ import Layout from "../../../layouts/Layout.astro";
 import Navbar from "../../../components/Navbar.astro";
 import Footer from "../../../components/Footer.astro";
 import Icon from "../../../components/common/Icon.astro";
-import membersData from "../../../data/members.json";
+import membersData from "../../../data/members.en.json";
 import "../../../styles/global.css";
 import "../../../styles/scroll-reveal.css";
 import "../../../styles/members-page.css";
@@ -52,6 +52,9 @@ const personSchema = {
   "worksFor": { "@id": "https://winest.studio/#organization" },
   "sameAs": socials.map((s: any) => s.url).filter(Boolean)
 };
+
+const isAlias = Astro.params.slug === "yunaria";
+const canonical = isAlias ? "https://winest.studio/en/members/yunaria-zayu" : undefined;
 ---
 
 <Layout
@@ -61,6 +64,7 @@ const personSchema = {
   type="profile"
   schema={personSchema}
   lang="en"
+  canonical={canonical}
 >
   <Navbar lang="en" />
 
