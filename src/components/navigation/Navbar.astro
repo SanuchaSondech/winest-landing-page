@@ -1,28 +1,31 @@
 ---
 // Navbar.astro - Amusement Park Map Navigation Bar
-import navDataTh from '../../data/navigation.json';
-import navDataEn from '../../data/navigation.en.json';
-import NavMobileDrawer from './NavMobileDrawer.astro';
-import Icon from '../common/Icon.astro';
-import '../../styles/navbar.css';
+import navDataTh from "../../data/navigation.json";
+import navDataEn from "../../data/navigation.en.json";
+import NavMobileDrawer from "./NavMobileDrawer.astro";
+import Icon from "../common/Icon.astro";
+import "../../styles/navbar.css";
 
 interface Props {
-  lang?: 'th' | 'en';
+  lang?: "th" | "en";
 }
 
 const { lang } = Astro.props;
-const currentPath = Astro.url ? Astro.url.pathname : '/';
-const isEn = lang === 'en' || currentPath.startsWith('/en');
+const currentPath = Astro.url ? Astro.url.pathname : "/";
+const isEn = lang === "en" || currentPath.startsWith("/en");
 const navData = isEn ? navDataEn : navDataTh;
 const { brand, navLinks, drawerCta } = navData;
 
-const homeHref = isEn ? '/en' : '/';
-let targetLangUrl = '/';
+const homeHref = isEn ? "/en" : "/";
+let thUrl = "/";
+let enUrl = "/en";
 if (isEn) {
-  const stripped = currentPath.replace(/^\/en(\/|$)/, '/');
-  targetLangUrl = stripped || '/';
+  const stripped = currentPath.replace(/^\/en(\/|$)/, "/");
+  thUrl = stripped || "/";
+  enUrl = currentPath;
 } else {
-  targetLangUrl = `/en${currentPath === '/' ? '' : currentPath}`;
+  thUrl = currentPath;
+  enUrl = `/en${currentPath === "/" ? "" : currentPath}`;
 }
 ---
 
@@ -31,12 +34,12 @@ if (isEn) {
     <!-- Left: Brand Logo & Name -->
     <a href={homeHref} class="brand-link" aria-label={brand.ariaHome}>
       <div class="logo-wrapper">
-        <img 
-          src="/logo/winest_logo_128.webp" 
-          alt={`${brand.name} Mascot Logo`} 
-          class="brand-logo" 
-          width="44" 
-          height="44" 
+        <img
+          src="/logo/winest_logo_128.webp"
+          alt={`${brand.name} Mascot Logo`}
+          class="brand-logo"
+          width="44"
+          height="44"
           loading="eager"
           decoding="async"
         />
@@ -51,44 +54,102 @@ if (isEn) {
     <!-- Right: Desktop Navigation Links -->
     <nav class="desktop-nav" aria-label="Main Navigation">
       <ul class="nav-list">
-        {navLinks.map((link) => {
-          const isActive = link.path === '/' || link.path === '/en'
-            ? (currentPath === link.path || currentPath === `${link.path}/`)
-            : currentPath.startsWith(link.path);
-          
-          let iconName = "nav-home";
-          if (link.path.includes("members")) iconName = "nav-members";
-          else if (link.path.includes("commissions")) iconName = "nav-arts";
-          else if (link.path.includes("about")) iconName = "nav-about";
+        {
+          navLinks.map((link) => {
+            const isActive =
+              link.path === "/" || link.path === "/en"
+                ? currentPath === link.path || currentPath === `${link.path}/`
+                : currentPath.startsWith(link.path);
 
-          return (
-            <li>
-              <a href={link.href} class={`nav-link ${isActive ? 'active' : ''}`}>
-                <Icon name={iconName} class="nav-icon" />
-                <span>{link.label}</span>
-              </a>
-            </li>
-          );
-        })}
+            let iconName = "nav-home";
+            if (link.path.includes("members")) iconName = "nav-members";
+            else if (link.path.includes("commissions")) iconName = "nav-arts";
+            else if (link.path.includes("about")) iconName = "nav-about";
+
+            return (
+              <li>
+                <a
+                  href={link.href}
+                  class={`nav-link ${isActive ? "active" : ""}`}
+                >
+                  <Icon name={iconName} class="nav-icon" />
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
 
-      <!-- Language Switcher [ TH | EN ] -->
-      <a 
-        href={targetLangUrl} 
-        class="lang-switch-btn" 
-        aria-label={isEn ? "Switch to Thai version" : "Switch to English version"}
-        title={isEn ? "เปลี่ยนเป็นภาษาไทย" : "Switch to English"}
-      >
-        <span class={`lang-opt ${!isEn ? 'active' : ''}`}>TH</span>
-        <span class="lang-divider" aria-hidden="true">/</span>
-        <span class={`lang-opt ${isEn ? 'active' : ''}`}>EN</span>
-      </a>
+      <!-- Floating Dropdown Language Selector [ 🌐 TH ▾ ] -->
+      <div class="lang-dropdown-wrapper">
+        <button
+          type="button"
+          class="lang-dropdown-trigger"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label={isEn ? "Select Language. Current: English" : "เลือกภาษา ภาษาปัจจุบัน: ภาษาไทย"}
+          title={isEn ? "Select Language (English)" : "เลือกภาษา (ภาษาไทย)"}
+        >
+          <span class="lang-trigger-globe" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </span>
+          <span class="lang-trigger-text">{isEn ? "EN" : "TH"}</span>
+          <span class="lang-trigger-chevron" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+
+        <div class="lang-dropdown-popover" role="menu" aria-label="Language options">
+          <div class="lang-popover-header">
+            <span>{isEn ? "Select Language" : "เลือกภาษา"}</span>
+          </div>
+          <div class="lang-popover-list">
+            <a
+              href={thUrl}
+              class={`lang-popover-item ${!isEn ? "active" : ""}`}
+              role="menuitem"
+              aria-current={!isEn ? "true" : undefined}
+            >
+              <span class="lang-item-name">ภาษาไทย</span>
+              {!isEn && (
+                <span class="lang-item-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              )}
+            </a>
+            <a
+              href={enUrl}
+              class={`lang-popover-item ${isEn ? "active" : ""}`}
+              role="menuitem"
+              aria-current={isEn ? "true" : undefined}
+            >
+              <span class="lang-item-name">English</span>
+              {isEn && (
+                <span class="lang-item-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              )}
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Luminous Segmented Glass Theme Switcher [ ☀️ | 🌙 ] -->
-      <button 
-        id="theme-toggle-btn" 
-        class="theme-toggle-switch" 
-        type="button" 
+      <button
+        id="theme-toggle-btn"
+        class="theme-toggle-switch"
+        type="button"
         aria-label="Toggle light and dark mode"
         title="สลับโหมดสว่าง / โหมดมืด"
       >
@@ -104,21 +165,74 @@ if (isEn) {
 
     <!-- Right Mobile: Hamburger, Lang, & Theme Toggle -->
     <div class="mobile-actions">
-      <!-- Mobile Language Switcher -->
-      <a 
-        href={targetLangUrl} 
-        class="lang-switch-btn mobile-lang-btn" 
-        aria-label={isEn ? "Switch to Thai version" : "Switch to English version"}
-      >
-        <span class={`lang-opt ${!isEn ? 'active' : ''}`}>TH</span>
-        <span class="lang-divider" aria-hidden="true">/</span>
-        <span class={`lang-opt ${isEn ? 'active' : ''}`}>EN</span>
-      </a>
+      <!-- Mobile Floating Dropdown Language Selector -->
+      <div class="lang-dropdown-wrapper mobile-lang-wrapper">
+        <button
+          type="button"
+          class="lang-dropdown-trigger mobile-lang-trigger"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label={isEn ? "Select Language. Current: English" : "เลือกภาษา ภาษาปัจจุบัน: ภาษาไทย"}
+          title={isEn ? "Select Language (English)" : "เลือกภาษา (ภาษาไทย)"}
+        >
+          <span class="lang-trigger-globe" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </span>
+          <span class="lang-trigger-text">{isEn ? "EN" : "TH"}</span>
+          <span class="lang-trigger-chevron" aria-hidden="true">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
 
-      <button 
-        id="mobile-theme-toggle-btn" 
-        class="theme-toggle-switch mobile-theme-btn" 
-        type="button" 
+        <div class="lang-dropdown-popover mobile-lang-popover" role="menu" aria-label="Language options">
+          <div class="lang-popover-header">
+            <span>{isEn ? "Select Language" : "เลือกภาษา"}</span>
+          </div>
+          <div class="lang-popover-list">
+            <a
+              href={thUrl}
+              class={`lang-popover-item ${!isEn ? "active" : ""}`}
+              role="menuitem"
+              aria-current={!isEn ? "true" : undefined}
+            >
+              <span class="lang-item-name">ภาษาไทย</span>
+              {!isEn && (
+                <span class="lang-item-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              )}
+            </a>
+            <a
+              href={enUrl}
+              class={`lang-popover-item ${isEn ? "active" : ""}`}
+              role="menuitem"
+              aria-current={isEn ? "true" : undefined}
+            >
+              <span class="lang-item-name">English</span>
+              {isEn && (
+                <span class="lang-item-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              )}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="mobile-theme-toggle-btn"
+        class="theme-toggle-switch mobile-theme-btn"
+        type="button"
         aria-label="Toggle light and dark mode"
       >
         <span class="switch-slider" aria-hidden="true"></span>
@@ -130,11 +244,11 @@ if (isEn) {
         </span>
       </button>
 
-      <button 
-        id="hamburger-btn" 
-        class="hamburger-btn" 
-        type="button" 
-        aria-label="เปิดเมนูนำทาง" 
+      <button
+        id="hamburger-btn"
+        class="hamburger-btn"
+        type="button"
+        aria-label="เปิดเมนูนำทาง"
         aria-expanded="false"
       >
         <span class="hamburger-bar"></span>
@@ -145,40 +259,88 @@ if (isEn) {
   </div>
 
   <!-- Mobile Drawer Menu Component -->
-  <NavMobileDrawer 
-    brand={brand} 
-    navLinks={navLinks} 
-    drawerCta={drawerCta} 
-  />
+  <NavMobileDrawer brand={brand} navLinks={navLinks} drawerCta={drawerCta} />
 </header>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const closeBtn = document.getElementById('close-drawer-btn');
-    const drawer = document.getElementById('mobile-drawer');
-    const backdrop = document.getElementById('drawer-backdrop');
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const closeBtn = document.getElementById("close-drawer-btn");
+    const drawer = document.getElementById("mobile-drawer");
+    const backdrop = document.getElementById("drawer-backdrop");
 
     function openMenu() {
       if (drawer) {
-        drawer.classList.add('is-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
+        drawer.classList.add("is-open");
+        drawer.setAttribute("aria-hidden", "false");
+        if (hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
       }
     }
 
     function closeMenu() {
       if (drawer) {
-        drawer.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        drawer.classList.remove("is-open");
+        drawer.setAttribute("aria-hidden", "true");
+        if (hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
       }
     }
 
-    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    if (hamburgerBtn) hamburgerBtn.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+    // Language Dropdown Popover (Desktop & Mobile)
+    const langDropdowns = document.querySelectorAll(".lang-dropdown-wrapper");
+
+    langDropdowns.forEach((wrapper) => {
+      const trigger = wrapper.querySelector(".lang-dropdown-trigger");
+      if (!trigger) return;
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = wrapper.classList.contains("is-open");
+
+        // Close other dropdowns first
+        langDropdowns.forEach((w) => {
+          if (w !== wrapper) {
+            w.classList.remove("is-open");
+            const t = w.querySelector(".lang-dropdown-trigger");
+            if (t) t.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        if (isOpen) {
+          wrapper.classList.remove("is-open");
+          trigger.setAttribute("aria-expanded", "false");
+        } else {
+          wrapper.classList.add("is-open");
+          trigger.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      langDropdowns.forEach((wrapper) => {
+        if (!wrapper.contains(e.target)) {
+          wrapper.classList.remove("is-open");
+          const trigger = wrapper.querySelector(".lang-dropdown-trigger");
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        langDropdowns.forEach((wrapper) => {
+          wrapper.classList.remove("is-open");
+          const trigger = wrapper.querySelector(".lang-dropdown-trigger");
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
   });
 </script>
