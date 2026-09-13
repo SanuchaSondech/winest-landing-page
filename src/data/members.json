@@ -159,6 +159,11 @@
           "platform": "X",
           "url": "https://x.com/Karake_Winest",
           "label": "@Karake_Winest"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/QwTUKfDtPK",
+          "label": "Community Discord"
         }
       ]
     },
