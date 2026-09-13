@@ -33,6 +33,19 @@ const currentPath = rawPath.replace(/\/members\/yunaria(\/|$)/, "/members/yunari
 const thPath = currentPath.replace(/^\/en(\/|$)/, "/") || "/";
 const enPath = currentPath.startsWith("/en") ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
 
+// Determine page layout type for the tailored Skeleton Loading screen
+const normPath = thPath;
+let skeletonPageType: "home" | "profile" | "commissions" | "about" = "home";
+if (type === "profile" || (normPath.startsWith("/members/") && normPath !== "/members/")) {
+  skeletonPageType = "profile";
+} else if (normPath.startsWith("/commissions")) {
+  skeletonPageType = "commissions";
+} else if (normPath.startsWith("/about") || normPath === "/members" || normPath === "/members/") {
+  skeletonPageType = "about";
+} else {
+  skeletonPageType = "home";
+}
+
 // Global Base Schema.org Graph
 const jsonLdGraph = [
   {
@@ -138,7 +151,7 @@ const structuredDataString = JSON.stringify({
   </head>
   <body>
     <!-- Global Zero-Spinner Skeleton Loading & Shimmer System -->
-    <SkeletonScreen />
+    <SkeletonScreen pageType={skeletonPageType} />
 
     <!-- Amusement Park Background Decor Pattern & Chromatic Glass Ambient Orbs -->
     <div class="park-map-bg" aria-hidden="true"></div>

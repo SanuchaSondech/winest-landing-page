@@ -1,90 +1,185 @@
 ---
 // SkeletonScreen.astro - Global Zero-Spinner Skeleton Loading & Shimmer Engine
-// Provides high-performance perceived loading state for slow mobile devices and weak 3G networks.
+// Provides high-performance perceived loading state tailored per page layout for slow mobile devices and weak 3G networks.
 import '../../styles/skeleton.css';
+
+export interface Props {
+  pageType?: 'home' | 'profile' | 'commissions' | 'about' | string;
+}
+
+const { pageType = 'home' } = Astro.props;
 ---
 
 <!-- Instantaneous Skeleton Screen Overlay (Pre-rendered in DOM, 0ms initial delay) -->
 <div id="winest-skeleton-overlay" class="winest-skeleton-overlay" aria-hidden="true">
   <div class="skeleton-container">
-    <!-- 1. Header / Navbar Skeleton -->
+    <!-- 1. Header / Navbar Skeleton (Accurately mirrors Navbar.astro for desktop and mobile) -->
     <header class="sk-header">
       <div class="sk-bone sk-brand-logo"></div>
+      
+      <!-- Desktop Nav Links -->
       <nav class="sk-nav-links">
         <div class="sk-bone sk-nav-pill"></div>
         <div class="sk-bone sk-nav-pill"></div>
         <div class="sk-bone sk-nav-pill"></div>
         <div class="sk-bone sk-nav-pill"></div>
       </nav>
-      <div class="sk-bone sk-nav-action"></div>
+
+      <!-- Desktop Action Pills -->
+      <div class="sk-desktop-actions">
+        <div class="sk-bone sk-lang-pill"></div>
+        <div class="sk-bone sk-theme-pill"></div>
+      </div>
+
+      <!-- Mobile Actions (Accurate Lang + Theme + 40x40 Hamburger Box) -->
+      <div class="sk-mobile-actions">
+        <div class="sk-bone sk-mobile-lang"></div>
+        <div class="sk-bone sk-mobile-theme"></div>
+        <div class="sk-bone sk-hamburger">
+          <span class="sk-hamburger-line"></span>
+          <span class="sk-hamburger-line"></span>
+          <span class="sk-hamburger-line"></span>
+        </div>
+      </div>
     </header>
 
-    <!-- 2. Hero Stage Skeleton -->
-    <section class="sk-hero">
-      <div class="sk-bone sk-hero-stage">
-        <div class="sk-bone sk-hero-center-badge"></div>
-      </div>
-      <div class="sk-bone sk-hero-headline"></div>
-      <div class="sk-bone sk-hero-subline"></div>
-    </section>
-
-    <!-- 3. Dynamic Cards Row Skeleton -->
-    <section class="sk-cards-grid">
-      <div class="sk-bone sk-card">
-        <div class="sk-card-top">
-          <div class="sk-bone sk-avatar"></div>
-          <div class="sk-card-title-col">
-            <div class="sk-bone sk-title-line"></div>
-            <div class="sk-bone sk-tag-line"></div>
+    <!-- 2. Dynamic Layout Skeleton tailored to current page -->
+    {pageType === 'profile' ? (
+      /* --- Profile Dossier Skeleton (/members/[slug]) --- */
+      <div class="sk-profile-wrap">
+        <div class="sk-bone sk-profile-banner"></div>
+        <div class="sk-dossier-grid">
+          <!-- Left: Tall Model Silhouette Frame -->
+          <div class="sk-bone sk-model-column"></div>
+          <!-- Right: Info Column -->
+          <div class="sk-info-column">
+            <div class="sk-bone sk-nameplate"></div>
+            <div class="sk-bone sk-dossier-block">
+              <div class="sk-bone sk-title-line"></div>
+              <div class="sk-bone sk-card-body-line"></div>
+              <div class="sk-bone sk-card-body-line short"></div>
+            </div>
+            <div class="sk-specs-grid">
+              <div class="sk-bone sk-spec-cell"></div>
+              <div class="sk-bone sk-spec-cell"></div>
+              <div class="sk-bone sk-spec-cell"></div>
+              <div class="sk-bone sk-spec-cell"></div>
+              <div class="sk-bone sk-spec-cell"></div>
+              <div class="sk-bone sk-spec-cell"></div>
+            </div>
+            <div class="sk-socials-grid">
+              <div class="sk-bone sk-social-btn"></div>
+              <div class="sk-bone sk-social-btn"></div>
+              <div class="sk-bone sk-social-btn"></div>
+              <div class="sk-bone sk-social-btn"></div>
+            </div>
           </div>
         </div>
-        <div class="sk-bone sk-card-body-line"></div>
-        <div class="sk-bone sk-card-body-line short"></div>
-        <div class="sk-card-footer">
-          <div class="sk-bone sk-badge-pill"></div>
-          <div class="sk-bone sk-badge-pill"></div>
+      </div>
+    ) : pageType === 'commissions' ? (
+      /* --- Commissions / Atelier Skeleton (/commissions) --- */
+      <div class="sk-commissions-wrap">
+        <div class="sk-bone sk-atelier-hero"></div>
+        <div class="sk-filter-pills">
+          <div class="sk-bone sk-nav-pill"></div>
+          <div class="sk-bone sk-nav-pill"></div>
+          <div class="sk-bone sk-nav-pill"></div>
+        </div>
+        <div class="sk-pricing-row">
+          <div class="sk-bone sk-pricing-card"></div>
+          <div class="sk-bone sk-pricing-card"></div>
+          <div class="sk-bone sk-pricing-card"></div>
+        </div>
+        <div class="sk-gallery-grid">
+          <div class="sk-bone sk-gallery-card"></div>
+          <div class="sk-bone sk-gallery-card"></div>
+          <div class="sk-bone sk-gallery-card"></div>
+          <div class="sk-bone sk-gallery-card"></div>
         </div>
       </div>
-
-      <div class="sk-bone sk-card">
-        <div class="sk-card-top">
-          <div class="sk-bone sk-avatar"></div>
-          <div class="sk-card-title-col">
-            <div class="sk-bone sk-title-line"></div>
-            <div class="sk-bone sk-tag-line"></div>
+    ) : pageType === 'about' ? (
+      /* --- About / Directory Skeleton (/about & /members) --- */
+      <div class="sk-about-wrap">
+        <div class="sk-bone sk-about-hero"></div>
+        <div class="sk-filter-pills">
+          <div class="sk-bone sk-nav-pill"></div>
+          <div class="sk-bone sk-nav-pill"></div>
+          <div class="sk-bone sk-nav-pill"></div>
+        </div>
+        <div class="sk-editorial-row">
+          <div class="sk-bone sk-editorial-col"></div>
+          <div class="sk-bone sk-editorial-col"></div>
+        </div>
+      </div>
+    ) : (
+      /* --- Default Home Page Skeleton (/) --- */
+      <div>
+        <section class="sk-hero">
+          <div class="sk-bone sk-hero-stage">
+            <div class="sk-hero-center-badge"></div>
           </div>
-        </div>
-        <div class="sk-bone sk-card-body-line"></div>
-        <div class="sk-bone sk-card-body-line short"></div>
-        <div class="sk-card-footer">
-          <div class="sk-bone sk-badge-pill"></div>
-          <div class="sk-bone sk-badge-pill"></div>
-        </div>
-      </div>
+          <div class="sk-bone sk-hero-headline"></div>
+          <div class="sk-bone sk-hero-subline"></div>
+        </section>
 
-      <div class="sk-bone sk-card">
-        <div class="sk-card-top">
-          <div class="sk-bone sk-avatar"></div>
-          <div class="sk-card-title-col">
-            <div class="sk-bone sk-title-line"></div>
-            <div class="sk-bone sk-tag-line"></div>
+        <section class="sk-cards-grid">
+          <div class="sk-bone sk-card">
+            <div class="sk-card-top">
+              <div class="sk-bone sk-avatar"></div>
+              <div class="sk-card-title-col">
+                <div class="sk-bone sk-title-line"></div>
+                <div class="sk-bone sk-tag-line"></div>
+              </div>
+            </div>
+            <div class="sk-bone sk-card-body-line"></div>
+            <div class="sk-bone sk-card-body-line short"></div>
+            <div class="sk-card-footer">
+              <div class="sk-bone sk-badge-pill"></div>
+              <div class="sk-bone sk-badge-pill"></div>
+            </div>
           </div>
-        </div>
-        <div class="sk-bone sk-card-body-line"></div>
-        <div class="sk-bone sk-card-body-line short"></div>
-        <div class="sk-card-footer">
-          <div class="sk-bone sk-badge-pill"></div>
-          <div class="sk-bone sk-badge-pill"></div>
-        </div>
+
+          <div class="sk-bone sk-card">
+            <div class="sk-card-top">
+              <div class="sk-bone sk-avatar"></div>
+              <div class="sk-card-title-col">
+                <div class="sk-bone sk-title-line"></div>
+                <div class="sk-bone sk-tag-line"></div>
+              </div>
+            </div>
+            <div class="sk-bone sk-card-body-line"></div>
+            <div class="sk-bone sk-card-body-line short"></div>
+            <div class="sk-card-footer">
+              <div class="sk-bone sk-badge-pill"></div>
+              <div class="sk-bone sk-badge-pill"></div>
+            </div>
+          </div>
+
+          <div class="sk-bone sk-card">
+            <div class="sk-card-top">
+              <div class="sk-bone sk-avatar"></div>
+              <div class="sk-card-title-col">
+                <div class="sk-bone sk-title-line"></div>
+                <div class="sk-bone sk-tag-line"></div>
+              </div>
+            </div>
+            <div class="sk-bone sk-card-body-line"></div>
+            <div class="sk-bone sk-card-body-line short"></div>
+            <div class="sk-card-footer">
+              <div class="sk-bone sk-badge-pill"></div>
+              <div class="sk-bone sk-badge-pill"></div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    )}
   </div>
 </div>
 
 <!-- Top Navigation Progress Indicator for Link Clicks -->
 <div id="winest-nav-loader" class="winest-nav-loader" aria-hidden="true"></div>
 
-<!-- Skeleton Controller Script (Zero Framework, Lightweight, Resilient) -->
+<!-- Skeleton Controller Script -->
 <script is:inline>
   (function () {
     const overlay = document.getElementById('winest-skeleton-overlay');
@@ -99,22 +194,19 @@ import '../../styles/skeleton.css';
         if (overlay && overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
         }
-      }, 400);
+      }, 420);
     }
 
-    // Dismiss as soon as interactive or fully loaded
+    // Dismiss only when all page assets (images, fonts, stylesheets) have loaded
     if (document.readyState === 'complete') {
       dismissSkeleton();
     } else {
       window.addEventListener('load', dismissSkeleton, { once: true });
-      document.addEventListener('DOMContentLoaded', dismissSkeleton, { once: true });
-      document.addEventListener('astro:page-load', dismissSkeleton);
-
-      // Failsafe timer: Maximum 1.2s so it NEVER blocks user interaction
-      setTimeout(dismissSkeleton, 1200);
+      // Failsafe timer: Maximum 2.2s so it NEVER hangs forever on bad networks or broken external scripts
+      setTimeout(dismissSkeleton, 2200);
     }
 
-    // Link navigation feedback for slow 3G / mobile devices
+    // Link navigation feedback for slow mobile/3G networks
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a');
       if (!link) return;

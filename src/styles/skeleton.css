@@ -1,7 +1,7 @@
 /* ==========================================================================
    WINEST - Global Skeleton Loading & Shimmer Engine
-   Design: Ultra-Smooth Frosted Glass Wireframe (No Wobbling Spinners)
-   Purpose: Instant visual structure for slow mobile networks and low-end devices
+   Design: Ultra-Smooth Frosted Glass Wireframe (Zero Wobbling Spinners)
+   Purpose: Accurate perceived loading state tailored per page layout
    ========================================================================== */
 
 /* Full-Screen Skeleton Overlay */
@@ -10,12 +10,14 @@
   inset: 0;
   z-index: 99999;
   background: var(--bg-dominant, #0a0d16);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   pointer-events: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.36s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-overflow-scrolling: touch;
 }
 
 [data-theme="light"] .winest-skeleton-overlay {
@@ -32,8 +34,8 @@
 .skeleton-container {
   max-width: var(--max-width, 1200px);
   margin: 0 auto;
-  padding: 0 24px;
-  height: 100%;
+  padding: 0 clamp(16px, 4vw, 32px) 48px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -65,22 +67,25 @@
 [data-theme="light"] .sk-bone {
   background: linear-gradient(
     90deg,
-    rgba(15, 23, 42, 0.04) 0%,
+    rgba(15, 23, 42, 0.03) 0%,
     rgba(138, 156, 245, 0.16) 50%,
-    rgba(15, 23, 42, 0.04) 100%
+    rgba(15, 23, 42, 0.03) 100%
   );
   background-size: 200% 100%;
   border: 1px solid rgba(15, 23, 42, 0.05);
 }
 
-/* 1. Header / Navbar Skeleton */
+/* ==========================================================================
+   1. Header / Navbar Skeleton (Accurate Desktop & Mobile Mirror)
+   ========================================================================== */
 .sk-header {
   height: var(--header-height, 72px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(138, 156, 245, 0.08);
-  margin-bottom: 28px;
+  margin-bottom: clamp(24px, 3.5vw, 36px);
+  flex-shrink: 0;
 }
 
 .sk-brand-logo {
@@ -100,13 +105,81 @@
   border-radius: 9999px;
 }
 
-.sk-nav-action {
-  width: 90px;
+/* Desktop Actions: Lang Pill (56px) + Theme Switch (60px) */
+.sk-desktop-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sk-lang-pill {
+  width: 62px;
   height: 34px;
   border-radius: 9999px;
 }
 
-/* 2. Hero Stage Skeleton */
+.sk-theme-pill {
+  width: 60px;
+  height: 32px;
+  border-radius: 9999px;
+}
+
+/* Mobile Actions: Matches Navbar.astro mobile-actions (Lang + Theme + Hamburger 40x40) */
+.sk-mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-mobile-lang {
+  width: 52px;
+  height: 34px;
+  border-radius: 9999px;
+}
+
+.sk-mobile-theme {
+  width: 54px;
+  height: 32px;
+  border-radius: 9999px;
+}
+
+.sk-hamburger {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.sk-hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+[data-theme="light"] .sk-hamburger-line {
+  background: rgba(15, 23, 42, 0.2);
+}
+
+@media (max-width: 860px) {
+  .sk-nav-links,
+  .sk-desktop-actions {
+    display: none !important;
+  }
+  .sk-mobile-actions {
+    display: flex !important;
+  }
+}
+
+/* ==========================================================================
+   2. Layout Type A: Home Page Skeleton
+   ========================================================================== */
 .sk-hero {
   display: flex;
   flex-direction: column;
@@ -117,7 +190,7 @@
 .sk-hero-stage {
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 420px;
+  max-height: 440px;
   border-radius: var(--radius-outer, 24px);
   position: relative;
   overflow: hidden;
@@ -146,10 +219,9 @@
   border-radius: 4px;
 }
 
-/* 3. Cards Grid Skeleton */
 .sk-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -213,28 +285,168 @@
   border-radius: 6px;
 }
 
-/* Mobile Adjustments */
+/* ==========================================================================
+   3. Layout Type B: Profile Dossier Skeleton (/members/[slug])
+   ========================================================================== */
+.sk-profile-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.sk-profile-banner {
+  width: 100%;
+  height: clamp(140px, 18vw, 200px);
+  border-radius: 16px;
+}
+
+.sk-dossier-grid {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: start;
+}
+
+.sk-model-column {
+  height: clamp(380px, 45vw, 540px);
+  border-radius: 16px;
+}
+
+.sk-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sk-nameplate {
+  height: 72px;
+  border-radius: 12px;
+}
+
+.sk-dossier-block {
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sk-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sk-spec-cell {
+  height: 52px;
+  border-radius: 8px;
+}
+
+.sk-socials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.sk-social-btn {
+  height: 50px;
+  border-radius: 10px;
+}
+
 @media (max-width: 768px) {
-  .sk-nav-links {
-    display: none;
+  .sk-dossier-grid {
+    grid-template-columns: 1fr;
   }
-  .sk-hero-stage {
-    aspect-ratio: 16 / 9;
-    max-height: 240px;
+  .sk-model-column {
+    height: 320px;
   }
-  .sk-hero-headline {
-    width: 85%;
-    height: 24px;
+  .sk-specs-grid {
+    grid-template-columns: 1fr 1fr;
   }
-  .sk-hero-subline {
-    width: 95%;
-  }
-  .sk-cards-grid {
+  .sk-socials-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Top Navigation Progress Bar (for instant link-click feedback) */
+/* ==========================================================================
+   4. Layout Type C: Commissions / Atelier Skeleton (/commissions)
+   ========================================================================== */
+.sk-commissions-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.sk-atelier-hero {
+  height: 120px;
+  border-radius: 16px;
+}
+
+.sk-filter-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sk-pricing-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.sk-pricing-card {
+  height: 340px;
+  border-radius: 16px;
+}
+
+.sk-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.sk-gallery-card {
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   5. Layout Type D: About / Directory Skeleton (/about & /members)
+   ========================================================================== */
+.sk-about-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.sk-about-hero {
+  height: 110px;
+  border-radius: 16px;
+}
+
+.sk-editorial-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.sk-editorial-col {
+  height: 280px;
+  border-radius: 14px;
+}
+
+@media (max-width: 768px) {
+  .sk-editorial-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   6. Top Navigation Progress Bar & Accessibility Guards
+   ========================================================================== */
 .winest-nav-loader {
   position: fixed;
   top: 0;
@@ -264,5 +476,26 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+/* Accessibility: prefers-reduced-motion guard */
+@media (prefers-reduced-motion: reduce) {
+  .sk-bone {
+    animation: none !important;
+    background: rgba(138, 156, 245, 0.08) !important;
+  }
+
+  [data-theme="light"] .sk-bone {
+    background: rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .winest-nav-loader {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .winest-skeleton-overlay {
+    transition: opacity 0.1s linear !important;
   }
 }
