@@ -99,24 +99,24 @@
   transition: transform 0.05s ease-out;
 }
 
-/* Default/Dark theme glow: Soft pure white frosted aura */
+/* Default/Dark theme: Soft clean shadow */
 :not([data-theme="light"]) .hamster-sliding-rider:hover {
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
 }
 
 :not([data-theme="light"]) .hamster-sliding-rider.is-dragging {
   cursor: grabbing;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.7));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.65));
 }
 
-/* Light theme glow: Warm golden sunny aura */
+/* Light theme: Clean subtle shadow */
 [data-theme="light"] .hamster-sliding-rider:hover {
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
 [data-theme="light"] .hamster-sliding-rider.is-dragging {
   cursor: grabbing;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.8));
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.22));
 }
 
 .hamster-slide-svg {

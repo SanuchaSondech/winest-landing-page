@@ -1,11 +1,14 @@
 ---
 // HeroVideo.astro - ส่วน 1: พื้นที่สำหรับคลิป 16:9 (Main Stage Showcase)
 import homeData from "../../data/home.json";
+import homeEnData from "../../data/home.en.json";
 import HeroWonderlandSvg from "./HeroWonderlandSvg.astro";
 import HeroVideoFooter from "./HeroVideoFooter.astro";
 import "../../styles/hero.css";
 
-const { hero } = homeData;
+const isEn = Astro.url.pathname.startsWith('/en');
+const currentData = isEn ? homeEnData : homeData;
+const { hero } = currentData;
 ---
 
 <section class="hero-section" id="hero">
@@ -23,52 +26,48 @@ const { hero } = homeData;
           trackSub={hero.trackSub}
           duration={hero.duration}
         />
-
-        <!-- Interactive Modal / Video Playing Simulated State -->
-        <div class="video-playing-state" id="playing-state">
-          <iframe
-            id="video-iframe"
-            class="video-frame-embed"
-            src=""
-            title="WINEST Promotional Video"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-          <button
-            class="close-video-btn"
-            id="close-video-btn"
-            aria-label="ปิดวิดีโอ"
-          >
-            {hero.closeButtonText}
-          </button>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const playBtn = document.getElementById("play-trailer-btn");
-    const playingState = document.getElementById("playing-state");
-    const closeBtn = document.getElementById("close-video-btn");
-    const iframe = document.getElementById("video-iframe");
+  (function () {
+    function setupHeroControls() {
+      const playBtn = document.getElementById("play-trailer-btn");
+      const toast = document.getElementById("heroVideoToast");
+      if (!playBtn || !toast) return;
 
-    if (playBtn && playingState) {
-      playBtn.addEventListener("click", () => {
-        playingState.classList.add("active");
-        if (iframe) {
-          iframe.src =
-            "https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1&rel=0";
-        }
+      let toastTimer = null;
+
+      function showToast() {
+        if (toastTimer) clearTimeout(toastTimer);
+        toast.classList.add("is-visible");
+        toast.setAttribute("aria-hidden", "false");
+
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("is-visible");
+          toast.setAttribute("aria-hidden", "true");
+        }, 3400);
+      }
+
+      playBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        showToast();
+      });
+
+      toast.addEventListener("click", () => {
+        if (toastTimer) clearTimeout(toastTimer);
+        toast.classList.remove("is-visible");
+        toast.setAttribute("aria-hidden", "true");
       });
     }
 
-    if (closeBtn && playingState) {
-      closeBtn.addEventListener("click", () => {
-        playingState.classList.remove("active");
-        if (iframe) iframe.src = "";
-      });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupHeroControls);
+    } else {
+      setupHeroControls();
     }
-  });
+    document.addEventListener("astro:page-load", setupHeroControls);
+  })();
 </script>

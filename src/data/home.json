@@ -2,7 +2,7 @@
   "hero": {
     "stageLabel": "MAIN STAGE: AGENCY TRAILER",
     "duration": "01:45",
-    "playHint": "กดเพื่อรับชมตัวอย่าง WINEST",
+    "playHint": "วิดีโอเปิดตัวค่ายเร็ว ๆ นี้ (Coming Soon)",
     "trackTitle": "Welcome to WINEST Wonderland",
     "trackSub": "VIRTUAL TALENTS & ILLUSTRATION STUDIOS",
     "closeButtonText": "✕ ปิดหน้าต่าง"
@@ -12,7 +12,7 @@
     "brandTaglinePrefix": "ยินดีต้อนรับสู่",
     "brandTaglineSuffix": "พื้นที่แห่งจินตนาการและการสร้างสรรค์",
     "storyHeadline": "สร้างสรรค์จินตนาการสู่โลกเสมือน",
-    "storyParagraph": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber สุดน่ารัก และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่ Character Sheet, สติกเกอร์/อีโมจิ ไปจนถึงฉากห้องสตรีมมิ่ง 3 มิติและ 2 มิติ",
+    "storyParagraph": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่การวาดและริกโมเดล Live2D, ออกแบบ Character Sheet ไปจนถึงภาพวาดฉากสตรีมมิ่ง 4K",
     "xLink": {
       "handle": "@Winest_vt",
       "url": "https://x.com/Winest_vt",
@@ -23,29 +23,29 @@
     "pillars": [
       {
         "num": "01",
-        "title": "VTuber Talents & Creators",
-        "desc": "พบกับครีเอเตอร์และเวอร์ชวลทาเลนต์ในสังกัด ผู้สร้างสีสันและความสนุกในโลกเสมือน",
+        "title": "VTuber Talents",
+        "desc": "ทำความรู้จักทาเลนต์ VTuber ในสังกัดรุ่นที่ 1 GENESIS พร้อมข้อมูลประวัติและช่องทางการติดตาม",
         "href": "/members",
         "disabled": false
       },
       {
         "num": "02",
         "title": "Arts & Creative Studio",
-        "desc": "บริการวาดรูปครบวงจร (คาแรกเตอร์ดีไซน์ วาดคน วาดฉาก), บริการริกโมเดล และบริการมิกซ์เพลง",
+        "desc": "บริการวาดและริกโมเดล VTuber Live2D, ออกแบบตัวละคร และภาพวาดฉากหลังสตรีมมิ่ง 4K พร้อมสิทธิ์เชิงพาณิชย์",
         "href": "/commissions",
         "disabled": false
       },
       {
         "num": "03",
         "title": "Agency Profile & Contact",
-        "desc": "ข้อมูลค่าย นโยบายลิขสิทธิ์เชิงพาณิชย์ ทีมงานผู้สร้าง และช่องทางติดต่อร่วมงาน",
+        "desc": "ช่องทางติดต่อค่ายสำหรับงานสปอนเซอร์ ความร่วมมือ Collab นโยบายลิขสิทธิ์ และช่องทางติดต่องานสตูดิโอ",
         "href": "/about",
         "disabled": false
       },
       {
         "num": "04",
         "title": "Official Merchandise",
-        "desc": "สินค้าที่ระลึก สแตนดี้ พวงกุญแจ และของสะสมสุดพิเศษสำหรับคอมมิวนิตี้",
+        "desc": "สินค้าที่ระลึกทางการจากค่าย WINEST และทาเลนต์ในสังกัด (เร็ว ๆ นี้)",
         "disabled": true,
         "badge": "COMING SOON"
       }
@@ -54,19 +54,19 @@
     "metricsMeta": "VERIFIED DATA",
     "metrics": [
       {
-        "num": "6+",
+        "num": "3+",
         "title": "VTuber Talents",
         "desc": "ครีเอเตอร์และเวอร์ชวลทาเลนต์ในสังกัด ผู้ร่วมขับเคลื่อนคอมมิวนิตี้โลกเสมือน"
       },
       {
-        "num": "150+",
-        "title": "Artworks Delivered",
-        "desc": "งานออกแบบ Character Sheet, โมเดล Live2D และกราฟิกเชิงพาณิชย์ 4K"
+        "num": "30K+",
+        "title": "Total Subscriber",
+        "desc": "ยอดผู้ติดตามรวมจากคอมมิวนิตี้และแฟนคลับผู้ติดตามในทุกแพลตฟอร์มโซเชียล"
       },
       {
-        "num": "1.2M+",
-        "title": "Total Channel Views",
-        "desc": "ยอดการรับชมรวมจากคอมมิวนิตี้และแฟนคลับผู้ติดตามในทุกแพลตฟอร์มโซเชียล"
+        "num": "100+",
+        "title": "Artworks Delivered",
+        "desc": "งานออกแบบ Character Sheet, โมเดล Live2D และกราฟิกเชิงพาณิชย์ 4K"
       },
       {
         "num": "100%",
@@ -189,7 +189,7 @@
           },
           {
             "platform": "Discord",
-            "url": "https://discord.gg"
+            "url": "https://discord.gg/TfAW5Eyuh4"
           }
         ]
       },

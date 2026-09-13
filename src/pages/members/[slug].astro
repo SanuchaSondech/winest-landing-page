@@ -54,6 +54,25 @@ const personSchema = {
   "sameAs": socials.map((s: any) => s.url).filter(Boolean)
 };
 
+const STANDARD_PLATFORMS = [
+  { key: 'youtube', name: 'YouTube', icon: 'youtube', match: ['youtube'] },
+  { key: 'tiktok', name: 'TikTok', icon: 'tiktok', match: ['tiktok'] },
+  { key: 'x', name: 'X', icon: 'x-twitter', match: ['x', 'twitter'] },
+  { key: 'discord', name: 'Discord', icon: 'discord', match: ['discord'] },
+];
+
+const resolvedSocials = STANDARD_PLATFORMS.map((platform) => {
+  const found: any = socials.find((s: any) =>
+    platform.match.some((m) => s.platform?.toLowerCase().includes(m))
+  );
+  return {
+    ...platform,
+    url: found?.url || '',
+    label: (found?.label || found?.handle || `@${talent.slug}`) as string,
+    hasLink: Boolean(found?.url),
+  };
+});
+
 const isAlias = Astro.params.slug === "yunaria";
 const canonical = isAlias ? "https://winest.studio/members/yunaria-zayu" : undefined;
 ---
@@ -302,45 +321,52 @@ const canonical = isAlias ? "https://winest.studio/members/yunaria-zayu" : undef
             <span class="channels-subtitle">Official Channels & Links</span>
           </div>
           <div class="dossier-socials-grid" id="detailSocialsGrid">
-            {
-              socials.map((soc: any) => {
-                const isYt = soc.platform.includes("YouTube");
-                const isTw = soc.platform.includes("Twitch");
-                const isX =
-                  soc.platform.includes("X") ||
-                  soc.platform.includes("Twitter");
-                const isDiscord = soc.platform.includes("Discord");
-
-                return (
-                  <a
-                    href={soc.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class={`arp-social-btn ${isYt ? "is-youtube" : isTw ? "is-twitch" : isX ? "is-twitter" : isDiscord ? "is-discord" : ""}`}
-                    aria-label={`ติดตาม ${talent.name} บน ${soc.platform}`}
+            {resolvedSocials.map((item) => (
+              item.hasLink ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`arp-social-btn is-${item.key}`}
+                  aria-label={`ติดตาม ${talent.name} บน ${item.name}`}
+                >
+                  <span class="soc-icon">
+                    <Icon name={item.icon} width="18" height="18" />
+                  </span>
+                  <div class="soc-meta">
+                    <span class="soc-platform">{item.name}</span>
+                    <span class="soc-handle">{item.label}</span>
+                  </div>
+                  <Icon
+                    name="arrow-diagonal"
+                    width="14"
+                    height="14"
+                    class="soc-arrow"
+                  />
+                </a>
+              ) : (
+                <div class="pending-btn-wrapper">
+                  <button
+                    type="button"
+                    class={`arp-social-btn is-${item.key} is-pending js-pending-social-btn`}
+                    aria-label={`ช่องทาง ${item.name} ของ ${talent.name} (เร็ว ๆ นี้)`}
+                    title={`ยังไม่มีช่องทาง ${item.name}`}
                   >
                     <span class="soc-icon">
-                      {isYt && <Icon name="youtube" width="20" height="20" />}
-                      {isTw && <Icon name="twitch" width="20" height="20" />}
-                      {isX && <Icon name="x-twitter" width="18" height="18" />}
-                      {isDiscord && (
-                        <Icon name="discord" width="20" height="20" />
-                      )}
+                      <Icon name={item.icon} width="18" height="18" />
                     </span>
                     <div class="soc-meta">
-                      <span class="soc-platform">{soc.platform}</span>
-                      <span class="soc-handle">{soc.label}</span>
+                      <span class="soc-platform">{item.name}</span>
+                      <span class="soc-handle">เร็ว ๆ นี้ (Coming Soon)</span>
                     </div>
-                    <Icon
-                      name="arrow-diagonal"
-                      width="14"
-                      height="14"
-                      class="soc-arrow"
-                    />
-                  </a>
-                );
-              })
-            }
+                    <span class="pending-pill-mini">SOON</span>
+                  </button>
+                  <div class="showcase-toast-bubble js-social-toast" role="status" aria-live="polite">
+                    ยังไม่มีช่องทาง {item.name} สำหรับ {talent.name} (เร็ว ๆ นี้)
+                  </div>
+                </div>
+              )
+            ))}
           </div>
         </section>
       </div>
@@ -349,28 +375,51 @@ const canonical = isAlias ? "https://winest.studio/members/yunaria-zayu" : undef
 
   <Footer />
 
-  <!-- Interactive Controller: Speech Balloon Dismiss & Page Re-entry Reset -->
+  <!-- Interactive Controller: Speech Balloon Dismiss & Pending Social Toast -->
   <script is:inline>
     (function () {
-      function setupSpeechBalloon() {
+      function setupDossierInteractive() {
         var balloon = document.getElementById('dossierSpeechBalloon');
-        if (!balloon) return;
+        if (balloon) {
+          balloon.classList.remove('is-dismissed');
+          balloon.onclick = function (e) {
+            e.stopPropagation();
+            balloon.classList.add('is-dismissed');
+          };
+        }
 
-        // Reset visibility whenever entering or re-entering the page
-        balloon.classList.remove('is-dismissed');
+        var pendingBtns = document.querySelectorAll('.js-pending-social-btn');
+        pendingBtns.forEach(function (btn) {
+          var wrapper = btn.closest('.pending-btn-wrapper');
+          var toast = wrapper ? wrapper.querySelector('.js-social-toast') : null;
+          if (!toast) return;
 
-        balloon.onclick = function (e) {
-          e.stopPropagation();
-          balloon.classList.add('is-dismissed');
-        };
+          var toastTimer = null;
+          btn.onclick = function (e) {
+            e.preventDefault();
+            if (toastTimer) clearTimeout(toastTimer);
+            document.querySelectorAll('.js-social-toast.is-visible').forEach(function (t) {
+              if (t !== toast) t.classList.remove('is-visible');
+            });
+            toast.classList.add('is-visible');
+            toastTimer = setTimeout(function () {
+              toast.classList.remove('is-visible');
+            }, 3000);
+          };
+
+          toast.onclick = function () {
+            if (toastTimer) clearTimeout(toastTimer);
+            toast.classList.remove('is-visible');
+          };
+        });
       }
 
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupSpeechBalloon);
+        document.addEventListener('DOMContentLoaded', setupDossierInteractive);
       } else {
-        setupSpeechBalloon();
+        setupDossierInteractive();
       }
-      document.addEventListener('astro:page-load', setupSpeechBalloon);
+      document.addEventListener('astro:page-load', setupDossierInteractive);
     })();
   </script>
 </Layout>

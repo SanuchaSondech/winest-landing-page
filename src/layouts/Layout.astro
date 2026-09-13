@@ -20,6 +20,7 @@ const {
 } = Astro.props;
 
 import HamsterScrollSlider from "../components/common/HamsterScrollSlider.astro";
+import SkeletonScreen from "../components/common/SkeletonScreen.astro";
 
 const siteUrl = "https://winest.studio";
 const pageLang = lang || (Astro.url && Astro.url.pathname.startsWith("/en") ? "en" : "th");
@@ -43,7 +44,7 @@ const jsonLdGraph = [
     "description": "ค่าย VTuber และสตูดิโองานวาด คาแรคเตอร์ชีท สติกเกอร์ และฉากสตรีมมิ่ง",
     "sameAs": [
       "https://x.com/Winest_vt",
-      "https://youtube.com/@winest_official"
+      "https://www.youtube.com/@Winest_Vt"
     ]
   },
   {
@@ -136,6 +137,9 @@ const structuredDataString = JSON.stringify({
     </script>
   </head>
   <body>
+    <!-- Global Zero-Spinner Skeleton Loading & Shimmer System -->
+    <SkeletonScreen />
+
     <!-- Amusement Park Background Decor Pattern & Chromatic Glass Ambient Orbs -->
     <div class="park-map-bg" aria-hidden="true"></div>
     <div class="glass-ambient-orbs" aria-hidden="true">

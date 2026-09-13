@@ -40,14 +40,14 @@
       "name": "Yunaria Zayu",
       "shortName": "Yunaria",
       "japaneseName": "",
-      "title": "หมอผีสายกิน",
+      "title": "หมอผี",
       "genId": "gen-1",
       "genName": "GENESIS",
       "isTeaser": false,
       "themeColor": "#e098a1",
       "themeDarker": "#9b334d",
       "videoTitle": "【DEBUT SHOWCASE】ยินดีต้อนรับสู่ห้วงเวทมนตร์กับ Yunaria Zayu ✦",
-      "youtubeVideoId": "",
+      "youtubeVideoId": "eiN2K9_ywZ8",
       "videoCover": "/images/Yunaria.webp",
       "characterDesignImage": "/images/Yunaria.webp",
       "modelImage": "/images/Yunaria.webp",
@@ -83,13 +83,18 @@
           "label": "@yunaria_zayu"
         },
         {
+          "platform": "TikTok",
+          "url": "https://www.tiktok.com/@zayuyunaria_wt",
+          "label": "@zayuyunaria_wt"
+        },
+        {
           "platform": "X",
           "url": "https://x.com/Yunariazayu",
           "label": "@Yunariazayu"
         },
         {
           "platform": "Discord",
-          "url": "https://discord.gg/gAwCGkxpa2",
+          "url": "https://discord.gg/TfAW5Eyuh4",
           "label": "Community Discord"
         }
       ]
@@ -101,7 +106,7 @@
       "shortName": "Karake",
       "thaiName": "วิลาไลย ศักดิ์พัตร",
       "japaneseName": "",
-      "title": "หมอผี สายเกม",
+      "title": "ผีปอบ",
       "genId": "gen-1",
       "genName": "GENESIS",
       "isTeaser": false,
@@ -144,6 +149,11 @@
           "platform": "YouTube",
           "url": "https://www.youtube.com/@karake_Winest",
           "label": "@karake_Winest"
+        },
+        {
+          "platform": "TikTok",
+          "url": "https://www.tiktok.com/@karake_vt",
+          "label": "@karake_vt"
         },
         {
           "platform": "X",

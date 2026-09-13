@@ -1,0 +1,268 @@
+/* ==========================================================================
+   WINEST - Global Skeleton Loading & Shimmer Engine
+   Design: Ultra-Smooth Frosted Glass Wireframe (No Wobbling Spinners)
+   Purpose: Instant visual structure for slow mobile networks and low-end devices
+   ========================================================================== */
+
+/* Full-Screen Skeleton Overlay */
+.winest-skeleton-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg-dominant, #0a0d16);
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .winest-skeleton-overlay {
+  background: var(--bg-dominant, #f5f7fc);
+}
+
+.winest-skeleton-overlay.is-dismissed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Skeleton Container */
+.skeleton-container {
+  max-width: var(--max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shimmer Animation Keyframes */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Base Skeleton Bone Element */
+.sk-bone {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(138, 156, 245, 0.12) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s ease-in-out infinite;
+  border-radius: var(--radius-sm, 8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .sk-bone {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.04) 0%,
+    rgba(138, 156, 245, 0.16) 50%,
+    rgba(15, 23, 42, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+/* 1. Header / Navbar Skeleton */
+.sk-header {
+  height: var(--header-height, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(138, 156, 245, 0.08);
+  margin-bottom: 28px;
+}
+
+.sk-brand-logo {
+  width: 130px;
+  height: 38px;
+  border-radius: 9999px;
+}
+
+.sk-nav-links {
+  display: flex;
+  gap: 12px;
+}
+
+.sk-nav-pill {
+  width: 76px;
+  height: 32px;
+  border-radius: 9999px;
+}
+
+.sk-nav-action {
+  width: 90px;
+  height: 34px;
+  border-radius: 9999px;
+}
+
+/* 2. Hero Stage Skeleton */
+.sk-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.sk-hero-stage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  border-radius: var(--radius-outer, 24px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sk-hero-center-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(138, 156, 245, 0.25);
+}
+
+.sk-hero-headline {
+  width: 48%;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.sk-hero-subline {
+  width: 68%;
+  height: 18px;
+  border-radius: 4px;
+}
+
+/* 3. Cards Grid Skeleton */
+.sk-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.sk-card {
+  height: 220px;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sk-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sk-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sk-card-title-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sk-title-line {
+  width: 70%;
+  height: 16px;
+}
+
+.sk-tag-line {
+  width: 40%;
+  height: 12px;
+}
+
+.sk-card-body-line {
+  width: 100%;
+  height: 14px;
+}
+
+.sk-card-body-line.short {
+  width: 65%;
+}
+
+.sk-card-footer {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.sk-badge-pill {
+  width: 54px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .sk-nav-links {
+    display: none;
+  }
+  .sk-hero-stage {
+    aspect-ratio: 16 / 9;
+    max-height: 240px;
+  }
+  .sk-hero-headline {
+    width: 85%;
+    height: 24px;
+  }
+  .sk-hero-subline {
+    width: 95%;
+  }
+  .sk-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Top Navigation Progress Bar (for instant link-click feedback) */
+.winest-nav-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--accent-primary, #8a9cf5), #a0b1ff, #5567e2);
+  z-index: 100000;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.2s ease;
+}
+
+.winest-nav-loader.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  animation: navLoaderSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes navLoaderSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

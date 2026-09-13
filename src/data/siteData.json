@@ -3,18 +3,18 @@
     "name": "WINEST",
     "tagline": "The Virtual Wonderland of Talents & Creative Art",
     "taglineTh": "ค่าย VTuber และสตูดิโองานวาดครบวงจร",
-    "bio": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber สุดน่ารัก และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่ Character Sheet, สติกเกอร์/อีโมจิ ไปจนถึงฉากห้องสตรีมมิ่ง 3 มิติและ 2 มิติ",
+    "bio": "WINEST คือค่ายและครีเอทีฟสตูดิโอสำหรับการเดบิวต์ VTuber และบริการงานอาร์ตระดับพรีเมียม ตั้งแต่การวาดและริกโมเดล Live2D, ออกแบบ Character Sheet ไปจนถึงภาพวาดฉากสตรีมมิ่ง 4K",
     "stats": [
-      { "label": "สมาชิก VTuber ในสังกัด", "value": "6+", "sub": "Talents" },
-      { "label": "งานวาดที่ส่งมอบแล้ว", "value": "150+", "sub": "Artworks" },
-      { "label": "ยอดวิวรวมทุกช่องทาง", "value": "1.2M+", "sub": "Total Views" },
-      { "label": "คะแนนความพึงพอใจ", "value": "100%", "sub": "5-Star Rating" }
+      { "label": "สมาชิก VTuber ในสังกัด", "value": "3+", "sub": "Talents" },
+      { "label": "งานวาดที่ส่งมอบแล้ว", "value": "100+", "sub": "Artworks" },
+      { "label": "ยอดผู้ติดตามรวม", "value": "30K+", "sub": "Total Subscriber" },
+      { "label": "สิทธิ์การใช้งานเชิงพาณิชย์", "value": "100%", "sub": "Commercial Ready" }
     ],
     "socials": [
-      { "platform": "YouTube", "url": "https://youtube.com", "handle": "@winest_official" },
+      { "platform": "YouTube", "url": "https://www.youtube.com/@Winest_Vt", "handle": "@Winest_Vt" },
       { "platform": "X", "url": "https://x.com/Winest_vt", "handle": "@Winest_vt" },
-      { "platform": "Discord", "url": "https://discord.gg", "handle": "WINEST Community" },
-      { "platform": "Email", "url": "mailto:contact@winest.studio", "handle": "contact@winest.studio" }
+      { "platform": "Discord", "url": "https://discord.gg/TfAW5Eyuh4", "handle": "WINEST Community" },
+      { "platform": "Email", "url": "mailto:winest.info@gmail.com", "handle": "winest.info@gmail.com" }
     ]
   },
   "videoSection": {

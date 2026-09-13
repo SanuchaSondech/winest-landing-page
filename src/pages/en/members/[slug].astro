@@ -53,6 +53,25 @@ const personSchema = {
   "sameAs": socials.map((s: any) => s.url).filter(Boolean)
 };
 
+const STANDARD_PLATFORMS = [
+  { key: 'youtube', name: 'YouTube', icon: 'youtube', match: ['youtube'] },
+  { key: 'tiktok', name: 'TikTok', icon: 'tiktok', match: ['tiktok'] },
+  { key: 'x', name: 'X', icon: 'x-twitter', match: ['x', 'twitter'] },
+  { key: 'discord', name: 'Discord', icon: 'discord', match: ['discord'] },
+];
+
+const resolvedSocials = STANDARD_PLATFORMS.map((platform) => {
+  const found: any = socials.find((s: any) =>
+    platform.match.some((m) => s.platform?.toLowerCase().includes(m))
+  );
+  return {
+    ...platform,
+    url: found?.url || '',
+    label: (found?.label || found?.handle || `@${talent.slug}`) as string,
+    hasLink: Boolean(found?.url),
+  };
+});
+
 const isAlias = Astro.params.slug === "yunaria";
 const canonical = isAlias ? "https://winest.studio/en/members/yunaria-zayu" : undefined;
 ---
@@ -266,24 +285,52 @@ const canonical = isAlias ? "https://winest.studio/en/members/yunaria-zayu" : un
             <span class="channels-subtitle">Official Channels & Community</span>
           </div>
           <div class="dossier-socials-grid" id="detailSocialsGrid">
-            {socials.map((soc: any) => {
-              const isYt = soc.platform.includes("YouTube");
-              const isTw = soc.platform.includes("Twitch");
-              const isX = soc.platform.includes("X") || soc.platform.includes("Twitter");
-              const isDiscord = soc.platform.includes("Discord");
-
-              return (
+            {resolvedSocials.map((item) => (
+              item.hasLink ? (
                 <a
-                  href={soc.url}
+                  href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`arp-social-btn ${isYt ? "is-youtube" : isTw ? "is-twitch" : isX ? "is-twitter" : isDiscord ? "is-discord" : ""}`}
+                  class={`arp-social-btn is-${item.key}`}
+                  aria-label={`Follow ${talent.name} on ${item.name}`}
                 >
-                  <span class="social-btn-name">{soc.platform}</span>
-                  <span class="social-btn-handle">{soc.handle}</span>
+                  <span class="soc-icon">
+                    <Icon name={item.icon} width="18" height="18" />
+                  </span>
+                  <div class="soc-meta">
+                    <span class="soc-platform">{item.name}</span>
+                    <span class="soc-handle">{item.label}</span>
+                  </div>
+                  <Icon
+                    name="arrow-diagonal"
+                    width="14"
+                    height="14"
+                    class="soc-arrow"
+                  />
                 </a>
-              );
-            })}
+              ) : (
+                <div class="pending-btn-wrapper">
+                  <button
+                    type="button"
+                    class={`arp-social-btn is-${item.key} is-pending js-pending-social-btn`}
+                    aria-label={`${talent.name}'s ${item.name} (Coming soon)`}
+                    title={`${item.name} coming soon`}
+                  >
+                    <span class="soc-icon">
+                      <Icon name={item.icon} width="18" height="18" />
+                    </span>
+                    <div class="soc-meta">
+                      <span class="soc-platform">{item.name}</span>
+                      <span class="soc-handle">Coming Soon</span>
+                    </div>
+                    <span class="pending-pill-mini">SOON</span>
+                  </button>
+                  <div class="showcase-toast-bubble js-social-toast" role="status" aria-live="polite">
+                    {talent.name}'s {item.name} is not available yet (Coming soon)
+                  </div>
+                </div>
+              )
+            ))}
           </div>
         </section>
       </div>
@@ -291,4 +338,43 @@ const canonical = isAlias ? "https://winest.studio/en/members/yunaria-zayu" : un
   </main>
 
   <Footer />
+
+  <!-- Interactive Controller: Pending Social Toast -->
+  <script is:inline>
+    (function () {
+      function setupDossierInteractive() {
+        var pendingBtns = document.querySelectorAll('.js-pending-social-btn');
+        pendingBtns.forEach(function (btn) {
+          var wrapper = btn.closest('.pending-btn-wrapper');
+          var toast = wrapper ? wrapper.querySelector('.js-social-toast') : null;
+          if (!toast) return;
+
+          var toastTimer = null;
+          btn.onclick = function (e) {
+            e.preventDefault();
+            if (toastTimer) clearTimeout(toastTimer);
+            document.querySelectorAll('.js-social-toast.is-visible').forEach(function (t) {
+              if (t !== toast) t.classList.remove('is-visible');
+            });
+            toast.classList.add('is-visible');
+            toastTimer = setTimeout(function () {
+              toast.classList.remove('is-visible');
+            }, 3000);
+          };
+
+          toast.onclick = function () {
+            if (toastTimer) clearTimeout(toastTimer);
+            toast.classList.remove('is-visible');
+          };
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupDossierInteractive);
+      } else {
+        setupDossierInteractive();
+      }
+      document.addEventListener('astro:page-load', setupDossierInteractive);
+    })();
+  </script>
 </Layout>

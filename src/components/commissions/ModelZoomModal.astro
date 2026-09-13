@@ -1,0 +1,398 @@
+---
+// ModelZoomModal.astro - หน้าต่าง Lightbox & Interactive Image Zoom สำหรับดูโมเดล Live2D แบบคมชัด
+export interface Props {
+  isEn?: boolean;
+}
+
+const { isEn = false } = Astro.props;
+---
+
+<!-- Lightbox Modal Overlay -->
+<div 
+  class="model-lightbox-overlay" 
+  id="modelLightboxOverlay" 
+  role="dialog" 
+  aria-modal="true" 
+  aria-hidden="true" 
+  tabindex="-1"
+>
+  <!-- Top Navigation & Controls Bar -->
+  <header class="lightbox-header-bar">
+    <div class="lightbox-title-block">
+      <h3 class="lightbox-model-title" id="lightboxModelTitle">Model Showcase</h3>
+      <span class="lightbox-model-meta" id="lightboxModelMeta">WINEST Kenelix Studio</span>
+    </div>
+
+    <!-- Floating Zoom Controls Center Bar -->
+    <div class="lightbox-zoom-toolbar" role="toolbar" aria-label={isEn ? "Image zoom controls" : "แถบควบคุมการซูมรูปภาพ"}>
+      <button 
+        type="button" 
+        class="zoom-tool-btn" 
+        id="zoomOutBtn" 
+        aria-label={isEn ? "Zoom Out (-)" : "ย่อภาพ (-)"}
+        title={isEn ? "Zoom Out (-)" : "ย่อภาพ (-)"}
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+
+      <button 
+        type="button" 
+        class="zoom-level-pill" 
+        id="zoomLevelPill" 
+        aria-label={isEn ? "Reset Zoom to 100%" : "รีเซ็ตการซูมเป็น 100%"}
+        title={isEn ? "Click to reset zoom (100%)" : "คลิกเพื่อรีเซ็ตขนาด (100%)"}
+      >
+        <span id="zoomPercentText">100%</span>
+      </button>
+
+      <button 
+        type="button" 
+        class="zoom-tool-btn" 
+        id="zoomInBtn" 
+        aria-label={isEn ? "Zoom In (+)" : "ขยายภาพ (+)"}
+        title={isEn ? "Zoom In (+)" : "ขยายภาพ (+)"}
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+
+      <span class="zoom-toolbar-sep" aria-hidden="true"></span>
+
+      <button 
+        type="button" 
+        class="zoom-tool-btn" 
+        id="zoomResetBtn" 
+        aria-label={isEn ? "Reset View" : "รีเซ็ตมุมมอง"}
+        title={isEn ? "Reset View (0)" : "รีเซ็ตมุมมอง (0)"}
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+          <path d="M3 3v5h5"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Close Button -->
+    <div class="lightbox-actions-right">
+      <button 
+        type="button" 
+        class="lightbox-close-btn" 
+        id="lightboxCloseBtn" 
+        aria-label={isEn ? "Close Lightbox (Esc)" : "ปิดหน้าต่างขยายภาพ (Esc)"}
+        title={isEn ? "Close (Esc)" : "ปิด (Esc)"}
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Stage Canvas Area for Image -->
+  <div class="lightbox-stage-canvas" id="lightboxStageCanvas">
+    <div class="lightbox-image-viewport" id="lightboxImageViewport">
+      <img 
+        src="" 
+        alt="Live2D Model Showcase Detailed View" 
+        id="lightboxActiveImage" 
+        class="lightbox-target-img"
+        draggable="false"
+      />
+    </div>
+
+    <!-- Quick Touch / Navigation Hint (Bottom Center) -->
+    <div class="lightbox-bottom-hint" aria-hidden="true">
+      <span class="hint-mouse-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="6" y="3" width="12" height="18" rx="6"></rect>
+          <line x1="12" y1="7" x2="12" y2="11"></line>
+        </svg>
+      </span>
+      <span>{isEn ? "Scroll to Zoom · Drag to Pan · Double click to Reset" : "เลื่อนลูกกลิ้งเมาส์เพื่อซูม · ลากเพื่อเลื่อนดูรายละเอียด · ดับเบิลคลิกเพื่อรีเซ็ต"}</span>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    function initModelLightbox() {
+      const overlay = document.getElementById("modelLightboxOverlay");
+      const activeImg = document.getElementById("lightboxActiveImage");
+      const titleEl = document.getElementById("lightboxModelTitle");
+      const metaEl = document.getElementById("lightboxModelMeta");
+      const closeBtn = document.getElementById("lightboxCloseBtn");
+      const zoomInBtn = document.getElementById("zoomInBtn");
+      const zoomOutBtn = document.getElementById("zoomOutBtn");
+      const zoomResetBtn = document.getElementById("zoomResetBtn");
+      const zoomLevelPill = document.getElementById("zoomLevelPill");
+      const zoomPercentText = document.getElementById("zoomPercentText");
+      const stageCanvas = document.getElementById("lightboxStageCanvas");
+      const viewport = document.getElementById("lightboxImageViewport");
+
+      if (!overlay || !activeImg || !viewport) return;
+
+      let scale = 1;
+      let posX = 0;
+      let posY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let previousActiveElement = null;
+
+      const MIN_SCALE = 0.75;
+      const MAX_SCALE = 4;
+      const STEP = 0.25;
+
+      function renderTransform(animate = true) {
+        if (!animate) {
+          activeImg.style.transition = "none";
+        } else {
+          activeImg.style.transition = "transform 0.18s cubic-bezier(0.16, 1, 0.3, 1)";
+        }
+
+        activeImg.style.transform = `translate3d(${posX}px, ${posY}px, 0) scale(${scale})`;
+        if (zoomPercentText) {
+          zoomPercentText.textContent = `${Math.round(scale * 100)}%`;
+        }
+
+        // Adjust cursor according to state
+        if (scale > 1) {
+          viewport.style.cursor = isDragging ? "grabbing" : "grab";
+        } else {
+          viewport.style.cursor = "zoom-in";
+          posX = 0;
+          posY = 0;
+        }
+      }
+
+      function setScale(newScale, originX = 0, originY = 0, animate = true) {
+        const clampedScale = Math.min(Math.max(newScale, MIN_SCALE), MAX_SCALE);
+        if (clampedScale === scale) return;
+
+        if (clampedScale <= 1) {
+          posX = 0;
+          posY = 0;
+        } else if (originX && originY) {
+          // Adjust translation relative to zoom point
+          const ratio = clampedScale / scale;
+          posX = originX - (originX - posX) * ratio;
+          posY = originY - (originY - posY) * ratio;
+        }
+
+        scale = clampedScale;
+        renderTransform(animate);
+      }
+
+      function resetZoom() {
+        scale = 1;
+        posX = 0;
+        posY = 0;
+        renderTransform(true);
+      }
+
+      function openLightbox(imgSrc, title, meta) {
+        previousActiveElement = document.activeElement;
+        activeImg.src = imgSrc;
+        if (titleEl) titleEl.textContent = title || "Live2D Model Showcase";
+        if (metaEl) metaEl.textContent = meta || "WINEST Kenelix Studio";
+
+        resetZoom();
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        requestAnimationFrame(() => {
+          if (closeBtn) closeBtn.focus();
+        });
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        activeImg.src = "";
+        resetZoom();
+
+        if (previousActiveElement && typeof previousActiveElement.focus === "function") {
+          previousActiveElement.focus();
+        }
+      }
+
+      // Attach click events on all portfolio model cards
+      function bindTriggers() {
+        document.querySelectorAll(".model-img-wrapper").forEach((wrapper) => {
+          if (wrapper.dataset.lightboxBound) return;
+          wrapper.dataset.lightboxBound = "true";
+
+          wrapper.setAttribute("role", "button");
+          wrapper.setAttribute("tabindex", "0");
+          wrapper.classList.add("is-zoomable");
+
+          const img = wrapper.querySelector("img");
+          const card = wrapper.closest(".model-portfolio-card");
+          const nameEl = card ? card.querySelector(".model-name") : null;
+          const tierEl = card ? card.querySelector(".model-tier-pill") : null;
+          const creditsEl = card ? card.querySelector(".model-credits") : null;
+
+          const title = nameEl && tierEl ? `${nameEl.textContent.trim()} (${tierEl.textContent.trim()})` : (img ? img.alt : "");
+          const meta = creditsEl ? creditsEl.textContent.replace(/\s+/g, " ").trim() : "";
+
+          function triggerOpen(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (img && img.src) {
+              openLightbox(img.src, title, meta);
+            }
+          }
+
+          wrapper.addEventListener("click", triggerOpen);
+          wrapper.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              triggerOpen(e);
+            }
+          });
+        });
+      }
+
+      bindTriggers();
+
+      // Zoom Controls Buttons
+      if (zoomInBtn) {
+        zoomInBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setScale(scale + STEP, 0, 0, true);
+        });
+      }
+
+      if (zoomOutBtn) {
+        zoomOutBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setScale(scale - STEP, 0, 0, true);
+        });
+      }
+
+      if (zoomResetBtn) {
+        zoomResetBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          resetZoom();
+        });
+      }
+
+      if (zoomLevelPill) {
+        zoomLevelPill.addEventListener("click", (e) => {
+          e.stopPropagation();
+          resetZoom();
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          closeLightbox();
+        });
+      }
+
+      // Backdrop click (outside image) closes
+      if (stageCanvas) {
+        stageCanvas.addEventListener("click", (e) => {
+          if (e.target === stageCanvas || e.target === viewport) {
+            closeLightbox();
+          }
+        });
+      }
+
+      // Click on image: toggle zoom between 1x and 2x
+      if (activeImg) {
+        activeImg.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (scale === 1) {
+            const rect = activeImg.getBoundingClientRect();
+            const originX = (e.clientX - (rect.left + rect.width / 2)) * -0.5;
+            const originY = (e.clientY - (rect.top + rect.height / 2)) * -0.5;
+            setScale(2, originX, originY, true);
+          } else {
+            resetZoom();
+          }
+        });
+
+        // Double click: always reset
+        activeImg.addEventListener("dblclick", (e) => {
+          e.stopPropagation();
+          resetZoom();
+        });
+      }
+
+      // Mouse Wheel Zoom
+      if (stageCanvas) {
+        stageCanvas.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const rect = activeImg.getBoundingClientRect();
+          const offsetX = e.clientX - (rect.left + rect.width / 2);
+          const offsetY = e.clientY - (rect.top + rect.height / 2);
+          const zoomDelta = e.deltaY < 0 ? 0.25 : -0.25;
+          setScale(scale + zoomDelta, offsetX * 0.1, offsetY * 0.1, false);
+        }, { passive: false });
+      }
+
+      // Pointer Drag to Pan (when zoomed)
+      viewport.addEventListener("pointerdown", (e) => {
+        if (scale <= 1) return;
+        isDragging = true;
+        startX = e.clientX - posX;
+        startY = e.clientY - posY;
+        viewport.setPointerCapture(e.pointerId);
+        viewport.style.cursor = "grabbing";
+      });
+
+      viewport.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+        posX = e.clientX - startX;
+        posY = e.clientY - startY;
+        renderTransform(false);
+      });
+
+      function stopDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        try {
+          viewport.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+        viewport.style.cursor = scale > 1 ? "grab" : "zoom-in";
+      }
+
+      viewport.addEventListener("pointerup", stopDrag);
+      viewport.addEventListener("pointercancel", stopDrag);
+
+      // Keyboard Shortcuts
+      document.addEventListener("keydown", (e) => {
+        if (!overlay.classList.contains("is-open")) return;
+
+        if (e.key === "Escape") {
+          e.preventDefault();
+          closeLightbox();
+        } else if (e.key === "+" || e.key === "=") {
+          e.preventDefault();
+          setScale(scale + STEP, 0, 0, true);
+        } else if (e.key === "-" || e.key === "_") {
+          e.preventDefault();
+          setScale(scale - STEP, 0, 0, true);
+        } else if (e.key === "0") {
+          e.preventDefault();
+          resetZoom();
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initModelLightbox);
+    } else {
+      initModelLightbox();
+    }
+    document.addEventListener("astro:page-load", initModelLightbox);
+  })();
+</script>

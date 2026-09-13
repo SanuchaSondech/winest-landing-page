@@ -203,7 +203,7 @@
 }
 
 .switch-sun {
-  color: #f59e0b;
+  color: #64748b;
 }
 
 .switch-moon {
@@ -215,7 +215,7 @@
   transform: translateX(27px);
   background: rgba(138, 156, 245, 0.25);
   border-color: rgba(138, 156, 245, 0.5);
-  box-shadow: 0 0 12px rgba(138, 156, 245, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 :not([data-theme="light"]) .switch-sun {
@@ -228,7 +228,6 @@
   opacity: 1;
   transform: scale(1.05);
   color: #c7d2fe;
-  filter: drop-shadow(0 0 5px rgba(165, 180, 252, 0.7));
 }
 
 /* Light Mode State: Thumb rests over Sun on the left */
@@ -241,15 +240,14 @@
 [data-theme="light"] .theme-toggle-switch .switch-slider {
   transform: translateX(0);
   background: #ffffff;
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14), 0 0 10px rgba(245, 158, 11, 0.35);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="light"] .switch-sun {
   opacity: 1;
   transform: scale(1.05);
-  color: #d97706;
-  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.45));
+  color: #0f172a;
 }
 
 [data-theme="light"] .switch-moon {

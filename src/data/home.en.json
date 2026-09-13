@@ -2,7 +2,7 @@
   "hero": {
     "stageLabel": "MAIN STAGE: AGENCY TRAILER",
     "duration": "01:45",
-    "playHint": "Click to watch WINEST trailer",
+    "playHint": "Promotional Video Coming Soon",
     "trackTitle": "Welcome to WINEST Wonderland",
     "trackSub": "VIRTUAL TALENTS & ILLUSTRATION STUDIOS",
     "closeButtonText": "✕ Close Window"
@@ -12,7 +12,7 @@
     "brandTaglinePrefix": "Welcome to",
     "brandTaglineSuffix": "The Realm of Imagination & Digital Creation",
     "storyHeadline": "Bringing Virtual Dreams into Reality",
-    "storyParagraph": "WINEST is a virtual entertainment agency and creative production atelier. We produce adorable VTuber debuts and premium artworks—from comprehensive character design sheets and LINE stickers to 3D and 2D streaming environments.",
+    "storyParagraph": "WINEST is a virtual entertainment agency and creative production atelier. We produce VTuber debuts and premium artworks—from Live2D illustration and rigging to character sheets and 4K streaming backgrounds.",
     "xLink": {
       "handle": "@Winest_vt",
       "url": "https://x.com/Winest_vt",
@@ -23,29 +23,29 @@
     "pillars": [
       {
         "num": "01",
-        "title": "VTuber Talents & Creators",
-        "desc": "Meet our resident virtual creators bringing fun, stories, and entertainment to the virtual world.",
+        "title": "VTuber Talents",
+        "desc": "Meet our resident Generation 1: GENESIS talents, explore their profiles, lore, and streaming channels.",
         "href": "/en/members",
         "disabled": false
       },
       {
         "num": "02",
         "title": "Arts & Creative Studio",
-        "desc": "Comprehensive illustration services (character design, full artwork, 4K backgrounds), Live2D rigging, and vocal production.",
+        "desc": "Professional Live2D VTuber illustration, rigging, character sheets, and 4K streaming background environments.",
         "href": "/en/commissions",
         "disabled": false
       },
       {
         "num": "03",
         "title": "Agency Profile & Contact",
-        "desc": "Company manifesto, commercial licensing policies, production crew, and collaboration channels.",
+        "desc": "Official contact channels for sponsorships, VTuber collabs, commercial guidelines, and studio bookings.",
         "href": "/en/about",
         "disabled": false
       },
       {
         "num": "04",
         "title": "Official Merchandise",
-        "desc": "Commemorative acrylic standees, keychains, and exclusive community collectibles.",
+        "desc": "Official merchandise and commemorative collectibles from WINEST talents (Coming Soon).",
         "disabled": true,
         "badge": "COMING SOON"
       }
@@ -54,19 +54,19 @@
     "metricsMeta": "VERIFIED DATA",
     "metrics": [
       {
-        "num": "6+",
+        "num": "3+",
         "title": "VTuber Talents",
         "desc": "Resident creators shaping our growing virtual universe."
       },
       {
-        "num": "150+",
-        "title": "Artworks Delivered",
-        "desc": "Character sheets, Live2D models, and commercial 4K streaming graphics."
+        "num": "30K+",
+        "title": "Total Subscriber",
+        "desc": "Combined subscribers and followers across official YouTube and social platforms."
       },
       {
-        "num": "1.2M+",
-        "title": "Total Channel Views",
-        "desc": "Combined views across YouTube, Twitch, and global community platforms."
+        "num": "100+",
+        "title": "Artworks Delivered",
+        "desc": "Character sheets, Live2D models, and commercial 4K streaming graphics."
       },
       {
         "num": "100%",

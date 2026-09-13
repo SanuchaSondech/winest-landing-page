@@ -1,7 +1,5 @@
 ---
 // MemberCard.astro - การ์ดโปรไฟล์สมาชิก VTuber (เชื่อมต่อข้อมูลจริงจาก members.json)
-import Icon from '../common/Icon.astro';
-
 export interface Props {
   talent?: any;
   member?: any;
@@ -19,17 +17,30 @@ const gen = data.genName || (data.gen ? data.gen.replace(' · 1st GEN', '') : 'G
 const bio = data.lore || data.bio || '';
 const message = data.greeting || data.quote || '';
 const bustImage = data.bustImage || (data.slug === 'karake' ? '/images/karake_bust.webp' : data.slug === 'yunaria-zayu' ? '/images/Yunaria_bust.webp' : '');
-const profileUrl = data.slug ? `/members/${data.slug}` : '/members';
+const isEn = Astro.url.pathname.startsWith('/en');
+const profileUrl = data.slug 
+  ? (isEn ? `/en/members/${data.slug}` : `/members/${data.slug}`) 
+  : (isEn ? '/en/members' : '/members');
 const socials = data.socials || [];
 const themeColor = data.themeColor || '#8a9cf5';
 const themeDarker = data.themeDarker || '#1e1430';
 ---
 
 <article 
-  class="member-card" 
+  class="member-card js-clickable-member-card" 
   data-index={index}
+  data-profile-url={profileUrl}
   style={`--card-theme: ${themeColor}; --card-theme-darker: ${themeDarker};`}
+  onclick={`if (!event.target.closest('a:not(.member-card-hitbox)')) { window.location.href = '${profileUrl}'; }`}
 >
+  <!-- Full-card clickable hitbox link for accessibility and standard middle/cmd-click -->
+  <a 
+    href={profileUrl} 
+    class="member-card-hitbox" 
+    aria-label={isEn ? `View ${name}'s Profile` : `ดูโปรไฟล์ของ ${name}`}
+    tabindex="0"
+  ></a>
+
   <!-- Visual Banner Stage with 3x Larger Character Art (Upper Body / Bust) -->
   <div 
     class="member-visual-stage" 
@@ -92,7 +103,7 @@ const themeDarker = data.themeDarker || '#1e1430';
       )}
     </div>
 
-    <!-- Bottom Interactive Bar -->
+    <!-- Bottom Interactive Bar (Socials only, full card navigates to profile) -->
     <div class="member-card-footer">
       <div class="member-platforms">
         {socials.map((soc: any) => (
@@ -102,16 +113,12 @@ const themeDarker = data.themeDarker || '#1e1430';
             rel="noopener noreferrer" 
             class="platform-mini-pill"
             aria-label={`${name} บน ${soc.platform}`}
+            onclick="event.stopPropagation();"
           >
             {soc.platform}
           </a>
         ))}
       </div>
-
-      <a href={profileUrl} class="member-view-profile-btn" aria-label={`ดูโปรไฟล์ของ ${name}`}>
-        <span>PROFILE</span>
-        <Icon name="arrow-right" width="14" height="14" />
-      </a>
     </div>
   </div>
 </article>

@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/common/Icon.astro';
+import ModelZoomModal from '../components/commissions/ModelZoomModal.astro';
 import commissionsData from '../data/commissions.json';
 import '../styles/global.css';
 import '../styles/commissions.css';
@@ -349,7 +350,13 @@ const commissionsSchema = {
         <div class="models-portfolio-grid">
           {showcases && showcases.map((model) => (
             <article class="model-portfolio-card">
-              <div class="model-img-wrapper">
+              <div 
+                class="model-img-wrapper" 
+                role="button" 
+                tabindex="0" 
+                aria-label={`คลิกเพื่อเปิดดูภาพขยายและซูมรายละเอียดของ ${model.name}`}
+                title="คลิกเพื่อดูภาพขยายและซูมรายละเอียด"
+              >
                 <img 
                   src={model.image} 
                   alt={`${model.name} Live2D Model Showcase (${model.tier}) - WINEST Kenelix Studio`} 
@@ -417,6 +424,9 @@ const commissionsSchema = {
 
     </div>
   </main>
+
+  <!-- Interactive Lightbox & Image Zoom Modal for Portfolio Models -->
+  <ModelZoomModal />
 
   <Footer />
 

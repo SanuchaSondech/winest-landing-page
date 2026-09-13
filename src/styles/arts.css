@@ -205,7 +205,6 @@
   height: 5px;
   border-radius: 50%;
   background: var(--accent-primary);
-  box-shadow: 0 0 6px var(--accent-primary);
 }
 
 /* 2. Content Details: Hierarchy & Scannability */
@@ -319,15 +318,15 @@
 }
 
 /* ==========================================================================
-   Coming Soon Card State (Audio Mixing Phase 2)
+   Coming Soon Card State (Audio Mixing Phase 2 - Clean Frosted Border)
    ========================================================================== */
 .art-preview-card.is-coming-soon-card {
-  border-color: rgba(245, 158, 11, 0.2);
+  border: var(--glass-border);
 }
 
 .art-preview-card.is-coming-soon-card:hover {
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.1);
+  border: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .art-title-row {
@@ -347,23 +346,17 @@
 }
 
 .soon-pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #fbbf24;
+  background: var(--accent-primary);
   display: inline-block;
-  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
-  animation: pulseComingSoon 2s infinite ease-in-out;
-}
-
-@keyframes pulseComingSoon {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+  box-shadow: none;
 }
 
 [data-theme="light"] .soon-pulse-dot {
-  background: #d97706;
-  box-shadow: 0 0 6px rgba(217, 119, 6, 0.4);
+  background: var(--accent-primary);
+  box-shadow: none;
 }
 
 /* ==========================================================================

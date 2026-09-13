@@ -990,6 +990,100 @@
   opacity: 1;
 }
 
+/* Showcase Pending State & Toast Bubble */
+.pending-btn-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.arp-social-btn.is-pending {
+  cursor: pointer;
+  opacity: 0.72;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+
+.arp-social-btn.is-pending:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="light"] .arp-social-btn.is-pending {
+  background-color: rgba(241, 245, 249, 0.7);
+  border: 1px dashed rgba(100, 116, 139, 0.35);
+  color: #334155;
+}
+
+:root[data-theme="light"] .arp-social-btn.is-pending:hover {
+  background-color: rgba(226, 232, 240, 0.85);
+}
+
+.pending-pill-mini {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: rgba(148, 163, 184, 0.18);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  letter-spacing: 0.05em;
+  margin-left: auto;
+}
+
+:root[data-theme="light"] .pending-pill-mini {
+  background: rgba(100, 116, 139, 0.12);
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.22);
+}
+
+.showcase-toast-bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate3d(-50%, 6px, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 50;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8fafc;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+:root[data-theme="light"] .showcase-toast-bubble {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.showcase-toast-bubble.is-visible {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+  pointer-events: auto;
+}
+
+@media (max-width: 480px) {
+  .showcase-toast-bubble {
+    white-space: normal;
+    width: 240px;
+    text-align: center;
+    border-radius: 12px;
+  }
+}
+
 /* ==========================================================================
    YUNARIA ZAYU SPECIAL THEMES (รองรับทั้ง โหมดสว่าง และ โหมดมืด สมบูรณ์แบบ)
    ========================================================================== */

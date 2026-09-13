@@ -1,0 +1,137 @@
+---
+// SkeletonScreen.astro - Global Zero-Spinner Skeleton Loading & Shimmer Engine
+// Provides high-performance perceived loading state for slow mobile devices and weak 3G networks.
+import '../../styles/skeleton.css';
+---
+
+<!-- Instantaneous Skeleton Screen Overlay (Pre-rendered in DOM, 0ms initial delay) -->
+<div id="winest-skeleton-overlay" class="winest-skeleton-overlay" aria-hidden="true">
+  <div class="skeleton-container">
+    <!-- 1. Header / Navbar Skeleton -->
+    <header class="sk-header">
+      <div class="sk-bone sk-brand-logo"></div>
+      <nav class="sk-nav-links">
+        <div class="sk-bone sk-nav-pill"></div>
+        <div class="sk-bone sk-nav-pill"></div>
+        <div class="sk-bone sk-nav-pill"></div>
+        <div class="sk-bone sk-nav-pill"></div>
+      </nav>
+      <div class="sk-bone sk-nav-action"></div>
+    </header>
+
+    <!-- 2. Hero Stage Skeleton -->
+    <section class="sk-hero">
+      <div class="sk-bone sk-hero-stage">
+        <div class="sk-bone sk-hero-center-badge"></div>
+      </div>
+      <div class="sk-bone sk-hero-headline"></div>
+      <div class="sk-bone sk-hero-subline"></div>
+    </section>
+
+    <!-- 3. Dynamic Cards Row Skeleton -->
+    <section class="sk-cards-grid">
+      <div class="sk-bone sk-card">
+        <div class="sk-card-top">
+          <div class="sk-bone sk-avatar"></div>
+          <div class="sk-card-title-col">
+            <div class="sk-bone sk-title-line"></div>
+            <div class="sk-bone sk-tag-line"></div>
+          </div>
+        </div>
+        <div class="sk-bone sk-card-body-line"></div>
+        <div class="sk-bone sk-card-body-line short"></div>
+        <div class="sk-card-footer">
+          <div class="sk-bone sk-badge-pill"></div>
+          <div class="sk-bone sk-badge-pill"></div>
+        </div>
+      </div>
+
+      <div class="sk-bone sk-card">
+        <div class="sk-card-top">
+          <div class="sk-bone sk-avatar"></div>
+          <div class="sk-card-title-col">
+            <div class="sk-bone sk-title-line"></div>
+            <div class="sk-bone sk-tag-line"></div>
+          </div>
+        </div>
+        <div class="sk-bone sk-card-body-line"></div>
+        <div class="sk-bone sk-card-body-line short"></div>
+        <div class="sk-card-footer">
+          <div class="sk-bone sk-badge-pill"></div>
+          <div class="sk-bone sk-badge-pill"></div>
+        </div>
+      </div>
+
+      <div class="sk-bone sk-card">
+        <div class="sk-card-top">
+          <div class="sk-bone sk-avatar"></div>
+          <div class="sk-card-title-col">
+            <div class="sk-bone sk-title-line"></div>
+            <div class="sk-bone sk-tag-line"></div>
+          </div>
+        </div>
+        <div class="sk-bone sk-card-body-line"></div>
+        <div class="sk-bone sk-card-body-line short"></div>
+        <div class="sk-card-footer">
+          <div class="sk-bone sk-badge-pill"></div>
+          <div class="sk-bone sk-badge-pill"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Top Navigation Progress Indicator for Link Clicks -->
+<div id="winest-nav-loader" class="winest-nav-loader" aria-hidden="true"></div>
+
+<!-- Skeleton Controller Script (Zero Framework, Lightweight, Resilient) -->
+<script is:inline>
+  (function () {
+    const overlay = document.getElementById('winest-skeleton-overlay');
+    const navLoader = document.getElementById('winest-nav-loader');
+
+    function dismissSkeleton() {
+      if (!overlay || overlay.classList.contains('is-dismissed')) return;
+      overlay.classList.add('is-dismissed');
+      if (navLoader) navLoader.classList.remove('is-active');
+
+      setTimeout(function () {
+        if (overlay && overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+      }, 400);
+    }
+
+    // Dismiss as soon as interactive or fully loaded
+    if (document.readyState === 'complete') {
+      dismissSkeleton();
+    } else {
+      window.addEventListener('load', dismissSkeleton, { once: true });
+      document.addEventListener('DOMContentLoaded', dismissSkeleton, { once: true });
+      document.addEventListener('astro:page-load', dismissSkeleton);
+
+      // Failsafe timer: Maximum 1.2s so it NEVER blocks user interaction
+      setTimeout(dismissSkeleton, 1200);
+    }
+
+    // Link navigation feedback for slow 3G / mobile devices
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (
+        href &&
+        href.startsWith('/') &&
+        !href.startsWith('//') &&
+        !href.startsWith('/#') &&
+        !href.includes('#') &&
+        link.target !== '_blank' &&
+        !e.ctrlKey &&
+        !e.metaKey &&
+        !e.shiftKey
+      ) {
+        if (navLoader) navLoader.classList.add('is-active');
+      }
+    });
+  })();
+</script>

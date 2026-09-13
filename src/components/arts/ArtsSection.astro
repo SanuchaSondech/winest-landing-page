@@ -1,12 +1,23 @@
 ---
 // ArtsSection.astro - ส่วนแสดงผลงานบริการงานศิลป์ (ดีไซน์เทียบเท่า VTuber แต่เป็น Static Grid ไม่ต้องหมุน)
 import homeData from '../../data/home.json';
-import ArtCard from './ArtCard.astro';
+import ArtCard, { type ArtItem } from './ArtCard.astro';
 import Icon from '../common/Icon.astro';
 import '../../styles/arts.css';
 
+interface ArtsSectionData {
+  titlePrefix?: string;
+  titleHighlight?: string;
+  desc?: string;
+  items: ArtItem[];
+  ctaBanner?: {
+    title?: string;
+    buttonText?: string;
+  };
+}
+
 interface Props {
-  data?: any;
+  data?: ArtsSectionData;
 }
 
 const { data } = Astro.props;
@@ -32,7 +43,7 @@ const cleanButtonText = (artsSection.ctaBanner?.buttonText || '').replace(/\s*\(
 
     <!-- 3 Core Services Preview Grid (Static Grid, Zero Carousel) -->
     <div class="arts-grid">
-      {artsSection.items.map((item, index) => (
+      {artsSection.items.map((item: ArtItem, index: number) => (
         <ArtCard item={item} index={index} />
       ))}
     </div>
@@ -40,7 +51,7 @@ const cleanButtonText = (artsSection.ctaBanner?.buttonText || '').replace(/\s*\(
     <!-- Arts Editorial CTA Bar (Harmonious Centered Finale) -->
     <div class="arts-cta-bar reveal-init reveal-card stagger-3">
       <div class="cta-center-stack">
-        <h3 class="cta-title">{artsSection.ctaBanner.title}</h3>
+        <h3 class="cta-title">{artsSection.ctaBanner?.title}</h3>
         <div class="cta-bar-action">
           <a href={commissionsLink} class="roster-magnetic-btn" id="artsMagneticBtn" aria-label={isEn ? "View all commissions and rates" : "เข้าสู่หน้าบริการคอมมิชชันและเรทราคา"}>
             <!-- Raycast cursor spotlight layer -->

@@ -10,17 +10,40 @@ export interface Props {
 }
 
 const { playHint, trackTitle, trackSub, duration } = Astro.props;
+const isEn = Astro.url.pathname.startsWith('/en');
 ---
 
 <div class="video-overlay-ui">
   <!-- Center Controls (Play Button & Hint Pill) -->
   <div class="video-center-controls">
-    <button class="play-btn-circle" id="play-trailer-btn" aria-label="เล่นคลิปตัวอย่างค่าย WINEST">
+    <button 
+      class="play-btn-circle is-pending" 
+      id="play-trailer-btn" 
+      type="button"
+      aria-label={isEn ? "WINEST promotional video (Coming soon)" : "วิดีโอโปรโมตค่าย WINEST (เร็ว ๆ นี้)"}
+      title={isEn ? "Promotional video in production" : "วิดีโอเปิดตัวอยู่ระหว่างการผลิต"}
+    >
       <Icon name="play" class="play-triangle" />
     </button>
-    <div class="frosted-hint-pill">
-      <span class="play-hint-dot"></span>
+    <div class="frosted-hint-pill is-pending">
+      <span class="play-hint-dot is-pending"></span>
       <span class="play-hint">{playHint}</span>
+    </div>
+
+    <!-- Floating Tooltip / Toast Notification -->
+    <div 
+      class="hero-video-toast" 
+      id="heroVideoToast" 
+      role="status" 
+      aria-live="polite" 
+      aria-hidden="true"
+    >
+      <span class="toast-dot" aria-hidden="true"></span>
+      <span class="toast-text">
+        {isEn 
+          ? "🎬 WINEST promotional video is in production. Coming soon!" 
+          : "🎬 วิดีโอโปรโมตค่าย WINEST กำลังอยู่ระหว่างการผลิต เตรียมรับชมได้เร็ว ๆ นี้!"}
+      </span>
     </div>
   </div>
 
