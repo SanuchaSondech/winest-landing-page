@@ -368,14 +368,51 @@ const { isEn = false } = Astro.props;
       viewport.addEventListener("pointerup", stopDrag);
       viewport.addEventListener("pointercancel", stopDrag);
 
-      // Keyboard Shortcuts
+      function getFocusableElements() {
+        if (!overlay) return [];
+        return Array.from(
+          overlay.querySelectorAll(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => el.offsetParent !== null);
+      }
+
+      // Keyboard Shortcuts & Focus Trap
       document.addEventListener("keydown", (e) => {
         if (!overlay.classList.contains("is-open")) return;
 
         if (e.key === "Escape") {
           e.preventDefault();
           closeLightbox();
-        } else if (e.key === "+" || e.key === "=") {
+          return;
+        }
+
+        // Focus trap for accessibility
+        if (e.key === "Tab") {
+          const focusable = getFocusableElements();
+          if (focusable.length === 0) {
+            e.preventDefault();
+            return;
+          }
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+          return;
+        }
+
+        if (e.key === "+" || e.key === "=") {
           e.preventDefault();
           setScale(scale + STEP, 0, 0, true);
         } else if (e.key === "-" || e.key === "_") {
@@ -393,6 +430,5 @@ const { isEn = false } = Astro.props;
     } else {
       initModelLightbox();
     }
-    document.addEventListener("astro:page-load", initModelLightbox);
   })();
 </script>
