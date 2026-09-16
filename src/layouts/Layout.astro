@@ -12,7 +12,7 @@ interface Props {
 const {
   title = "WINEST - ค่าย VTuber และบริการงานวาดครบวงจร",
   description = "WINEST ค่าย VTuber และสตูดิโอสร้างสรรค์งานอาร์ตระดับพรีเมียม รับออกแบบโมเดล Live2D, Character Sheet, สติกเกอร์ และฉากสตรีมมิ่ง",
-  image = "/logo/winest_logo.png",
+  image = "/logo/winest_logo.webp",
   type = "website",
   schema,
   lang,
@@ -53,7 +53,7 @@ const jsonLdGraph = [
     "@id": "https://winest.studio/#organization",
     "name": "WINEST",
     "url": "https://winest.studio",
-    "logo": "https://winest.studio/logo/winest_logo.png",
+    "logo": "https://winest.studio/logo/winest_logo.webp",
     "description": "ค่าย VTuber และสตูดิโองานวาด คาแรคเตอร์ชีท สติกเกอร์ และฉากสตรีมมิ่ง",
     "sameAs": [
       "https://x.com/Winest_vt",
@@ -112,9 +112,12 @@ const structuredDataString = JSON.stringify({
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={formattedImage} />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo/winest_logo_128.png" />
-    <link rel="apple-touch-icon" href="/logo/winest_logo_128.png" />
+    <!-- Favicon & Brand Icons (Optimized for Google Search & Modern Browsers) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/webp" sizes="48x48" href="/logo/winest_logo_48.webp" />
+    <link rel="icon" type="image/webp" sizes="128x128" href="/logo/winest_logo_128.webp" />
+    <link rel="icon" type="image/webp" sizes="192x192" href="/logo/winest_logo_192.webp" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/logo/winest_logo_192.webp" />
 
     <!-- Google Fonts Preconnect & Asynchronous Non-Blocking Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

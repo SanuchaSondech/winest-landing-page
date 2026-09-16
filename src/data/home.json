@@ -84,7 +84,7 @@
       {
         "id": "service-01",
         "badge": "Illustration Suite",
-        "image": "/commission/6.png",
+        "image": "/commission/6.webp",
         "title": "บริการวาดรูปครบวงจร",
         "desc": "บริการวาดรูปครบวงจรทั้งคาแรกเตอร์ดีไซน์ วาดคน และวาดฉากหลังสตรีมมิ่ง 4K",
         "specs": [
@@ -96,7 +96,7 @@
       {
         "id": "service-02",
         "badge": "Live2D Rigging",
-        "image": "/commission/5.png",
+        "image": "/commission/5.webp",
         "title": "บริการริกโมเดล",
         "desc": "บริการตัดต่อและริกโมเดลสำหรับ VTuber คุณภาพสูง ขยับเป็นธรรมชาติ ฟิสิกส์ผมนุ่มนวล พร้อมการแสดงอารมณ์ครบถ้วน",
         "specs": [
