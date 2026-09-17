@@ -650,9 +650,61 @@
   background: rgba(220, 38, 38, 0.85);
 }
 
-@media (max-width: 640px) {
-  .theater-top-bar {
-    font-size: 0.7rem;
-    flex-wrap: wrap;
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+
+  .theater-stage-container {
+    width: 100%;
+  }
+
+  .video-overlay-ui {
+    padding: 10px 12px;
+  }
+
+  .video-footer-info {
+    padding: 8px 12px;
+  }
+
+  .track-title {
+    font-size: 0.85rem;
+  }
+
+  .track-sub {
+    font-size: 0.65rem;
+  }
+
+  .waveform {
+    height: 18px;
+    gap: 3px;
+  }
+
+  .duration-badge {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+  }
+
+  .play-btn-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .play-triangle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .frosted-hint-pill {
+    padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-footer-meta .waveform {
+    display: none;
   }
 }

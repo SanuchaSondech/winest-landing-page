@@ -257,10 +257,10 @@ if (isEn) {
       </button>
     </div>
   </div>
-
-  <!-- Mobile Drawer Menu Component -->
-  <NavMobileDrawer brand={brand} navLinks={navLinks} drawerCta={drawerCta} />
 </header>
+
+<!-- Mobile Drawer Menu Component (placed outside header to ensure true viewport-fixed behavior) -->
+<NavMobileDrawer brand={brand} navLinks={navLinks} drawerCta={drawerCta} currentPath={currentPath} />
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
@@ -290,6 +290,14 @@ if (isEn) {
     if (hamburgerBtn) hamburgerBtn.addEventListener("click", openMenu);
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+    // Close drawer when tapping any link inside it
+    if (drawer) {
+      const drawerLinks = drawer.querySelectorAll(".drawer-link, .drawer-cta-btn");
+      drawerLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+    }
 
     // Language Dropdown Popover (Desktop & Mobile)
     const langDropdowns = document.querySelectorAll(".lang-dropdown-wrapper");

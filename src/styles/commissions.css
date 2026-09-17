@@ -1143,6 +1143,46 @@ html {
 }
 
 @media (max-width: 640px) {
+  .commissions-main {
+    padding-top: 20px;
+    padding-bottom: 48px;
+  }
+
+  .commissions-masthead {
+    margin-bottom: 28px;
+  }
+
+  .table-scroll-wrapper {
+    -webkit-overflow-scrolling: touch;
+    margin-left: -12px;
+    margin-right: -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .package-card {
+    padding: 18px 16px;
+  }
+
+  .motion-card-caption {
+    padding: 12px 14px;
+  }
+
+  .model-card-body {
+    padding: 14px 16px;
+  }
+
+  .closing-action-section {
+    padding: 36px 12px;
+  }
+
   .lightbox-header-bar {
     padding: 12px 16px;
     flex-wrap: wrap;

@@ -138,6 +138,9 @@ html {
   /* Hide native browser scrollbar across all engines */
   -ms-overflow-style: none; /* IE / Edge */
   scrollbar-width: none; /* Firefox */
+  overflow-x: clip;
+  max-width: 100vw;
+  scroll-padding-top: var(--header-height);
 }
 
 /* Hide native scrollbar for Chrome, Safari, Chromium */
@@ -150,12 +153,15 @@ body::-webkit-scrollbar {
 
 body {
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: var(--bg-dominant);
   transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
+  padding-top: var(--header-height);
   /* Isolate stacking context — prevents backdrop-filter layers from bleeding up */
   isolation: isolate;
 }
