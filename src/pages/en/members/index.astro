@@ -54,20 +54,22 @@ if (talentsMap.has('yunaria-zayu')) {
 
 const activeTalents = rawTalents.filter((t) => !t.isTeaser) as ActiveTalent[];
 
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
+
 const membersSchema = {
   "@type": "CollectionPage",
-  "@id": "https://winest.studio/en/members#collection",
+  "@id": `${siteUrl}/en/members#collection`,
   "name": "WINEST - VTuber Talents Directory",
-  "url": "https://winest.studio/en/members",
+  "url": `${siteUrl}/en/members`,
   "description": "Official directory of virtual creators and talents in WINEST Production.",
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": activeTalents.map((t, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://winest.studio/en/members/${t.slug}`,
+      "url": `${siteUrl}/en/members/${t.slug}`,
       "name": t.name,
-      "image": t.bustImage ? `https://winest.studio${t.bustImage}` : undefined
+      "image": t.bustImage ? `${siteUrl}${t.bustImage}` : undefined
     }))
   }
 };

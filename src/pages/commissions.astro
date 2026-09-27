@@ -19,13 +19,15 @@ const {
   terms 
 } = commissionsData;
 
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
+
 const commissionsSchema = {
   "@type": "ProfessionalService",
-  "@id": "https://winest.studio/commissions#service",
+  "@id": `${siteUrl}/commissions#service`,
   "name": "WINEST x KENELIX STUDIO Commissions",
-  "url": "https://winest.studio/commissions",
+  "url": `${siteUrl}/commissions`,
   "description": "บริการสร้างสรรค์งานโปรดักชัน: โมเดล Live2D และภาพวาดฉากสตรีมมิ่ง สำหรับครีเอเตอร์และ VTuber คุณภาพระดับมืออาชีพ",
-  "provider": { "@id": "https://winest.studio/#organization" },
+  "provider": { "@id": `${siteUrl}/#organization` },
   "areaServed": "Worldwide",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",

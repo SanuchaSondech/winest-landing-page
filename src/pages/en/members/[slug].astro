@@ -41,15 +41,17 @@ const hashtags: string[] = (Array.isArray(rawHashtags) ? rawHashtags : [])
   .filter((t: string) => t.length > 1);
 const socials = talent.socials || [];
 
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
+
 const personSchema = {
   "@type": "Person",
-  "@id": `https://winest.studio/en/members/${talent.slug}#person`,
+  "@id": `${siteUrl}/en/members/${talent.slug}#person`,
   "name": talent.name,
   "alternateName": [talent.japaneseName, talent.thaiName].filter(Boolean),
   "description": talent.lore,
-  "image": talent.modelImage ? `https://winest.studio${talent.modelImage}` : undefined,
+  "image": talent.modelImage ? `${siteUrl}${talent.modelImage}` : undefined,
   "jobTitle": "Virtual YouTuber",
-  "worksFor": { "@id": "https://winest.studio/#organization" },
+  "worksFor": { "@id": `${siteUrl}/#organization` },
   "sameAs": socials.map((s: any) => s.url).filter(Boolean)
 };
 
@@ -73,7 +75,7 @@ const resolvedSocials = STANDARD_PLATFORMS.map((platform) => {
 });
 
 const isAlias = Astro.params.slug === "yunaria";
-const canonical = isAlias ? "https://winest.studio/en/members/yunaria-zayu" : undefined;
+const canonical = isAlias ? `${siteUrl}/en/members/yunaria-zayu` : undefined;
 ---
 
 <Layout

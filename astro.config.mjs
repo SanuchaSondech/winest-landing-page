@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://winest.studio',
+  site: 'https://winest.vercel.app',
   integrations: [
     sitemap({
       filter: (page) =>

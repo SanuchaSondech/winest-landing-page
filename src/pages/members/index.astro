@@ -55,20 +55,22 @@ if (talentsMap.has('yunaria-zayu')) {
 
 const activeTalents = rawTalents.filter((t) => !t.isTeaser) as ActiveTalent[];
 
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
+
 const membersSchema = {
   "@type": "CollectionPage",
-  "@id": "https://winest.studio/members#collection",
+  "@id": `${siteUrl}/members#collection`,
   "name": "WINEST - สมาชิก VTuber",
-  "url": "https://winest.studio/members",
+  "url": `${siteUrl}/members`,
   "description": "สารบบรายชื่อและข้อมูลทางการของเวอร์ชวลครีเอเตอร์ในสังกัด WINEST แบ่งตามรุ่นเดบิวต์",
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": activeTalents.map((t, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://winest.studio/members/${t.slug}`,
+      "url": `${siteUrl}/members/${t.slug}`,
       "name": t.name,
-      "image": t.bustImage ? `https://winest.studio${t.bustImage}` : undefined
+      "image": t.bustImage ? `${siteUrl}${t.bustImage}` : undefined
     }))
   }
 };

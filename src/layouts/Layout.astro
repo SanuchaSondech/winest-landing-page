@@ -22,7 +22,7 @@ const {
 import HamsterScrollSlider from "../components/common/HamsterScrollSlider.astro";
 import SkeletonScreen from "../components/common/SkeletonScreen.astro";
 
-const siteUrl = "https://winest.studio";
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
 const pageLang = lang || (Astro.url && Astro.url.pathname.startsWith("/en") ? "en" : "th");
 const canonicalURL = canonical || (Astro.url ? new URL(Astro.url.pathname, siteUrl).href : siteUrl);
 const formattedImage = image.startsWith("http") ? image : `${siteUrl}${image.startsWith("/") ? "" : "/"}${image}`;
@@ -50,10 +50,10 @@ if (type === "profile" || (normPath.startsWith("/members/") && normPath !== "/me
 const jsonLdGraph = [
   {
     "@type": "Organization",
-    "@id": "https://winest.studio/#organization",
+    "@id": `${siteUrl}/#organization`,
     "name": "WINEST",
-    "url": "https://winest.studio",
-    "logo": "https://winest.studio/logo/winest_logo.webp",
+    "url": siteUrl,
+    "logo": `${siteUrl}/logo/winest_logo.webp`,
     "description": "ค่าย VTuber และสตูดิโองานวาด คาแรคเตอร์ชีท สติกเกอร์ และฉากสตรีมมิ่ง",
     "sameAs": [
       "https://x.com/Winest_vt",
@@ -62,10 +62,10 @@ const jsonLdGraph = [
   },
   {
     "@type": "WebSite",
-    "@id": "https://winest.studio/#website",
-    "url": "https://winest.studio",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
     "name": "WINEST",
-    "publisher": { "@id": "https://winest.studio/#organization" }
+    "publisher": { "@id": `${siteUrl}/#organization` }
   },
   ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])
 ];
@@ -114,10 +114,11 @@ const structuredDataString = JSON.stringify({
 
     <!-- Favicon & Brand Icons (Optimized for Google Search & Modern Browsers) -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/webp" sizes="48x48" href="/logo/winest_logo_48.webp" />
-    <link rel="icon" type="image/webp" sizes="128x128" href="/logo/winest_logo_128.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/logo/winest_logo_48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/logo/winest_logo_96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/logo/winest_logo_192.png" />
     <link rel="icon" type="image/webp" sizes="192x192" href="/logo/winest_logo_192.webp" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/logo/winest_logo_192.webp" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/logo/winest_logo_192.png" />
 
     <!-- Google Fonts Preconnect & Asynchronous Non-Blocking Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

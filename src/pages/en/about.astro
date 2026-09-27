@@ -12,14 +12,16 @@ import "../../styles/about-page.css";
 const { atelier } = commissionsData;
 const content = aboutData.en;
 
+const siteUrl = Astro.site ? Astro.site.origin : "https://winest.vercel.app";
+
 const contactSchema = {
   "@type": "ContactPage",
-  "@id": "https://winest.studio/en/about#webpage",
-  "url": "https://winest.studio/en/about",
+  "@id": `${siteUrl}/en/about#webpage`,
+  "url": `${siteUrl}/en/about`,
   "name": content.metaTitle,
   "description": content.metaDescription,
-  "isPartOf": { "@id": "https://winest.studio/#website" },
-  "about": { "@id": "https://winest.studio/#organization" }
+  "isPartOf": { "@id": `${siteUrl}/#website` },
+  "about": { "@id": `${siteUrl}/#organization` }
 };
 ---
 
