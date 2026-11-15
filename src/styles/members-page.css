@@ -576,6 +576,14 @@
   vertical-align: middle;
 }
 
+.dossier-jp-name {
+  font-size: 0.52em;
+  font-weight: 500;
+  opacity: 0.72;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
 /* --------------------------------------------------------------------------
    Grid Architecture: ส่วนที่ 2 (โมเดล 2 ส่วน) + ส่วนที่ 4 (เนื้อหา 5 ส่วน) [สัดส่วน 2:5 และความสูงเท่ากัน]
    -------------------------------------------------------------------------- */
@@ -1815,6 +1823,218 @@
 [data-theme="dark"] .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover .soc-arrow,
 :root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="karake"] .arp-social-btn:hover .soc-arrow {
   color: #ffffff !important;
+}
+
+/* ==========================================================================
+   KISATO DOSSIER THEME — LIGHT MODE (60% #ECE9E0 Cream, 30% #1D1E20 Charcoal, 10% #F5C833 Gold)
+   ========================================================================== */
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] {
+  background-color: #f6f4ee !important;
+  color: #1D1E20 !important;
+  --kisato-cream: #ECE9E0;
+  --kisato-dark: #1D1E20;
+  --kisato-gold: #F5C833;
+  --kisato-gold-text: #8a6400;
+  --kisato-tint: rgba(245, 200, 51, 0.16);
+  --kisato-border: rgba(29, 30, 32, 0.14);
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-banner-back-btn {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid var(--kisato-border) !important;
+  color: var(--kisato-dark) !important;
+  box-shadow: 0 4px 12px rgba(29, 30, 32, 0.08) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-banner-back-btn:hover {
+  background: #ffffff !important;
+  border-color: var(--kisato-gold) !important;
+  transform: translateX(-2px);
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #e2ded2 0%, #ECE9E0 60%, #f4f2eb 100%) !important;
+  border-bottom: 2px solid var(--kisato-gold) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-backdrop {
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(246, 244, 238, 0.35) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 55%, rgba(246, 244, 238, 0.85) 100%) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-glass-nameplate {
+  background: #ffffff !important;
+  border: 1px solid var(--kisato-border) !important;
+  box-shadow: 0 12px 28px -6px rgba(29, 30, 32, 0.1) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-gen-badge,
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-title-badge {
+  color: var(--kisato-gold-text) !important;
+  background: var(--kisato-tint) !important;
+  border: 1px solid rgba(245, 200, 51, 0.45) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-talent-name {
+  color: var(--kisato-dark) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-full-model-img {
+  filter: drop-shadow(0 14px 26px rgba(29, 30, 32, 0.22)) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-block-header {
+  color: var(--kisato-dark) !important;
+  border-bottom: 1px solid var(--kisato-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-lore-text {
+  color: #3f4145 !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .spec-kicker {
+  color: #6b6c70 !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .spec-value {
+  color: var(--kisato-dark) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-hashtag-pill {
+  background: var(--kisato-cream) !important;
+  border: 1px solid var(--kisato-border) !important;
+  color: var(--kisato-dark) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .dossier-channels-section {
+  border-top: 1px solid var(--kisato-border) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .channels-subtitle {
+  color: #6b6c70 !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn {
+  background: #ffffff !important;
+  border: 1px solid var(--kisato-border) !important;
+  color: var(--kisato-dark) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn:hover {
+  background: var(--kisato-cream) !important;
+  border-color: var(--kisato-gold) !important;
+  box-shadow: 0 6px 16px rgba(29, 30, 32, 0.08) !important;
+}
+
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .soc-icon,
+[data-theme="light"] .arp-talent-detail-view[data-talent="kisato"] .soc-arrow {
+  color: var(--kisato-gold-text) !important;
+}
+
+/* ==========================================================================
+   KISATO DOSSIER THEME — DARK MODE (60% #1D1E20 Charcoal, 30% #ECE9E0 Cream, 10% #F5C833 Gold)
+   ========================================================================== */
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"],
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] {
+  background-color: #141517 !important;
+  color: #ECE9E0 !important;
+  --kisato-cream: #ECE9E0;
+  --kisato-dark: #1D1E20;
+  --kisato-gold: #F5C833;
+  --kisato-tint: rgba(245, 200, 51, 0.12);
+  --kisato-border: rgba(236, 233, 224, 0.14);
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-banner,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-banner {
+  background: linear-gradient(135deg, #161719 0%, #1D1E20 60%, #26272a 100%) !important;
+  border-bottom: 2px solid var(--kisato-gold) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-backdrop,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-backdrop {
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(20, 21, 23, 0.55) 100%) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-gradient,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-cover-gradient {
+  background: linear-gradient(to bottom, transparent 55%, rgba(20, 21, 23, 0.9) 100%) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-glass-nameplate,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-glass-nameplate {
+  background: #1D1E20 !important;
+  border: 1px solid rgba(245, 200, 51, 0.28) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-talent-name,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-talent-name {
+  color: var(--kisato-cream) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-gen-badge,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-gen-badge,
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-title-badge,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-title-badge {
+  color: var(--kisato-gold) !important;
+  background: var(--kisato-tint) !important;
+  border: 1px solid rgba(245, 200, 51, 0.35) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-full-model-img,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-full-model-img {
+  filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.55)) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-block-header,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-block-header {
+  color: var(--kisato-cream) !important;
+  border-bottom: 1px solid var(--kisato-border) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .spec-value,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .spec-value {
+  color: var(--kisato-cream) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .dossier-hashtag-pill,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .dossier-hashtag-pill {
+  background: var(--kisato-tint) !important;
+  border: 1px solid rgba(245, 200, 51, 0.32) !important;
+  color: var(--kisato-gold) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn {
+  background: #1D1E20 !important;
+  border: 1px solid var(--kisato-border) !important;
+  color: var(--kisato-cream) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn:hover,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .arp-social-btn:hover {
+  background: rgba(245, 200, 51, 0.1) !important;
+  border-color: var(--kisato-gold) !important;
+}
+
+[data-theme="dark"] .arp-talent-detail-view[data-talent="kisato"] .soc-icon,
+:root:not([data-theme="light"]) .arp-talent-detail-view[data-talent="kisato"] .soc-icon {
+  color: var(--kisato-gold) !important;
+}
+
+/* Kisato Silhouette Scale Match (aligned to Yunaria's visual proportion) */
+.arp-talent-detail-view[data-talent="kisato"] .dossier-full-model-img {
+  transform: scale(1.26);
+  transform-origin: top center;
+}
+
+@media (max-width: 959px) {
+  .arp-talent-detail-view[data-talent="kisato"] .dossier-full-model-img {
+    transform: scale(1.12);
+  }
 }
 
 /* ==========================================================================

@@ -51,7 +51,7 @@
 }
 
 .colophon-copy {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body, 'Plus Jakarta Sans', 'Sarabun', sans-serif);
   font-size: 0.76rem;
   color: var(--text-secondary, #94a3b8);
 }

@@ -31,6 +31,21 @@
         "animalia-02",
         "animalia-03"
       ]
+    },
+    {
+      "id": "gen-3",
+      "name": "MYSTIC",
+      "displayName": "Mystic",
+      "operationLabel": "3rd GENERATION",
+      "concept": "Arcane Magic & Destiny",
+      "bgColor": "#141517",
+      "bgLightColor": "#ece9e0",
+      "tagline": "When magic converges, destiny begins",
+      "desc": "The arrival of mysterious wielders of arcane power, unveiling a new chapter of stories beyond imagination.",
+      "colors": "Divine Gold, Midnight Celestial",
+      "memberSlugs": [
+        "kisato"
+      ]
     }
   ],
   "talents": [
@@ -205,6 +220,77 @@
       "themeColor": "#059669",
       "themeDarker": "#064e3b",
       "teaserLabel": "COMING SOON"
+    },
+    {
+      "id": "kisato",
+      "slug": "kisato",
+      "name": "Kisato",
+      "shortName": "Kisato",
+      "thaiName": "คิซาโตะ",
+      "japaneseName": "キサト",
+      "title": "",
+      "genId": "gen-3",
+      "genName": "MYSTIC",
+      "isTeaser": false,
+      "themeColor": "#F5C833",
+      "themeDarker": "#1D1E20",
+      "videoTitle": "",
+      "youtubeVideoId": "",
+      "videoCover": "/images/kisato.png",
+      "characterDesignImage": "/images/kisato.png",
+      "modelImage": "/images/kisato.png",
+      "bustImage": "/images/kisato_bust.png",
+      "credits": {
+        "characterDesign": "Lucius Lumiel",
+        "live2dRigger": "Lucius Lumiel"
+      },
+      "lore": "Undisclosed",
+      "greeting": "Love you, good soul",
+      "profile": {
+        "species": "Undisclosed",
+        "gender": "Male",
+        "age": "Since ancient times",
+        "birthday": "Undisclosed",
+        "height": "Undisclosed",
+        "weight": "Undisclosed",
+        "languages": "Thai / English",
+        "favoriteFood": "Undisclosed",
+        "dislikes": "Undisclosed",
+        "signatureColor": "Cream, Charcoal, Gold",
+        "fanName": "Undisclosed"
+      },
+      "hashtags": [
+        "#Kisato",
+        "#WINEST"
+      ],
+      "quote": "Sin or virtue is up to you. Transfer money now and you're definitely a good person.",
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@KisatoWinest",
+          "label": "@KisatoWinest"
+        },
+        {
+          "platform": "TikTok",
+          "url": "https://www.tiktok.com/@kisatowinest",
+          "label": "@kisatowinest"
+        },
+        {
+          "platform": "X",
+          "url": "https://x.com/KisatoWN",
+          "label": "@KisatoWN"
+        },
+        {
+          "platform": "Facebook",
+          "url": "https://www.facebook.com/profile.php?id=61595620222063",
+          "label": "Kisato"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/WsaKVhaXjc",
+          "label": "Community Discord"
+        }
+      ]
     }
   ]
 }

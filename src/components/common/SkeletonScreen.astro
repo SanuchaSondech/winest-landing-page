@@ -185,10 +185,14 @@ const { pageType = 'home' } = Astro.props;
     const overlay = document.getElementById('winest-skeleton-overlay');
     const navLoader = document.getElementById('winest-nav-loader');
 
+    function hideNavLoader() {
+      if (navLoader) navLoader.classList.remove('is-active');
+    }
+
     function dismissSkeleton() {
+      hideNavLoader();
       if (!overlay || overlay.classList.contains('is-dismissed')) return;
       overlay.classList.add('is-dismissed');
-      if (navLoader) navLoader.classList.remove('is-active');
 
       setTimeout(function () {
         if (overlay && overlay.parentNode) {
@@ -206,8 +210,16 @@ const { pageType = 'home' } = Astro.props;
       setTimeout(dismissSkeleton, 2200);
     }
 
+    // Clear top progress bar when entering or restoring from Back-Forward Cache (bfcache)
+    window.addEventListener('pageshow', function (e) {
+      hideNavLoader();
+      if (e.persisted) dismissSkeleton();
+    });
+    window.addEventListener('pagehide', hideNavLoader);
+
     // Link navigation feedback for slow mobile/3G networks
     document.addEventListener('click', function (e) {
+      if (e.defaultPrevented) return;
       const link = e.target.closest('a');
       if (!link) return;
       const href = link.getAttribute('href');

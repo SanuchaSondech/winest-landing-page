@@ -31,6 +31,21 @@
         "animalia-02",
         "animalia-03"
       ]
+    },
+    {
+      "id": "gen-3",
+      "name": "MYSTIC",
+      "displayName": "Mystic",
+      "operationLabel": "3rd GENERATION",
+      "concept": "มนตราและโชคชะตา",
+      "bgColor": "#141517",
+      "bgLightColor": "#ece9e0",
+      "tagline": "เมื่อมนตราบรรจบ โชคชะตาจึงเริ่มต้น",
+      "desc": "การมาถึงของเหล่าผู้ถือครองพลังลึกลับ กับเรื่องราวบทใหม่ที่กำลังจะถูกเปิดเผย เตรียมพบกับสิ่งที่เหนือกว่าจินตนาการ",
+      "colors": "ทอง เทพนิยาย ฟ้ามิดไนท์",
+      "memberSlugs": [
+        "kisato"
+      ]
     }
   ],
   "talents": [
@@ -205,6 +220,77 @@
       "themeColor": "#059669",
       "themeDarker": "#064e3b",
       "teaserLabel": "COMING SOON"
+    },
+    {
+      "id": "kisato",
+      "slug": "kisato",
+      "name": "Kisato",
+      "shortName": "Kisato",
+      "thaiName": "คิซาโตะ",
+      "japaneseName": "キサト",
+      "title": "",
+      "genId": "gen-3",
+      "genName": "MYSTIC",
+      "isTeaser": false,
+      "themeColor": "#F5C833",
+      "themeDarker": "#1D1E20",
+      "videoTitle": "",
+      "youtubeVideoId": "",
+      "videoCover": "/images/kisato.png",
+      "characterDesignImage": "/images/kisato.png",
+      "modelImage": "/images/kisato.png",
+      "bustImage": "/images/kisato_bust.png",
+      "credits": {
+        "characterDesign": "Lucius Lumiel",
+        "live2dRigger": "Lucius Lumiel"
+      },
+      "lore": "ยังไม่ปรากฏแน่ชัด",
+      "greeting": "รักนะคนดี",
+      "profile": {
+        "species": "ยังไม่ปรากฏแน่ชัด",
+        "gender": "ชาย",
+        "age": "นับแต่ยุคโบราณ",
+        "birthday": "ยังไม่ปรากฏแน่ชัด",
+        "height": "ยังไม่ปรากฏแน่ชัด",
+        "weight": "ยังไม่ปรากฏแน่ชัด",
+        "languages": "Thai / English",
+        "favoriteFood": "ยังไม่ปรากฏแน่ชัด",
+        "dislikes": "ยังไม่ปรากฏแน่ชัด",
+        "signatureColor": "ครีม, ดำ, ทอง",
+        "fanName": "ยังไม่ปรากฏแน่ชัด"
+      },
+      "hashtags": [
+        "#Kisato",
+        "#WINEST"
+      ],
+      "quote": "บาปรึดีขึ้นอยู่กับคุณ โอนเงินมาตอนนี้คุณเป็นคนดีแน่นอน",
+      "socials": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/@KisatoWinest",
+          "label": "@KisatoWinest"
+        },
+        {
+          "platform": "TikTok",
+          "url": "https://www.tiktok.com/@kisatowinest",
+          "label": "@kisatowinest"
+        },
+        {
+          "platform": "X",
+          "url": "https://x.com/KisatoWN",
+          "label": "@KisatoWN"
+        },
+        {
+          "platform": "Facebook",
+          "url": "https://www.facebook.com/profile.php?id=61595620222063",
+          "label": "Kisato"
+        },
+        {
+          "platform": "Discord",
+          "url": "https://discord.gg/WsaKVhaXjc",
+          "label": "Community Discord"
+        }
+      ]
     }
   ]
 }

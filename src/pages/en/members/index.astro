@@ -111,9 +111,6 @@ const membersSchema = {
                 <!-- Left Column: Generation Name & Info -->
                 <div class="arp-gen-info-col">
                   <div class="arp-gen-header-block">
-                    {(gen as any).concept && (
-                      <span class="arp-gen-concept-badge">{(gen as any).concept}</span>
-                    )}
                     <h2 class="arp-gen-title">
                       {gen.name}
                       <span class="arp-gen-operation-tag">{gen.id === 'gen-1' ? '1st' : (gen.id === 'gen-2' ? '2nd' : (gen.operationLabel?.split(' ')[0] || '1st'))}</span>

@@ -59,6 +59,7 @@ const STANDARD_PLATFORMS = [
   { key: 'youtube', name: 'YouTube', icon: 'youtube', match: ['youtube'] },
   { key: 'tiktok', name: 'TikTok', icon: 'tiktok', match: ['tiktok'] },
   { key: 'x', name: 'X', icon: 'x-twitter', match: ['x', 'twitter'] },
+  { key: 'facebook', name: 'Facebook', icon: 'facebook', match: ['facebook'], optional: true },
   { key: 'discord', name: 'Discord', icon: 'discord', match: ['discord'] },
 ];
 
@@ -72,7 +73,7 @@ const resolvedSocials = STANDARD_PLATFORMS.map((platform) => {
     label: (found?.label || found?.handle || `@${talent.slug}`) as string,
     hasLink: Boolean(found?.url),
   };
-});
+}).filter((p) => !p.optional || p.hasLink);
 
 const isAlias = Astro.params.slug === "yunaria";
 const canonical = isAlias ? `${siteUrl}/en/members/yunaria-zayu` : undefined;
@@ -165,14 +166,13 @@ const canonical = isAlias ? `${siteUrl}/en/members/yunaria-zayu` : undefined;
                 <span class="dossier-gen-badge" id="detailGenBadge"
                   >{talent.genName || "GENESIS"}</span
                 >
-                {talent.title && (
+                {talent.title && talent.title !== talent.genName && (
                   <span class="dossier-title-badge">{talent.title}</span>
                 )}
               </div>
               <h1 class="dossier-talent-name">
-                <span id="detailTalentName">{talent.name}</span>
-                {talent.thaiName && (
-                  <span class="dossier-thai-name">({talent.thaiName})</span>
+                <span id="detailTalentName">{talent.name}</span>{talent.japaneseName && (
+                  <span class="dossier-jp-name">({talent.japaneseName})</span>
                 )}
               </h1>
             </div>

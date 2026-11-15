@@ -561,14 +561,14 @@ html {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(138, 156, 245, 0.9);
+  background: rgba(138, 156, 245, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #0a0d16;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 24px rgba(138, 156, 245, 0.45);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: transform 0.18s ease-out, background-color 0.18s ease, box-shadow 0.18s ease;
   cursor: pointer;
   z-index: 2;
   padding: 0;
@@ -580,10 +580,10 @@ html {
 }
 
 .motion-video-frame.youtube-facade:hover .facade-play-btn {
-  transform: translate(-50%, -50%) scale(1.12);
+  transform: translate(-50%, -50%) scale(1.08);
   background: #ffffff;
   color: #5567e2;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 32px rgba(138, 156, 245, 0.8);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="light"] .motion-demo-card {
@@ -701,7 +701,7 @@ html {
 }
 
 .model-img-wrapper::before {
-  content: '🔍';
+  content: '+';
   position: absolute;
   bottom: 12px;
   right: 12px;
@@ -712,22 +712,23 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.88);
   color: #ffffff;
-  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
   opacity: 0;
-  transform: scale(0.85) translateY(4px);
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
   pointer-events: none;
 }
 
 .model-img-wrapper:hover::before {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
 }
 
 .model-img-wrapper img {
