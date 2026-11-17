@@ -158,7 +158,7 @@
 .members-carousel-container.is-static .members-grid.is-carousel,
 .members-carousel-container[data-scroll-enabled="false"] .members-grid.is-carousel {
   width: 100%;
-  max-width: 800px;
+  max-width: 1120px;
   animation: none !important;
   transform: none !important;
   justify-content: center;
@@ -169,13 +169,14 @@
   width: 100%;
   justify-content: center;
   padding-right: 0;
-  gap: clamp(20px, 3.5vw, 36px);
-  flex-wrap: wrap;
+  gap: clamp(16px, 2.2vw, 28px);
+  flex-wrap: nowrap;
 }
 
 .members-carousel-container.is-static .member-card,
 .members-carousel-container[data-scroll-enabled="false"] .member-card {
-  flex: 0 1 clamp(280px, 38%, 340px);
+  flex: 0 1 340px;
+  min-width: 0;
   max-width: 340px;
 }
 
@@ -823,6 +824,11 @@
   .member-card {
     flex: 0 0 280px;
     width: 280px;
+  }
+
+  .members-carousel-container.is-static .members-ticker-group,
+  .members-carousel-container[data-scroll-enabled="false"] .members-ticker-group {
+    flex-wrap: wrap;
   }
 
   .members-carousel-container.is-static .member-card,

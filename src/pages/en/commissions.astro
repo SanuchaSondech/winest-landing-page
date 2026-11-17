@@ -108,9 +108,9 @@ const commissionsSchema = {
 
                 <div class="pkg-price-row">
                   <span class="price-lead">From</span>
-                  <span class="price-num">฿{pkg.startingPrice.toLocaleString()}</span>
+                  <span class="price-num">${pkg.startingPrice.toLocaleString()}</span>
                   {pkg.originalPrice && (
-                    <s class="price-original">฿{pkg.originalPrice.toLocaleString()}</s>
+                    <s class="price-original">${pkg.originalPrice.toLocaleString()}</s>
                   )}
                   {pkg.discountPercent && (
                     <span class="price-discount-badge">{pkg.discountPercent}</span>
@@ -167,9 +167,9 @@ const commissionsSchema = {
                   <tr class={tIdx === 0 ? 'group-start' : ''}>
                     <td class="pkg-cell">{tIdx === 0 ? group.package : ''}</td>
                     <td>{t.tier}</td>
-                    <td class="num-cell">฿{t.draw.toLocaleString()}</td>
-                    <td class="num-cell">฿{t.rig.toLocaleString()}</td>
-                    <td class="combo-cell">฿{t.combo.toLocaleString()}</td>
+                    <td class="num-cell">${t.draw.toLocaleString()}</td>
+                    <td class="num-cell">${t.rig.toLocaleString()}</td>
+                    <td class="combo-cell">${t.combo.toLocaleString()}</td>
                   </tr>
                 ))
               )}
@@ -197,9 +197,9 @@ const commissionsSchema = {
                     <td colspan="3" style="color: var(--text-secondary);">{acc.customNote}</td>
                   ) : (
                     <>
-                      <td class="num-cell">฿{acc.half?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.half?.draw} / Rig {acc.half?.rig})</span></td>
-                      <td class="num-cell">฿{acc.simple?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.simple?.draw} / Rig {acc.simple?.rig})</span></td>
-                      <td class="combo-cell">฿{acc.full?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw {acc.full?.draw} / Rig {acc.full?.rig})</span></td>
+                      <td class="num-cell">${acc.half?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw ${acc.half?.draw} / Rig ${acc.half?.rig})</span></td>
+                      <td class="num-cell">${acc.simple?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw ${acc.simple?.draw} / Rig ${acc.simple?.rig})</span></td>
+                      <td class="combo-cell">${acc.full?.combo.toLocaleString()} <span style="font-size: 0.75rem; color: var(--text-secondary);">(Draw ${acc.full?.draw} / Rig ${acc.full?.rig})</span></td>
                     </>
                   )}
                 </tr>
@@ -208,7 +208,7 @@ const commissionsSchema = {
           </table>
         </div>
         <p class="table-note" style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: -20px; margin-bottom: 32px; line-height: 1.5;">
-          * Accessory items are quoted by detail complexity · All base packages include 3 free expressions.
+          * All international prices are in USD (tax &amp; payment processing fees included) · Accessory items are quoted by detail complexity · All base packages include 3 free expressions.
         </p>
       </section>
 
@@ -412,7 +412,7 @@ const commissionsSchema = {
       </section>
 
       <!-- Bottom Studio CTA Banner -->
-      <section class="commissions-closing-cta">
+      <section class="closing-action-section">
         <h2 class="closing-title">Ready to bring your Virtual Identity to life?</h2>
         <p class="closing-desc">Open a ticket in the Kenelix Studio Discord to submit your brief and reserve your production slot.</p>
         <a 

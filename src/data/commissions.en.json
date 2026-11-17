@@ -10,8 +10,8 @@
       "id": "half-body",
       "name": "Half Body",
       "subtitle": "Starter Model (Waist-Up)",
-      "startingPrice": 3900,
-      "originalPrice": 5200,
+      "startingPrice": 125,
+      "originalPrice": 167,
       "discountPercent": "-25%",
       "bullets": [
         "Female ends at skirt/hips (Male ends at shorts/thighs)",
@@ -23,8 +23,8 @@
       "id": "simple-full",
       "name": "Simple Full",
       "subtitle": "Full Body (Standard Motion)",
-      "startingPrice": 8000,
-      "originalPrice": 10000,
+      "startingPrice": 256,
+      "originalPrice": 321,
       "discountPercent": "-20%",
       "bullets": [
         "Full body model; can change and add outfits",
@@ -36,8 +36,8 @@
       "id": "full-body",
       "name": "Full Body",
       "subtitle": "Complete Full Body Model",
-      "startingPrice": 10500,
-      "originalPrice": 15500,
+      "startingPrice": 337,
+      "originalPrice": 496,
       "discountPercent": "-30%",
       "bullets": [
         "Complete body anatomy underneath with removable outfits",
@@ -50,46 +50,46 @@
     {
       "package": "Half Body (Waist-Up)",
       "tiers": [
-        { "tier": "Tier 1", "draw": 3100, "rig": 2100, "combo": 3900 },
-        { "tier": "Tier 2", "draw": 4100, "rig": 3100, "combo": 5400 },
-        { "tier": "Tier 3", "draw": 5100, "rig": 4100, "combo": 6900 }
+        { "tier": "Tier 1", "draw": 100, "rig": 68, "combo": 125 },
+        { "tier": "Tier 2", "draw": 132, "rig": 100, "combo": 173 },
+        { "tier": "Tier 3", "draw": 164, "rig": 132, "combo": 221 }
       ]
     },
     {
       "package": "Simple Full (Full Body)",
       "tiers": [
-        { "tier": "Tier 1", "draw": 5500, "rig": 4500, "combo": 8000 },
-        { "tier": "Tier 2", "draw": 6500, "rig": 5250, "combo": 9400 },
-        { "tier": "Tier 3", "draw": 7800, "rig": 6700, "combo": 11600 }
+        { "tier": "Tier 1", "draw": 177, "rig": 145, "combo": 256 },
+        { "tier": "Tier 2", "draw": 209, "rig": 169, "combo": 301 },
+        { "tier": "Tier 3", "draw": 250, "rig": 215, "combo": 372 }
       ]
     },
     {
       "package": "Full Body (Comprehensive)",
       "tiers": [
-        { "tier": "Tier 1", "draw": 8500, "rig": 7000, "combo": 10500 },
-        { "tier": "Tier 2", "draw": 9200, "rig": 8300, "combo": 12250 },
-        { "tier": "Tier 3", "draw": 11500, "rig": 10500, "combo": 15400 }
+        { "tier": "Tier 1", "draw": 272, "rig": 225, "combo": 337 },
+        { "tier": "Tier 2", "draw": 295, "rig": 266, "combo": 393 },
+        { "tier": "Tier 3", "draw": 369, "rig": 337, "combo": 493 }
       ]
     }
   ],
   "accessories": [
     {
       "category": "Hairstyle / Headgear",
-      "half": { "draw": 65, "rig": 60, "combo": 125 },
-      "simple": { "draw": 140, "rig": 180, "combo": 240 },
-      "full": { "draw": 260, "rig": 290, "combo": 385 }
+      "half": { "draw": 3, "rig": 2, "combo": 4 },
+      "simple": { "draw": 5, "rig": 6, "combo": 8 },
+      "full": { "draw": 9, "rig": 10, "combo": 13 }
     },
     {
       "category": "Outfit / Costume",
-      "half": { "draw": 450, "rig": 350, "combo": 640 },
-      "simple": { "draw": 750, "rig": 730, "combo": 1100 },
-      "full": { "draw": 1150, "rig": 1150, "combo": 1610 }
+      "half": { "draw": 15, "rig": 12, "combo": 21 },
+      "simple": { "draw": 25, "rig": 24, "combo": 36 },
+      "full": { "draw": 37, "rig": 37, "combo": 52 }
     },
     {
       "category": "Chibi Character",
-      "half": { "draw": 1200, "rig": 1500, "combo": 2200 },
-      "simple": { "draw": 2180, "rig": 1700, "combo": 2910 },
-      "full": { "draw": 2900, "rig": 2400, "combo": 3710 }
+      "half": { "draw": 39, "rig": 49, "combo": 71 },
+      "simple": { "draw": 70, "rig": 55, "combo": 94 },
+      "full": { "draw": 93, "rig": 77, "combo": 119 }
     },
     {
       "category": "Props / Weapons / Others",
@@ -105,7 +105,7 @@
         "id": "simple-scene",
         "title": "Simple",
         "badge": "Clean & Minimal",
-        "rate": "฿400 – ฿1,500",
+        "rate": "$13 – $49",
         "rateSub": "For clean, uncomplicated scenes",
         "bullets": [
           "Few elements · Minimal props · Base lighting",
@@ -117,7 +117,7 @@
         "id": "standard-scene",
         "title": "Standard",
         "badge": "Medium Detail",
-        "rate": "฿1,500 – ฿2,700",
+        "rate": "$49 – $87",
         "rateSub": "For detailed streaming environments",
         "bullets": [
           "Multi-element composition · Moderate props and decor",
@@ -130,7 +130,7 @@
         "id": "full-scale-scene",
         "title": "Full Scale",
         "badge": "Ultra High Detail",
-        "rate": "From ฿2,700",
+        "rate": "From $87",
         "rateSub": "For complex, highly detailed worlds",
         "bullets": [
           "Extensive props · Rich particle lighting & custom visual effects",
@@ -229,7 +229,7 @@
     {
       "title": "Terms & Policies",
       "points": [
-        "3 free revisions included per production phase (Additional adjustments: +฿10/point)",
+        "3 free revisions included per production phase (Additional adjustments: +$1/point)",
         "Deposits are non-refundable under all circumstances if client cancels",
         "If client becomes unresponsive or fails to pay agreed schedule, project will be terminated with forfeiture of deposit",
         "The studio reserves the right to pursue appropriate legal remedies for contractual breaches"
